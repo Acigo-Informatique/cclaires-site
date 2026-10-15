@@ -1,0 +1,551 @@
+{
+ "version": 1,
+ "at": "2026-10-15T18:46:57.324Z",
+ "seed": 1688166865,
+ "redraws": 1,
+ "input": {
+  "brief": "Logiciel de gestion commerciale, etiquetage sanitaire, palettisation et tracabilite des lots pour ostreiculteurs, conchyliculteurs et expediteurs de coquillages",
+  "sector": "saas",
+  "tone": null,
+  "have": [],
+  "keep": [
+   "palette",
+   "type"
+  ],
+  "avoid": [],
+  "sections": [
+   "intro",
+   "how-it-works",
+   "showcase",
+   "features",
+   "proof",
+   "list",
+   "about",
+   "faq",
+   "cta",
+   "footer"
+  ],
+  "direction": "colour-chapters"
+ },
+ "imagery": "interface",
+ "allow": [],
+ "direction": {
+  "id": "colour-chapters",
+  "name": "Colour chapters",
+  "sectors": [
+   "agency",
+   "music",
+   "event",
+   "education",
+   "nonprofit",
+   "saas",
+   "consumer-app",
+   "culture",
+   "physical-product",
+   "health",
+   "finance",
+   "ai-product"
+  ],
+  "tones": [
+   "bold",
+   "playful"
+  ],
+  "needs": [],
+  "idea": "Every section is a chapter with its own flat colour, floor to ceiling. The page reads like a set of posters hung in a row, held together by one typeface and one grid. The colours are not decoration: they come from the subject (the brand's packaging, the artist's record sleeves, the product's own colour ways, the categories of the content) and each chapter's colour means that chapter. Decide the sequence like a designer orders a book: a strong opener, a quiet second, a surprise in the middle, a dark or very light closer.",
+  "composition": "Sections are full-bleed fields, each at least 90svh tall, butted directly against each other with no gap and no divider. Inside every field the same 12-column grid and the same margins apply, and each field holds one thing: a huge heading (8–12vw) with a small paragraph, or one photograph with a caption, or one list. Text colour is chosen per field for strong contrast (ink or paper, never grey). Headings start on the same left edge in every chapter, so the eye feels the system as colours change. The navigation and the footer take the colours of the first and last chapter.",
+  "typography": "One typeface in two weights. Headings very large and tight; body 18–20px. Because colour is loud, the type stays plain: no italics, no second face.",
+  "typeClasses": [
+   "grotesk-tight",
+   "heavy-black",
+   "geometric",
+   "rounded-friendly"
+  ],
+  "colour": "Four to six flat fields used at full strength, one per section, each with its assigned text colour. No tints, no gradients between them: the hard edge where two fields meet is the look.",
+  "paletteTags": [
+   "flat-loud",
+   "pastel-fields"
+  ],
+  "imagery": "Sparing. One photograph or object per chapter at most, either cut out and sitting directly on the colour, or a plain rectangle with generous colour around it. Photographs should be simple enough not to fight the field.",
+  "sectionTags": [
+   "colour-field",
+   "type-led",
+   "poster"
+  ],
+  "motion": "colour-on-scroll",
+  "richness": "Colour at scale. A whole screen of one saturated colour is rich on its own, so a chapter needs few elements; it still needs its content at full size, because a coloured screen with one small line on it reads as empty.",
+  "pitfalls": "Check contrast on every field with the palette's assigned ink. Do not put cards on the fields. Do not use more than six colours. Two neighbouring fields should differ clearly in lightness as well as hue.",
+  "seenIn": [
+   "aww-warm-fuzzy",
+   "aww-paul-kalkbrenner",
+   "opl-anidachi",
+   "aww-aardvark-book-club",
+   "aww-ai-in-design-report-2026"
+  ],
+  "allow": []
+ },
+ "hero": {
+  "id": "mosaic-masthead-title-on-axis",
+  "name": "Mosaic masthead, title on axis",
+  "archetype": "mosaic",
+  "directions": [
+   "editorial-report",
+   "colour-chapters"
+  ],
+  "needs": [],
+  "blueprint": "The top 52% of the viewport is a full-width masthead band built as a gutterless mosaic: a CSS grid of 6 columns and 2 rows in which four cells are photographs (object-fit: cover, all greyscale via filter: grayscale(1) contrast(1.05)) and the rest are flat tiles in two or three palette colours. One photograph spans two columns and one colour tile spans both rows; cells butt together with no gap. The header lies flush on the band's upper edge: the wordmark in a solid ink block at far left, a flat accent-coloured tab holding three text links that runs from the block to 42% of the width, and the single action as a text link at the far right. Below the band, on the paper ground: a standfirst of one sentence at 20px on the 16px left margin, max 30ch, and, starting exactly at 42% of the width, the title on two lines at clamp(64px, 8.3vw, 128px), medium weight, tracking -0.06em, leading 0.9, running to the right margin. The title's first baseline sits about 110px under the band.",
+  "mobile": "The band becomes a mosaic of 3 columns and 2 rows taking the top 38% of the screen: two photographs and four colour tiles. The header is a single row above it with the wordmark block and a menu word. The axis collapses to the 16px left margin: the title at 13vw on two lines, then the standfirst at 17px beneath it. The action sits as a text link at the foot of the screen.",
+  "headline": "The title of the report, programme or product, 2-5 words, at most 26 characters across two lines.",
+  "motion": "masked-headline",
+  "seenIn": [
+   "aww-ai-in-design-report-2026",
+   "opl-wild-as"
+  ]
+ },
+ "type": null,
+ "palette": null,
+ "photos": {
+  "set": "sky-and-space",
+  "title": "Sky and space",
+  "note": "skies, clouds, stars and night skies",
+  "treatment": null,
+  "others": [
+   "fog-and-quiet",
+   "architecture",
+   "water"
+  ],
+  "photos": [
+   {
+    "id": 505,
+    "alt": "Tiny silhouetted figure on a dark ridge under a blue and orange twilight sky",
+    "tone": "dark",
+    "colours": [
+     "deep blue",
+     "orange",
+     "black"
+    ],
+    "mono": false,
+    "calm": "top",
+    "quality": 5,
+    "ratio": 1.5,
+    "by": "lee Scott",
+    "page": "https://unsplash.com/photos/_VTgctRg0tA"
+   },
+   {
+    "id": 38,
+    "alt": "White cumulus cloud rising against a dark teal sky",
+    "tone": "mid",
+    "colours": [
+     "dark teal",
+     "white"
+    ],
+    "mono": false,
+    "calm": "top",
+    "quality": 4,
+    "ratio": 1.33,
+    "by": "Allyson Souza",
+    "page": "https://unsplash.com/photos/JabLtzJl8bc"
+   },
+   {
+    "id": 847,
+    "alt": "A few birds flying across a pale blue gradient sky",
+    "tone": "light",
+    "colours": [
+     "pale blue",
+     "soft white",
+     "indigo"
+    ],
+    "mono": false,
+    "calm": "all",
+    "quality": 4,
+    "ratio": 1.5,
+    "by": "Andrej Chudy",
+    "page": "https://unsplash.com/photos/uivWDK2Ifrg"
+   },
+   {
+    "id": 833,
+    "alt": "Tiny aeroplane crossing a wide, softly overcast sky",
+    "tone": "light",
+    "colours": [
+     "warm grey",
+     "off-white"
+    ],
+    "mono": false,
+    "calm": "all",
+    "quality": 4,
+    "ratio": 0.67,
+    "by": "Paul Green",
+    "page": "https://unsplash.com/photos/OIbwHaG9NC8"
+   }
+  ]
+ },
+ "motion": {
+  "id": "masked-headline",
+  "name": "Masked headline",
+  "description": "On load, each line of the headline rises from behind its own baseline, about 900ms with a strong ease-out, the second line 110ms after the first; the supporting sentence and the action then fade up together. Nothing else on the page performs. Because headlines are two lines at most, you author the line breaks and wrap each line yourself. Recipe: 'Masked line reveal' in references/motion.md."
+ },
+ "sections": [
+  {
+   "id": "intro-edge-to-edge-paragraph",
+   "role": "intro",
+   "name": "Edge-to-edge heavy paragraph",
+   "shape": "band",
+   "tags": [
+    "type-led",
+    "colour-field",
+    "poster"
+   ],
+   "directions": [
+    "loud-flat-poster",
+    "colour-chapters",
+    "type-only-statement",
+    "borrowed-category"
+   ],
+   "needs": [],
+   "blueprint": "A full-bleed flat colour field, at least 90svh tall, filled by one paragraph and nothing else. The paragraph is 35–55 words in the heaviest weight at clamp(36px, 5vw, 76px), leading 0.98, left-aligned, running from a 16px left margin to a 16px right margin so its lines reach both edges; use `text-wrap: pretty` and no hyphenation. No heading: the paragraph is the section. In two or three places a word-sized gap (an inline-block spacer 2.5em wide) opens inside a line. One small photograph, 9vw wide at 4:5 with square corners, is absolutely placed over the first two lines, rotated 4 degrees, covering parts of two words; a second chip at 6vw may sit in one of the gaps. Text takes the field's assigned ink at full contrast. The field butts against the section above with no space between them. On a page without images, drop the chips and close the gaps.",
+   "mobile": "The same field and weight at 9.5vw with leading 1.0 and 14px margins, so each line holds two or three words and the paragraph runs about fourteen lines. Remove the inline gaps. The photograph chip grows to 26vw and sits over the right end of lines three and four, still tilted.",
+   "seenIn": [
+    "aww-warm-fuzzy",
+    "opl-belgrade-architecture"
+   ]
+  },
+  {
+   "id": "how-it-works-one-card-four-fields",
+   "role": "how-it-works",
+   "name": "One card, four fields",
+   "shape": "strip",
+   "tags": [
+    "ui-led",
+    "colour-field",
+    "dense"
+   ],
+   "directions": [
+    "colour-chapters",
+    "dense-tiles",
+    "one-motif",
+    "loud-flat-poster",
+    "product-performs",
+    "borrowed-category"
+   ],
+   "needs": [],
+   "blueprint": "Four flat colour fields stand side by side across the full viewport, each 25vw wide and 84svh tall, butted together with no gaps; neighbours differ clearly in lightness. The same card from the product (a ticket, an order, a request) appears once in each field at the same height, 38% down, centred, 260px wide at true size, each copy marked data-ui. It is further along every time: bare as it arrives, then with an owner and a due date, then with its checklist half ticked, then closed with its final figure. Along the bottom of each field, 28px in, one clause at clamp(22px, 2vw, 32px) on two lines begins with its order word: 'First it lands here.' 'Then someone takes it.' The heading, two to four words at the same size in the heaviest weight, sits top-left in the first field only. On hover a field's card rises 6px over 150ms.",
+   "mobile": "The fields stack, each full width and 64svh tall, colours meeting edge to edge. In each: the clause at 24px top-left with 20px margins, then the card at true size, left-aligned, 32px below. The heading sits in the first field above its clause, at 24px in the heaviest weight.",
+   "seenIn": [
+    "opl-typewave",
+    "opl-depo-budget-app",
+    "opl-leedlime"
+   ]
+  },
+  {
+   "id": "showcase-output-index-live-sheet",
+   "role": "showcase",
+   "name": "Output index, live sheet",
+   "shape": "index",
+   "tags": [
+    "ui-led",
+    "object-led"
+   ],
+   "directions": [
+    "editorial-report",
+    "split-stage",
+    "borrowed-category",
+    "product-performs",
+    "colour-chapters"
+   ],
+   "needs": [],
+   "blueprint": "For products that make documents: invoices, reports, emails, statements. Columns 1–5 list the names of three to five outputs, one per line, at clamp(36px, 4vw, 64px), leading 1.1, each a `<button>`; the selected name is in full ink, the rest in the soft ink. There is no other heading. Columns 7–12 are a stage in a flat tone one step from the ground, 88svh tall, and on it lies the selected output as an object: a paper-white sheet 560px wide, built in HTML at true size, root marked data-ui, with a real sender, real line items, sums that add up and a date. The sheet starts 72px below the stage's top and runs past its bottom edge, which crops it. Selecting a name swaps the sheet with a 200ms crossfade; an email is narrower (440px), a receipt narrower still (300px), all left-aligned 64px into the stage.",
+   "mobile": "Names become one sideways-scrolling row at 22px with scroll-snap, the selected one in full ink. Beneath, the stage fills the width and is 70svh tall; the sheet keeps its true size, anchored top-left with a 16px inset and cropped by the stage's right and bottom edges. Tapping a name swaps it.",
+   "seenIn": [
+    "aww-cominvi"
+   ]
+  },
+  {
+   "id": "features-sentences-with-switches",
+   "role": "features",
+   "name": "Sentences with switches",
+   "shape": "band",
+   "tags": [
+    "ui-led",
+    "colour-field",
+    "type-led"
+   ],
+   "directions": [
+    "sentence-as-layout",
+    "colour-chapters",
+    "one-motif",
+    "loud-flat-poster",
+    "product-performs",
+    "type-only-statement"
+   ],
+   "needs": [],
+   "blueprint": "Four or five capabilities, each one plain sentence of five to eight words about what the product will do for you, each ending in a working switch. Every sentence is a full-bleed band 20vh tall, butted against the next with no gap. Inside, on the 12-column grid: the sentence at clamp(30px, 3.6vw, 60px) on one line in columns 1–10, vertically centred; in columns 11–12, right-aligned, the product's real toggle, built in em with its root marked data-ui, 1.1em tall so it matches the type. Off, a band is the page ground and its sentence is in the soft ink. On, the band fills with a palette colour, a different one per band, the sentence turns to full ink and a second line at 17px appears beneath stating the consequence in figures. Two bands are on at load. Toggles answer click, Space and Enter. There is no heading; the first sentence does that work.",
+   "mobile": "Bands are at least 132px tall. The sentence is set at 6.4vw on two lines in the left 76% of the width; the toggle sits at the right, vertically centred, with a 44px touch target. When a band is on, the consequence line opens under the sentence at 15px.",
+   "seenIn": []
+  },
+  {
+   "id": "proof-large-marks-on-tiles",
+   "role": "proof",
+   "name": "Large marks on tiles",
+   "shape": "grid",
+   "tags": [
+    "dense",
+    "colour-field"
+   ],
+   "directions": [
+    "dense-tiles",
+    "specimen-catalogue",
+    "colour-chapters",
+    "one-motif",
+    "product-performs",
+    "loud-flat-poster"
+   ],
+   "needs": [],
+   "blueprint": "A board of filled tiles, four across and two or three rows deep, with 8px gaps, spanning the full content width. Each tile is about 3:2, one step lighter or darker than the page ground, with no border. A tile holds one supplied logo, shown far larger than a usual logo strip: about 72px tall, centred, in the page ink as a single-colour SVG. When no logo files exist, the tile holds the name instead, set at 28–32px bold, top-left with 24px padding; never draw a mark. One tile, twice the width of the others and placed first, is in the accent colour and carries the heading: two to four words at about 3vw, top-left. Tile corners follow the page's one radius, or the page's motif shape if it has one. Tiles sit still; there is no hover lift.",
+   "mobile": "Two tiles per row with 6px gaps, logos at 44px tall. The heading tile runs full width first, about 120px tall. Show eight tiles at most so the board stays under one and a half screens. Names set in type drop to 20px.",
+   "seenIn": [
+    "aww-monolog"
+   ]
+  },
+  {
+   "id": "list-poster-lines",
+   "role": "list",
+   "name": "One item per poster line",
+   "shape": "statement",
+   "tags": [
+    "type-led",
+    "poster",
+    "colour-field"
+   ],
+   "directions": [
+    "loud-flat-poster",
+    "type-only-statement",
+    "name-as-monument",
+    "colour-chapters",
+    "borrowed-category"
+   ],
+   "needs": [],
+   "blueprint": "A short list set as a poster. Four to seven items (services, headline acts, courses, opening days) stack one per line at clamp(64px, 10vw, 150px) in the display weight, all capitals or all lowercase, leading 0.92, flush left at a 20px margin on a flat field. Its one detail (a price, a date, a time range) sits at the right margin on the same baseline at 18–20px with tabular figures, so the page has two alignments only: giant words left, small facts right. Items too long for one line at this size are shortened, not shrunk. Between items there is only the tight leading. Hovering an item swaps its ink for the accent. There is no heading: the first item starts 80px below the section top and the last ends 80px above the bottom. The list reuses the hero title's exact type size, so it reads as another poster.",
+   "mobile": "Items at 15vw, one per line, flush left with 16px margins. Each detail moves beneath its item at 15px, left-aligned, with 6px above and 22px below. If any single word is wider than the screen at 15vw, drop the whole list to 12vw rather than breaking a word.",
+   "seenIn": [
+    "opl-city-of-angels"
+   ]
+  },
+  {
+   "id": "about-photo-tile-facts",
+   "role": "about",
+   "name": "Wide photo, colour tile, facts",
+   "shape": "mosaic",
+   "tags": [
+    "photo-led",
+    "colour-field"
+   ],
+   "directions": [
+    "place-carries-it",
+    "uneven-photographs",
+    "dense-tiles",
+    "editorial-report"
+   ],
+   "needs": [],
+   "blueprint": "Top: a heading of two to four words at clamp(40px, 4vw, 60px) on the left margin, then 24px below it a three-line lead paragraph at 21–22px across columns 1–6. 72px lower, two tiles sit side by side with a 16px gap. The left tile spans columns 1–8: a landscape photograph at 16:10 with one radius (0 or 10px). A short paragraph of up to 35 words at 16px is set in a solid paper-colour block 320px wide with 20px padding, placed over the photograph's top-right corner and flush with both edges. The right tile spans columns 9–12 and is a flat palette colour, 60% of the photograph's height: it holds a simple inline SVG outline of the region or the floor plan as one filled shape, with one solid dot marking the location. Under the colour tile, four label and value pairs at 14px in a two-by-two grid: altitude, distance, season, local time.",
+   "mobile": "Heading at 9vw, lead at 18px. The photograph goes full width at 4:3 and its overlaid paragraph moves beneath it as ordinary text. The colour tile follows at full width and 3:2, and the four label and value pairs sit under it in two columns.",
+   "seenIn": [
+    "opl-eagles-nest",
+    "opl-le-petit-bleu"
+   ]
+  },
+  {
+   "id": "faq-alternating-tone-bands",
+   "role": "faq",
+   "name": "A band per question",
+   "shape": "band",
+   "tags": [
+    "colour-field",
+    "type-led"
+   ],
+   "directions": [
+    "colour-chapters",
+    "loud-flat-poster",
+    "borrowed-category",
+    "dense-tiles",
+    "editorial-report"
+   ],
+   "needs": [],
+   "blueprint": "Each question owns a full-bleed band, and the bands alternate between two flat tones (ground and one step away, or two palette colours with their assigned inks) and butt together with no gap. Inside every band the same grid applies: the question in columns 1–5 at 28–32px bold, top-aligned with 56px of padding above; the answer in columns 7–12 at 18px with leading 1.5, the same padding, and 56px below. Bands are as tall as their content, so their heights differ, which gives the stack its rhythm. Four to seven bands. The heading is the first band: two to four words at about 7vw on the accent colour, flush left, taller than the rest at about 40svh with the words anchored to its bottom-left. All answers are visible; there are no toggles.",
+   "mobile": "Bands stay full-bleed and alternate. Inside each, the question at 22px then the answer at 17px, with 32px padding top and bottom and 20px at the sides. The heading band is 30svh tall with its words at 13vw at the bottom-left.",
+   "seenIn": []
+  },
+  {
+   "id": "cta-idea-restated-inverted",
+   "role": "cta",
+   "name": "The idea again, inverted",
+   "shape": "statement",
+   "tags": [
+    "type-led",
+    "poster",
+    "colour-field"
+   ],
+   "directions": [
+    "type-only-statement",
+    "name-as-monument",
+    "sentence-as-layout",
+    "editorial-report",
+    "loud-flat-poster",
+    "colour-chapters"
+   ],
+   "needs": [],
+   "blueprint": "The close flips the page's colours: ink becomes the ground and the ground becomes the ink, across a full-bleed field at least 90svh tall. The page's opening idea returns as a headline of three to five words at 9–11vw on two lines, leading 0.9, flush left, positioned in the upper two-thirds; it should echo the hero's wording, not repeat it. Along the bottom, on one shared baseline 40px above the edge: one supporting sentence at 20px in columns 1–5 and one rectangular button in the accent colour, right-aligned in columns 10–12, about 56px tall. Nothing else: no image, no second button, no logo. The field's top edge is a hard horizontal line where it meets the section above. If the footer follows on the same inverted field, leave 160px before it so the close still reads as its own screen.",
+   "mobile": "The same inverted field at 80svh. Headline at 15vw on two lines at the top. The sentence sits lower at 17px, and the button spans the full width at the bottom, 56px tall, with 20px margins. Nothing else is added.",
+   "seenIn": [
+    "opl-textmode-overlay",
+    "aww-made-with-gsap-1"
+   ]
+  },
+  {
+   "id": "footer-row-of-tiles",
+   "role": "footer",
+   "name": "A footer of tiles",
+   "shape": "grid",
+   "tags": [
+    "dense",
+    "colour-field"
+   ],
+   "directions": [
+    "dense-tiles",
+    "colour-chapters",
+    "product-performs",
+    "contact-sheet",
+    "specimen-catalogue"
+   ],
+   "needs": [],
+   "blueprint": "The footer is the last two rows of a board: filled tiles with 8px gaps and 8–12px outer margins, every cell used. Upper row, each tile 220px tall: a statement tile in columns 1–4 with one sentence at 24px top-left and the legal text at 12px bottom-left; a navigation tile in columns 5–7 with a plain list at 16px; a tile in columns 8–9 giving the city and local time as text; an email tile in columns 10–12 with the address at 20px as a link, bottom-left. Lower row, 320px tall: a tile in the ink colour spanning columns 1–8 with the wordmark set large (about 9vw) and centred, and a tile in the accent colour in columns 9–12 with a two-to-four-word invitation top-left at 28px and an arrow, drawn as inline SVG with 4px strokes, in its bottom-right corner; the whole accent tile is a link.",
+   "mobile": "Two columns of tiles with 6px gaps: the wordmark tile full width first at 160px tall, the accent tile full width next, then navigation and email side by side, then time and statement. Every tile keeps 20px padding and top-left text.",
+   "seenIn": [
+    "aww-aspen-search",
+    "aww-oimachi"
+   ]
+  }
+ ],
+ "references": [
+  {
+   "id": "aww-warm-fuzzy",
+   "name": "Warm & Fuzzy",
+   "url": "https://www.warmnfuzzy.tv/",
+   "source": "Awwwards Site of the Day",
+   "kind": "agency",
+   "score": 7.7,
+   "idea": "A showreel-first studio site in which every section takes one flat, loud colour (blue, black, yellow) under heavy grotesk type and a chunky custom wordmark.",
+   "mood": [
+    "loud",
+    "playful",
+    "saturated",
+    "confident"
+   ],
+   "archetype": "video-reel",
+   "hero": "The showreel plays full-bleed with a visible film-grain overlay and no scrim. A chunky hand-cut wordmark sits top left, 16px from the edges; the same top line continues with a one-sentence status link, a tiny thumbnail beside the latest project's name, and three caps links at the far right, all white over the footage. A small green caps play label floats at dead centre. The tagline is anchored bottom left, 16px from both edges, in white grotesk caps at 47px (3.3vw) on one line spanning 56% of the width. A tiny square pause control sits bottom right.",
+   "type": "SuisseIntl throughout, rendering heavy, tracked -0.027em: a 47px caps tagline, a caps section title at 9.4vw, statement paragraphs around 5vw with tight leading, and 10 to 11px caps captions. The logo is custom chunky lettering with wobbly cut-paper counters.",
+   "colour": "#000000 #190bb6 #f7dd47 #ffffff #e9479f #1fc27a — Each section is a flat field: ultramarine blue, black, yellow, then blue again. White type on blue and black, black on yellow; a green play label is the only small accent.",
+   "imagery": "Commercial stills and video (candy-coloured CG worlds, product renders, live-action frames) in square-cornered thumbnails of mixed aspect ratios, with a grain layer over the whole page and floating glossy 3D sticker objects.",
+   "layout": "Tight 16px outer margins and edge-to-edge type. Sections are told apart by background colour rather than spacing: a blue statement set in the right two-thirds, a black packed work wall, a yellow full-width paragraph, a blue footer.",
+   "sections": [
+    {
+     "role": "work",
+     "description": "On black, a tiny caps motto sits top left, then a caps section title at about 9vw flush left with a small underlined link at the far right on its baseline. Beneath, thumbnails pack into an uneven wall: widths vary from one-sixth to one-half of the page, heights differ, gaps are about 8px and rows do not align. Under each image a 10px caps line gives the project name left and the year in grey right."
+    },
+    {
+     "role": "intro",
+     "description": "A yellow field filled edge to edge by one paragraph in black heavy grotesk at roughly 5vw with very tight leading, left-aligned at the 16px margin. Several lines contain deliberate word-sized gaps, as if the text flowed around something, and a small tilted image chip floats over the first lines, covering parts of words."
+    },
+    {
+     "role": "footer",
+     "description": "A full-screen blue field. A top row of tiny caps, email left and three links right, sits above a hairline. A glossy 3D sticker object hangs near the top centre. The chunky wordmark runs the full page width at the bottom in white, about a fifth of the viewport tall, above a bar of tiny caps links divided by vertical hairlines."
+    }
+   ],
+   "steal": [
+    "Give every section one flat saturated background and change it at each section break, keeping type strictly black or white.",
+    "Pack work thumbnails at mixed widths and heights with 8px gaps and a two-part micro caption (name left, year right) under each.",
+    "End with the wordmark at full page width on a colour field, with all utility links reduced to a tiny caps bar split by vertical hairlines."
+   ]
+  },
+  {
+   "id": "aww-paul-kalkbrenner",
+   "name": "Paul Kalkbrenner",
+   "url": "https://www.paulkalkbrenner.net/",
+   "source": "Awwwards Site of the Day",
+   "kind": "music",
+   "score": 8.1,
+   "idea": "Swiss poster typography for a techno artist: the name as one black line with a photo set inside it like a glyph, then every chapter gets its own flat colour and visible grid.",
+   "mood": [
+    "stark",
+    "graphic",
+    "confident",
+    "rhythmic",
+    "modernist"
+   ],
+   "archetype": "giant-wordmark",
+   "hero": "Pure white viewport. The artist's name sits on one line at exact vertical centre in bold black neo-grotesk, about 10.4vw, spanning roughly 78% of the width with equal side margins. The space between first and last name is replaced by a small landscape black-and-white photo, x-height tall and resting on the baseline. Top-left is a tiny circular monogram; eight nav links in 13px bold are spread at even intervals across the right half of the top edge. Bottom edge: equaliser bars with a grey label over a track title at left, a three-line bold blurb starting just left of centre, a sound toggle hard right. About 85% is empty.",
+   "type": "ABC Diatype Plus Variable only: bold at -0.05em tracking for display and 13.5px bold for everything functional. Display runs from 150px in the hero to about 44vw elsewhere per the digest. Tiny uppercase labels inside boxed cells; no second face, no italics.",
+   "colour": "#ffffff #000000 #c5c5c5 #a7ff9c #ff6831 — Black on white to start, then whole sections flood with flat mid-grey, acid mint and orange. Photos inside coloured sections are tinted to the section hue or kept black-and-white.",
+   "imagery": "Portraits and live shots of the artist: full-bleed colour images between sections, a grainy monochrome portrait marked up as a vinyl disc, a green duotone car portrait, and a strip of small mixed-ratio thumbnails. Square corners throughout.",
+   "layout": "Outer margins of only 4-8px; content hangs on a visible column grid with hairlines and boxed cells. Sections alternate between full-bleed photographs and flat colour fields, each arranged differently, so the rhythm is one poster after another.",
+   "sections": [
+    {
+     "role": "intro",
+     "description": "Two words stacked in bold grotesk at roughly 8vw, each preceded by a solid black circle about the height of the lowercase, the second line indented further right than the first. Thin horizontal and vertical hairlines cross the white field at baselines and column edges like a construction grid. Directly beneath is a single row of streaming-service logos spaced evenly edge to edge, then a full-bleed photograph."
+    },
+    {
+     "role": "showcase",
+     "description": "Flat mid-grey field split in two. Left half: a square grainy monochrome portrait with a large thin circle drawn on it and a small grey dot at the centre, so the photo reads as a record. Right half: a row of three year tabs and a small link above a hairline, the album title in small bold caps, a short description lower down, and along the bottom two wide outlined cells side by side acting as buttons."
+    },
+    {
+     "role": "other",
+     "description": "Acid-mint field introducing the tour list. A large photograph, recoloured as a green-and-black duotone, occupies only the top-right quadrant; the left half is left empty. Along the bottom a table header with three tiny uppercase column labels sits on a hairline spanning the full width, where the list of dates begins."
+    },
+    {
+     "role": "contact",
+     "description": "Orange field. A horizontally scrolling strip of small photographs of differing widths runs across the top, cropped by both edges. Below it one outlined rectangle spans the width, divided into three equal cells: two inputs and a submit action, each identified only by tiny centred uppercase text. Small-print lines sit under the left and right cells."
+    }
+   ],
+   "steal": [
+    "Replace the space between the two words of a giant name with a small photo cropped to x-height.",
+    "Flood each chapter with one flat colour and tint its photograph to match as a duotone.",
+    "Build forms and button pairs as adjoining outlined cells with tiny uppercase labels instead of filled buttons."
+   ]
+  },
+  {
+   "id": "opl-rows",
+   "name": "Rows",
+   "url": "https://rows.gg/",
+   "source": "One Page Love",
+   "kind": "saas",
+   "score": 7.5,
+   "idea": "Radical understatement: a product about simple lists is sold with a 27px headline, 12px copy and a column of small live demos, each proving one interaction.",
+   "mood": [
+    "quiet",
+    "dry",
+    "precise",
+    "warm",
+    "confident"
+   ],
+   "archetype": "left-statement-quiet",
+   "hero": "Warm off-white page, almost empty. Everything hangs on one vertical line 27% in from the left. A small striped-letter logo mark sits there near the top; 220px lower comes a two-line headline at only 27px (under 2vw), then three lines of 13px body about 370px wide, then a near-black rectangular button with 4px corners beside a text link with an arrow. A single grey sign-in link sits in the top-right corner; there is no navigation bar. More than 80% of the viewport is blank. At the bottom edge the first feature module peeks in: grey demo panel left, short text column right.",
+   "type": "Suisse Intl only, weight 450–500, tracking −0.04em. Headline 27px, feature headings about 16px on two lines, body 12px. Three sizes in total, no uppercase and no display moment; hierarchy comes from weight and empty space alone.",
+   "colour": "#f5f6f1 #e6e7e1 #1a191d #ffffff #c7372f #3aa56a — Warm paper off-white with slightly darker grey-green demo panels and near-black type; colour appears only inside the UI as priority dots, outlined status pills and one green or red action button.",
+   "imagery": "No pictures: small live-rendered fragments of the app (two or three white list rows with dots, status pills, avatars and a visible cursor) sit in flat grey panels of fixed 368px width with barely rounded corners.",
+   "layout": "One content block about 650px wide, offset left of centre, repeated down the page: 368px demo panel plus a 245px text column, top-aligned, separated by 200px or more of empty space. The logo mark sticks to the top-left corner on scroll. Footer is one line.",
+   "sections": [
+    {
+     "role": "features",
+     "description": "The repeating module: a flat grey panel roughly 368px wide and 120–190px tall holding a tiny mock list (white rows with 6px radius, a coloured numbered dot at left, task title, an outlined status pill, an avatar, a chevron) and often a cursor mid-action. To its right, 20px away and top-aligned, a medium-weight heading of one or two lines and two short paragraphs at 11–12px in a column only 245px wide. Modules never alternate sides; they stack with large gaps."
+    },
+    {
+     "role": "cta",
+     "description": "The closing block keeps the same narrow measure: a three-line paragraph at 13px, then the identical button and arrow-link pair from the hero, left-aligned on the text column's axis. After a long gap a single hairline spans the 650px block and under it sits one row of tiny footer text: brand line at left, six links and a copyright strung along the right."
+    }
+   ],
+   "steal": [
+    "Set the headline at near-body size (under 2vw) and let empty space, not scale, give it importance.",
+    "Explain each feature with a tiny cropped fragment of real UI in a fixed-width flat panel, one interaction per panel, with the cursor left visible.",
+    "Hang the whole page on one off-centre left edge and never break it, logo and footer included."
+   ]
+  }
+ ]
+}

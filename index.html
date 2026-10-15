@@ -1,0 +1,489 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Logiciel ostréicole et conchylicole | C’Claires</title>
+  <meta name="description" content="C’Claires gère commandes, étiquettes sanitaires, palettes, transport et traçabilité des lots pour ostréiculteurs, conchyliculteurs et expéditeurs de coquillages.">
+  <link rel="canonical" href="https://cclaires.fr/">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="theme-color" content="#007b8e">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:site_name" content="C’Claires">
+  <meta property="og:title" content="C’Claires, de la claire au camion">
+  <meta property="og:description" content="Le logiciel de gestion des ostréiculteurs, conchyliculteurs et expéditeurs : commandes, étiquettes sanitaires, palettes, transport et traçabilité des lots.">
+  <meta property="og:url" content="https://cclaires.fr/">
+  <meta property="og:image" content="https://cclaires.fr/assets/img/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="C’Claires, de la claire au camion : vues aériennes de tables ostréicoles et logo C’Claires">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="preload" href="/assets/fonts/barlow-condensed-500.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/cairo-variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/assets/css/site.css">
+  <script>document.documentElement.classList.add('js')</script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://cclaires.fr/#editeur",
+        "name": "ACIGO Informatique",
+        "legalName": "ACIGO INFORMATIQUE",
+        "foundingDate": "1997-10-14",
+        "url": "https://cclaires.fr/",
+        "email": "contact@cclaires.fr",
+        "logo": "https://cclaires.fr/assets/img/icone-512.png",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "706 rue Dunant",
+          "postalCode": "50000",
+          "addressLocality": "Saint-Lô",
+          "addressRegion": "Manche",
+          "addressCountry": "FR"
+        }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://cclaires.fr/#site",
+        "url": "https://cclaires.fr/",
+        "name": "C’Claires",
+        "inLanguage": "fr-FR",
+        "publisher": { "@id": "https://cclaires.fr/#editeur" }
+      },
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://cclaires.fr/#logiciel",
+        "name": "C’Claires",
+        "alternateName": "CClaires",
+        "url": "https://cclaires.fr/",
+        "description": "Logiciel de gestion pour ostréiculteurs, conchyliculteurs et expéditeurs de coquillages : devis, commandes, bons de livraison, factures, étiquettes sanitaires, palettisation, transport et traçabilité des lots.",
+        "applicationCategory": "BusinessApplication",
+        "applicationSubCategory": "Logiciel de gestion conchylicole",
+        "operatingSystem": "Windows",
+        "inLanguage": "fr",
+        "image": "https://cclaires.fr/assets/img/og.png",
+        "publisher": { "@id": "https://cclaires.fr/#editeur" },
+        "featureList": [
+          "Devis, commandes, bons de livraison, factures et avoirs",
+          "Étiquettes sanitaires et codes-barres GS1-128",
+          "Palettisation avec SSCC et fiches palette",
+          "Traçabilité des lots, de l’amont à l’aval",
+          "Gestion des transports, frais de port et EDI",
+          "CERFA 15063 prérempli depuis le bon de livraison"
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://cclaires.fr/#questions",
+        "mainEntity": [
+          { "@type": "Question", "name": "Sur quels postes s’installe C’Claires ?", "acceptedAnswer": { "@type": "Answer", "text": "Sur les postes Windows du bureau et de l’atelier. Un seul installateur pose le logiciel et le service d’impression des étiquettes ; ensuite, C’Claires vérifie ses mises à jour à chaque démarrage et les installe lui-même. Il fonctionne aussi sur un serveur TSE." } },
+          { "@type": "Question", "name": "Où sont enregistrées mes données ?", "acceptedAnswer": { "@type": "Answer", "text": "Sur un serveur central auquel chaque poste se connecte : le bureau, l’atelier et l’expédition voient les mêmes chiffres. Chaque entreprise cliente a sa propre base, séparée de celles des autres." } },
+          { "@type": "Question", "name": "Quelles étiqueteuses sont prises en charge ?", "acceptedAnswer": { "@type": "Answer", "text": "Les étiqueteuses Zebra en langage ZPL, en 203 dpi. Chaque poste d’atelier connaît ses imprimantes ; une impression peut se répartir entre plusieurs étiqueteuses avec une numérotation continue, et toute réimpression demande un motif, consigné au journal des impressions." } },
+          { "@type": "Question", "name": "Combien de personnes peuvent l’utiliser ?", "acceptedAnswer": { "@type": "Answer", "text": "Autant que de licences. Les comptes nominatifs et les comptes poste d’atelier se comptent à part, et un compte poste peut tourner sur plusieurs machines de l’atelier." } },
+          { "@type": "Question", "name": "Les étiquettes portent-elles les mentions obligatoires ?", "acceptedAnswer": { "@type": "Answer", "text": "Les modèles disposent des variables de la réglementation : marque d’identification, espèce, zone de production, méthode de production, date de conditionnement, numéro de lot. Des règles désignent le modèle de chaque client et de chaque article, et un simulateur montre laquelle s’applique, et pourquoi." } },
+          { "@type": "Question", "name": "Combien coûte C’Claires ?", "acceptedAnswer": { "@type": "Answer", "text": "Le tarif dépend du nombre de licences et des modules retenus. Écrivez-nous à contact@cclaires.fr : nous vous répondons avec un devis." } }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip" href="#contenu">Aller au contenu</a>
+
+  <header class="hero">
+    <div class="masthead">
+      <div class="mosaic" aria-hidden="true">
+        <div class="m-a"></div>
+        <figure class="m-b"><img class="photo" src="/assets/img/photos/claires-seudre-1120.jpg" srcset="/assets/img/photos/claires-seudre-560.jpg 560w, /assets/img/photos/claires-seudre-1120.jpg 1120w" sizes="(max-width: 720px) 67vw, 33vw" width="1120" height="560" alt="" fetchpriority="high" decoding="async"></figure>
+        <div class="m-c"></div>
+        <figure class="m-d"><img class="photo" src="/assets/img/photos/arcachon-1920-640.jpg" srcset="/assets/img/photos/arcachon-1920-320.jpg 320w, /assets/img/photos/arcachon-1920-640.jpg 640w" sizes="17vw" width="640" height="640" alt="" decoding="async"></figure>
+        <div class="m-e"></div>
+        <figure class="m-f"><img class="photo" src="/assets/img/photos/tables-tremblade-640.jpg" srcset="/assets/img/photos/tables-tremblade-320.jpg 320w, /assets/img/photos/tables-tremblade-640.jpg 640w" sizes="(max-width: 720px) 33vw, 17vw" width="640" height="640" alt="" decoding="async"></figure>
+        <div class="m-g"></div>
+        <figure class="m-h"><img class="photo" src="/assets/img/photos/sillons-vasiere-640.jpg" srcset="/assets/img/photos/sillons-vasiere-320.jpg 320w, /assets/img/photos/sillons-vasiere-640.jpg 640w" sizes="17vw" width="640" height="640" alt="" decoding="async"></figure>
+        <div class="m-i"></div>
+        <div class="m-j"></div>
+      </div>
+      <nav class="site-header" aria-label="Navigation principale">
+        <div class="site-header__left">
+          <a class="brand" href="/" aria-label="C’Claires, accueil"><img src="/assets/img/logo-blanc.svg" width="163" height="50" alt="C’Claires"></a>
+          <div class="tab" id="menu">
+            <a class="link" href="#parcours">Parcours</a>
+            <a class="link" href="#modules">Modules</a>
+            <a class="link" href="#questions">Questions</a>
+          </div>
+          <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu">Menu</button>
+        </div>
+        <div class="site-header__action">
+          <a class="button" href="mailto:contact@cclaires.fr?subject=Demande%20de%20d%C3%A9monstration%20C%E2%80%99Claires&amp;body=Bonjour%2C%0A%0AJe%20souhaite%20une%20d%C3%A9monstration%20de%20C%E2%80%99Claires.%0A%0AEntreprise%20%3A%20%0AM%C3%A9tier%20(ostr%C3%A9iculture%2C%20mytiliculture%2C%20exp%C3%A9dition%E2%80%A6)%20%3A%20%0ANombre%20de%20postes%20%3A%20%0AT%C3%A9l%C3%A9phone%20%3A%20%0A">Demander une démo</a>
+        </div>
+      </nav>
+    </div>
+
+    <div class="hero__text">
+      <div class="hero__aside">
+        <p class="standfirst" data-rise style="--i:0">Le logiciel de gestion des ostréiculteurs, conchyliculteurs et expéditeurs de coquillages&nbsp;: commandes, étiquettes sanitaires, palettes, transport et traçabilité des lots.</p>
+        <a class="hero__more link" href="#parcours" data-rise style="--i:1">Suivre une commande</a>
+        <div class="hero__cta-phone" data-rise style="--i:2">
+          <a class="button" href="mailto:contact@cclaires.fr?subject=Demande%20de%20d%C3%A9monstration%20C%E2%80%99Claires&amp;body=Bonjour%2C%0A%0AJe%20souhaite%20une%20d%C3%A9monstration%20de%20C%E2%80%99Claires.%0A%0AEntreprise%20%3A%20%0AM%C3%A9tier%20(ostr%C3%A9iculture%2C%20mytiliculture%2C%20exp%C3%A9dition%E2%80%A6)%20%3A%20%0ANombre%20de%20postes%20%3A%20%0AT%C3%A9l%C3%A9phone%20%3A%20%0A">Demander une démo</a>
+        </div>
+      </div>
+      <h1 class="hero__title lines">
+        <span class="line"><span data-line style="--i:0">De la claire</span></span>
+        <span class="line"><span data-line style="--i:1">au camion</span></span>
+      </h1>
+    </div>
+  </header>
+
+  <main id="contenu">
+
+    <section class="intro" aria-label="Ce que fait C’Claires">
+      <p class="intro__statement" data-reveal>Une bourriche ne part jamais seule. Avec elle partent une commande, un numéro de lot, une étiquette sanitaire, une place sur la palette, un transporteur et une facture. C’Claires les tient ensemble, dans un seul logiciel.</p>
+      <p class="intro__lot" data-reveal style="--i:1">Sur cette page, une même commande sert d’exemple&nbsp;: des fines de claire n°&nbsp;3 du lot 2026-351-3-014, qui partent vendredi pour Caen.</p>
+      <div class="intro__chips" aria-hidden="true">
+        <figure class="chip chip--a" data-reveal style="--i:2"><img class="photo" src="/assets/img/photos/huitres-rocher-640.jpg" srcset="/assets/img/photos/huitres-rocher-320.jpg 320w, /assets/img/photos/huitres-rocher-640.jpg 640w" sizes="(max-width: 720px) 52vw, 17vw" width="640" height="800" alt="" loading="lazy" decoding="async"></figure>
+        <figure class="chip chip--b" data-reveal style="--i:3"><img class="photo" src="/assets/img/photos/huitre-creuse-640.jpg" srcset="/assets/img/photos/huitre-creuse-320.jpg 320w, /assets/img/photos/huitre-creuse-640.jpg 640w" sizes="(max-width: 720px) 34vw, 12vw" width="640" height="800" alt="" loading="lazy" decoding="async"></figure>
+      </div>
+    </section>
+
+    <section id="parcours" class="strip" aria-labelledby="parcours-titre">
+      <div class="field field--eau">
+        <h2 class="field__title" id="parcours-titre" data-reveal>Suivre une commande</h2>
+        <article class="field__card ui-card" data-ui data-reveal style="--i:1" aria-label="Commande confirmée">
+          <div class="ui-head"><span class="ui-num">C-26-01482</span><span class="ui-pill ui-pill--info">Confirmée</span></div>
+          <p class="ui-client">Poissonnerie de la Halle</p>
+          <p class="ui-meta">Caen, livraison ven. 18 déc.</p>
+          <ul class="ui-rows">
+            <li><span>Fines de claire n° 3<small>bourriche 5 kg</small></span><span>12</span></li>
+            <li><span>Spéciales de claire n° 2<small>bourriche 3 kg</small></span><span>6</span></li>
+            <li><span>Moules de bouchot<small>sac 10 kg</small></span><span>2</span></li>
+          </ul>
+          <div class="ui-foot"><span>98 kg</span><span>479,60 € HT</span></div>
+        </article>
+        <p class="field__clause" data-reveal style="--i:2">D’abord, la commande arrive.</p>
+      </div>
+      <div class="field field--paon">
+        <span aria-hidden="true"></span>
+        <article class="field__card ui-card" data-ui data-reveal style="--i:1" aria-label="Commande allotie">
+          <div class="ui-head"><span class="ui-num">C-26-01482</span><span class="ui-pill ui-pill--lot">Allotie</span></div>
+          <p class="ui-client">Poissonnerie de la Halle</p>
+          <p class="ui-meta">3 lignes, 3 lots</p>
+          <ul class="ui-rows">
+            <li><span>Fines de claire n° 3<br><span class="ui-tag">2026-351-3-014</span></span><span>60 kg</span></li>
+            <li><span>Spéciales de claire n° 2<br><span class="ui-tag">2026-349-2-006</span></span><span>18 kg</span></li>
+            <li><span>Moules de bouchot<br><span class="ui-tag">2026-350-M-002</span></span><span>20 kg</span></li>
+          </ul>
+          <div class="ui-foot"><span>Reste à allotir</span><span>0 kg</span></div>
+        </article>
+        <p class="field__clause" data-reveal style="--i:2">Puis chaque ligne trouve son lot.</p>
+      </div>
+      <div class="field field--tilleul">
+        <span aria-hidden="true"></span>
+        <article class="field__card ui-card" data-ui data-reveal style="--i:1" aria-label="Commande étiquetée et palettisée">
+          <div class="ui-head"><span class="ui-num">C-26-01482</span><span class="ui-pill ui-pill--print">Palettisée</span></div>
+          <p class="ui-client">Poissonnerie de la Halle</p>
+          <p class="ui-meta">Poste expédition, étiqueteuse quai 2</p>
+          <ul class="ui-rows">
+            <li><span>Étiquettes sanitaires</span><span class="ui-check">20 / 20</span></li>
+            <li><span>Palette 80 × 120<small>SSCC 320000120000014827</small></span><span>1</span></li>
+            <li><span>Étiquette palette GS1</span><span class="ui-check">imprimée</span></li>
+          </ul>
+          <div class="ui-foot"><span>20 colis</span><span>129,4 kg brut</span></div>
+        </article>
+        <p class="field__clause" data-reveal style="--i:2">Ensuite, on l’étiquette et on la palettise.</p>
+      </div>
+      <div class="field field--noir">
+        <span aria-hidden="true"></span>
+        <article class="field__card ui-card" data-ui data-reveal style="--i:1" aria-label="Commande livrée et facturée">
+          <div class="ui-head"><span class="ui-num">BL-26-02217</span><span class="ui-pill ui-pill--done">Facturée</span></div>
+          <p class="ui-client">Poissonnerie de la Halle</p>
+          <p class="ui-meta">Tournée Nord, EDI envoyé au transporteur</p>
+          <ul class="ui-rows">
+            <li><span>Total HT</span><span>479,60 €</span></li>
+            <li><span>Port<small>franco à 400 € HT</small></span><span>offert</span></li>
+            <li><span>TVA 5,5 %</span><span>26,38 €</span></li>
+          </ul>
+          <div class="ui-foot"><span>F-26-01990</span><span>505,98 € TTC</span></div>
+        </article>
+        <p class="field__clause" data-reveal style="--i:2">Enfin, elle part et se facture.</p>
+      </div>
+    </section>
+
+    <section id="documents" class="docs" aria-labelledby="docs-titre">
+      <h2 class="sr-only" id="docs-titre">Les documents que C’Claires imprime</h2>
+      <div class="grid docs__grid">
+        <div class="docs__index" role="tablist" aria-label="Documents de la commande C-26-01482">
+          <button type="button" role="tab" id="tab-etiquette" aria-controls="doc-etiquette" aria-selected="true" data-reveal>Étiquette sanitaire</button>
+          <button type="button" role="tab" id="tab-bl" aria-controls="doc-bl" aria-selected="false" tabindex="-1" data-reveal style="--i:1">Bon de livraison</button>
+          <button type="button" role="tab" id="tab-palette" aria-controls="doc-palette" aria-selected="false" tabindex="-1" data-reveal style="--i:2">Fiche palette</button>
+          <button type="button" role="tab" id="tab-trace" aria-controls="doc-trace" aria-selected="false" tabindex="-1" data-reveal style="--i:3">Traçabilité du lot</button>
+          <button type="button" role="tab" id="tab-cerfa" aria-controls="doc-cerfa" aria-selected="false" tabindex="-1" data-reveal style="--i:4">CERFA 15063</button>
+          <p class="docs__note" data-reveal style="--i:5">Chaque document part de la pièce, sans ressaisie&nbsp;: mêmes lots, mêmes poids, mêmes numéros. Choisissez-en un pour le voir tel qu’il sort.</p>
+        </div>
+
+        <div class="docs__stage" data-reveal style="--i:2">
+          <article class="docs__sheet ui-sheet ui-sheet--label" data-ui role="tabpanel" id="doc-etiquette" aria-labelledby="tab-etiquette">
+            <div class="doc-top">
+              <div><p class="doc-org">Exploitation des Trois Claires</p><p class="doc-muted">17320 Marennes-Hiers-Brouage</p></div>
+              <p class="label-mark">FR<br>17.999.001<br>CE</p>
+            </div>
+            <p class="label-species">Huîtres creuses</p>
+            <p class="label-latin">Crassostrea gigas</p>
+            <dl class="label-grid">
+              <dt>Appellation</dt><dd>Fines de claire n° 3</dd>
+              <dt>Poids net</dt><dd>5 kg</dd>
+              <dt>Production</dt><dd>Élevées en France</dd>
+              <dt>Zone</dt><dd>Marennes-Oléron, Seudre</dd>
+              <dt>Conditionné le</dt><dd>17/12/2026</dd>
+              <dt>Lot</dt><dd>2026-351-3-014</dd>
+            </dl>
+            <p class="label-alive">Ces animaux doivent être vivants au moment de l’achat.</p>
+            <div class="barcode"><img src="/assets/img/gs1-etiquette.svg" width="378" height="60" alt="Code-barres GS1-128 : GTIN, date de conditionnement et lot"><p>(01)02000012345678(13)261217(10)2026-351-3-014</p></div>
+          </article>
+
+          <article class="docs__sheet ui-sheet ui-sheet--a4" data-ui role="tabpanel" id="doc-bl" aria-labelledby="tab-bl" hidden>
+            <div class="doc-top">
+              <div><p class="doc-org">Exploitation des Trois Claires</p><p class="doc-muted">17320 Marennes-Hiers-Brouage<br>Agrément sanitaire FR 17.999.001 CE</p></div>
+              <div style="text-align:right"><p class="doc-title">Bon de livraison</p><p>BL-26-02217 du 18/12/2026</p><p class="doc-muted">Commande C-26-01482</p></div>
+            </div>
+            <div class="doc-two">
+              <div class="doc-box"><p class="doc-muted">Livré à</p><p><b>Poissonnerie de la Halle</b><br>14000 Caen</p></div>
+              <div class="doc-box"><p class="doc-muted">Transport</p><p><b>Tournée Nord</b><br>départ 5 h 30, 1 palette</p></div>
+            </div>
+            <table>
+              <thead><tr><th>Article</th><th>Lot</th><th class="r">Colis</th><th class="r">Poids net</th></tr></thead>
+              <tbody>
+                <tr><td>Fines de claire n° 3, bourriche 5 kg</td><td>2026-351-3-014</td><td class="r">12</td><td class="r">60,0 kg</td></tr>
+                <tr><td>Spéciales de claire n° 2, bourriche 3 kg</td><td>2026-349-2-006</td><td class="r">6</td><td class="r">18,0 kg</td></tr>
+                <tr><td>Moules de bouchot, sac 10 kg</td><td>2026-350-M-002</td><td class="r">2</td><td class="r">20,0 kg</td></tr>
+              </tbody>
+              <tfoot><tr><td>Total</td><td></td><td class="r">20</td><td class="r">98,0 kg</td></tr></tfoot>
+            </table>
+            <p style="margin-top:1rem">Palette 1/1, SSCC (00)320000120000014827</p>
+            <div class="doc-sign"><div>Expéditeur</div><div>Réception client</div></div>
+          </article>
+
+          <article class="docs__sheet ui-sheet ui-sheet--label" data-ui role="tabpanel" id="doc-palette" aria-labelledby="tab-palette" hidden>
+            <div class="doc-top">
+              <div><p class="doc-org">Fiche palette</p><p class="doc-muted">Exploitation des Trois Claires</p></div>
+              <p class="pal-big">1/1</p>
+            </div>
+            <dl class="label-grid" style="margin-top:1.2rem">
+              <dt>Client</dt><dd>Poissonnerie de la Halle, Caen</dd>
+              <dt>BL</dt><dd>BL-26-02217 du 18/12/2026</dd>
+              <dt>Type</dt><dd>80 × 120, hauteur 0,92 m</dd>
+              <dt>Colis</dt><dd>20</dd>
+              <dt>Poids net</dt><dd>98,0 kg</dd>
+              <dt>Poids brut</dt><dd>129,4 kg</dd>
+            </dl>
+            <table>
+              <thead><tr><th>Contenu</th><th class="r">Colis</th></tr></thead>
+              <tbody>
+                <tr><td>Fines de claire n° 3, 5 kg</td><td class="r">12</td></tr>
+                <tr><td>Spéciales de claire n° 2, 3 kg</td><td class="r">6</td></tr>
+                <tr><td>Moules de bouchot, 10 kg</td><td class="r">2</td></tr>
+              </tbody>
+            </table>
+            <div class="barcode"><img src="/assets/img/gs1-palette.svg" width="378" height="60" alt="Code-barres GS1-128 du SSCC de la palette"><p>(00)320000120000014827</p></div>
+          </article>
+
+          <article class="docs__sheet ui-sheet ui-sheet--a4" data-ui role="tabpanel" id="doc-trace" aria-labelledby="tab-trace" hidden>
+            <div class="doc-top">
+              <div><p class="doc-title">Traçabilité du lot 2026-351-3-014</p><p class="doc-muted">Fines de claire n° 3, 400 kg à l’entrée</p></div>
+              <p class="doc-muted" style="text-align:right">Édité le 21/12/2026</p>
+            </div>
+            <div class="trace">
+              <div class="trace-step"><span class="trace-kind">Amont</span><div class="trace-node"><b>Réception R-26-0611 du 14/11/2026</b>Huîtres creuses n° 3, 400 kg, Parcs de la Seudre</div></div>
+              <div class="trace-step"><span class="trace-kind">Affinage</span><div class="trace-node"><b>Claire C12, du 18/11 au 16/12</b>28 jours</div></div>
+              <div class="trace-step"><span class="trace-kind">Lot</span><div class="trace-node trace-node--focus"><b>2026-351-3-014</b>Conditionné le 17/12/2026, 400 kg</div></div>
+              <div class="trace-step"><span class="trace-kind">Aval</span><div class="trace-node"><b>BL-26-02217, Poissonnerie de la Halle</b>12 colis, 60 kg</div></div>
+              <div class="trace-step"><span class="trace-kind">Aval</span><div class="trace-node"><b>BL-26-02221, Restaurant Le Bouchot</b>7 colis, 35 kg</div></div>
+              <div class="trace-step"><span class="trace-kind">Aval</span><div class="trace-node"><b>BL-26-02230, Marée d’Auge</b>12 colis, 60 kg</div></div>
+              <div class="trace-step"><span class="trace-kind">En stock</span><div class="trace-node"><b>Bassin B2</b>245 kg</div></div>
+            </div>
+          </article>
+
+          <article class="docs__sheet ui-sheet ui-sheet--a4" data-ui role="tabpanel" id="doc-cerfa" aria-labelledby="tab-cerfa" hidden>
+            <div class="cerfa-head"><p class="doc-title">Document d’enregistrement des coquillages vivants</p><span class="cerfa-num">cerfa n° 15063*04</span></div>
+            <div class="cerfa-sec"><p class="cerfa-h">Expéditeur</p>
+              <p class="cerfa-row"><span>Raison sociale</span><span>Exploitation des Trois Claires</span></p>
+              <p class="cerfa-row"><span>N° d’agrément</span><span>FR 17.999.001 CE</span></p>
+              <p class="cerfa-row"><span>Qualité</span><span><span class="cerfa-box">×</span>expéditeur <span class="cerfa-box"></span>purificateur</span></p>
+            </div>
+            <div class="cerfa-sec"><p class="cerfa-h">Destinataire</p>
+              <p class="cerfa-row"><span>Raison sociale</span><span>Poissonnerie de la Halle, 14000 Caen</span></p>
+            </div>
+            <div class="cerfa-sec"><p class="cerfa-h">Coquillages</p>
+              <p class="cerfa-row"><span>Espèce</span><span>Huîtres creuses (Crassostrea gigas)</span></p>
+              <p class="cerfa-row"><span>Quantité</span><span>60 kg, lot 2026-351-3-014</span></p>
+            </div>
+            <div class="cerfa-sec"><p class="cerfa-h">Origine</p>
+              <p class="cerfa-row"><span>Zone de production</span><span>Seudre, classement A</span></p>
+              <p class="cerfa-row"><span>Date de récolte</span><span>14/11/2026</span></p>
+              <p class="cerfa-row"><span>Dernier séjour</span><span>Claire C12, affinage jusqu’au 16/12/2026</span></p>
+            </div>
+            <p style="margin-top:1.2rem" class="doc-muted">Prérempli depuis le BL-26-02217. Points à vérifier&nbsp;: aucun.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="automatismes" class="auto" aria-labelledby="auto-titre">
+      <h2 class="sr-only" id="auto-titre">Ce que C’Claires fait à votre place</h2>
+      <div class="auto__band is-on" data-tone="tilleul">
+        <div class="auto__text"><h3 class="auto__sentence" id="auto-1">Vos lots se numérotent tout seuls.</h3><p class="auto__detail">Un masque par exploitation, par exemple l’année, le jour, le calibre et une séquence&nbsp;: le lot du jour s’écrit 2026-351-3-014.</p></div>
+        <button class="auto__switch ui-switch" data-ui type="button" role="switch" aria-checked="true" aria-labelledby="auto-1"></button>
+      </div>
+      <div class="auto__band" data-tone="ciel">
+        <div class="auto__text"><h3 class="auto__sentence" id="auto-2">Le port se calcule à chaque livraison.</h3><p class="auto__detail">Franco, forfait ou montant saisi, réglé par client et par lieu de livraison. Sur un BL de 479,60&nbsp;€ HT avec un franco à 400&nbsp;€, le port est offert.</p></div>
+        <button class="auto__switch ui-switch" data-ui type="button" role="switch" aria-checked="false" aria-labelledby="auto-2"></button>
+      </div>
+      <div class="auto__band" data-tone="eau">
+        <div class="auto__text"><h3 class="auto__sentence" id="auto-3">Aucune étiquette obligatoire n’est oubliée.</h3><p class="auto__detail">Le plan d’impression est vérifié avant l’envoi. Chaque blocage propose une sortie&nbsp;: choisir un modèle, ajouter une règle, changer d’imprimante.</p></div>
+        <button class="auto__switch ui-switch" data-ui type="button" role="switch" aria-checked="false" aria-labelledby="auto-3"></button>
+      </div>
+      <div class="auto__band is-on" data-tone="paon">
+        <div class="auto__text"><h3 class="auto__sentence" id="auto-4">Les palettes se composent d’elles-mêmes.</h3><p class="auto__detail">Répartition proposée par dimensions ou par nombre de colis, SSCC attribué à l’enregistrement, fiche palette en A4, A5 ou 10&nbsp;×&nbsp;15.</p></div>
+        <button class="auto__switch ui-switch" data-ui type="button" role="switch" aria-checked="true" aria-labelledby="auto-4"></button>
+      </div>
+      <div class="auto__band" data-tone="eau">
+        <div class="auto__text"><h3 class="auto__sentence" id="auto-5">Les commandes du jour passent en BL.</h3><p class="auto__detail">Transformation en masse depuis la liste filtrée, avec les cumuls de poids et de montant HT en pied de liste. Les BL deviennent ensuite des factures, au jour, au BL ou à la fréquence du client.</p></div>
+        <button class="auto__switch ui-switch" data-ui type="button" role="switch" aria-checked="false" aria-labelledby="auto-5"></button>
+      </div>
+    </section>
+
+    <section id="normes" class="norms" aria-labelledby="normes-titre">
+      <div class="norms__board">
+        <div class="norm norm--head" data-reveal>
+          <h2 id="normes-titre">Les normes du métier, tenues</h2>
+          <p>C’Claires imprime et contrôle ce que la réglementation et vos clients demandent, sans tableur à côté.</p>
+        </div>
+        <div class="norm" data-reveal style="--i:1"><p class="norm__name">GS1-128</p><p class="norm__what">Le code-barres des colis&nbsp;: GTIN, lot, date de conditionnement.</p></div>
+        <div class="norm" data-reveal style="--i:2"><p class="norm__name">SSCC</p><p class="norm__what">Un numéro unique par palette, attribué à l’enregistrement.</p></div>
+        <div class="norm" data-reveal style="--i:3"><p class="norm__name">CERFA 15063*04</p><p class="norm__what">Le document des coquillages vivants, prérempli depuis le BL.</p></div>
+        <div class="norm" data-reveal style="--i:4"><p class="norm__name">Règlement UE 1379/2013</p><p class="norm__what">Les mentions au consommateur&nbsp;: zone, méthode de production, engin.</p></div>
+        <div class="norm" data-reveal style="--i:5"><p class="norm__name">Zones A, B, C</p><p class="norm__what">Le classement des zones de production, contrôlé à la livraison.</p></div>
+        <div class="norm" data-reveal style="--i:6"><p class="norm__name">ZPL</p><p class="norm__what">Les étiqueteuses Zebra, pilotées par un service Windows.</p></div>
+      </div>
+    </section>
+
+    <section id="modules" class="modules" aria-labelledby="modules-titre">
+      <h2 class="sr-only" id="modules-titre">Les modules de C’Claires</h2>
+      <ul class="modules__list">
+        <li data-reveal><span class="modules__name">Commande</span><span class="modules__what">Devis, commandes, BL, factures et avoirs</span></li>
+        <li data-reveal style="--i:1"><span class="modules__name">CCétiquettes</span><span class="modules__what">Étiquettes sanitaires, colis et palettes</span></li>
+        <li data-reveal style="--i:2"><span class="modules__name">Palettisation</span><span class="modules__what">Palettes proposées, SSCC, fiches palette</span></li>
+        <li data-reveal style="--i:3"><span class="modules__name">Approvisionnement</span><span class="modules__what">Achats, réceptions, mise en stock par lot</span></li>
+        <li data-reveal style="--i:4"><span class="modules__name">Atelier</span><span class="modules__what">Postes d’atelier, étiqueteuses, sortie du jour</span></li>
+        <li data-reveal style="--i:5"><span class="modules__name">Traçabilité</span><span class="modules__what">Chaque lot, de l’amont à l’aval</span></li>
+        <li data-reveal style="--i:6"><span class="modules__name">Élevage</span><span class="modules__what">Parcs, claires, mises à l’eau, cahiers des charges</span></li>
+      </ul>
+    </section>
+
+    <section id="editeur" class="about" aria-labelledby="editeur-titre">
+      <h2 class="about__title" id="editeur-titre" data-reveal>Un éditeur depuis 1997</h2>
+      <div class="grid">
+        <p class="about__lead" data-reveal style="--i:1">C’Claires est conçu et édité par ACIGO Informatique, société de logiciels installée à Saint-Lô, dans la Manche, depuis 1997.</p>
+      </div>
+      <div class="grid about__tiles">
+        <figure class="about__photo" data-reveal>
+          <div class="shutter"><img class="photo drift" src="/assets/img/photos/tables-seudre-1600.jpg" srcset="/assets/img/photos/tables-seudre-900.jpg 900w, /assets/img/photos/tables-seudre-1600.jpg 1600w" sizes="(max-width: 1080px) 100vw, 66vw" width="1600" height="1000" alt="Tables à huîtres alignées sur l’estran à marée basse, à l’embouchure de la Seudre" loading="lazy" decoding="async"></div>
+          <figcaption class="about__note">Tables à huîtres à l’embouchure de la Seudre, à marée basse. Le logiciel suit le même calendrier que vous&nbsp;: la marée, la pointe de fin d’année, le camion du matin.</figcaption>
+        </figure>
+        <div class="about__side">
+          <div class="about__map" data-reveal style="--i:1"><img src="/assets/img/carte-saint-lo.svg" width="507" height="520" alt="Carte de France, Saint-Lô marqué dans la Manche" loading="lazy"></div>
+          <dl class="facts" data-reveal style="--i:2">
+            <div><dt>Siège</dt><dd>Saint-Lô, Manche</dd></div>
+            <div><dt>Depuis</dt><dd>1997</dd></div>
+            <div><dt>Postes</dt><dd>Windows, un seul installateur</dd></div>
+            <div><dt>Mises à jour</dt><dd>Automatiques, au démarrage</dd></div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <section id="questions" class="faq" aria-labelledby="questions-titre">
+      <div class="faq__head"><h2 id="questions-titre" data-reveal>Vos questions</h2></div>
+      <div class="faq__bands">
+        <div class="faq__band grid">
+          <h3 class="faq__q" data-reveal>Sur quels postes s’installe C’Claires&#8239;?</h3>
+          <div class="faq__a" data-reveal style="--i:1"><p>Sur les postes Windows du bureau et de l’atelier. Un seul installateur pose le logiciel et le service d’impression des étiquettes&#8239;; ensuite, C’Claires vérifie ses mises à jour à chaque démarrage et les installe lui-même. Il fonctionne aussi sur un serveur TSE.</p></div>
+        </div>
+        <div class="faq__band grid">
+          <h3 class="faq__q" data-reveal>Où sont enregistrées mes données&#8239;?</h3>
+          <div class="faq__a" data-reveal style="--i:1"><p>Sur un serveur central auquel chaque poste se connecte&nbsp;: le bureau, l’atelier et l’expédition voient les mêmes chiffres. Chaque entreprise cliente a sa propre base, séparée de celles des autres.</p></div>
+        </div>
+        <div class="faq__band grid">
+          <h3 class="faq__q" data-reveal>Quelles étiqueteuses sont prises en charge&#8239;?</h3>
+          <div class="faq__a" data-reveal style="--i:1"><p>Les étiqueteuses Zebra en langage ZPL, en 203&nbsp;dpi. Chaque poste d’atelier connaît ses imprimantes&#8239;; une impression peut se répartir entre plusieurs étiqueteuses avec une numérotation continue, et toute réimpression demande un motif, consigné au journal des impressions.</p></div>
+        </div>
+        <div class="faq__band grid">
+          <h3 class="faq__q" data-reveal>Combien de personnes peuvent l’utiliser&#8239;?</h3>
+          <div class="faq__a" data-reveal style="--i:1"><p>Autant que de licences. Les comptes nominatifs et les comptes poste d’atelier se comptent à part, et un compte poste peut tourner sur plusieurs machines de l’atelier.</p></div>
+        </div>
+        <div class="faq__band grid">
+          <h3 class="faq__q" data-reveal>Les étiquettes portent-elles les mentions obligatoires&#8239;?</h3>
+          <div class="faq__a" data-reveal style="--i:1"><p>Les modèles disposent des variables de la réglementation&nbsp;: marque d’identification, espèce, zone de production, méthode de production, date de conditionnement, numéro de lot. Des règles désignent le modèle de chaque client et de chaque article, et un simulateur montre laquelle s’applique, et pourquoi.</p></div>
+        </div>
+        <div class="faq__band grid">
+          <h3 class="faq__q" data-reveal>Combien coûte C’Claires&#8239;?</h3>
+          <div class="faq__a" data-reveal style="--i:1"><p>Le tarif dépend du nombre de licences et des modules retenus. Écrivez-nous à <a class="link" href="mailto:contact@cclaires.fr">contact@cclaires.fr</a>&nbsp;: nous vous répondons avec un devis.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="demo" class="close" aria-labelledby="demo-titre">
+      <h2 class="close__title lines" id="demo-titre">
+        <span class="line"><span data-reveal>Et du camion</span></span>
+        <span class="line"><span data-reveal style="--i:1">à la facture</span></span>
+      </h2>
+      <div class="grid close__foot">
+        <p class="close__text" data-reveal style="--i:2">Dites-nous comment partent vos colis aujourd’hui. Nous vous montrons comment C’Claires les suit, de la commande à la facture.</p>
+        <div class="close__action" data-reveal style="--i:3"><a class="button button--on-dark" href="mailto:contact@cclaires.fr?subject=Demande%20de%20d%C3%A9monstration%20C%E2%80%99Claires&amp;body=Bonjour%2C%0A%0AJe%20souhaite%20une%20d%C3%A9monstration%20de%20C%E2%80%99Claires.%0A%0AEntreprise%20%3A%20%0AM%C3%A9tier%20(ostr%C3%A9iculture%2C%20mytiliculture%2C%20exp%C3%A9dition%E2%80%A6)%20%3A%20%0ANombre%20de%20postes%20%3A%20%0AT%C3%A9l%C3%A9phone%20%3A%20%0A">Demander une démo</a></div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="foot">
+    <div class="foot__board">
+      <div class="tile tile--statement">
+        <p>C’Claires, la gestion des métiers de la mer.</p>
+        <p class="small">© 2026 ACIGO Informatique. Les documents montrés sur cette page sont des exemples&nbsp;: clients, numéros et agréments sont fictifs.</p>
+      </div>
+      <nav class="tile tile--nav" aria-label="Plan du site">
+        <ul class="nav-list">
+          <li><a class="link" href="#parcours">Parcours</a></li>
+          <li><a class="link" href="#documents">Documents</a></li>
+          <li><a class="link" href="#modules">Modules</a></li>
+          <li><a class="link" href="#questions">Questions</a></li>
+          <li><a class="link" href="/mentions-legales">Mentions légales</a></li>
+        </ul>
+      </nav>
+      <div class="tile tile--place">
+        <p><b>ACIGO Informatique</b><br>706 rue Dunant<br>50000 Saint-Lô</p>
+      </div>
+      <div class="tile tile--mail">
+        <p>Écrire</p>
+        <a class="link" href="mailto:contact@cclaires.fr">contact@cclaires.fr</a>
+      </div>
+      <div class="tile tile--mark"><img src="/assets/img/logo-blanc.svg" width="652" height="200" alt="C’Claires" loading="lazy"></div>
+      <a class="tile tile--go" href="mailto:contact@cclaires.fr?subject=Demande%20de%20d%C3%A9monstration%20C%E2%80%99Claires&amp;body=Bonjour%2C%0A%0AJe%20souhaite%20une%20d%C3%A9monstration%20de%20C%E2%80%99Claires.%0A%0AEntreprise%20%3A%20%0AM%C3%A9tier%20(ostr%C3%A9iculture%2C%20mytiliculture%2C%20exp%C3%A9dition%E2%80%A6)%20%3A%20%0ANombre%20de%20postes%20%3A%20%0AT%C3%A9l%C3%A9phone%20%3A%20%0A">
+        <span>Demander une démo</span>
+        <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M12 36 36 12M16 12h20v20" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="square"/></svg>
+      </a>
+      <p class="tile tile--credits">Photographies, en niveaux de gris et recadrées&nbsp;: <a href="https://commons.wikimedia.org/w/index.php?curid=157522886">« Claires ostréicoles et pont de la Seudre »</a>, <a href="https://commons.wikimedia.org/w/index.php?curid=157522575">« Tables ostréicoles près de La Tremblade »</a> et <a href="https://commons.wikimedia.org/w/index.php?curid=157522955">« Sillons de vasière et tables ostréicoles »</a> par Olivier Dugornay, Ifremer&nbsp;; <a href="https://commons.wikimedia.org/w/index.php?curid=155278133">« Huîtres creuses fixées sur un rocher »</a> par Marie-Noëlle de Casamajor, Ifremer&nbsp;; <a href="https://commons.wikimedia.org/wiki/File:Tables_%C3%A0_hu%C3%AEtres_%C3%A0_l%27embouchure_de_la_Seudre_(Ifremer_00689-80156_-_32651).jpg">« Tables à huîtres à l’embouchure de la Seudre »</a> par Stéphane Lesbats, Ifremer, toutes sous <a href="https://creativecommons.org/licenses/by/4.0/deed.fr">licence CC BY 4.0</a>&nbsp;; <a href="https://commons.wikimedia.org/wiki/File:Crassostrea_gigas_p1040848.jpg">« Crassostrea gigas »</a> par David Monniaux, <a href="https://creativecommons.org/licenses/by-sa/3.0/deed.fr">licence CC BY-SA 3.0</a>&nbsp;; <a href="https://commons.wikimedia.org/wiki/File:Arcachon,_parcs_%C3%A0_hu%C3%AEtres_-_btv1b53052528r.jpg">« Arcachon, parcs à huîtres »</a>, Agence Rol, domaine public. Carte de France&nbsp;: <a href="https://commons.wikimedia.org/wiki/File:Blank_France_map,_no_Departments.svg">Lokal_Profil</a>, domaine public. Images via Wikimedia Commons.</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/site.js" defer></script>
+</body>
+</html>
