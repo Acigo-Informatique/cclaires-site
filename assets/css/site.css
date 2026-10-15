@@ -254,6 +254,16 @@ ol.clics__steps { list-style: decimal; padding-left: 1.3em; margin-top: 2rem; di
   .sheet__body { min-height: calc(86svh - 4.5rem); }
 }
 
+/* ---------- commande en ligne : le lien reçu, la page déjà remplie ---------- */
+.clients { display: grid; grid-template-columns: 5fr 7fr; background: var(--paper); }
+.clients__text { padding: var(--band-pad) var(--gutter) var(--band-pad) var(--margin); align-self: center; }
+.clients__title { font-family: var(--font-display); font-weight: 600; font-size: var(--step-l); line-height: 0.98; letter-spacing: -0.01em; }
+.clients__lead { margin-top: 1.5rem; max-width: 44ch; }
+.clients__points { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem var(--gutter); margin-top: 2.5rem; }
+.clients__points dt { font-weight: 800; }
+.clients__points dd { margin-top: 0.2rem; }
+.clients__stage { position: relative; background: var(--eau); min-height: 90svh; overflow: hidden; padding: 4.5rem clamp(1rem, 4vw, 4rem) 0; }
+
 /* ---------- parcours : une commande, quatre champs ---------- */
 .strip { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); }
 .field {
@@ -335,7 +345,8 @@ html:not(.js) .docs__sheet[hidden] { display: block; }
 
 /* ---------- modules : une ligne d’affiche par module ---------- */
 .modules { background: var(--ciel); color: var(--ink); padding: 5rem var(--margin); }
-.modules__list li {
+.modules__head { color: var(--paon); }
+.modules__head, .modules__list li {
   display: grid; grid-template-columns: minmax(0, 1fr) minmax(14ch, 26ch); align-items: baseline; column-gap: var(--gutter);
   transition: color var(--t-hover) ease;
 }
@@ -568,6 +579,32 @@ html:not(.js) .docs__sheet[hidden] { display: block; }
 [data-ui] .ui-mini:nth-child(2) { --r: 1.5deg; --n: 1; margin-top: 1.2rem; }
 [data-ui] .ui-mini:nth-child(3) { --r: -1deg; --n: 2; margin-top: 0.4rem; }
 
+/* e-mail et page de commande en ligne */
+[data-ui].ui-mail {
+  position: relative; z-index: 1; width: min(24rem, 100%);
+  background: #fff; color: #1b2426; border-radius: 10px; padding: 1rem 1.15rem 1.1rem;
+  font-size: 0.875rem; line-height: 1.45; box-shadow: 0 2px 4px rgb(0 0 0 / 0.12), 0 18px 40px rgb(0 0 0 / 0.12);
+}
+[data-ui] .ui-mail-head { display: flex; justify-content: space-between; gap: 1rem; color: #5b6769; font-size: 0.8125rem; }
+[data-ui] .ui-mail-head b { color: #1b2426; }
+[data-ui] .ui-mail-subject { font-weight: 800; font-size: 1rem; margin: 0.55rem 0 0.25rem; }
+[data-ui].ui-mail .ui-btn { margin-top: 0.85rem; }
+[data-ui].ui-order {
+  position: relative; z-index: 2; width: min(31rem, 100%); margin: -1.25rem 0 0 auto;
+  background: #fff; color: #1b2426; border-radius: 12px 12px 0 0; overflow: hidden;
+  font-size: 0.875rem; line-height: 1.4; box-shadow: 0 2px 4px rgb(0 0 0 / 0.12), 0 24px 60px rgb(0 0 0 / 0.16);
+}
+[data-ui] .ui-order-head { display: grid; gap: 0.15rem; padding: 1rem 1.2rem; background: #007b8e; color: #fff; }
+[data-ui] .ui-order-head span { color: #fff; font-size: 0.8125rem; }
+[data-ui] .ui-promo { display: flex; justify-content: space-between; align-items: center; gap: 1rem; margin: 0.9rem 1.2rem 0.3rem; padding: 0.55rem 0.75rem; background: #f5f9e8; border: 1px solid #dde8b4; border-radius: 8px; }
+[data-ui] .ui-promo b { color: #4a5a12; margin-right: 0.35rem; }
+[data-ui] .ui-order-lines li { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 0.8rem 1.2rem; border-bottom: 1px solid #eef1f2; }
+[data-ui] .ui-order-lines small { display: block; color: #5b6769; }
+[data-ui] .ui-qty { display: inline-flex; align-items: center; gap: 0.2rem; border: 1px solid #cfd8da; border-radius: 999px; padding: 0.15rem 0.25rem; flex: none; }
+[data-ui] .ui-qty span { width: 1.7rem; height: 1.7rem; display: grid; place-items: center; color: #007b8e; font-weight: 800; }
+[data-ui] .ui-qty b { min-width: 1.6rem; text-align: center; font-variant-numeric: tabular-nums; }
+[data-ui] .ui-order-foot { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 1rem 1.2rem 1.3rem; background: #fafbfb; font-variant-numeric: tabular-nums; }
+
 /* interrupteur */
 [data-ui].ui-switch {
   position: relative; display: inline-flex; align-items: center;
@@ -613,6 +650,10 @@ html:not(.js) .docs__sheet[hidden] { display: block; }
   .site-header { grid-template-columns: auto 1fr auto; }
   .clics__text { grid-column: 1 / -1; }
   .clics__stage { grid-column: 1 / -1; margin-top: 2.5rem; min-height: 28rem; }
+  .clients { grid-template-columns: 1fr; }
+  .clients__text { padding-bottom: 3rem; }
+  .clients__stage { min-height: 0; padding-bottom: 3rem; }
+  [data-ui].ui-order { border-radius: 12px; }
   .apps { grid-template-columns: 1fr; }
   .apps__cell { min-height: 60svh; }
   .apps__row { grid-template-columns: 1fr 1fr; }
@@ -685,6 +726,12 @@ html:not(.js) .docs__sheet[hidden] { display: block; }
   .intro__lot { grid-column: 1 / -1; grid-row: 3; margin-top: 2rem; }
   .clics { padding-block: 4.5rem; }
   .metiers__title { padding-bottom: 2rem; }
+  .clients__text { padding: 4rem var(--margin) 2.5rem; }
+  .clients__points { grid-template-columns: 1fr; }
+  .clients__stage { padding: 2rem var(--margin) 2.5rem; }
+  [data-ui].ui-order { margin-top: 1rem; }
+  [data-ui] .ui-order-lines li, [data-ui] .ui-order-head, [data-ui] .ui-order-foot { padding-inline: 0.9rem; }
+  [data-ui] .ui-promo { margin-inline: 0.9rem; flex-wrap: wrap; gap: 0.3rem; }
   .apps__cell { min-height: 70svh; padding-block: 4rem 2rem; }
   .apps__foot { flex-direction: column; align-items: flex-start; }
   .apps__foot .button { width: 100%; min-height: 3.25rem; }
@@ -726,7 +773,7 @@ html:not(.js) .docs__sheet[hidden] { display: block; }
   .norms__board { gap: 6px; }
   .norm { aspect-ratio: auto; min-height: 9.5rem; }
   .modules { padding-block: 4rem; }
-  .modules__list li { grid-template-columns: 1fr; padding-bottom: 1.1rem; }
+  .modules__head, .modules__list li { grid-template-columns: 1fr; padding-bottom: 1.1rem; }
   .modules__name { font-size: var(--step-l); }
   .modules__what { text-align: left; font-size: var(--step-s); margin-top: 0.3rem; }
   .about__tiles { margin-top: 2.5rem; }

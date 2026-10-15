@@ -8,7 +8,7 @@ données structurées est `https://cclaires.fr`.
 
 | Chemin | Rôle |
 |---|---|
-| `index.html` | page d’accueil : premier écran, étiquettes en 3 clics (démonstration à cliquer), trois métiers (conchyliculteurs, mytiliculteurs, mareyeurs), parcours d’une commande, documents, automatismes, normes, modules, applications, éditeur, questions, appel final |
+| `index.html` | page d’accueil : premier écran, étiquettes en 3 clics (démonstration à cliquer), trois métiers (conchyliculteurs, mytiliculteurs, mareyeurs), commande en ligne, parcours d’une commande, documents, automatismes, normes, modules, applications, éditeur, questions, appel final |
 | `mentions-legales.html` | mentions légales, crédits (servie en `/mentions-legales`) |
 | `404.html` | page introuvable |
 | `assets/css/site.css` | jetons de la charte, mise en page, fragments d’interface (`[data-ui]`) |
@@ -55,9 +55,11 @@ domaines dans Vercel).
   fictifs.
 - **Les fonctionnalités annoncées** : la page présente le logiciel complet, tel que décrit par
   l’éditeur (étiqueteuses toutes marques, codes 1D et 2D, traçabilité intégrale, HACCP, facturation
-  électronique, encaissements, export comptable, parcs et claires, applications satellites).
-  L’application mobile et tablette est annoncée comme « bientôt ». Ajuster le texte si le site part
-  avant l’un de ces modules.
+  électronique, encaissements, liaison directe avec Pennylane, commande en ligne par lien, habitudes
+  et promotions, éditeur et vue graphique des parcs, viviers, applications satellites, formule tout
+  compris). Sont annoncés comme à venir : l’application mobile et tablette, les modules de
+  transformation et de criée pour les mareyeurs. Ajuster le texte si le site part avant l’un de ces
+  modules.
 
 ## Outils (`tools/`)
 

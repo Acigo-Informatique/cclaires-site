@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Logiciel conchylicole, mytilicole et mareyage | C’Claires</title>
-  <meta name="description" content="C’Claires, le logiciel des conchyliculteurs, mytiliculteurs et mareyeurs : étiquettes en 3 clics, traçabilité intégrale, facturation électronique, HACCP.">
+  <meta name="description" content="C’Claires, le logiciel tout compris des conchyliculteurs, mytiliculteurs et mareyeurs : commande en ligne, étiquettes en 3 clics, traçabilité, facture électronique.">
   <link rel="canonical" href="https://cclaires.fr/">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <meta name="theme-color" content="#007b8e">
@@ -63,7 +63,7 @@
         "name": "C’Claires",
         "alternateName": "CClaires",
         "url": "https://cclaires.fr/",
-        "description": "Logiciel de gestion pour conchyliculteurs, ostréiculteurs, mytiliculteurs et mareyeurs : commandes, bons de livraison, facturation électronique, encaissements, étiquettes en 3 clics, palettisation, transport, traçabilité intégrale, HACCP, parcs et claires.",
+        "description": "Logiciel de gestion pour conchyliculteurs, ostréiculteurs, mytiliculteurs et mareyeurs : commande en ligne, bons de livraison, facturation électronique, encaissements, liaison comptable, étiquettes en 3 clics, palettisation, transport, traçabilité intégrale, HACCP, parcs et claires, viviers. Tout compris, sans module vendu à part.",
         "audience": { "@type": "BusinessAudience", "audienceType": "Conchyliculteurs, mytiliculteurs et mareyeurs" },
         "applicationCategory": "BusinessApplication",
         "applicationSubCategory": "Logiciel de gestion conchylicole",
@@ -84,7 +84,13 @@
           "Palettisation avec SSCC et fiches palette",
           "Gestion des transports, frais de port et EDI",
           "CERFA 15063 prérempli depuis le bon de livraison",
-          "Applications satellites métier : palettisation, préparation, approvisionnement"
+          "Applications satellites métier : palettisation, préparation, approvisionnement",
+          "Commande en ligne par lien envoyé par e-mail, pré-remplie d’après les habitudes du client",
+          "Promotions du jour proposées dès la commande, communication des prix aux clients",
+          "Liaison directe avec Pennylane et les autres logiciels comptables",
+          "Éditeur de parcs et vue graphique des parcs et des claires",
+          "Viviers : vrac, poids fixe ou emballé, poids variable",
+          "Tout compris : aucun module vendu à part"
         ]
       },
       {
@@ -95,10 +101,11 @@
           { "@type": "Question", "name": "Où sont enregistrées mes données ?", "acceptedAnswer": { "@type": "Answer", "text": "Sur un serveur central auquel chaque poste se connecte : le bureau, l’atelier et l’expédition voient les mêmes chiffres. Chaque entreprise cliente a sa propre base, séparée de celles des autres." } },
           { "@type": "Question", "name": "Faut-il un logiciel d’étiquetage à part ?", "acceptedAnswer": { "@type": "Answer", "text": "Non. L’éditeur de modèles d’étiquettes est intégré à C’Claires : textes, variables du lot et de l’article, et tous les codes-barres 1D et 2D (EAN-13, GS1-128, Code 128, QR code, DataMatrix). Les étiquettes s’impriment ensuite directement depuis la commande ou le bon de livraison, en 3 clics, avec le modèle et l’étiqueteuse que vos règles ont choisis pour chaque client." } },
           { "@type": "Question", "name": "Quelles étiqueteuses sont prises en charge ?", "acceptedAnswer": { "@type": "Answer", "text": "Zebra, Toshiba et les autres marques. Chaque poste d’atelier connaît ses imprimantes, et une même impression peut partir sur plusieurs étiqueteuses à la fois, avec une numérotation continue. Toute réimpression demande un motif, consigné au journal des impressions." } },
-          { "@type": "Question", "name": "La facturation électronique est-elle incluse ?", "acceptedAnswer": { "@type": "Answer", "text": "Oui. La facturation électronique est intégrée à C’Claires, avec les encaissements et l’export comptable : la facture part du bon de livraison, sans outil à côté." } },
+          { "@type": "Question", "name": "La facturation électronique est-elle incluse ?", "acceptedAnswer": { "@type": "Answer", "text": "Oui. La facturation électronique est intégrée à C’Claires, avec les encaissements : la facture part du bon de livraison, sans outil à côté. Les écritures passent en direct dans Pennylane ou dans votre logiciel comptable." } },
+          { "@type": "Question", "name": "Mes clients peuvent-ils commander en ligne ?", "acceptedAnswer": { "@type": "Answer", "text": "Oui. Un lien envoyé par e-mail ouvre une page de commande à leur nom, déjà remplie d’après leurs habitudes, avec leurs prix et les promotions du jour. La commande validée arrive directement dans C’Claires." } },
           { "@type": "Question", "name": "Combien de personnes peuvent l’utiliser ?", "acceptedAnswer": { "@type": "Answer", "text": "Autant que de licences. Les comptes nominatifs et les comptes poste d’atelier se comptent à part, et un compte poste peut tourner sur plusieurs machines de l’atelier." } },
           { "@type": "Question", "name": "Les étiquettes portent-elles les mentions obligatoires ?", "acceptedAnswer": { "@type": "Answer", "text": "Les modèles disposent des variables de la réglementation : marque d’identification, espèce, zone de production, méthode de production, date de conditionnement, numéro de lot. Des règles désignent le modèle de chaque client et de chaque article, et un simulateur montre laquelle s’applique, et pourquoi." } },
-          { "@type": "Question", "name": "Combien coûte C’Claires ?", "acceptedAnswer": { "@type": "Answer", "text": "Le tarif dépend du nombre de licences et des modules retenus. Écrivez-nous à contact@cclaires.fr : nous vous répondons avec un devis." } }
+          { "@type": "Question", "name": "Combien coûte C’Claires ?", "acceptedAnswer": { "@type": "Answer", "text": "C’Claires est tout compris : rien n’est vendu par module, toutes les fonctions sont dans le logiciel. Écrivez-nous à contact@cclaires.fr : nous vous répondons avec un devis." } }
         ]
       }
     ]
@@ -141,7 +148,7 @@
 
     <div class="hero__text">
       <div class="hero__aside">
-        <p class="standfirst" data-rise style="--i:0">Le logiciel de gestion des conchyliculteurs, mytiliculteurs et mareyeurs&nbsp;: étiquettes en 3 clics, traçabilité intégrale, facturation électronique et HACCP.</p>
+        <p class="standfirst" data-rise style="--i:0">Le logiciel de gestion des conchyliculteurs, mytiliculteurs et mareyeurs&nbsp;: commande en ligne, étiquettes en 3 clics, traçabilité intégrale et facturation électronique, tout compris.</p>
         <a class="hero__more link" href="#etiquettes" data-rise style="--i:1">Imprimer des étiquettes en 3 clics</a>
         <div class="hero__cta-phone" data-rise style="--i:2">
           <a class="button" href="mailto:contact@cclaires.fr?subject=Demande%20de%20d%C3%A9monstration%20C%E2%80%99Claires&amp;body=Bonjour%2C%0A%0AJe%20souhaite%20une%20d%C3%A9monstration%20de%20C%E2%80%99Claires.%0A%0AEntreprise%20%3A%20%0AM%C3%A9tier%20(ostr%C3%A9iculture%2C%20mytiliculture%2C%20exp%C3%A9dition%E2%80%A6)%20%3A%20%0ANombre%20de%20postes%20%3A%20%0AT%C3%A9l%C3%A9phone%20%3A%20%0A">Demander une démo</a>
@@ -262,7 +269,7 @@
             <div class="sheet__text">
               <p class="sheet__lead">Parcs, claires, poches et tables&nbsp;: vous savez où se trouve chaque lot, C’Claires aussi. De la mise à l’eau à la bourriche, chaque mouvement est noté, et l’étiquette sanitaire suit le colis.</p>
               <dl class="sheet__terms">
-                <div><dt>Parcs et claires</dt><dd>Chaque lieu d’élevage et son contenu&nbsp;; le stock sur parc se calcule à la date voulue.</dd></div>
+                <div><dt>Parcs et claires</dt><dd>Un éditeur de parcs et leur vue graphique&nbsp;: chaque claire, son lot, son stock à la date voulue.</dd></div>
                 <div><dt>Mises à l’eau, transferts, tris</dt><dd>Chaque mouvement de lot noté, bientôt saisi sur le parc avec l’application mobile.</dd></div>
                 <div><dt>Affinage, verdissement</dt><dd>Le séjour en claire compté, les cahiers des charges IGP et Label Rouge contrôlés lot par lot.</dd></div>
                 <div><dt>Calibres, fines, spéciales</dt><dd>Calibre, qualité et format portés par chaque article, du n°&nbsp;0 au n°&nbsp;5.</dd></div>
@@ -296,16 +303,48 @@
             <div class="sheet__text">
               <p class="sheet__lead">Achat au cadran le matin, tri et mise en caisse, camion le soir&nbsp;: chez le mareyeur, tout va vite. C’Claires enchaîne achat, vente, étiquette et facture sans ressaisie, et trace chaque lot de bout en bout.</p>
               <dl class="sheet__terms">
-                <div><dt>Achat sous criée</dt><dd>Achats et réceptions&nbsp;: chaque lot garde son origine, du fournisseur jusqu’au client.</dd></div>
+                <div><dt>Achat sous criée</dt><dd>Achats et réceptions&nbsp;: chaque lot garde son origine. Un module de criée est prévu.</dd></div>
+                <div><dt>Viviers</dt><dd>Stock en vivier, en vrac, en poids fixe ou emballé, et en poids variable.</dd></div>
                 <div><dt>Espèce, zone FAO, engin</dt><dd>Les mentions du règlement UE 1379/2013 portées par l’article et imprimées sur l’étiquette.</dd></div>
                 <div><dt>Poids variable</dt><dd>Colis pesés un à un, poids réel sur le BL et sur la facture.</dd></div>
-                <div><dt>Export</dt><dd>Documents dans la langue du client, étiquettes en écritures non latines comprises.</dd></div>
-                <div><dt>EDI</dt><dd>Factures et ordres de transport échangés avec vos clients et vos transporteurs.</dd></div>
+                <div><dt>Transformation</dt><dd>Un module de transformation est prévu, du produit entier au produit élaboré.</dd></div>
+                <div><dt>Export et EDI</dt><dd>Documents dans la langue du client, factures et ordres de transport en EDI.</dd></div>
               </dl>
             </div>
             <figure class="sheet__photo"><img class="photo" src="/assets/img/photos/criee-boulogne-1400.jpg" srcset="/assets/img/photos/criee-boulogne-700.jpg 700w, /assets/img/photos/criee-boulogne-1400.jpg 1400w" sizes="(max-width: 720px) 100vw, 50vw" width="1400" height="1400" alt="Cadran d’enchères de la criée de Boulogne-sur-Mer affichant l’espèce, les caisses restantes et le prix" loading="lazy" decoding="async"></figure>
           </div>
         </article>
+      </div>
+    </section>
+
+    <section id="commande-en-ligne" class="clients" aria-labelledby="clients-titre">
+      <div class="clients__text">
+        <h2 class="clients__title" id="clients-titre" data-reveal>Vos clients commandent en un clic</h2>
+        <p class="clients__lead" data-reveal style="--i:1">Un lien part par e-mail. Il ouvre une page de commande à leur nom, où leur commande habituelle est déjà prête&nbsp;: ils ajustent les quantités, valident, et la commande arrive dans C’Claires.</p>
+        <dl class="clients__points" data-reveal style="--i:2">
+          <div><dt>Leurs habitudes</dt><dd>La commande se pré-remplit d’après leurs dernières commandes, lieu de livraison par lieu de livraison.</dd></div>
+          <div><dt>Leurs prix</dt><dd>Chaque client reçoit ses tarifs à jour et les retrouve sur sa page de commande.</dd></div>
+          <div><dt>Les promotions du jour</dt><dd>Proposées dès la commande, au client comme au commercial qui la prend au téléphone.</dd></div>
+          <div><dt>Rien à ressaisir</dt><dd>La commande validée arrive dans le logiciel, prête à être allotie, étiquetée et livrée.</dd></div>
+        </dl>
+      </div>
+      <div class="clients__stage" data-reveal style="--i:2">
+        <div class="ui-mail" data-ui>
+          <p class="ui-mail-head"><b>Exploitation des Trois Claires</b><span>à Poissonnerie de la Halle</span></p>
+          <p class="ui-mail-subject">Votre commande pour vendredi 18 décembre</p>
+          <p>Bonjour, votre commande habituelle est prête. Il ne reste qu’à vérifier les quantités.</p>
+          <span class="ui-btn ui-btn--primary">Commander</span>
+        </div>
+        <div class="ui-order" data-ui>
+          <p class="ui-order-head"><b>Exploitation des Trois Claires</b><span>Commande de Poissonnerie de la Halle, livraison vendredi 18 décembre</span></p>
+          <p class="ui-promo"><span><b>Promotion du jour</b> Fines de claire n° 2, 5,40&nbsp;€/kg au lieu de 5,90&nbsp;€</span><span class="ui-btn ui-btn--text">Ajouter</span></p>
+          <ul class="ui-order-lines">
+            <li><span><b>Fines de claire n° 3</b><small>bourriche 5 kg, 4,80 €/kg</small><span class="ui-tag">habituel</span></span><span class="ui-qty"><span>−</span><b>12</b><span>+</span></span></li>
+            <li><span><b>Spéciales de claire n° 2</b><small>bourriche 3 kg, 7,20 €/kg</small><span class="ui-tag">habituel</span></span><span class="ui-qty"><span>−</span><b>6</b><span>+</span></span></li>
+            <li><span><b>Moules de bouchot</b><small>sac 10 kg, 3,10 €/kg</small><span class="ui-tag">habituel</span></span><span class="ui-qty"><span>−</span><b>2</b><span>+</span></span></li>
+          </ul>
+          <p class="ui-order-foot"><span>Total <b>479,60 € HT</b></span><span class="ui-btn ui-btn--primary">Valider la commande</span></p>
+        </div>
       </div>
     </section>
 
@@ -323,7 +362,7 @@
           </ul>
           <div class="ui-foot"><span>98 kg</span><span>479,60 € HT</span></div>
         </article>
-        <p class="field__clause" data-reveal style="--i:2">D’abord, la commande arrive.</p>
+        <p class="field__clause" data-reveal style="--i:2">D’abord, le client commande en un clic.</p>
       </div>
       <div class="field field--paon">
         <span aria-hidden="true"></span>
@@ -502,7 +541,7 @@
         <button class="auto__switch ui-switch" data-ui type="button" role="switch" aria-checked="false" aria-labelledby="auto-2"></button>
       </div>
       <div class="auto__band is-on" data-tone="eau">
-        <div class="auto__text"><h3 class="auto__sentence" id="auto-3">Vos factures partent en électronique.</h3><p class="auto__detail">La facturation électronique est intégrée au logiciel&nbsp;: les factures partent, les encaissements se pointent, l’export comptable part vers votre comptabilité.</p></div>
+        <div class="auto__text"><h3 class="auto__sentence" id="auto-3">Vos factures partent en électronique.</h3><p class="auto__detail">La facturation électronique est intégrée au logiciel&nbsp;: les factures partent, les encaissements se pointent, et les écritures passent en direct dans Pennylane ou votre logiciel comptable.</p></div>
         <button class="auto__switch ui-switch" data-ui type="button" role="switch" aria-checked="true" aria-labelledby="auto-3"></button>
       </div>
       <div class="auto__band is-on" data-tone="paon">
@@ -526,22 +565,25 @@
         <div class="norm" data-reveal style="--i:3"><p class="norm__name">CERFA 15063*04</p><p class="norm__what">Le document des coquillages vivants, prérempli depuis le BL.</p></div>
         <div class="norm" data-reveal style="--i:4"><p class="norm__name">Règlement UE 1379/2013</p><p class="norm__what">Les mentions au consommateur&nbsp;: espèce, zone, méthode de production, engin.</p></div>
         <div class="norm" data-reveal style="--i:5"><p class="norm__name">HACCP</p><p class="norm__what">Le module HACCP garde vos enregistrements sanitaires dans le logiciel.</p></div>
-        <div class="norm" data-reveal style="--i:6"><p class="norm__name">Facture électronique</p><p class="norm__what">Intégrée au logiciel, avec les encaissements et l’export comptable.</p></div>
+        <div class="norm" data-reveal style="--i:6"><p class="norm__name">Facture électronique</p><p class="norm__what">Intégrée, avec les encaissements et la liaison directe à Pennylane ou à votre comptabilité.</p></div>
       </div>
     </section>
 
     <section id="modules" class="modules" aria-labelledby="modules-titre">
-      <h2 class="sr-only" id="modules-titre">Les modules de C’Claires</h2>
+      <div class="modules__head" data-reveal>
+        <h2 class="modules__name" id="modules-titre">Tout compris</h2>
+        <p class="modules__what">Rien n’est vendu par module&nbsp;: tout ce qui suit est dans le logiciel.</p>
+      </div>
       <ul class="modules__list">
-        <li data-reveal><span class="modules__name">Commande</span><span class="modules__what">Devis, commandes, BL, factures et avoirs</span></li>
+        <li data-reveal><span class="modules__name">Commande</span><span class="modules__what">Habitudes, promotions, commande en ligne, BL, factures</span></li>
         <li data-reveal style="--i:1"><span class="modules__name">Étiquetage</span><span class="modules__what">Éditeur de modèles intégré, impression en 3 clics</span></li>
         <li data-reveal style="--i:2"><span class="modules__name">Palettisation</span><span class="modules__what">Palettes proposées, SSCC, fiches palette</span></li>
         <li data-reveal style="--i:3"><span class="modules__name">Approvisionnement</span><span class="modules__what">Achats, réceptions, mise en stock par lot</span></li>
         <li data-reveal style="--i:4"><span class="modules__name">Atelier</span><span class="modules__what">Postes d’atelier, étiqueteuses, sortie du jour</span></li>
         <li data-reveal style="--i:5"><span class="modules__name">Traçabilité</span><span class="modules__what">De l’achat à la vente, et de la vente à l’achat</span></li>
-        <li data-reveal style="--i:6"><span class="modules__name">Facturation</span><span class="modules__what">Facture électronique, encaissements, export comptable</span></li>
+        <li data-reveal style="--i:6"><span class="modules__name">Facturation</span><span class="modules__what">Facture électronique, encaissements, liaison Pennylane</span></li>
         <li data-reveal style="--i:7"><span class="modules__name">HACCP</span><span class="modules__what">Les enregistrements sanitaires dans le logiciel</span></li>
-        <li data-reveal style="--i:8"><span class="modules__name">Parcs et claires</span><span class="modules__what">Lieux d’élevage, lots, activités sur parc</span></li>
+        <li data-reveal style="--i:8"><span class="modules__name">Parcs et claires</span><span class="modules__what">Éditeur et vue graphique des parcs, lots, activités</span></li>
       </ul>
     </section>
 
@@ -556,8 +598,8 @@
       <div class="apps__rows">
         <div class="apps__row" data-reveal>
           <h3>Au bureau</h3>
-          <p>Commandes, facturation électronique, encaissements et export comptable, sur les postes Windows ou en TSE.</p>
-          <ul><li>Facture électronique</li><li>Encaissements</li><li>Export comptable</li></ul>
+          <p>Commandes, facturation électronique et encaissements, avec les écritures envoyées en direct à votre logiciel comptable.</p>
+          <ul><li>Facture électronique</li><li>Encaissements</li><li>Pennylane et autres</li></ul>
         </div>
         <div class="apps__row" data-reveal style="--i:1">
           <h3>Au quai</h3>
@@ -593,7 +635,7 @@
             <div><dt>Siège</dt><dd>Saint-Lô, Manche</dd></div>
             <div><dt>Depuis</dt><dd>1997</dd></div>
             <div><dt>Postes</dt><dd>Windows, mobile et tablette bientôt</dd></div>
-            <div><dt>Mises à jour</dt><dd>Automatiques, au démarrage</dd></div>
+            <div><dt>Formule</dt><dd>Tout compris, rien n’est vendu à part</dd></div>
           </dl>
         </div>
       </div>
@@ -620,7 +662,11 @@
         </div>
         <div class="faq__band grid">
           <h3 class="faq__q" data-reveal>La facturation électronique est-elle incluse&#8239;?</h3>
-          <div class="faq__a" data-reveal style="--i:1"><p>Oui. La facturation électronique est intégrée à C’Claires, avec les encaissements et l’export comptable&nbsp;: la facture part du bon de livraison, sans outil à côté.</p></div>
+          <div class="faq__a" data-reveal style="--i:1"><p>Oui. La facturation électronique est intégrée à C’Claires, avec les encaissements&nbsp;: la facture part du bon de livraison, sans outil à côté. Les écritures passent en direct dans Pennylane ou dans votre logiciel comptable.</p></div>
+        </div>
+        <div class="faq__band grid">
+          <h3 class="faq__q" data-reveal>Mes clients peuvent-ils commander en ligne&#8239;?</h3>
+          <div class="faq__a" data-reveal style="--i:1"><p>Oui. Un lien envoyé par e-mail ouvre une page de commande à leur nom, déjà remplie d’après leurs habitudes, avec leurs prix et les promotions du jour. La commande validée arrive directement dans C’Claires.</p></div>
         </div>
         <div class="faq__band grid">
           <h3 class="faq__q" data-reveal>Combien de personnes peuvent l’utiliser&#8239;?</h3>
@@ -632,7 +678,7 @@
         </div>
         <div class="faq__band grid">
           <h3 class="faq__q" data-reveal>Combien coûte C’Claires&#8239;?</h3>
-          <div class="faq__a" data-reveal style="--i:1"><p>Le tarif dépend du nombre de licences et des modules retenus. Écrivez-nous à <a class="link" href="mailto:contact@cclaires.fr">contact@cclaires.fr</a>&nbsp;: nous vous répondons avec un devis.</p></div>
+          <div class="faq__a" data-reveal style="--i:1"><p>C’Claires est tout compris&nbsp;: rien n’est vendu par module, toutes les fonctions sont dans le logiciel. Écrivez-nous à <a class="link" href="mailto:contact@cclaires.fr">contact@cclaires.fr</a>&nbsp;: nous vous répondons avec un devis.</p></div>
         </div>
       </div>
     </section>
@@ -660,6 +706,7 @@
         <ul class="nav-list">
           <li><a class="link" href="#etiquettes">Étiquettes en 3 clics</a></li>
           <li><a class="link" href="#metiers">Métiers</a></li>
+          <li><a class="link" href="#commande-en-ligne">Commande en ligne</a></li>
           <li><a class="link" href="#parcours">Parcours</a></li>
           <li><a class="link" href="#documents">Documents</a></li>
           <li><a class="link" href="#modules">Modules</a></li>
