@@ -222,6 +222,38 @@ ol.clics__steps { list-style: decimal; padding-left: 1.3em; margin-top: 2rem; di
 @keyframes panneau-in { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
 @keyframes sortie { from { opacity: 0; transform: translateY(-28px) rotate(var(--r, 0deg)); } to { opacity: 1; transform: rotate(var(--r, 0deg)); } }
 
+/* ---------- métiers : trois feuilles de couleur qui s’empilent ---------- */
+.metiers { padding-top: var(--band-pad); }
+.metiers__title {
+  font-family: var(--font-display); font-weight: 600; font-size: var(--step-l); line-height: 0.98; letter-spacing: -0.01em;
+  padding: 0 var(--margin) 3rem;
+}
+.sheet {
+  position: relative; min-height: 86svh;
+  border-radius: 28px 28px 0 0; overflow: hidden;
+  display: grid; grid-template-rows: 4.5rem 1fr;
+}
+.sheet--tilleul { background: var(--tilleul); color: var(--ink); --top: 0px; }
+.sheet--ciel { background: var(--ciel); color: var(--ink); --top: 4.5rem; }
+.sheet--noir { background: var(--noir); color: var(--paper); --top: 9rem; }
+.sheet__name {
+  display: flex; align-items: center; padding: 0 var(--margin);
+  font-size: var(--step-m); font-weight: 800; line-height: 1;
+}
+.sheet__body { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter); }
+.sheet__text { grid-column: 1 / 7; padding: 1.5rem 0 3rem var(--margin); align-self: end; }
+.sheet__lead { max-width: 44ch; }
+.sheet__terms { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem var(--gutter); margin-top: 2.25rem; }
+.sheet__terms dt { font-weight: 800; }
+.sheet__terms dd { margin-top: 0.2rem; }
+.sheet__photo { grid-column: 7 / -1; margin: 0; overflow: hidden; min-height: 100%; }
+.sheet__photo img { height: 100%; }
+/* l’empilement : chaque feuille glisse sur la précédente et laisse voir sa bande de titre */
+@media (min-width: 1081px) and (min-height: 700px) {
+  .sheet { position: sticky; top: var(--top); }
+  .sheet__body { min-height: calc(86svh - 4.5rem); }
+}
+
 /* ---------- parcours : une commande, quatre champs ---------- */
 .strip { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); }
 .field {
@@ -314,6 +346,29 @@ html:not(.js) .docs__sheet[hidden] { display: block; }
 }
 .modules__what { text-align: right; font-size: var(--step-body); line-height: 1.35; }
 @media (hover: hover) and (pointer: fine) { .modules__list li:hover { color: var(--paon); } }
+
+/* ---------- applications : une cellule claire, des rangées sombres ---------- */
+.apps { display: grid; grid-template-columns: 1fr 1fr; }
+.apps__cell {
+  background: var(--eau); color: var(--ink); min-height: 90svh;
+  display: flex; flex-direction: column; justify-content: space-between;
+  padding: var(--band-pad) var(--margin) 2.5rem;
+}
+.apps__title { font-family: var(--font-display); font-weight: 600; font-size: var(--step-l); line-height: 1; letter-spacing: -0.01em; }
+.apps__title span { display: block; }
+.apps__title .apps__right { text-align: right; }
+.apps__foot { display: flex; justify-content: space-between; align-items: flex-end; gap: var(--gutter); margin-top: 3rem; }
+.apps__foot p { max-width: 32ch; }
+.apps__rows { display: grid; grid-auto-rows: 1fr; background: var(--noir); color: var(--paper); }
+.apps__row {
+  display: grid; grid-template-columns: 5fr 4fr 3fr; gap: 1.25rem; align-items: start;
+  padding: 1.75rem var(--margin);
+}
+.apps__row:nth-child(odd) { background: var(--noir); }
+.apps__row:nth-child(even) { background: var(--noir-2); }
+.apps__row h3 { font-size: var(--step-m); font-weight: 800; line-height: 1.1; }
+.apps__row p { font-size: var(--step-body); }
+.apps__row ul { list-style: none; padding: 0; margin: 0; font-size: var(--step-s); line-height: 1.6; }
 
 /* ---------- éditeur : photo large, tuile de couleur, faits ---------- */
 .about { padding: var(--band-pad) var(--margin); }
@@ -558,6 +613,14 @@ html:not(.js) .docs__sheet[hidden] { display: block; }
   .site-header { grid-template-columns: auto 1fr auto; }
   .clics__text { grid-column: 1 / -1; }
   .clics__stage { grid-column: 1 / -1; margin-top: 2.5rem; min-height: 28rem; }
+  .apps { grid-template-columns: 1fr; }
+  .apps__cell { min-height: 60svh; }
+  .apps__row { grid-template-columns: 1fr 1fr; }
+  .apps__row ul { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 0 1.25rem; }
+  .sheet { min-height: 0; }
+  .sheet__text { grid-column: 1 / 8; }
+  .sheet__photo { grid-column: 8 / -1; }
+  .sheet__terms { grid-template-columns: 1fr; }
   .strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .field { min-height: 70svh; }
   .field__card { margin-top: 2.5rem; }
@@ -621,6 +684,19 @@ html:not(.js) .docs__sheet[hidden] { display: block; }
   .chip--b { width: 34vw; }
   .intro__lot { grid-column: 1 / -1; grid-row: 3; margin-top: 2rem; }
   .clics { padding-block: 4.5rem; }
+  .metiers__title { padding-bottom: 2rem; }
+  .apps__cell { min-height: 70svh; padding-block: 4rem 2rem; }
+  .apps__foot { flex-direction: column; align-items: flex-start; }
+  .apps__foot .button { width: 100%; min-height: 3.25rem; }
+  .apps__row { grid-template-columns: 1fr; gap: 0.6rem; padding: 1.75rem var(--margin); }
+  .apps__row ul { display: block; }
+  .apps__row li { display: inline; }
+  .apps__row li + li::before { content: ", "; }
+  .sheet { grid-template-rows: 3.5rem auto; border-radius: 20px 20px 0 0; }
+  .sheet + .sheet { margin-top: -20px; }
+  .sheet__body { display: flex; flex-direction: column; }
+  .sheet__photo { order: -1; aspect-ratio: 4 / 3; min-height: 0; }
+  .sheet__text { padding: 1.5rem var(--margin) 3rem; }
   .clics__stage { min-height: 0; }
   [data-ui] .c-opt { display: none; }
   [data-ui] .ui-list-row { grid-template-columns: 6.6rem minmax(0, 1fr) 2.4rem; gap: 0.5rem; padding-inline: 0.8rem; }

@@ -8,7 +8,7 @@ données structurées est `https://cclaires.fr`.
 
 | Chemin | Rôle |
 |---|---|
-| `index.html` | page d’accueil : premier écran, étiquettes en 3 clics (démonstration à cliquer), parcours d’une commande, documents, automatismes, normes, modules, éditeur, questions, appel final |
+| `index.html` | page d’accueil : premier écran, étiquettes en 3 clics (démonstration à cliquer), trois métiers (conchyliculteurs, mytiliculteurs, mareyeurs), parcours d’une commande, documents, automatismes, normes, modules, applications, éditeur, questions, appel final |
 | `mentions-legales.html` | mentions légales, crédits (servie en `/mentions-legales`) |
 | `404.html` | page introuvable |
 | `assets/css/site.css` | jetons de la charte, mise en page, fragments d’interface (`[data-ui]`) |
@@ -53,9 +53,11 @@ domaines dans Vercel).
   agrément `FR 17.999.001 CE`, GTIN `02000012345678` et SSCC `320000120000014827` (préfixes de
   circulation restreinte, donc sans collision avec de vrais produits). Une note en pied de page les dit
   fictifs.
-- **Les fonctionnalités annoncées** : la page présente le logiciel complet. Plusieurs modules ne sont
-  pas encore en production (voir le compte rendu de création du site) ; ajuster le texte si le site
-  part avant eux.
+- **Les fonctionnalités annoncées** : la page présente le logiciel complet, tel que décrit par
+  l’éditeur (étiqueteuses toutes marques, codes 1D et 2D, traçabilité intégrale, HACCP, facturation
+  électronique, encaissements, export comptable, parcs et claires, applications satellites).
+  L’application mobile et tablette est annoncée comme « bientôt ». Ajuster le texte si le site part
+  avant l’un de ces modules.
 
 ## Outils (`tools/`)
 

@@ -60,7 +60,7 @@
     'Essayez sur l’exemple : ouvrez le BL-26-02217.',
     'Un clic : le bon de livraison est ouvert. Imprimez ses étiquettes.',
     'Deux clics : le plan d’impression est prêt, modèle et étiqueteuse déjà choisis par vos règles.',
-    'Trois clics : 20 étiquettes sont parties vers l’étiqueteuse du quai 2.',
+    'Trois clics : 20 étiquettes sont parties en même temps vers les étiqueteuses des quais 2 et 3.',
   ];
   const montrer = (etat, focus) => {
     scene.dataset.etat = String(etat);
