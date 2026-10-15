@@ -50,7 +50,7 @@
   --font-text: "Cairo", "Segoe UI", system-ui, sans-serif;
 
   /* cinq tailles, pas une de plus */
-  --step-xl: clamp(3.5rem, 8.3vw, 8rem);
+  --step-xl: clamp(3.5rem, 8.3vw, 10rem);
   --step-l: clamp(1.875rem, 3.6vw, 3.5rem);
   --step-m: clamp(1.375rem, 2.2vw, 2.25rem);
   --step-body: clamp(1.0625rem, 1rem + 0.2vw, 1.1875rem);
@@ -182,24 +182,24 @@ p { text-wrap: pretty; }
 .lines .line { display: block; overflow: hidden; padding-bottom: 0.1em; margin-bottom: -0.1em; }
 .lines [data-line] { display: block; }
 
-/* ---------- introduction : un paragraphe sur le champ bleu paon ---------- */
+/* ---------- introduction : le titre et sa phrase à gauche, deux photos à droite, sur le bleu paon ---------- */
 .intro {
   background: var(--paon); color: var(--paper);
-  min-height: 78svh;
   padding: var(--band-pad) var(--margin);
-  display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); grid-template-rows: auto 1fr;
+  display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); align-items: center;
   column-gap: var(--gutter);
 }
+.intro__text { grid-column: 1 / 9; }
+.intro__title { font-family: var(--font-display); font-weight: 600; font-size: var(--step-l); line-height: 0.98; letter-spacing: -0.01em; }
 .intro__statement {
-  grid-column: 1 / -1;
-  font-size: var(--step-m); font-weight: 800; line-height: 1.18;
-  max-width: none;
+  margin-top: 1.5rem; max-width: 44ch;
+  font-size: var(--step-m); font-weight: 800; line-height: 1.2;
 }
-.intro__chips { grid-column: 6 / -1; position: relative; align-self: end; display: flex; justify-content: flex-end; align-items: flex-end; gap: 0; margin-top: 3rem; }
-.chip { margin: 0; width: clamp(9rem, 17vw, 17rem); aspect-ratio: 4 / 5; overflow: hidden; }
+.intro__chips { grid-column: 9 / -1; display: flex; justify-content: flex-end; align-items: flex-start; }
+.chip { margin: 0; width: clamp(9rem, 20vw, 22rem); aspect-ratio: 4 / 5; overflow: hidden; flex: none; }
 .chip--a { transform: rotate(-3deg); }
-.chip--b { width: clamp(7rem, 12vw, 12rem); transform: rotate(4deg) translate(-12%, -18%); }
-.intro__lot { grid-column: 1 / 6; align-self: end; margin-top: 3rem; font-size: var(--step-body); max-width: 34ch; }
+.chip--b { width: clamp(7rem, 13vw, 14rem); transform: rotate(4deg) translate(-18%, 45%); }
+.intro__lot { margin-top: 2rem; font-size: var(--step-body); max-width: 40ch; }
 
 /* ---------- étiquettes en 3 clics : la démonstration que le visiteur fait lui-même ---------- */
 .clics { background: var(--noir); color: var(--paper); padding: var(--band-pad) var(--margin); }
@@ -645,19 +645,21 @@ html:not(.js) .docs__sheet[hidden] { display: block; }
 
 /* ---------- mouvement ---------- */
 @media (prefers-reduced-motion: no-preference) {
-  .js .lines [data-line] { transform: translateY(105%); animation: line-up 900ms var(--ease-out) forwards; animation-delay: calc(var(--i, 0) * 110ms + 150ms); }
-  .js [data-rise] { opacity: 0; transform: translateY(18px); animation: rise var(--t-reveal) var(--ease-out) forwards; animation-delay: calc(var(--i, 0) * 90ms + 420ms); }
+  /* l’entrée du premier écran ne joue que si le navigateur dessine (classe posée au premier rafraîchissement) :
+     un onglet en arrière-plan ou un aperçu figé montre le titre directement, jamais un vide */
+  .entree .lines [data-line] { transform: translateY(105%); animation: line-up 900ms var(--ease-out) forwards; animation-delay: calc(var(--i, 0) * 110ms + 150ms); }
+  .entree [data-rise] { opacity: 0; transform: translateY(18px); animation: rise var(--t-reveal) var(--ease-out) forwards; animation-delay: calc(var(--i, 0) * 90ms + 420ms); }
   .js [data-reveal] { opacity: 0; transform: translateY(24px); transition: opacity 700ms var(--ease-out), transform 900ms var(--ease-out); transition-delay: calc(var(--i, 0) * 75ms); }
   .js [data-reveal].is-in { opacity: 1; transform: none; }
   .js .chip[data-reveal].chip--a { transform: rotate(-3deg) translateY(32px); }
   .js .chip[data-reveal].chip--a.is-in { transform: rotate(-3deg); }
-  .js .chip[data-reveal].chip--b { transform: rotate(4deg) translate(-12%, 0); }
-  .js .chip[data-reveal].chip--b.is-in { transform: rotate(4deg) translate(-12%, -18%); }
+  .js .chip[data-reveal].chip--b { transform: rotate(4deg) translate(-18%, 60%); }
+  .js .chip[data-reveal].chip--b.is-in { transform: rotate(4deg) translate(-18%, 45%); }
   /* le cadre est observé, pas le volet : un élément entièrement découpé ne déclenche pas l’observateur */
   .js .about__photo[data-reveal] { opacity: 1; transform: none; }
   .js .about__photo[data-reveal] .shutter { clip-path: inset(0 0 100% 0); transition: clip-path 1100ms var(--ease-in-out); }
   .js .about__photo[data-reveal].is-in .shutter { clip-path: inset(0); }
-  .js .mosaic img { animation: settle 1600ms var(--ease-soft) both; }
+  .entree .mosaic img { animation: settle 1600ms var(--ease-soft) both; }
   @supports (animation-timeline: view()) {
     .drift { animation: drift linear both; animation-timeline: view(); animation-range: entry 0% exit 100%; }
   }
@@ -670,6 +672,8 @@ html:not(.js) .docs__sheet[hidden] { display: block; }
 /* ---------- tablette ---------- */
 @media (max-width: 1080px) {
   .site-header { grid-template-columns: auto 1fr auto; }
+  .intro__text { grid-column: 1 / -1; }
+  .intro__chips { grid-column: 1 / -1; justify-content: flex-start; margin: 2.5rem 0 4rem; }
   .clics__text { grid-column: 1 / -1; }
   .clics__stage { grid-column: 1 / -1; margin-top: 2.5rem; min-height: 28rem; }
   .apps { grid-template-columns: 1fr; }
@@ -736,12 +740,12 @@ html:not(.js) .docs__sheet[hidden] { display: block; }
   .standfirst { max-width: 34ch; }
   .hero__cta-phone { display: flex; margin-top: 1.75rem; }
   .hero__cta-phone .button { width: 100%; min-height: 3.25rem; }
-  .intro { min-height: 0; padding-block: 4.5rem; }
+  .intro { padding-block: 4.5rem 6rem; }
+  .intro__text { grid-column: 1 / -1; }
   .intro__statement { line-height: 1.22; }
   .intro__chips { grid-column: 1 / -1; justify-content: flex-start; margin-top: 2.5rem; }
   .chip { width: 52vw; }
   .chip--b { width: 34vw; }
-  .intro__lot { grid-column: 1 / -1; grid-row: 3; margin-top: 2rem; }
   .clics { padding-block: 4.5rem; }
   .metiers__title { padding-bottom: 2rem; }
   .apps__cell { min-height: 70svh; padding-block: 4rem 2rem; }

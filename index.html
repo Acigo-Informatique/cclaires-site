@@ -26,7 +26,7 @@
   <link rel="preload" href="/assets/fonts/barlow-condensed-500.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/assets/fonts/cairo-variable.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/assets/css/site.css">
-  <script>document.documentElement.classList.add('js')</script>
+  <script>document.documentElement.classList.add('js');requestAnimationFrame(function(){document.documentElement.classList.add('entree')})</script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -165,12 +165,15 @@
 
   <main id="contenu">
 
-    <section class="intro" aria-label="Ce que fait C’Claires">
-      <p class="intro__statement" data-reveal>Une bourriche ne part jamais seule. Avec elle partent une commande, un numéro de lot, une étiquette sanitaire, une place sur la palette, un transporteur et une facture. C’Claires les tient ensemble, dans un seul logiciel.</p>
-      <p class="intro__lot" data-reveal style="--i:1">Sur cette page, une même commande sert d’exemple&nbsp;: des fines de claire n°&nbsp;3 du lot 2026-351-3-014, qui partent vendredi pour Caen.</p>
+    <section class="intro" aria-labelledby="intro-titre">
+      <div class="intro__text">
+        <h2 class="intro__title" id="intro-titre" data-reveal>Une bourriche ne part jamais seule.</h2>
+        <p class="intro__statement" data-reveal style="--i:1">Avec elle partent une commande, un lot, une étiquette sanitaire, une palette, un transporteur et une facture&nbsp;: C’Claires les tient dans un seul logiciel.</p>
+        <p class="intro__lot" data-reveal style="--i:2">Sur cette page, une même commande sert d’exemple&nbsp;: des fines de claire n°&nbsp;3 du lot 2026-351-3-014, qui partent vendredi pour Caen.</p>
+      </div>
       <div class="intro__chips" aria-hidden="true">
-        <figure class="chip chip--a" data-reveal style="--i:2"><img class="photo" src="/assets/img/photos/huitres-rocher-640.jpg" srcset="/assets/img/photos/huitres-rocher-320.jpg 320w, /assets/img/photos/huitres-rocher-640.jpg 640w" sizes="(max-width: 720px) 52vw, 17vw" width="640" height="800" alt="" loading="lazy" decoding="async"></figure>
-        <figure class="chip chip--b" data-reveal style="--i:3"><img class="photo" src="/assets/img/photos/huitre-creuse-640.jpg" srcset="/assets/img/photos/huitre-creuse-320.jpg 320w, /assets/img/photos/huitre-creuse-640.jpg 640w" sizes="(max-width: 720px) 34vw, 12vw" width="640" height="800" alt="" loading="lazy" decoding="async"></figure>
+        <figure class="chip chip--a" data-reveal style="--i:2"><img class="photo" src="/assets/img/photos/huitres-rocher-640.jpg" srcset="/assets/img/photos/huitres-rocher-320.jpg 320w, /assets/img/photos/huitres-rocher-640.jpg 640w" sizes="(max-width: 720px) 52vw, 20vw" width="640" height="800" alt="" loading="lazy" decoding="async"></figure>
+        <figure class="chip chip--b" data-reveal style="--i:3"><img class="photo" src="/assets/img/photos/huitre-creuse-640.jpg" srcset="/assets/img/photos/huitre-creuse-320.jpg 320w, /assets/img/photos/huitre-creuse-640.jpg 640w" sizes="(max-width: 720px) 34vw, 13vw" width="640" height="800" alt="" loading="lazy" decoding="async"></figure>
       </div>
     </section>
 
