@@ -69,30 +69,39 @@
   });
 })();
 
-// Étiquettes en 3 clics : le visiteur ouvre le BL, demande les étiquettes, lance l’impression.
-// Sans script, la scène montre le dialogue d’impression et la liste des trois clics.
+// De la commande à la facture : le visiteur fait avancer la commande d’exemple en sept clics,
+// dont les trois de l’étiquetage. Le fond de la section prend la couleur de l’étape.
+// Sans script, la scène montre la commande et la liste des cinq étapes.
 (() => {
-  const scene = document.querySelector('.clics__stage');
+  const section = document.querySelector('.cycle');
+  const scene = section && section.querySelector('.cycle__stage');
   if (!scene) return;
-  const etapes = [...document.querySelectorAll('.clics__steps li')];
-  const statut = document.querySelector('.clics__status');
-  const recommencer = document.querySelector('.clics__reset');
-  const messages = [
-    'Essayez sur l’exemple : ouvrez le BL-26-02217.',
-    'Un clic : le bon de livraison est ouvert. Imprimez ses étiquettes.',
-    'Deux clics : le plan d’impression est prêt, modèle et étiqueteuse déjà choisis par vos règles.',
-    'Trois clics : 20 étiquettes sont parties en même temps vers les étiqueteuses des quais 2 et 3.',
+  const etapes = [...section.querySelectorAll('.cycle__steps li')];
+  const statut = section.querySelector('.cycle__status');
+  const recommencer = section.querySelector('.cycle__reset');
+  // pour chaque état (0 à 7) : l’étape de la liste, le fond, le message
+  const etats = [
+    [0, 'eau', 'Essayez sur l’exemple : la commande de la Poissonnerie de la Halle est saisie. Validez-la.'],
+    [1, 'paon', 'Un clic : la commande est validée. Allotissez-la, chaque ligne reçoit son lot.'],
+    [2, 'tilleul', 'Deux clics : chaque ligne a son lot. Ouvrez le BL-26-02217 pour en imprimer les étiquettes.'],
+    [2, 'tilleul', 'Trois clics : le bon de livraison est ouvert. Imprimez ses étiquettes.'],
+    [2, 'tilleul', 'Quatre clics : modèle et étiqueteuse sont déjà choisis par vos règles. Lancez l’impression.'],
+    [3, 'ciel', 'Cinq clics, dont trois pour les étiquettes : 20 sont parties en même temps vers les étiqueteuses des quais 2 et 3. Reste l’étiquette de la palette.'],
+    [4, 'noir', 'Six clics : la palette a son étiquette GS1 et son SSCC, le camion charge. Facturez le BL.'],
+    [5, 'noir', 'Sept clics : la facture électronique est partie et l’écriture attend dans votre comptabilité. Rien n’a été ressaisi.'],
   ];
   const montrer = (etat, focus) => {
+    const [etape, fond, message] = etats[etat];
     scene.dataset.etat = String(etat);
+    section.dataset.fond = fond;
     const panneau = scene.querySelector(`[data-panneau="${etat}"]`);
     panneau.classList.remove('is-entering'); void panneau.offsetWidth; panneau.classList.add('is-entering');
     etapes.forEach((li, i) => {
-      li.classList.toggle('is-done', i < etat);
-      li.classList.toggle('is-current', i === etat);
+      li.classList.toggle('is-done', i < etape);
+      li.classList.toggle('is-current', i === etape);
     });
-    statut.textContent = messages[etat];
-    recommencer.hidden = etat !== 3;
+    statut.textContent = message;
+    recommencer.hidden = etat !== etats.length - 1;
     if (focus) (panneau.querySelector('[data-clic]') || recommencer).focus({ preventScroll: true });
   };
   scene.addEventListener('click', (e) => {

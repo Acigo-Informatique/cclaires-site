@@ -202,28 +202,48 @@ p { text-wrap: pretty; }
 .intro__lot { margin-top: 2rem; font-size: var(--step-body); max-width: 40ch; }
 .insecable { white-space: nowrap; }
 
-/* ---------- étiquettes en 3 clics : la démonstration que le visiteur fait lui-même ---------- */
-.clics { background: var(--noir); color: var(--paper); padding: var(--band-pad) var(--margin); }
-.clics__title { font-family: var(--font-display); font-weight: 500; font-size: var(--step-xl); line-height: 0.9; letter-spacing: -0.02em; }
-.clics__body { margin-top: clamp(2.5rem, 5vw, 4.5rem); align-items: start; }
-.clics__text { grid-column: 1 / 5; }
-.clics__text > p:first-child { max-width: 40ch; }
-ol.clics__steps { list-style: decimal; padding-left: 1.3em; margin-top: 2rem; display: grid; gap: 0.6rem; font-weight: 700; }
-.clics__steps li::marker { font-variant-numeric: tabular-nums; }
-.js .clics__steps li { color: #9aa3a5; transition: color var(--t-ui) ease; }
-.js .clics__steps li.is-current { color: var(--tilleul); }
-.js .clics__steps li.is-done { color: var(--paper); }
-.clics__status { margin-top: 1.75rem; min-height: 3.2em; max-width: 40ch; }
-.clics__reset { margin-top: 0.4rem; font-weight: 700; color: var(--tilleul); min-height: 2.75rem; }
-.clics__stage { grid-column: 6 / -1; position: relative; min-height: 31rem; }
-.clics__stage [data-panneau] { display: none; }
-.clics__stage[data-etat="0"] [data-panneau="0"],
-.clics__stage[data-etat="1"] [data-panneau="1"],
-.clics__stage[data-etat="2"] [data-panneau="2"],
-.clics__stage[data-etat="3"] [data-panneau="3"] { display: block; }
+/* ---------- de la commande à la facture : la démonstration que le visiteur fait lui-même ---------- */
+/* le fond prend la couleur de l’étape : eau, paon, tilleul, ciel, puis le second noir pour la facture
+   (le premier est celui de la feuille des mareyeurs, juste au-dessus) */
+.cycle { background: var(--eau); color: var(--ink); padding: var(--band-pad) var(--margin); }
+.cycle[data-fond="paon"] { background: var(--paon); color: var(--paper); }
+.cycle[data-fond="tilleul"] { background: var(--tilleul); }
+.cycle[data-fond="ciel"] { background: var(--ciel); }
+.cycle[data-fond="noir"] { background: var(--noir-2); color: var(--paper); }
 @media (prefers-reduced-motion: no-preference) {
-  .js .clics__stage [data-panneau].is-entering { animation: panneau-in 280ms var(--ease-out) both; }
-  .js .clics__stage [data-panneau="3"].is-entering .ui-mini { animation: sortie 620ms var(--ease-out) both; animation-delay: calc(var(--n, 0) * 140ms + 120ms); }
+  .cycle { transition: background-color 450ms var(--ease-out), color 300ms ease; }
+}
+.cycle__title { font-family: var(--font-display); font-weight: 500; font-size: var(--step-xl); line-height: 0.9; letter-spacing: -0.02em; }
+.cycle__body { margin-top: clamp(2.5rem, 5vw, 4.5rem); align-items: start; }
+.cycle__text { grid-column: 1 / 5; }
+.cycle__text > p:first-child { max-width: 40ch; }
+ol.cycle__steps { list-style: decimal; padding-left: 1.3em; margin-top: 2rem; display: grid; gap: 0.6rem; font-weight: 700; }
+.cycle__steps li::marker { font-variant-numeric: tabular-nums; }
+/* l’étape en cours est soulignée, les étapes faites sont cochées ; aucune n’est grisée, le fond change trop */
+.js .cycle__steps li { font-weight: 500; }
+.js .cycle__steps li.is-current { font-weight: 800; text-decoration: underline; text-decoration-thickness: 3px; text-underline-offset: 0.3em; }
+.js .cycle__steps li.is-done { font-weight: 700; }
+.js .cycle__steps li.is-done::after {
+  content: ""; display: inline-block; width: 0.32em; height: 0.62em; margin-left: 0.6em;
+  border: solid currentColor; border-width: 0 0.14em 0.14em 0; transform: rotate(45deg) translateY(-0.12em);
+}
+.cycle__status { margin-top: 1.75rem; min-height: 4.8em; max-width: 40ch; }
+.cycle__reset { margin-top: 0.4rem; font-weight: 700; min-height: 2.75rem; }
+/* le bouton garde sa place quand il est caché : la scène ne saute pas au dernier clic */
+.js .cycle__reset[hidden] { display: inline-block; visibility: hidden; }
+.cycle__stage { grid-column: 6 / -1; position: relative; min-height: 31rem; }
+.cycle__stage [data-panneau] { display: none; }
+.cycle__stage[data-etat="0"] [data-panneau="0"],
+.cycle__stage[data-etat="1"] [data-panneau="1"],
+.cycle__stage[data-etat="2"] [data-panneau="2"],
+.cycle__stage[data-etat="3"] [data-panneau="3"],
+.cycle__stage[data-etat="4"] [data-panneau="4"],
+.cycle__stage[data-etat="5"] [data-panneau="5"],
+.cycle__stage[data-etat="6"] [data-panneau="6"],
+.cycle__stage[data-etat="7"] [data-panneau="7"] { display: block; }
+@media (prefers-reduced-motion: no-preference) {
+  .js .cycle__stage [data-panneau].is-entering { animation: panneau-in 280ms var(--ease-out) both; }
+  .js .cycle__stage [data-panneau].is-entering .ui-mini { animation: sortie 620ms var(--ease-out) both; animation-delay: calc(var(--n, 0) * 140ms + 120ms); }
 }
 @keyframes panneau-in { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
 @keyframes sortie { from { opacity: 0; transform: translateY(-28px) rotate(var(--r, 0deg)); } to { opacity: 1; transform: rotate(var(--r, 0deg)); } }
@@ -260,21 +280,6 @@ ol.clics__steps { list-style: decimal; padding-left: 1.3em; margin-top: 2rem; di
 /* l’empilement : chaque feuille glisse sur la précédente et laisse voir sa bande de titre.
    Le script ne le pose que si chaque feuille tient entière dans l’écran (site.js). */
 .metiers.is-empile .sheet { position: sticky; top: var(--top); }
-
-/* ---------- parcours : une commande, quatre champs ---------- */
-.strip { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); }
-.field {
-  position: relative; min-height: 84svh;
-  display: grid; grid-template-rows: auto 1fr auto;
-  padding: clamp(1.5rem, 2.4vw, 2.5rem) clamp(1rem, 1.8vw, 1.75rem) 1.75rem;
-}
-.field--eau { background: var(--eau); color: var(--ink); }
-.field--paon { background: var(--paon); color: var(--paper); }
-.field--tilleul { background: var(--tilleul); color: var(--ink); }
-.field--ciel { background: var(--ciel); color: var(--ink); }
-.field__title { font-family: var(--font-display); font-weight: 600; font-size: var(--step-l); line-height: 0.95; letter-spacing: -0.01em; }
-.field__card { align-self: start; justify-self: center; margin-top: 18svh; }
-.field__clause { font-size: var(--step-m); font-weight: 800; line-height: 1.12; max-width: 16ch; margin-top: 2rem; }
 
 /* ---------- documents : index des sorties, feuille vivante ---------- */
 .docs { padding: var(--band-pad) var(--margin) var(--band-pad); }
@@ -468,29 +473,10 @@ html:not(.js) .docs__sheet[hidden] { display: block; }
 
 /* ---------- interface du produit (fragments réels, hors règles de la page) ---------- */
 [data-ui] { font-family: var(--font-text); color: #1b2426; }
-[data-ui].ui-card {
-  width: 17.5rem; background: #fff; border-radius: 10px; padding: 0.9rem 1rem 0.8rem;
-  font-size: 0.875rem; line-height: 1.4;
-  box-shadow: 0 1px 2px rgb(0 0 0 / 0.12), 0 8px 24px rgb(0 0 0 / 0.10);
-  transition: transform 150ms var(--ease-out);
-}
-@media (hover: hover) and (pointer: fine) { .field:hover [data-ui].ui-card { transform: translateY(-6px); } }
-[data-ui] .ui-head { display: flex; justify-content: space-between; align-items: center; gap: 0.5rem; }
-[data-ui] .ui-num { font-weight: 700; font-size: 0.8125rem; color: #3d4a4d; font-variant-numeric: tabular-nums; }
 [data-ui] .ui-pill { font-size: 0.75rem; font-weight: 700; padding: 0.05rem 0.55rem; border-radius: 999px; }
 [data-ui] .ui-pill--info { background: #d9eef2; color: #00596a; }
-[data-ui] .ui-pill--lot { background: #eef2da; color: #4a5a12; }
-[data-ui] .ui-pill--print { background: #fff1cc; color: #6b4f00; }
 [data-ui] .ui-pill--done { background: #d8f0e2; color: #17643a; }
-[data-ui] .ui-client { margin-top: 0.55rem; font-weight: 800; font-size: 1rem; }
-[data-ui] .ui-meta { color: #5b6769; font-size: 0.8125rem; }
-[data-ui] .ui-rows { margin-top: 0.6rem; border-top: 1px solid #e3e8e9; }
-[data-ui] .ui-rows li { display: flex; justify-content: space-between; gap: 0.75rem; padding: 0.4rem 0; border-bottom: 1px solid #eef1f2; }
-[data-ui] .ui-rows li > span:last-child { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
-[data-ui] .ui-rows small { display: block; font-size: 0.75rem; color: #5b6769; }
 [data-ui] .ui-tag { display: inline-block; margin-top: 0.15rem; font-size: 0.6875rem; font-weight: 700; background: #eef2da; color: #4a5a12; border-radius: 4px; padding: 0 0.35rem; font-variant-numeric: tabular-nums; }
-[data-ui] .ui-foot { display: flex; justify-content: space-between; margin-top: 0.6rem; font-weight: 800; font-variant-numeric: tabular-nums; }
-[data-ui] .ui-check { color: #17643a; font-weight: 800; }
 
 /* feuilles : documents imprimés */
 [data-ui].ui-sheet { background: #fff; box-shadow: 0 1px 2px rgb(0 0 0 / 0.10), 0 18px 40px rgb(0 0 0 / 0.10); color: #111; }
@@ -589,7 +575,7 @@ html:not(.js) .docs__sheet[hidden] { display: block; }
 [data-ui] .trace-node { border: 1px solid #cfd8da; border-radius: 6px; padding: 0.5rem 0.65rem; }
 [data-ui] .trace-node--focus { border: 2px solid #007b8e; background: #f0f8f9; }
 
-/* fenêtres du logiciel (démonstration des 3 clics) */
+/* fenêtres du logiciel (démonstration de la commande à la facture) */
 [data-ui].ui-window, [data-ui] .ui-window {
   background: #fff; color: #1b2426; border-radius: 10px; overflow: hidden;
   font-size: 0.875rem; line-height: 1.4; max-width: 46rem;
@@ -622,6 +608,12 @@ html:not(.js) .docs__sheet[hidden] { display: block; }
 [data-ui] .ui-check-box::after { content: ""; width: 0.3rem; height: 0.58rem; margin-top: -0.12rem; border: solid #fff; border-width: 0 2px 2px 0; transform: rotate(45deg); }
 [data-ui] .ui-sent li { display: flex; justify-content: space-between; gap: 1rem; padding: 0.55rem 0; border-bottom: 1px solid #eef1f2; }
 [data-ui] .ui-sent li span:last-child { color: #17643a; font-weight: 800; white-space: nowrap; }
+[data-ui] .ui-sent li span.is-attente { color: #8a5a00; }
+[data-ui] .ui-sent--sums li span:last-child { color: inherit; font-variant-numeric: tabular-nums; }
+[data-ui] .ui-sent--sums li:last-child { font-weight: 800; border-bottom: 0; }
+[data-ui] .ui-win-note { margin-top: 0.6rem; color: #5b6769; font-size: 0.8125rem; }
+[data-ui] .ui-win-total { margin-right: auto; font-weight: 800; font-variant-numeric: tabular-nums; }
+[data-ui] .ui-mini--palette { width: 13rem; }
 [data-ui].ui-printed .ui-window { max-width: 34rem; }
 [data-ui] .ui-labels { display: flex; gap: 1rem; margin-top: 1.75rem; padding-left: 0.5rem; }
 [data-ui] .ui-mini {
@@ -680,8 +672,8 @@ html:not(.js) .docs__sheet[hidden] { display: block; }
 /* ---------- tablette ---------- */
 @media (max-width: 1080px) {
   .site-header { grid-template-columns: auto 1fr auto; }
-  .clics__text { grid-column: 1 / -1; }
-  .clics__stage { grid-column: 1 / -1; margin-top: 2.5rem; min-height: 28rem; }
+  .cycle__text { grid-column: 1 / 6; }
+  .cycle__stage { grid-column: 6 / -1; min-height: 28rem; }
   .apps { grid-template-columns: 1fr; }
   .apps__cell { min-height: 0; }
   .apps__row { grid-template-columns: 1fr 1fr; }
@@ -690,9 +682,6 @@ html:not(.js) .docs__sheet[hidden] { display: block; }
   .sheet__text { grid-column: 1 / 8; }
   .sheet__photo { grid-column: 8 / -1; }
   .sheet__terms { grid-template-columns: 1fr; }
-  .strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .field { min-height: 70svh; }
-  .field__card { margin-top: 2.5rem; }
   .docs__index { grid-column: 1 / -1; padding-top: 0; display: flex; flex-wrap: wrap; gap: 0.2rem 1.4rem; }
   .docs__note { flex: 0 0 100%; max-width: none; padding-right: 35%; margin-top: 1.5rem; }
   .docs__stage { grid-column: 1 / -1; margin-top: 2rem; }
@@ -713,6 +702,11 @@ html:not(.js) .docs__sheet[hidden] { display: block; }
 }
 
 /* ---------- téléphone : une seconde composition ---------- */
+@media (max-width: 860px) {
+  .cycle__text { grid-column: 1 / -1; }
+  .cycle__stage { grid-column: 1 / -1; margin-top: 2.5rem; }
+}
+
 @media (max-width: 720px) {
   /* cinq tailles sur téléphone aussi */
   :root {
@@ -752,7 +746,7 @@ html:not(.js) .docs__sheet[hidden] { display: block; }
   .intro__chips { grid-column: 1 / -1; justify-content: flex-start; margin-top: 2.5rem; }
   .chip { width: 52vw; }
   .chip--b { width: 34vw; }
-  .clics { padding-block: 4.5rem; }
+  .cycle { padding-block: 4.5rem; }
   .metiers__title { padding-bottom: 2rem; }
   .apps__cell { padding-block: 4rem 2rem; }
   .apps__foot { flex-direction: column; align-items: flex-start; }
@@ -766,18 +760,13 @@ html:not(.js) .docs__sheet[hidden] { display: block; }
   .sheet__body { display: flex; flex-direction: column; }
   .sheet__photo { order: -1; aspect-ratio: 4 / 3; min-height: 0; }
   .sheet__text { padding: 1.5rem var(--margin) 3rem; }
-  .clics__stage { min-height: 0; }
+  .cycle__stage { min-height: 0; }
   [data-ui] .c-opt { display: none; }
   [data-ui] .ui-list-row { grid-template-columns: 6.6rem minmax(0, 1fr) 2.4rem; gap: 0.5rem; padding-inline: 0.8rem; }
   [data-ui] .ui-win-head, [data-ui] .ui-win-body, [data-ui] .ui-win-foot { padding-inline: 0.8rem; }
   [data-ui] .ui-win-body td, [data-ui] .ui-win-body th { padding-inline: 0.25rem; }
   [data-ui] .ui-labels { overflow: hidden; padding: 0 0 1.5rem 0.25rem; gap: 0.6rem; }
   [data-ui] .ui-mini { width: 8.75rem; flex: none; }
-  .strip { grid-template-columns: 1fr; }
-  .field { min-height: 64svh; grid-template-rows: auto auto auto; padding: 2rem 1.25rem 2.5rem; }
-  .field__clause { order: -1; margin: 0 0 1.25rem; max-width: 22ch; }
-  .field__title { margin-bottom: 1rem; order: -2; }
-  .field__card { justify-self: start; margin-top: 0.75rem; }
   .docs { padding-inline: 0; }
   .docs__index {
     display: flex; flex-wrap: nowrap; overflow-x: auto; scroll-snap-type: x mandatory; gap: 1.25rem;
