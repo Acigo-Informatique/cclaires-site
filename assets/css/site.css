@@ -254,11 +254,12 @@ ol.clics__steps { list-style: decimal; padding-left: 1.3em; margin-top: 2rem; di
 .sheet__terms dd { margin-top: 0.2rem; }
 .sheet__photo { grid-column: 7 / -1; margin: 0; overflow: hidden; min-height: 100%; }
 .sheet__photo img { height: 100%; }
-/* l’empilement : chaque feuille glisse sur la précédente et laisse voir sa bande de titre */
 @media (min-width: 1081px) and (min-height: 700px) {
-  .sheet { position: sticky; top: var(--top); }
   .sheet__body { min-height: calc(86svh - 4.5rem); }
 }
+/* l’empilement : chaque feuille glisse sur la précédente et laisse voir sa bande de titre.
+   Le script ne le pose que si chaque feuille tient entière dans l’écran (site.js). */
+.metiers.is-empile .sheet { position: sticky; top: var(--top); }
 
 /* ---------- parcours : une commande, quatre champs ---------- */
 .strip { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); }

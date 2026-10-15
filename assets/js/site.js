@@ -20,6 +20,27 @@
   }, 2500));
 })();
 
+// Métiers : les trois feuilles s’empilent au défilement, à condition que chacune tienne entière
+// dans l’écran sous les bandes de titre des précédentes ; sinon le bas d’une feuille serait recouvert
+// avant d’avoir été lu. Recalculé quand la fenêtre change de taille.
+(() => {
+  const section = document.querySelector('.metiers');
+  const feuilles = section ? [...section.querySelectorAll('.sheet')] : [];
+  if (feuilles.length < 2) return;
+  const assezLarge = matchMedia('(min-width: 721px)');
+  const mesurer = () => {
+    section.classList.add('is-empile');
+    const tient = assezLarge.matches && feuilles.slice(0, -1).every((f) =>
+      parseFloat(getComputedStyle(f).top) + f.offsetHeight <= innerHeight);
+    section.classList.toggle('is-empile', tient);
+  };
+  let attente = 0;
+  const planifier = () => { cancelAnimationFrame(attente); attente = requestAnimationFrame(mesurer); };
+  mesurer();
+  addEventListener('resize', planifier);
+  document.fonts?.ready.then(planifier);
+})();
+
 // Documents : un onglet par document produit depuis la même commande.
 (() => {
   const liste = document.querySelector('.docs__index[role="tablist"]');
