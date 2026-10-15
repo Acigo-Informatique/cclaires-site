@@ -48,6 +48,40 @@
   });
 })();
 
+// Étiquettes en 3 clics : le visiteur ouvre le BL, demande les étiquettes, lance l’impression.
+// Sans script, la scène montre le dialogue d’impression et la liste des trois clics.
+(() => {
+  const scene = document.querySelector('.clics__stage');
+  if (!scene) return;
+  const etapes = [...document.querySelectorAll('.clics__steps li')];
+  const statut = document.querySelector('.clics__status');
+  const recommencer = document.querySelector('.clics__reset');
+  const messages = [
+    'Essayez sur l’exemple : ouvrez le BL-26-02217.',
+    'Un clic : le bon de livraison est ouvert. Imprimez ses étiquettes.',
+    'Deux clics : le plan d’impression est prêt, modèle et étiqueteuse déjà choisis par vos règles.',
+    'Trois clics : 20 étiquettes sont parties vers l’étiqueteuse du quai 2.',
+  ];
+  const montrer = (etat, focus) => {
+    scene.dataset.etat = String(etat);
+    const panneau = scene.querySelector(`[data-panneau="${etat}"]`);
+    panneau.classList.remove('is-entering'); void panneau.offsetWidth; panneau.classList.add('is-entering');
+    etapes.forEach((li, i) => {
+      li.classList.toggle('is-done', i < etat);
+      li.classList.toggle('is-current', i === etat);
+    });
+    statut.textContent = messages[etat];
+    recommencer.hidden = etat !== 3;
+    if (focus) (panneau.querySelector('[data-clic]') || recommencer).focus({ preventScroll: true });
+  };
+  scene.addEventListener('click', (e) => {
+    const cible = e.target.closest('[data-clic]');
+    if (cible) montrer(Number(cible.dataset.clic), true);
+  });
+  recommencer.addEventListener('click', () => montrer(0, true));
+  montrer(0, false);
+})();
+
 // Automatismes : chaque interrupteur ouvre la conséquence chiffrée de sa phrase.
 (() => {
   document.querySelectorAll('.auto__band').forEach((bande) => {

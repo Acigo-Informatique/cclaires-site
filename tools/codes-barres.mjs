@@ -51,18 +51,23 @@ function svg(largeurs, hauteur, titre) {
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${total} ${hauteur}" preserveAspectRatio="none" role="img" aria-label="${titre}"><title>${titre}</title><path fill="#000" d="${barres}"/></svg>\n`;
 }
 
-const gtin13 = '200001234567';
-const gtin14 = '0' + gtin13.slice(0, 12);
-const GTIN = gtin14 + cle(gtin14);
+// GTIN-14 (indicateur 0) d'un article en circulation restreinte, à partir de ses 12 premiers chiffres.
+const gtin = (douze) => { const base = '0' + douze; return base + cle(base); };
 const ssccBase = '3' + '2000012' + '000001482';
 const SSCC = ssccBase + cle(ssccBase);
-const LOT = '2026-351-3-014';
 
-const etiquette = [['01', GTIN, true], ['13', '261217', true], ['10', LOT]];
+// Une étiquette par lot de la commande d'exemple : article, date de conditionnement, lot.
+const etiquettes = {
+  'gs1-etiquette': [['01', gtin('200001234567'), true], ['13', '261217', true], ['10', '2026-351-3-014']],
+  'gs1-etiquette-speciales': [['01', gtin('200001234568'), true], ['13', '261215', true], ['10', '2026-349-2-006']],
+  'gs1-etiquette-moules': [['01', gtin('200001234569'), true], ['13', '261216', true], ['10', '2026-350-M-002']],
+};
 const palette = [['00', SSCC, true]];
 const lisible = (els) => els.map(([ai, v]) => `(${ai})${v}`).join('');
 
-writeFileSync(new URL('../assets/img/gs1-etiquette.svg', import.meta.url), svg(encoder(etiquette), 60, lisible(etiquette)));
+for (const [nom, elements] of Object.entries(etiquettes)) {
+  writeFileSync(new URL(`../assets/img/${nom}.svg`, import.meta.url), svg(encoder(elements), 60, lisible(elements)));
+  console.log(nom, lisible(elements));
+}
 writeFileSync(new URL('../assets/img/gs1-palette.svg', import.meta.url), svg(encoder(palette), 60, lisible(palette)));
-console.log(lisible(etiquette));
-console.log(lisible(palette));
+console.log('gs1-palette', lisible(palette));

@@ -8,7 +8,7 @@ données structurées est `https://cclaires.fr`.
 
 | Chemin | Rôle |
 |---|---|
-| `index.html` | page d’accueil : premier écran, parcours d’une commande, documents, automatismes, normes, modules, éditeur, questions, appel final |
+| `index.html` | page d’accueil : premier écran, étiquettes en 3 clics (démonstration à cliquer), parcours d’une commande, documents, automatismes, normes, modules, éditeur, questions, appel final |
 | `mentions-legales.html` | mentions légales, crédits (servie en `/mentions-legales`) |
 | `404.html` | page introuvable |
 | `assets/css/site.css` | jetons de la charte, mise en page, fragments d’interface (`[data-ui]`) |
@@ -62,7 +62,7 @@ domaines dans Vercel).
 | Outil | Usage |
 |---|---|
 | `marque.mjs` | `node tools/marque.mjs <dossier des logos de la charte>` : logo blanc, logo paon, symbole, icône et favicon, à partir des SVG d’origine (tracés recopiés, jamais redessinés) |
-| `codes-barres.mjs` | `node tools/codes-barres.mjs` : codes GS1-128 réels de l’étiquette et de la fiche palette |
+| `codes-barres.mjs` | `node tools/codes-barres.mjs` : codes GS1-128 réels des étiquettes des trois lots et de la fiche palette |
 | `carte.mjs` | `node tools/carte.mjs <france.svg>` : carte de France (domaine public) avec Saint-Lô |
 | `recadrer.ps1` | recadre et compresse une photo en plusieurs largeurs |
 | `images.html` | ouverte via le serveur local (`/tools/images.html`, puis `generer()` dans la console) : régénère l’image de partage et les icônes PNG |
