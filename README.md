@@ -13,7 +13,8 @@ données structurées est `https://cclaires.fr`.
 | `404.html` | page introuvable |
 | `assets/css/site.css` | jetons de la charte, mise en page, fragments d’interface (`[data-ui]`) |
 | `assets/js/site.js` | apparitions au défilement, onglets des documents, interrupteurs, menu téléphone |
-| `assets/fonts/` | Cairo (variable) et Barlow Condensed, auto-hébergées, licence OFL |
+| `assets/fonts/` | Cairo (variable) et Barlow Condensed pour le site, Lato pour le BL montré (la police des pièces de C’Claires), auto-hébergées, licence OFL |
+| `assets/img/documents/` | le formulaire officiel CERFA n° 15063*04, rempli avec la commande d’exemple |
 | `assets/img/` | logo dérivé de la charte, carte, codes-barres, image de partage, icônes |
 | `assets/img/photos/` | photos recadrées, et `credits.json` (source, auteur, licence de chacune) |
 | `vercel.json` | URL propres, cache, en-têtes de sécurité (dont la CSP) |
@@ -70,6 +71,7 @@ domaines dans Vercel).
 | `codes-barres.mjs` | `node tools/codes-barres.mjs` : codes GS1-128 réels des étiquettes des trois lots et de la fiche palette |
 | `carte.mjs` | `node tools/carte.mjs <france.svg>` : carte de France (domaine public) avec Saint-Lô |
 | `recadrer.ps1` | recadre et compresse une photo en plusieurs largeurs |
+| `remplir-cerfa.mjs` | remplit le CERFA officiel (celui de l’API) avec la commande d’exemple, avec les champs de `ChampsCerfa15063.cs` ; nécessite `npm i --no-save pdf-lib@1.17.1` |
 | `images.html` | ouverte via le serveur local (`/tools/images.html`, puis `generer()` dans la console) : régénère l’image de partage et les icônes PNG |
 | `serveur-local.mjs` | serveur local ; avec `?sonde=1`, fait tourner la sonde de l’inspecteur du skill taste-skill |
 

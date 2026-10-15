@@ -396,45 +396,69 @@
         </div>
 
         <div class="docs__stage" data-reveal style="--i:2">
-          <article class="docs__sheet ui-sheet ui-sheet--label" data-ui role="tabpanel" id="doc-etiquette" aria-labelledby="tab-etiquette">
-            <div class="doc-top">
-              <div><p class="doc-org">Exploitation des Trois Claires</p><p class="doc-muted">17320 Marennes-Hiers-Brouage</p></div>
-              <p class="label-mark">FR<br>17.999.001<br>CE</p>
+          <article class="docs__sheet ui-etiq" data-ui role="tabpanel" id="doc-etiquette" aria-labelledby="tab-etiquette">
+            <div class="etiq-haut">
+              <div>
+                <p class="etiq-nom">EXPLOITATION DES TROIS CLAIRES</p>
+                <p><i>Ostréiculteur</i></p>
+                <p>12 chemin des Claires, 17320 Marennes-Hiers-Brouage</p>
+                <p>Tél. 05 46 00 00 00</p>
+              </div>
+              <p class="etiq-ovale"><span>FR</span><span>17.999.001</span><span>CE</span></p>
             </div>
-            <p class="label-species">Huîtres creuses</p>
-            <p class="label-latin">Crassostrea gigas</p>
-            <dl class="label-grid">
-              <dt>Appellation</dt><dd>Fines de claire n° 3</dd>
-              <dt>Poids net</dt><dd>5 kg</dd>
-              <dt>Production</dt><dd>Élevées en France</dd>
-              <dt>Zone</dt><dd>Marennes-Oléron, Seudre</dd>
-              <dt>Conditionné le</dt><dd>17/12/2026</dd>
-              <dt>Lot</dt><dd>2026-351-3-014</dd>
-            </dl>
-            <p class="label-alive">Ces animaux doivent être vivants au moment de l’achat.</p>
-            <div class="barcode"><img src="/assets/img/gs1-etiquette.svg" width="378" height="60" alt="Code-barres GS1-128 : GTIN, date de conditionnement et lot"><p>(01)02000012345678(13)261217(10)2026-351-3-014</p></div>
+            <div class="etiq-milieu">
+              <div class="etiq-gauche">
+                <p class="etiq-appellation">Huîtres fines de claire<br>élevées en France</p>
+                <div class="etiq-client">
+                  <p class="etiq-calibre"><small>N°</small>3</p>
+                  <p><b>POISSONNERIE DE LA HALLE</b><br>14000 CAEN</p>
+                </div>
+                <p>Poids net à l’emballage : <b>5 kg</b><br>Nombre minimum : <b>58 huîtres</b></p>
+              </div>
+              <div class="etiq-droite">
+                <p class="etiq-espece">HUÎTRES CREUSES</p>
+                <p class="etiq-latin">Magallana gigas</p>
+                <p class="etiq-petit">DATE DE CONDITIONNEMENT</p>
+                <p class="etiq-date">17/12/26</p>
+                <p class="etiq-petit">Lot 2026-351-3-014<br>Zone : Marennes-Oléron</p>
+              </div>
+            </div>
+            <p class="etiq-vivants">CES COQUILLAGES DOIVENT ÊTRE VIVANTS AU MOMENT DE L’ACHAT</p>
+            <div class="etiq-code"><img src="/assets/img/gs1-etiquette.svg" width="378" height="60" alt="Code-barres GS1-128 : GTIN, date de conditionnement et lot"><p>(01)02000012345678(13)261217(10)2026-351-3-014</p></div>
           </article>
 
-          <article class="docs__sheet ui-sheet ui-sheet--a4" data-ui role="tabpanel" id="doc-bl" aria-labelledby="tab-bl" hidden>
-            <div class="doc-top">
-              <div><p class="doc-org">Exploitation des Trois Claires</p><p class="doc-muted">17320 Marennes-Hiers-Brouage<br>Agrément sanitaire FR 17.999.001 CE</p></div>
-              <div style="text-align:right"><p class="doc-title">Bon de livraison</p><p>BL-26-02217 du 18/12/2026</p><p class="doc-muted">Commande C-26-01482</p></div>
+          <article class="docs__sheet ui-bl" data-ui role="tabpanel" id="doc-bl" aria-labelledby="tab-bl" hidden>
+            <div class="bl-haut">
+              <div>
+                <p class="bl-nom">Exploitation des Trois Claires</p>
+                <p><i>Huîtres de Marennes-Oléron</i></p>
+                <p class="bl-adresse">12 chemin des Claires<br>17320 Marennes-Hiers-Brouage<br>France</p>
+                <p class="bl-gris">Tél. : 05 46 00 00 00<br>N° SIRET : 123 456 789 00017<br>Agrément sanitaire : FR 17.999.001 CE</p>
+              </div>
+              <div class="bl-titre">
+                <p class="bl-type">BON DE LIVRAISON</p>
+                <p class="bl-num">N° BL-26-02217</p>
+                <p><span class="bl-gris">Date</span> 18/12/2026<br><span class="bl-gris">Date d’expédition</span> 18/12/2026<br><span class="bl-gris">Réf. client</span> PO-5561</p>
+              </div>
             </div>
-            <div class="doc-two">
-              <div class="doc-box"><p class="doc-muted">Livré à</p><p><b>Poissonnerie de la Halle</b><br>14000 Caen</p></div>
-              <div class="doc-box"><p class="doc-muted">Transport</p><p><b>Tournée Nord</b><br>départ 5 h 30, 1 palette</p></div>
+            <div class="bl-cadres">
+              <div class="bl-cadre"><p class="bl-lib">FACTURER À</p><p><b>Poissonnerie de la Halle</b><br>14000 Caen<br>France</p><p class="bl-gris">SIRET : 987 654 321 00012</p></div>
+              <div class="bl-cadre"><p class="bl-lib">LIVRER À</p><p><b>Poissonnerie de la Halle</b><br>14000 Caen<br>France</p><p class="bl-gris"><i>Transporteur : Tournée Nord</i></p></div>
             </div>
-            <table>
-              <thead><tr><th>Article</th><th>Lot</th><th class="r">Colis</th><th class="r">Poids net</th></tr></thead>
+            <table class="bl-table">
+              <thead><tr><th>DÉSIGNATION</th><th class="r">COLIS</th><th class="r">QUANTITÉ</th><th class="c">UNITÉ</th><th class="r">POIDS UNIT.</th><th class="r">POIDS TOTAL</th></tr></thead>
               <tbody>
-                <tr><td>Fines de claire n° 3, bourriche 5 kg</td><td>2026-351-3-014</td><td class="r">12</td><td class="r">60,0 kg</td></tr>
-                <tr><td>Spéciales de claire n° 2, bourriche 3 kg</td><td>2026-349-2-006</td><td class="r">6</td><td class="r">18,0 kg</td></tr>
-                <tr><td>Moules de bouchot, sac 10 kg</td><td>2026-350-M-002</td><td class="r">2</td><td class="r">20,0 kg</td></tr>
+                <tr class="bl-groupe"><td colspan="6">Commande n° C-26-01482 du 16/12/2026 — Réf. client : PO-5561</td></tr>
+                <tr><td><b>FC3 - Fines de claire n° 3</b><br><i>Magallana gigas - OYG</i><br>Origine : Charente-Maritime<br><i>Méthode : Élevé - Format : Bourriche</i><br>2000012345678 - Lot : 2026-351-3-014</td><td class="r">12 BOU</td><td class="r">12,00</td><td class="c">BOURRICHE</td><td class="r">5,00 KG</td><td class="r">60,00 kg</td></tr>
+                <tr><td><b>SC2 - Spéciales de claire n° 2</b><br><i>Magallana gigas - OYG</i><br>Origine : Charente-Maritime<br><i>Méthode : Élevé - Format : Bourriche</i><br>2000012345685 - Lot : 2026-349-2-006</td><td class="r">6 BOU</td><td class="r">6,00</td><td class="c">BOURRICHE</td><td class="r">3,00 KG</td><td class="r">18,00 kg</td></tr>
+                <tr><td><b>MB10 - Moules de bouchot</b><br><i>Mytilus edulis - MUS</i><br>Origine : Manche<br><i>Méthode : Élevé - Format : Sac</i><br>2000012345692 - Lot : 2026-350-M-002</td><td class="r">2 SAC</td><td class="r">2,00</td><td class="c">SAC</td><td class="r">10,00 KG</td><td class="r">20,00 kg</td></tr>
               </tbody>
-              <tfoot><tr><td>Total</td><td></td><td class="r">20</td><td class="r">98,0 kg</td></tr></tfoot>
             </table>
-            <p style="margin-top:1rem">Palette 1/1, SSCC (00)320000120000014827</p>
-            <div class="doc-sign"><div>Expéditeur</div><div>Réception client</div></div>
+            <div class="bl-totaux">
+              <p><span>Total colis</span><b>20 colis</b></p>
+              <p class="bl-total"><span>Poids total</span><b>98,00 kg</b></p>
+            </div>
+            <p class="bl-pied"><span>Exploitation des Trois Claires - N° SIRET 123 456 789 00017 - Agrément sanitaire : FR 17.999.001 CE</span><span>Page 1 / 1</span></p>
           </article>
 
           <article class="docs__sheet ui-sheet ui-sheet--label" data-ui role="tabpanel" id="doc-palette" aria-labelledby="tab-palette" hidden>
@@ -477,27 +501,9 @@
             </div>
           </article>
 
-          <article class="docs__sheet ui-sheet ui-sheet--a4" data-ui role="tabpanel" id="doc-cerfa" aria-labelledby="tab-cerfa" hidden>
-            <div class="cerfa-head"><p class="doc-title">Document d’enregistrement des coquillages vivants</p><span class="cerfa-num">cerfa n° 15063*04</span></div>
-            <div class="cerfa-sec"><p class="cerfa-h">Expéditeur</p>
-              <p class="cerfa-row"><span>Raison sociale</span><span>Exploitation des Trois Claires</span></p>
-              <p class="cerfa-row"><span>N° d’agrément</span><span>FR 17.999.001 CE</span></p>
-              <p class="cerfa-row"><span>Qualité</span><span><span class="cerfa-box">×</span>expéditeur <span class="cerfa-box"></span>purificateur</span></p>
-            </div>
-            <div class="cerfa-sec"><p class="cerfa-h">Destinataire</p>
-              <p class="cerfa-row"><span>Raison sociale</span><span>Poissonnerie de la Halle, 14000 Caen</span></p>
-            </div>
-            <div class="cerfa-sec"><p class="cerfa-h">Coquillages</p>
-              <p class="cerfa-row"><span>Espèce</span><span>Huîtres creuses (Crassostrea gigas)</span></p>
-              <p class="cerfa-row"><span>Quantité</span><span>60 kg, lot 2026-351-3-014</span></p>
-            </div>
-            <div class="cerfa-sec"><p class="cerfa-h">Origine</p>
-              <p class="cerfa-row"><span>Zone de production</span><span>Seudre, classement A</span></p>
-              <p class="cerfa-row"><span>Date de récolte</span><span>14/11/2026</span></p>
-              <p class="cerfa-row"><span>Dernier séjour</span><span>Claire C12, affinage jusqu’au 16/12/2026</span></p>
-            </div>
-            <p style="margin-top:1.2rem" class="doc-muted">Prérempli depuis le BL-26-02217. Points à vérifier&nbsp;: aucun.</p>
-          </article>
+          <figure class="docs__sheet ui-cerfa" data-ui role="tabpanel" id="doc-cerfa" aria-labelledby="tab-cerfa" hidden>
+            <img src="/assets/img/documents/cerfa-15063-exemple-1200.jpg" srcset="/assets/img/documents/cerfa-15063-exemple-600.jpg 600w, /assets/img/documents/cerfa-15063-exemple-1200.jpg 1200w" sizes="38rem" width="1200" height="1698" alt="Formulaire officiel CERFA n° 15063*04, document d’enregistrement des coquillages vivants, rempli pour la commande d’exemple : huîtres creuses, 12 bourriches, 60 kg, zone classée A, finition en claire" loading="lazy" decoding="async">
+          </figure>
         </div>
       </div>
     </section>
@@ -698,7 +704,7 @@
         <span>Demander une démo</span>
         <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M12 36 36 12M16 12h20v20" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="square"/></svg>
       </a>
-      <p class="tile tile--credits">Photographies, en niveaux de gris et recadrées&nbsp;: <a href="https://commons.wikimedia.org/w/index.php?curid=157522886">« Claires ostréicoles et pont de la Seudre »</a>, <a href="https://commons.wikimedia.org/w/index.php?curid=157522575">« Tables ostréicoles près de La Tremblade »</a>, <a href="https://commons.wikimedia.org/w/index.php?curid=157522955">« Sillons de vasière et tables ostréicoles »</a>, <a href="https://commons.wikimedia.org/wiki/File:Paysage_fa%C3%A7onn%C3%A9_par_l%27ostr%C3%A9iculture_-_Parc_ostr%C3%A9icole_(Ifremer_00794-90550_-_51400).jpg">« Paysage façonné par l’ostréiculture »</a> et <a href="https://commons.wikimedia.org/wiki/File:Cri%C3%A9e_de_Boulogne-sur-Mer_(Ifremer_00555-66716_-_18992).jpg">« Criée de Boulogne-sur-Mer »</a> par Olivier Dugornay, Ifremer&nbsp;; <a href="https://commons.wikimedia.org/w/index.php?curid=155278133">« Huîtres creuses fixées sur un rocher »</a> par Marie-Noëlle de Casamajor, Ifremer&nbsp;; <a href="https://commons.wikimedia.org/wiki/File:Tables_%C3%A0_hu%C3%AEtres_%C3%A0_l%27embouchure_de_la_Seudre_(Ifremer_00689-80156_-_32651).jpg">« Tables à huîtres à l’embouchure de la Seudre »</a> et <a href="https://commons.wikimedia.org/wiki/File:Bouchots_de_moules_%C3%A0_Agon-Coutainville_(Manche)_(Ifremer_00555-66662_-_17611).jpg">« Bouchots de moules à Agon-Coutainville »</a> par Stéphane Lesbats, Ifremer, toutes sous <a href="https://creativecommons.org/licenses/by/4.0/deed.fr">licence CC BY 4.0</a>&nbsp;; <a href="https://commons.wikimedia.org/wiki/File:Crassostrea_gigas_p1040848.jpg">« Crassostrea gigas »</a> par David Monniaux, <a href="https://creativecommons.org/licenses/by-sa/3.0/deed.fr">licence CC BY-SA 3.0</a>&nbsp;; <a href="https://commons.wikimedia.org/wiki/File:Arcachon,_parcs_%C3%A0_hu%C3%AEtres_-_btv1b53052528r.jpg">« Arcachon, parcs à huîtres »</a>, Agence Rol, domaine public. Carte de France&nbsp;: <a href="https://commons.wikimedia.org/wiki/File:Blank_France_map,_no_Departments.svg">Lokal_Profil</a>, domaine public. Images via Wikimedia Commons.</p>
+      <p class="tile tile--credits">Photographies, en niveaux de gris et recadrées&nbsp;: <a href="https://commons.wikimedia.org/w/index.php?curid=157522886">« Claires ostréicoles et pont de la Seudre »</a>, <a href="https://commons.wikimedia.org/w/index.php?curid=157522575">« Tables ostréicoles près de La Tremblade »</a>, <a href="https://commons.wikimedia.org/w/index.php?curid=157522955">« Sillons de vasière et tables ostréicoles »</a>, <a href="https://commons.wikimedia.org/wiki/File:Paysage_fa%C3%A7onn%C3%A9_par_l%27ostr%C3%A9iculture_-_Parc_ostr%C3%A9icole_(Ifremer_00794-90550_-_51400).jpg">« Paysage façonné par l’ostréiculture »</a> et <a href="https://commons.wikimedia.org/wiki/File:Cri%C3%A9e_de_Boulogne-sur-Mer_(Ifremer_00555-66716_-_18992).jpg">« Criée de Boulogne-sur-Mer »</a> par Olivier Dugornay, Ifremer&nbsp;; <a href="https://commons.wikimedia.org/w/index.php?curid=155278133">« Huîtres creuses fixées sur un rocher »</a> par Marie-Noëlle de Casamajor, Ifremer&nbsp;; <a href="https://commons.wikimedia.org/wiki/File:Tables_%C3%A0_hu%C3%AEtres_%C3%A0_l%27embouchure_de_la_Seudre_(Ifremer_00689-80156_-_32651).jpg">« Tables à huîtres à l’embouchure de la Seudre »</a> et <a href="https://commons.wikimedia.org/wiki/File:Bouchots_de_moules_%C3%A0_Agon-Coutainville_(Manche)_(Ifremer_00555-66662_-_17611).jpg">« Bouchots de moules à Agon-Coutainville »</a> par Stéphane Lesbats, Ifremer, toutes sous <a href="https://creativecommons.org/licenses/by/4.0/deed.fr">licence CC BY 4.0</a>&nbsp;; <a href="https://commons.wikimedia.org/wiki/File:Crassostrea_gigas_p1040848.jpg">« Crassostrea gigas »</a> par David Monniaux, <a href="https://creativecommons.org/licenses/by-sa/3.0/deed.fr">licence CC BY-SA 3.0</a>&nbsp;; <a href="https://commons.wikimedia.org/wiki/File:Arcachon,_parcs_%C3%A0_hu%C3%AEtres_-_btv1b53052528r.jpg">« Arcachon, parcs à huîtres »</a>, Agence Rol, domaine public. Carte de France&nbsp;: <a href="https://commons.wikimedia.org/wiki/File:Blank_France_map,_no_Departments.svg">Lokal_Profil</a>, domaine public. Images via Wikimedia Commons. Formulaire officiel CERFA n°&nbsp;15063*04, rempli avec des données d’exemple.</p>
     </div>
   </footer>
 

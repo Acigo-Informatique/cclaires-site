@@ -1,5 +1,8 @@
 # Ce qui reste hors du site publié : outils de travail, notes, réglages locaux.
 tools
+node_modules
+package.json
+package-lock.json
 .taste-skill
 .claude
 README.md
