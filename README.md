@@ -8,7 +8,7 @@ données structurées est `https://cclaires.fr`.
 
 | Chemin | Rôle |
 |---|---|
-| `index.html` | page d’accueil : premier écran, étiquettes en 3 clics (démonstration à cliquer), trois métiers (conchyliculteurs, mytiliculteurs, mareyeurs), parcours d’une commande, documents, automatismes, normes, modules, applications, éditeur, questions, appel final |
+| `index.html` | page d’accueil : premier écran, trois métiers (conchyliculteurs, mytiliculteurs, mareyeurs), parcours d’une commande, étiquettes en 3 clics (démonstration à cliquer), documents, automatismes, normes, modules, applications, éditeur, questions, appel final |
 | `mentions-legales.html` | mentions légales, crédits (servie en `/mentions-legales`) |
 | `404.html` | page introuvable |
 | `assets/css/site.css` | jetons de la charte, mise en page, fragments d’interface (`[data-ui]`) |
