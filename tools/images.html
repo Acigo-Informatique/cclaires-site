@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Génération des images de partage</title>
+<link rel="stylesheet" href="/assets/css/site.css">
+</head>
+<body>
+<p class="fonts-warm" style="font-family:'Barlow Condensed';font-weight:500">De la claire au camion</p>
+<canvas id="og" width="1200" height="630"></canvas>
+<script>
+const charger = (src) => new Promise((ok, ko) => { const i = new Image(); i.onload = () => ok(i); i.onerror = ko; i.src = src; });
+function couvrir(ctx, img, x, y, w, h) {
+  const r = Math.max(w / img.naturalWidth, h / img.naturalHeight);
+  const sw = w / r, sh = h / r;
+  ctx.drawImage(img, (img.naturalWidth - sw) / 2, (img.naturalHeight - sh) / 2, sw, sh, x, y, w, h);
+}
+async function envoyer(canvas, nom) {
+  const r = await fetch('/__fichier?nom=' + encodeURIComponent(nom), { method: 'POST', body: canvas.toDataURL('image/png') });
+  return r.text();
+}
+window.generer = async () => {
+  await document.fonts.load('500 120px "Barlow Condensed"');
+  await document.fonts.ready;
+  const PAON = '#007b8e', TILLEUL = '#b6cb6b', EAU = '#e4eac8', CIEL = '#bfe5fb';
+  const [claires, tables, arcachon, sillons, logo, icone] = await Promise.all([
+    charger('/assets/img/photos/claires-seudre-1120.jpg'), charger('/assets/img/photos/tables-tremblade-640.jpg'),
+    charger('/assets/img/photos/arcachon-1920-640.jpg'), charger('/assets/img/photos/sillons-vasiere-640.jpg'),
+    charger('/assets/img/logo-paon.svg'), charger('/assets/img/icone.svg'),
+  ]);
+  const c = document.getElementById('og'); const ctx = c.getContext('2d');
+  ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, 1200, 630);
+  // bandeau mosaïque, comme le premier écran : 6 colonnes, 2 rangées
+  const cw = 200, ch = 164;
+  const tuile = (col, row, w, h, couleur) => { ctx.fillStyle = couleur; ctx.fillRect(col * cw, row * ch, w * cw, h * ch); };
+  const photo = (img, col, row, w, h) => { ctx.save(); ctx.filter = 'grayscale(1) contrast(1.05)'; couvrir(ctx, img, col * cw, row * ch, w * cw, h * ch); ctx.restore(); };
+  tuile(0, 0, 1, 2, PAON); photo(claires, 1, 0, 2, 1); tuile(3, 0, 1, 1, TILLEUL); photo(arcachon, 4, 0, 1, 1); tuile(5, 0, 1, 1, EAU);
+  photo(tables, 1, 1, 1, 1); tuile(2, 1, 1, 1, CIEL); photo(sillons, 3, 1, 1, 1); tuile(4, 1, 1, 1, TILLEUL); tuile(5, 1, 1, 1, PAON);
+  // logo à gauche, titre sur l’axe à 42 %
+  const lw = 330, lh = lw * logo.naturalHeight / logo.naturalWidth;
+  ctx.drawImage(logo, 44, 392, lw, lh);
+  ctx.fillStyle = '#0a0a0a'; ctx.font = '500 112px "Barlow Condensed"'; ctx.textBaseline = 'alphabetic';
+  ctx.fillText('De la claire', 504, 440); ctx.fillText('au camion', 504, 540);
+  ctx.font = '700 22px "Cairo"'; ctx.fillStyle = '#0a0a0a';
+  ctx.fillText('Logiciel de gestion ostréicole et conchylicole', 44, 590);
+  const resultats = [await envoyer(c, 'assets/img/og.png')];
+  // icônes carrées (charte p. 14) : favicon, écran d’accueil, manifeste
+  for (const [taille, nom] of [[32, 'favicon-32.png'], [180, 'apple-touch-icon.png'], [192, 'assets/img/icone-192.png'], [512, 'assets/img/icone-512.png']]) {
+    const k = document.createElement('canvas'); k.width = k.height = taille;
+    const kx = k.getContext('2d');
+    if (nom === 'apple-touch-icon.png') { kx.fillStyle = PAON; kx.fillRect(0, 0, taille, taille); }
+    kx.drawImage(icone, 0, 0, taille, taille);
+    resultats.push(await envoyer(k, nom));
+  }
+  return resultats;
+};
+</script>
+</body>
+</html>
