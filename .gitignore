@@ -1,0 +1,5 @@
+# Sorties de l'inspection locale (mesures, captures)
+.taste-skill/sonde/
+.taste-skill/inspect/
+node_modules/
+.vercel/
