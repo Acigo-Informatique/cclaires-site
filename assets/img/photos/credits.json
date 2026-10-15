@@ -240,5 +240,31 @@
     "saved": "2026-10-15T19:51:04.401Z",
     "source": "assets/criee-de-boulogne-sur-mer-ifremer-00555-2.jpg",
     "note": "recadrée et redimensionnée ; affichée en niveaux de gris par CSS"
+  },
+  {
+    "file": "assets/img/photos/chaland-oleron-*.jpg",
+    "media": "image",
+    "ref": "openverse:6f61c686-52aa-4eb3-8b23-63c124713b65",
+    "title": "Chalands ostréicoles au Château-d’Oléron (1)",
+    "creator": "Jean-Pierre Bazard Jpbazard",
+    "creatorUrl": "https://commons.wikimedia.org/wiki/User:Jpbazard",
+    "date": null,
+    "license": "CC BY-SA 4.0",
+    "licenseCode": "by-sa",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "creditRequired": true,
+    "page": "https://commons.wikimedia.org/w/index.php?curid=122475064",
+    "via": "Wikimedia Commons",
+    "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fc/Chalands_ostr%C3%A9icoles_au_Ch%C3%A2teau-d%E2%80%99Ol%C3%A9ron_%281%29.JPG/1920px-Chalands_ostr%C3%A9icoles_au_Ch%C3%A2teau-d%E2%80%99Ol%C3%A9ron_%281%29.JPG",
+    "width": 1920,
+    "height": 1281,
+    "bytes": 626384,
+    "credit": "\"Chalands ostréicoles au Château-d’Oléron (1)\" by Jean-Pierre Bazard Jpbazard, CC BY-SA 4.0, via Wikimedia Commons",
+    "notes": [
+      "Share-alike: an altered version (recoloured, combined with other pictures) must be shared under the same licence."
+    ],
+    "saved": "2026-10-15T20:56:29.125Z",
+    "source": "assets/chalands-ostreicoles-au-chateau-d-oleron-1.jpg",
+    "note": "recadrée (immatriculation du bateau retirée) et redimensionnée ; affichée en niveaux de gris par CSS"
   }
 ]
