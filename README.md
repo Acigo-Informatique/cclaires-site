@@ -1,8 +1,8 @@
 # C’Claires — site vitrine
 
-Site statique (HTML, CSS, un peu de JavaScript, aucune dépendance ni étape de construction), prévu pour
-être servi tel quel par Vercel. Le domaine retenu dans les balises canoniques, le sitemap et les
-données structurées est `https://cclaires.fr`.
+Site statique (HTML, CSS, un peu de JavaScript, aucune dépendance ni étape de construction), servi
+tel quel par GitHub Pages (en ligne) ou Vercel. Le domaine retenu dans les balises canoniques, le
+sitemap et les données structurées est `https://cclaires.fr`.
 
 ## Arborescence
 
@@ -19,6 +19,7 @@ données structurées est `https://cclaires.fr`.
 | `assets/img/photos/` | photos recadrées, et `credits.json` (source, auteur, licence de chacune) |
 | `vercel.json` | URL propres, cache, en-têtes de sécurité (dont la CSP) |
 | `.vercelignore` | ce qui n’est pas publié : `tools/`, `.taste-skill/`, ce README |
+| `.github/workflows/pages.yml` | publication sur GitHub Pages à chaque push sur `dev`, par `tools/pages.mjs` |
 | `tools/` | outils de travail (voir plus bas), non publiés |
 
 ## Voir le site en local
@@ -29,6 +30,16 @@ node tools/serveur-local.mjs
 
 puis <http://127.0.0.1:4321/>. N’importe quel serveur statique convient aussi
 (`python -m http.server 4321`), à ceci près que `/mentions-legales` y demande l’extension `.html`.
+
+## Mettre en ligne sur GitHub Pages
+
+Le workflow `.github/workflows/pages.yml` publie à chaque push sur `dev` (ou à la demande, onglet
+Actions). `tools/pages.mjs` y copie le site sans les outils ni ce README, et, tant que le site est servi
+sous `https://<compte>.github.io/<dépôt>/`, préfixe ses chemins par ce sous-dossier, l’exclut des
+moteurs de recherche et fait pointer ses images de partage vers l’aperçu. Avec un domaine propre
+(réglage « Custom domain » de Pages), ces trois adaptations disparaissent d’elles-mêmes.
+
+GitHub Pages ne pose pas les en-têtes de `vercel.json` (cache, CSP) : ils ne valent que sur Vercel.
 
 ## Mettre en ligne sur Vercel
 
