@@ -21,6 +21,11 @@ publication (DIRPUB-01) sont renseignés.
 
 ## Domaine et indexation
 
+En attente (décision du 20/10/2026) : le domaine reste sur l’ancien site jusqu’à nouvel ordre. Au
+20/10/2026, cclaires.fr et www.cclaires.fr pointent sur 213.186.33.5 (hébergement mutualisé OVH) : la
+bascule DNS remplacera le site en ligne. Ordre à suivre : fusion de la PR dans `dev` et vérification du
+site sous github.io, puis DNS-01, CNAME-01, INDEX-01, et seulement ensuite GSC-01, BING-01 et GBP-01.
+
 | ID | Page | Ce qu’il faut fournir | Priorité |
 |---|---|---|---|
 | DNS-01 | — | Brancher le DNS de cclaires.fr sur GitHub Pages (enregistrements A/AAAA de GitHub, ou CNAME pour www) | haute |
@@ -34,7 +39,7 @@ publication (DIRPUB-01) sont renseignés.
 
 | ID | Page | Ce qu’il faut fournir | Priorité |
 |---|---|---|---|
-| PHOTOS-01 | Toutes | Remplacer, si possible, les photos libres (Ifremer, Wikimedia Commons) par les vôtres ; retirer alors leur crédit du pied de page et des mentions légales | basse |
+| PHOTOS-01 | Toutes | Remplacer, si possible, les photos libres (Ifremer, Wikimedia Commons) par les vôtres ; retirer alors leur crédit du pied de page et des mentions légales. En attente (décision du 20/10/2026) | basse |
 
 ## Écrans du logiciel
 
@@ -67,6 +72,8 @@ construite, et n’entre au menu, au pied de page et au sitemap, qu’à partir 
 | CAS-01 | /clients/ | Étude de cas chiffrée d’un client qui a donné son accord : entreprise, métier, bassin, situation de départ, mise en place, résultats mesurés et vérifiables, citation du dirigeant | moyenne |
 
 ## Guides
+
+GUIDE-01 à GUIDE-05 : en attente (décision du 20/10/2026).
 
 | ID | Page | Ce qu’il faut fournir | Priorité |
 |---|---|---|---|
