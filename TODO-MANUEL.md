@@ -16,8 +16,8 @@ publication (DIRPUB-01) sont renseignés.
 
 | ID | Page | Ce qu’il faut fournir | Priorité |
 |---|---|---|---|
-| FORM-02 | /demo/, accueil | Le formulaire Formspree existe (`formulaire.endpoint`). À vérifier dans ses réglages : reCAPTCHA désactivé (envoi par script), cclaires.fr dans les domaines autorisés une fois le domaine branché ; puis envoyer une demande d’essai depuis le site en ligne et vérifier sa réception | haute |
-| AUDIENCE-01 | Toutes | Mesure d’audience sans cookie (`audience`) : Plausible ou Matomo, puis ajouter son domaine à la CSP de `vercel.json` si le site part sur Vercel. En attente : aucune mesure pour l’instant (décision du 20/10/2026) | moyenne |
+| FORM-03 | /demo/, accueil, /confidentialite/ | Remplacer Formspree (décision du 20/10/2026) : Formspree, Inc. n’est plus certifié au Data Privacy Framework UE–États-Unis (« Inactive - Withdrawal » depuis le 26/04/2022) et ne publie pas de contrat de sous-traitance. Choisir un service dont les données restent dans l’UE, avec contrat de sous-traitance (art. 28) ; puis changer `formulaire.endpoint`, la CSP de `vercel.json` (connect-src, form-action), le paragraphe « Qui les reçoit » de /confidentialite/ (et retirer sa marque [À VÉRIFIER]), et faire un envoi d’essai depuis le site en ligne. Purger ensuite les demandes gardées sur le compte Formspree | haute |
+| AUDIENCE-01 | Toutes | Mesure d’audience sans cookie (`audience`) : Plausible ou Matomo, puis ajouter son domaine à la CSP de `vercel.json` si le site part sur Vercel, et réécrire le paragraphe « Cookies et mesure d’audience » de /confidentialite/ (l’outil traite l’adresse IP des visiteurs). En attente : aucune mesure pour l’instant (décision du 20/10/2026) | moyenne |
 
 ## Domaine et indexation
 
@@ -92,4 +92,4 @@ et le sitemap.
 
 | ID | Page | Ce qu’il faut fournir | Priorité |
 |---|---|---|---|
-| CONFID-01 | /confidentialite/ | Faire valider par un juriste chaque point marqué [À VÉRIFIER] : base légale, transfert hors UE par Formspree, durée de conservation, liste des droits, mesure d’audience sans cookie | haute |
+| CONFID-02 | /confidentialite/ | Textes vérifiés le 20/10/2026 sur le RGPD, le référentiel CNIL de gestion commerciale et la liste du Data Privacy Framework (base légale 6.1.b puis intérêt légitime pour les relances, durée, droits, audience, champs obligatoires) ; ce n’est pas un avis juridique, une relecture par un juriste reste conseillée. Engagements à tenir : chaque message de relance rappelle qu’on peut s’y opposer ; la page annonce une suppression trois ans après le dernier contact venant du prospect. Reste marqué : le transfert par Formspree (FORM-03) | moyenne |

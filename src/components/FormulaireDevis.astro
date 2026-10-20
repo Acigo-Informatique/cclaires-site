@@ -6,6 +6,7 @@
 import reglages from '../../site.config.mjs';
 import ACompleter from './ACompleter.astro';
 import Telephone from './Telephone.astro';
+import { lien } from '../lib/chemins.mjs';
 
 interface Props { id: string; sombre?: boolean; titreId?: string }
 const { id, sombre = false, titreId } = Astro.props;
@@ -57,14 +58,14 @@ const metiers = [['ostreiculture', 'Ostréiculture'], ['mytiliculture', 'Mytilic
     </div>
 
     <div class="champ">
-      <label for={c('utilisateurs')}>Nombre d’utilisateurs</label>
+      <label for={c('utilisateurs')}>Nombre d’utilisateurs <span class="champ__facultatif">(facultatif)</span></label>
       <input id={c('utilisateurs')} name="utilisateurs" type="number" inputmode="numeric" min="1" step="1" value="2" autocomplete="off"
         aria-describedby={`${c('utilisateurs-aide')} ${c('utilisateurs-erreur')}`} data-erreur="Indiquez au moins 1 utilisateur.">
       <p class="champ__aide" id={c('utilisateurs-aide')}>2 utilisateurs inclus dans l’abonnement</p>
       <p class="champ__erreur" id={c('utilisateurs-erreur')}></p>
     </div>
     <div class="champ">
-      <label for={c('etiqueteuses')}>Nombre d’étiqueteuses</label>
+      <label for={c('etiqueteuses')}>Nombre d’étiqueteuses <span class="champ__facultatif">(facultatif)</span></label>
       <input id={c('etiqueteuses')} name="etiqueteuses" type="number" inputmode="numeric" min="0" step="1" value="0" autocomplete="off"
         aria-describedby={`${c('etiqueteuses-aide')} ${c('etiqueteuses-erreur')}`} data-erreur="Indiquez un nombre, 0 si vous n’en avez pas.">
       <p class="champ__aide" id={c('etiqueteuses-aide')}>Celles que vous avez déjà ou à prévoir</p>
@@ -93,4 +94,5 @@ const metiers = [['ostreiculture', 'Ostréiculture'], ['mytiliculture', 'Mytilic
   </div>
   <p class="devis__statut" role="status" aria-live="polite"></p>
   <p class="devis__repli">Vous préférez écrire ou appeler&nbsp;? <a class="link" href={`mailto:${reglages.email}`}>{reglages.email}</a>, <Telephone class="link" />.</p>
+  <p class="devis__donnees">Ce formulaire ne dépose aucun cookie. Vos réponses servent à préparer la démonstration et le devis puis, si vous ne devenez pas client, à vous recontacter au sujet de C’Claires&nbsp;: vous pouvez vous y opposer à tout moment. Voir la page <a class="link" href={lien('/confidentialite/')}>confidentialité</a>.</p>
 </form>

@@ -532,7 +532,6 @@ ol.etapes__liste { display: grid; gap: 1.25rem; max-width: 52rem; margin-top: cl
 ol.demo__etapes { display: grid; gap: 1rem; margin-top: 2rem; padding-left: 1.4em; list-style: decimal; font-weight: 700; }
 .demo__etapes li::marker { font-variant-numeric: tabular-nums; }
 .demo__contact { margin-top: 2rem; font-weight: 700; }
-.demo__donnees { margin-top: 1.25rem; font-size: var(--step-s); }
 .demo__form { grid-column: 6 / -1; }
 
 /* ---------- feuille de route, offre détaillée, à propos : des définitions en colonnes ---------- */
@@ -723,6 +722,7 @@ ol.demo__etapes { display: grid; gap: 1rem; margin-top: 2rem; padding-left: 1.4e
 .devis__statut { font-weight: 700; }
 .devis__statut:empty { display: none; }
 .devis__repli { font-size: var(--step-s); }
+.devis__donnees { max-width: 60ch; margin-top: 0.75rem; font-size: var(--step-s); }
 .devis.is-envoye .devis__grille, .devis.is-envoye .devis__envoi, .devis.is-envoye .devis__todo { display: none; }
 .devis.is-envoye .devis__statut { font-size: var(--step-m); line-height: 1.25; }
 

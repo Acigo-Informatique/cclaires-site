@@ -4,7 +4,6 @@ import Base from '../layouts/Base.astro';
 import EnTetePage from '../components/EnTetePage.astro';
 import FormulaireDevis from '../components/FormulaireDevis.astro';
 import Telephone from '../components/Telephone.astro';
-import { lien } from '../lib/chemins.mjs';
 import { prechargePhoto } from '../lib/precharge.mjs';
 
 const url = '/demo/';
@@ -33,7 +32,6 @@ const precharge = await prechargePhoto('claires-seudre', tailleHero);
           <li data-reveal style="--i:4">Vous recevez un devis chiffré : utilisateurs, étiqueteuses, support.</li>
         </ol>
         <p class="demo__contact" data-reveal style="--i:5">Vous préférez appeler&nbsp;? <Telephone class="link" /></p>
-        <p class="demo__donnees" data-reveal style="--i:6">Ce formulaire ne dépose aucun cookie. Vos réponses servent seulement à préparer la démonstration et le devis : voir la page <a class="link" href={lien('/confidentialite/')}>confidentialité</a>.</p>
       </div>
       <div class="demo__form">
         <FormulaireDevis id="devis-demo" titreId="demande-titre" />
