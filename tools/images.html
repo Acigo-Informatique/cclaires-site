@@ -3,7 +3,10 @@
 <head>
 <meta charset="utf-8">
 <title>Génération des images de partage</title>
-<link rel="stylesheet" href="/assets/css/site.css">
+<style>
+@font-face { font-family: "Cairo"; src: url("/assets/fonts/cairo-variable.woff2") format("woff2"); font-weight: 200 1000; }
+@font-face { font-family: "Barlow Condensed"; src: url("/assets/fonts/barlow-condensed-500.woff2") format("woff2"); font-weight: 500; }
+</style>
 </head>
 <body>
 <p class="fonts-warm" style="font-family:'Barlow Condensed';font-weight:500">De la claire au camion</p>
@@ -24,8 +27,8 @@ window.generer = async () => {
   await document.fonts.ready;
   const PAON = '#007b8e', TILLEUL = '#b6cb6b', EAU = '#e4eac8', CIEL = '#bfe5fb';
   const [claires, tables, arcachon, sillons, logo, icone] = await Promise.all([
-    charger('/assets/img/photos/claires-seudre-1120.jpg'), charger('/assets/img/photos/tables-tremblade-640.jpg'),
-    charger('/assets/img/photos/arcachon-1920-640.jpg'), charger('/assets/img/photos/sillons-vasiere-640.jpg'),
+    charger('/src/assets/photos/claires-seudre.jpg'), charger('/src/assets/photos/tables-tremblade.jpg'),
+    charger('/src/assets/photos/arcachon-1920.jpg'), charger('/src/assets/photos/sillons-vasiere.jpg'),
     charger('/assets/img/logo-paon.svg'), charger('/assets/img/icone.svg'),
   ]);
   const c = document.getElementById('og'); const ctx = c.getContext('2d');

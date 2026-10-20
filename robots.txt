@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://cclaires.fr/sitemap.xml

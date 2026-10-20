@@ -1,0 +1,15 @@
+---
+import Base from '../layouts/Base.astro';
+import { lien } from '../lib/chemins.mjs';
+---
+<Base
+  titre="Page introuvable | C’Claires"
+  description="Cette page du site C’Claires n’existe pas ou plus. Retrouvez le logiciel des ostréiculteurs, mytiliculteurs et mareyeurs depuis l’accueil du site."
+  url="/404/"
+  indexable={false}
+>
+  <div class="intro introuvable">
+    <h1 class="page__title">Marée basse</h1>
+    <p class="intro__statement">Cette page n’existe pas, ou plus. <a class="link" href={lien('/')}>Revenir à l’accueil</a></p>
+  </div>
+</Base>

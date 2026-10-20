@@ -1,0 +1,31 @@
+---
+// Une photographie du site, servie en AVIF et WebP avec repli JPEG, aux largeurs utiles, ses dimensions
+// toujours renseignées (pas de décalage de mise en page). Les photos vivent dans src/assets/photos/
+// et s’appellent par leur nom : <Photo nom="claires-seudre" … />.
+import { Picture } from 'astro:assets';
+import { LARGEURS } from '../lib/precharge.mjs';
+
+interface Props {
+  nom: string;
+  alt: string;              // "" pour une photo décorative
+  sizes: string;
+  class?: string;
+  priority?: boolean;       // premier écran : chargement immédiat et prioritaire
+  widths?: number[];
+}
+
+const { nom, alt, sizes, class: classe = 'photo', priority = false, widths = LARGEURS } = Astro.props;
+const toutes = import.meta.glob<{ default: ImageMetadata }>('../assets/photos/*.jpg', { eager: true });
+const fichier = toutes[`../assets/photos/${nom}.jpg`];
+if (!fichier) throw new Error(`Photo inconnue : ${nom} (attendue dans src/assets/photos/${nom}.jpg)`);
+---
+<Picture
+  src={fichier.default}
+  alt={alt}
+  sizes={sizes}
+  widths={widths}
+  formats={['avif', 'webp']}
+  class={classe}
+  priority={priority}
+  {...(priority ? { decoding: 'async' } : {})}
+/>

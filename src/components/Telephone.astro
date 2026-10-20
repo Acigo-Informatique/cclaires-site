@@ -1,0 +1,13 @@
+---
+// Le numéro de téléphone de site.config.mjs, en lien d’appel ; tant qu’il manque, un emplacement à compléter.
+import reglages from '../../site.config.mjs';
+import ACompleter from './ACompleter.astro';
+
+interface Props { class?: string }
+const { class: classe = '' } = Astro.props;
+const numero = reglages.telephone;
+const appel = numero ? 'tel:+33' + numero.replace(/\D/g, '').replace(/^0/, '') : null;
+---
+{numero
+  ? <a class:list={['telephone', classe]} href={appel}>{numero.replace(/ /g, ' ')}</a>
+  : <ACompleter id="TEL-01" enLigne class={classe} texte="téléphone (site.config.mjs)" />}

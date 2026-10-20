@@ -1,0 +1,168 @@
+---
+// De la commande à la facture : le visiteur fait avancer une commande d’exemple en sept clics, dont
+// les trois de l’étiquetage. Chaque panneau porte son étape, la couleur du fond et le message annoncé
+// (data-etape, data-fond, data-message), que lit src/scripts/site.js.
+// Sans script, la scène montre la commande et la liste des cinq étapes.
+import { lien } from '../lib/chemins.mjs';
+
+interface Props {
+  donnees: any;                 // src/donnees/parcours/*.mjs
+  titre?: string[];             // une entrée par ligne masquée
+  intro?: string;
+}
+const {
+  donnees: d,
+  titre = ['De la commande', 'à la facture'],
+  intro = 'Une commande traverse C’Claires sans jamais être ressaisie&nbsp;: ses lots, ses étiquettes, sa palette et sa facture en découlent. Faites-la avancer vous-même sur l’exemple, en sept clics.',
+} = Astro.props;
+
+// pour chaque état (0 à 7) : l’étape de la liste et le fond de la section
+const etats = [[0, 'eau'], [1, 'paon'], [2, 'tilleul'], [2, 'tilleul'], [2, 'tilleul'], [3, 'ciel'], [4, 'noir'], [5, 'noir']];
+const attrs = (i: number) => ({ 'data-panneau': i, 'data-etape': etats[i][0], 'data-fond': etats[i][1], 'data-message': d.messages[i] });
+const nbsp = (t: string) => t.replace(/ ([:;?!])/g, ' $1');
+---
+<section id="parcours" class="cycle" aria-labelledby="cycle-titre">
+  <h2 class="cycle__title lines" id="cycle-titre">
+    {titre.map((ligne, i) => <span class="line"><span data-reveal style={i ? `--i:${i}` : undefined}>{ligne}</span></span>)}
+  </h2>
+  <div class="grid cycle__body">
+    <div class="cycle__text">
+      <p data-reveal style="--i:2" set:html={intro} />
+      <ol class="cycle__steps" data-reveal style="--i:3">
+        <li>Commande</li>
+        <li>Allotissement</li>
+        <li>Étiquetage en 3&nbsp;clics</li>
+        <li>Palettisation</li>
+        <li>Facture</li>
+      </ol>
+      <p class="cycle__status" aria-live="polite">{nbsp(d.messages[0])}</p>
+      <button class="cycle__reset link" type="button" hidden>Recommencer</button>
+    </div>
+
+    <div class="cycle__stage" data-etat="0" data-reveal style="--i:2">
+      <div class="ui-window" data-ui {...attrs(0)}>
+        <div class="ui-win-head"><span>Commande {d.commande.numero}, {d.commande.client}</span><span class="ui-pill ui-pill--info">Saisie</span></div>
+        <div class="ui-win-body">
+          <p class="ui-win-note">{d.commande.note}</p>
+          <table>
+            <thead><tr><th>Article</th><th class="r">Colis</th><th class="r c-opt">Poids</th><th class="r">Montant HT</th></tr></thead>
+            <tbody>
+              {d.lignes.map((l: any) => <tr><td>{l.article}</td><td class="r">{l.colis}</td><td class="r c-opt">{l.poids}</td><td class="r">{l.montant}</td></tr>)}
+            </tbody>
+          </table>
+        </div>
+        <div class="ui-win-foot">
+          <span class="ui-win-total">{d.commande.total}</span>
+          <button class="ui-btn ui-btn--primary is-target" type="button" data-clic="1">Valider la commande</button>
+        </div>
+      </div>
+
+      <div class="ui-window" data-ui {...attrs(1)}>
+        <div class="ui-win-head"><span>Allotissement, {d.commande.numero}</span><span class="ui-pill ui-pill--info">Validée</span></div>
+        <div class="ui-win-body">
+          <p class="ui-win-note">Chaque ligne reçoit son lot, pris dans le stock conditionné.</p>
+          <table>
+            <thead><tr><th>Article</th><th>Lot</th><th class="r">Poids</th></tr></thead>
+            <tbody>
+              {d.lignes.map((l: any) => <tr><td>{l.court}</td><td><span class="ui-tag">{l.lot}</span></td><td class="r">{l.poids}</td></tr>)}
+            </tbody>
+          </table>
+        </div>
+        <div class="ui-win-foot">
+          <span class="ui-win-total">Reste à allotir&nbsp;: 0&nbsp;kg</span>
+          <button class="ui-btn ui-btn--primary is-target" type="button" data-clic="2">Valider l’allotissement</button>
+        </div>
+      </div>
+
+      <div class="ui-window" data-ui {...attrs(2)}>
+        <div class="ui-win-head"><span>Bons de livraison</span><span class="ui-win-meta">{d.livraisons.date}</span></div>
+        <div class="ui-list">
+          <div class="ui-list-row ui-list-row--head"><span>N°</span><span>Client</span><span class="c-opt">Tournée</span><span class="r">Colis</span></div>
+          {d.livraisons.liste.map((b: any) => b.cible
+            ? <button class="ui-list-row is-target" type="button" data-clic="3"><span>{b.numero}</span><span>{b.client}</span><span class="c-opt">{b.tournee}</span><span class="r">{b.colis}</span></button>
+            : <div class="ui-list-row"><span>{b.numero}</span><span>{b.client}</span><span class="c-opt">{b.tournee}</span><span class="r">{b.colis}</span></div>)}
+        </div>
+      </div>
+
+      <div class="ui-window" data-ui {...attrs(3)}>
+        <div class="ui-win-head"><span>{d.bl}, {d.commande.client}</span><span class="ui-pill ui-pill--info">Validé</span></div>
+        <div class="ui-win-body">
+          <table>
+            <thead><tr><th>Article</th><th>Lot</th><th class="r">Colis</th><th class="r c-opt">Poids</th></tr></thead>
+            <tbody>
+              {d.lignes.map((l: any) => <tr><td>{l.bl}</td><td>{l.lot}</td><td class="r">{l.colis}</td><td class="r c-opt">{l.poids}</td></tr>)}
+            </tbody>
+          </table>
+        </div>
+        <div class="ui-win-foot">
+          <span class="ui-btn ui-btn--text">Palettisation</span>
+          <button class="ui-btn ui-btn--primary is-target" type="button" data-clic="4">Imprimer les étiquettes</button>
+        </div>
+      </div>
+
+      <div class="ui-window" data-ui {...attrs(4)}>
+        <div class="ui-win-head"><span>Imprimer les étiquettes — {d.bl}</span></div>
+        <div class="ui-win-body">
+          <p class="ui-tabs"><span class="is-on">À imprimer</span><span>Historique des envois</span></p>
+          <table>
+            <thead><tr><th><span class="sr-only">Sélection</span></th><th>Lot</th><th class="c-opt">Modèle</th><th>Étiqueteuse</th><th class="r">Nombre</th></tr></thead>
+            <tbody>
+              {d.lignes.map((l: any) => <tr><td><span class="ui-check-box" role="img" aria-label="Sélectionné"></span></td><td>{l.lot}</td><td class="c-opt">{l.modele}</td><td>{l.etiqueteuse}</td><td class="r">{l.colis}</td></tr>)}
+            </tbody>
+          </table>
+        </div>
+        <div class="ui-win-foot">
+          <span class="ui-btn ui-btn--text c-opt">Recalculer</span>
+          <span class="ui-btn ui-btn--text">Fermer</span>
+          <button class="ui-btn ui-btn--primary is-target" type="button" data-clic="5">Imprimer {d.etiquettes} étiquette(s)</button>
+        </div>
+      </div>
+
+      <div class="ui-printed" data-ui {...attrs(5)}>
+        <div class="ui-window">
+          <div class="ui-win-head"><span>Palettisation, {d.bl}</span><span class="ui-pill ui-pill--done">{d.palette.etat}</span></div>
+          <div class="ui-win-body">
+            <ul class="ui-sent">
+              {d.palette.lignes.map(([a, b, attente]: string[]) => <li><span>{a}</span><span class:list={[{ 'is-attente': attente }]}>{b}</span></li>)}
+            </ul>
+          </div>
+          <div class="ui-win-foot">
+            <button class="ui-btn ui-btn--primary is-target" type="button" data-clic="6">Imprimer l’étiquette palette</button>
+          </div>
+        </div>
+        <div class="ui-labels" aria-hidden="true">
+          {d.lignes.map((l: any) => <div class="ui-mini"><b>{l.etiquette.espece}</b><span>{l.etiquette.detail}</span><span>Lot {l.lot}</span><img src={lien(`/assets/img/${l.etiquette.code}`)} width="378" height="60" alt="" loading="lazy" decoding="async"></div>)}
+        </div>
+      </div>
+
+      <div class="ui-printed" data-ui {...attrs(6)}>
+        <div class="ui-window">
+          <div class="ui-win-head"><span>{d.bl}, {d.commande.client}</span><span class="ui-pill ui-pill--done">Livré</span></div>
+          <div class="ui-win-body">
+            <ul class="ui-sent ui-sent--sums">
+              {d.totaux.map(([a, b]: string[]) => <li><span>{a}</span><span>{b}</span></li>)}
+            </ul>
+          </div>
+          <div class="ui-win-foot">
+            <button class="ui-btn ui-btn--primary is-target" type="button" data-clic="7">Facturer</button>
+          </div>
+        </div>
+        <div class="ui-labels" aria-hidden="true">
+          <div class="ui-mini ui-mini--palette"><b>{d.palette.etiquette.titre}</b>{d.palette.etiquette.lignes.map((t: string) => <span>{t}</span>)}<img src={lien(`/assets/img/${d.palette.etiquette.code}`)} width="176" height="60" alt="" loading="lazy" decoding="async"></div>
+        </div>
+      </div>
+
+      <div class="ui-window" data-ui {...attrs(7)}>
+        <div class="ui-win-head"><span>Facture {d.facture.numero}, {d.commande.client}</span><span class="ui-pill ui-pill--done">{d.facture.etat}</span></div>
+        <div class="ui-win-body">
+          <ul class="ui-sent">
+            {d.facture.lignes.map(([a, b]: string[]) => <li><span>{a}</span><span>{b}</span></li>)}
+          </ul>
+        </div>
+        <div class="ui-win-foot">
+          <span class="ui-win-total">{d.facture.total}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

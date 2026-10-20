@@ -66,8 +66,8 @@ const palette = [['00', SSCC, true]];
 const lisible = (els) => els.map(([ai, v]) => `(${ai})${v}`).join('');
 
 for (const [nom, elements] of Object.entries(etiquettes)) {
-  writeFileSync(new URL(`../assets/img/${nom}.svg`, import.meta.url), svg(encoder(elements), 60, lisible(elements)));
+  writeFileSync(new URL(`../public/assets/img/${nom}.svg`, import.meta.url), svg(encoder(elements), 60, lisible(elements)));
   console.log(nom, lisible(elements));
 }
-writeFileSync(new URL('../assets/img/gs1-palette.svg', import.meta.url), svg(encoder(palette), 60, lisible(palette)));
+writeFileSync(new URL('../public/assets/img/gs1-palette.svg', import.meta.url), svg(encoder(palette), 60, lisible(palette)));
 console.log('gs1-palette', lisible(palette));

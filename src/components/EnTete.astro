@@ -1,0 +1,67 @@
+---
+// En-tête de toutes les pages : la marque dans son bloc noir, l’onglet tilleul des liens (deux menus
+// déroulants, Métiers et Fonctionnalités, en <details> : ils s’ouvrent aussi sans script), le téléphone
+// et l’action. Sur l’accueil, il se pose sur le bord haut de la mosaïque.
+// Tablette et téléphone : les liens passent dans une feuille plein écran ouverte par « Menu ».
+import { groupe } from '../donnees/plan.mjs';
+import { lien } from '../lib/chemins.mjs';
+import Telephone from './Telephone.astro';
+
+interface Props { url: string; variante?: 'accueil' | 'page' }
+const { url, variante = 'page' } = Astro.props;
+const metiers = groupe('metiers');
+const fonctions = groupe('fonctionnalites');
+const courant = (u: string) => (u === url ? 'page' : undefined);
+const dans = (liste: { url: string }[], extra: string[] = []) => liste.some((p) => p.url === url) || extra.includes(url);
+---
+<nav class:list={['site-header', `site-header--${variante}`]} aria-label="Navigation principale">
+  <a class="brand" href={lien('/')} translate="no"><img src={lien('/assets/img/logo-blanc.svg')} width="163" height="50" alt="C’Claires, retour à l’accueil"></a>
+
+  <div class="site-nav" id="menu">
+    <ul class="site-nav__liens">
+      <li class="deroulant">
+        <details>
+          <summary class:list={['deroulant__titre', { 'is-courant': dans(metiers) }]}>Métiers</summary>
+          <ul class="deroulant__panneau deroulant__panneau--metiers">
+            {metiers.map((p) => (
+              <li class={`deroulant__metier deroulant__metier--${p.couleur}`}>
+                <a href={lien(p.url)} aria-current={courant(p.url)}>
+                  <span class="deroulant__nom">{p.libelle}</span>
+                  <span class="deroulant__resume">{p.resume}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </details>
+      </li>
+      <li class="deroulant">
+        <details>
+          <summary class:list={['deroulant__titre', { 'is-courant': dans(fonctions, ['/fonctionnalites/']) }]}>Fonctionnalités</summary>
+          <ul class="deroulant__panneau deroulant__panneau--fonctions">
+            {fonctions.map((p) => (
+              <li>
+                <a href={lien(p.url)} aria-current={courant(p.url)}>
+                  <span class="deroulant__nom">{p.libelle}</span>
+                  <span class="deroulant__resume">{p.resume}</span>
+                </a>
+              </li>
+            ))}
+            <li class="deroulant__tout"><a href={lien('/fonctionnalites/')} aria-current={courant('/fonctionnalites/')}>Toutes les fonctionnalités</a></li>
+          </ul>
+        </details>
+      </li>
+      <li><a class="site-nav__lien" href={lien('/tarifs/')} aria-current={courant('/tarifs/')}>Tarifs</a></li>
+      <li><a class="site-nav__lien" href={lien('/guides/')} aria-current={courant('/guides/')}>Guides</a></li>
+      <li><a class="site-nav__lien" href={lien('/a-propos/')} aria-current={courant('/a-propos/')}>À propos</a></li>
+    </ul>
+    <div class="site-nav__actions">
+      <Telephone class="site-nav__tel" />
+      <a class="button site-nav__demo" href={lien('/demo/')}>Réserver une démo</a>
+    </div>
+  </div>
+
+  <div class="site-header__fin">
+    <a class="button site-header__demo" href={lien('/demo/')}>Réserver une démo</a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu">Menu</button>
+  </div>
+</nav>

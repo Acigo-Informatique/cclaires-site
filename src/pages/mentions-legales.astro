@@ -1,0 +1,48 @@
+---
+import Base from '../layouts/Base.astro';
+import FilAriane from '../components/FilAriane.astro';
+import ACompleter from '../components/ACompleter.astro';
+import reglages from '../../site.config.mjs';
+
+const url = '/mentions-legales/';
+---
+<Base
+  titre="Mentions légales | C’Claires"
+  description="Mentions légales du site C’Claires : éditeur ACIGO Informatique à Saint-Lô, hébergeur, propriété intellectuelle, données personnelles et crédits des photos."
+  url={url}
+>
+  <div class="page">
+    <div class="grid">
+      <FilAriane url={url} class="page__fil" />
+      <h1 class="page__title">Mentions légales</h1>
+      <div class="page__body">
+        <h2>Éditeur du site</h2>
+        <p>ACIGO INFORMATIQUE, société à responsabilité limitée, SIREN 414&nbsp;125&nbsp;674, dont le siège est au 706 rue Dunant, 50000 Saint-Lô.<br>Contact&nbsp;: <a class="link" href={`mailto:${reglages.email}`}>{reglages.email}</a></p>
+        <p>Directeur de la publication&nbsp;: {reglages.directeurPublication ?? <ACompleter id="DIRPUB-01" enLigne texte="nom et fonction du directeur de la publication (site.config.mjs)" />}.</p>
+
+        <h2>Hébergement</h2>
+        <p>GitHub, Inc. (GitHub Pages), 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis.</p>
+
+        <h2>Propriété intellectuelle</h2>
+        <p>Le nom C’Claires, son logo et ses éléments graphiques appartiennent à ACIGO Informatique. Toute reproduction sans autorisation est interdite.</p>
+        <p>Les documents montrés sur la page d’accueil (étiquette, bon de livraison, fiche palette, traçabilité, CERFA) sont des exemples&nbsp;: les clients, les numéros de lot, de pièce, de SIRET et d’agrément y sont fictifs.</p>
+
+        <h2>Données personnelles</h2>
+        <p>Ce site ne dépose aucun cookie et ne mesure pas l’audience. Il ne contient aucun formulaire&nbsp;: les demandes passent par votre messagerie, à l’adresse <a class="link" href={`mailto:${reglages.email}`}>{reglages.email}</a>. Les informations que vous nous écrivez servent seulement à vous répondre.</p>
+        <p>Vous disposez d’un droit d’accès, de rectification et d’effacement de vos données&nbsp;: écrivez-nous à la même adresse.</p>
+
+        <h2>Crédits</h2>
+        <p>Photographies, en niveaux de gris et recadrées, via Wikimedia Commons&nbsp;:</p>
+        <ul>
+          <li><a class="link" href="https://commons.wikimedia.org/w/index.php?curid=157522886">« Claires ostréicoles et pont de la Seudre »</a>, <a class="link" href="https://commons.wikimedia.org/w/index.php?curid=157522575">« Tables ostréicoles près de La Tremblade »</a>, <a class="link" href="https://commons.wikimedia.org/w/index.php?curid=157522955">« Sillons de vasière et tables ostréicoles »</a>, <a class="link" href="https://commons.wikimedia.org/wiki/File:Paysage_fa%C3%A7onn%C3%A9_par_l%27ostr%C3%A9iculture_-_Parc_ostr%C3%A9icole_(Ifremer_00794-90550_-_51400).jpg">« Paysage façonné par l’ostréiculture »</a>, <a class="link" href="https://commons.wikimedia.org/wiki/File:Cri%C3%A9e_de_Boulogne-sur-Mer_(Ifremer_00555-66716_-_18992).jpg">« Criée de Boulogne-sur-Mer »</a>, par Olivier Dugornay, Ifremer, CC BY 4.0&nbsp;;</li>
+          <li><a class="link" href="https://commons.wikimedia.org/w/index.php?curid=155278133">« Huîtres creuses fixées sur un rocher »</a>, par Marie-Noëlle de Casamajor, Ifremer, CC BY 4.0&nbsp;;</li>
+          <li><a class="link" href="https://commons.wikimedia.org/wiki/File:Tables_%C3%A0_hu%C3%AEtres_%C3%A0_l%27embouchure_de_la_Seudre_(Ifremer_00689-80156_-_32651).jpg">« Tables à huîtres à l’embouchure de la Seudre »</a>, <a class="link" href="https://commons.wikimedia.org/wiki/File:Bouchots_de_moules_%C3%A0_Agon-Coutainville_(Manche)_(Ifremer_00555-66662_-_17611).jpg">« Bouchots de moules à Agon-Coutainville »</a>, par Stéphane Lesbats, Ifremer, CC BY 4.0&nbsp;;</li>
+          <li><a class="link" href="https://commons.wikimedia.org/w/index.php?curid=122475064">« Chalands ostréicoles au Château-d’Oléron »</a>, par Jean-Pierre Bazard, CC BY-SA 4.0&nbsp;;</li>
+          <li><a class="link" href="https://commons.wikimedia.org/wiki/File:Crassostrea_gigas_p1040848.jpg">« Crassostrea gigas »</a>, par David Monniaux, CC BY-SA 3.0&nbsp;;</li>
+          <li><a class="link" href="https://commons.wikimedia.org/wiki/File:Arcachon,_parcs_%C3%A0_hu%C3%AEtres_-_btv1b53052528r.jpg">« Arcachon, parcs à huîtres »</a>, Agence Rol, domaine public.</li>
+        </ul>
+        <p>Carte de France&nbsp;: <a class="link" href="https://commons.wikimedia.org/wiki/File:Blank_France_map,_no_Departments.svg">Lokal_Profil</a>, domaine public. Formulaire officiel CERFA n°&nbsp;15063*04 (document d’enregistrement des coquillages vivants, juin 2023), rempli avec des données d’exemple. Polices Cairo, Barlow Condensed et Lato, sous licence SIL Open Font License.</p>
+      </div>
+    </div>
+  </div>
+</Base>

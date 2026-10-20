@@ -1,0 +1,288 @@
+---
+import Base from '../layouts/Base.astro';
+import EnTete from '../components/EnTete.astro';
+import Photo from '../components/Photo.astro';
+import Parcours from '../components/Parcours.astro';
+import Documents from '../components/Documents.astro';
+import Faq from '../components/Faq.astro';
+import huitres from '../donnees/parcours/huitres.mjs';
+import { lien } from '../lib/chemins.mjs';
+import { prechargePhoto } from '../lib/precharge.mjs';
+import { idLogiciel, idEditeur, questions as faqPage } from '../donnees/schemas.mjs';
+import { absolu } from '../lib/chemins.mjs';
+
+const url = '/';
+const mailDemo = 'mailto:contact@cclaires.fr?subject=Demande%20de%20d%C3%A9monstration%20C%E2%80%99Claires&body=Bonjour%2C%0A%0AJe%20souhaite%20une%20d%C3%A9monstration%20de%20C%E2%80%99Claires.%0A%0AEntreprise%20%3A%20%0AM%C3%A9tier%20(ostr%C3%A9iculture%2C%20mytiliculture%2C%20exp%C3%A9dition%E2%80%A6)%20%3A%20%0ANombre%20de%20postes%20%3A%20%0AT%C3%A9l%C3%A9phone%20%3A%20%0A';
+const tailleHero = '(max-width: 720px) 67vw, 33vw';
+
+const questions = [
+  { q: 'Sur quels postes s’installe C’Claires&#8239;?', r: '<p>Aujourd’hui, sur les postes Windows du bureau et de l’atelier, ou sur un serveur TSE. Un seul installateur pose le logiciel et le service d’impression des étiquettes, puis C’Claires installe lui-même ses mises à jour.</p><p>Demain, C’Claires devient multiplateforme&nbsp;: tablettes et mobiles Android d’abord, puis iOS. Des applications dédiées couvrent déjà des processus métier comme la palettisation, la préparation ou l’approvisionnement.</p>' },
+  { q: 'Où sont hébergées mes données&#8239;?', r: '<p>En France, chez l’hébergeur Nat-Tech, et nous gérons nous-mêmes les sauvegardes. Chaque poste se connecte à ce serveur central&nbsp;: le bureau, l’atelier et l’expédition voient les mêmes chiffres. Chaque entreprise cliente a sa propre base, séparée de celles des autres.</p>' },
+  { q: 'Faut-il un logiciel d’étiquetage à part&#8239;?', r: '<p>Non. L’éditeur de modèles d’étiquettes est intégré à C’Claires&nbsp;: textes, variables du lot et de l’article, et tous les codes-barres 1D et 2D (EAN-13, GS1-128, Code 128, QR code, DataMatrix). Les étiquettes s’impriment ensuite directement depuis la commande ou le bon de livraison, en 3 clics, avec le modèle et l’étiqueteuse que vos règles ont choisis pour chaque client.</p>' },
+  { q: 'Quelles étiqueteuses sont prises en charge&#8239;?', r: '<p>Zebra, Toshiba et les autres marques. Chaque poste d’atelier connaît ses imprimantes, et une même impression peut partir sur plusieurs étiqueteuses à la fois, avec une numérotation continue. Toute réimpression demande un motif, consigné au journal des impressions.</p>' },
+  { q: 'La facturation électronique est-elle incluse&#8239;?', r: '<p>Oui. La facturation électronique est intégrée à C’Claires, avec les encaissements&nbsp;: la facture part du bon de livraison, sans outil à côté. Les écritures passent en direct dans Pennylane ou dans votre logiciel comptable.</p>' },
+  { q: 'Vos clients pourront-ils commander en ligne&#8239;?', r: '<p>C’est en préparation&nbsp;: un lien envoyé par e-mail ouvrira une page de commande à leur nom. Dès aujourd’hui, la commande se pré-remplit dans C’Claires d’après les habitudes de chaque lieu de livraison, et les promotions du jour sont proposées dès la saisie.</p>' },
+  { q: 'Combien de personnes peuvent l’utiliser&#8239;?', r: '<p>Autant que de licences. Les comptes nominatifs et les comptes poste d’atelier se comptent à part, et un compte poste peut tourner sur plusieurs machines de l’atelier.</p>' },
+  { q: 'Les étiquettes portent-elles les mentions obligatoires&#8239;?', r: '<p>Les modèles disposent des variables de la réglementation&nbsp;: marque d’identification, espèce, zone de production, méthode de production, date de conditionnement, numéro de lot. Des règles désignent le modèle de chaque client et de chaque article, et un simulateur montre laquelle s’applique, et pourquoi.</p>' },
+  { q: 'Combien coûte C’Claires&#8239;?', r: '<p>C’Claires est tout compris&nbsp;: rien n’est vendu par module, toutes les fonctions sont dans le logiciel. Écrivez-nous à <a class="link" href="mailto:contact@cclaires.fr">contact@cclaires.fr</a>&nbsp;: nous vous répondons avec un devis.</p>' },
+];
+
+const logiciel = {
+  '@type': 'SoftwareApplication',
+  '@id': idLogiciel,
+  name: 'C’Claires',
+  alternateName: 'CClaires',
+  url: absolu('/'),
+  description: 'Logiciel de gestion pour conchyliculteurs, ostréiculteurs, mytiliculteurs et mareyeurs : commandes, bons de livraison, facturation électronique, encaissements, liaison comptable, étiquettes en 3 clics, palettisation, transport, traçabilité intégrale, statistiques, HACCP, parcs et claires, viviers. Tout compris, sans module vendu à part. Données hébergées en France.',
+  audience: { '@type': 'BusinessAudience', audienceType: 'Conchyliculteurs, mytiliculteurs et mareyeurs' },
+  applicationCategory: 'BusinessApplication',
+  applicationSubCategory: 'Logiciel de gestion conchylicole',
+  operatingSystem: 'Windows',
+  inLanguage: 'fr',
+  image: absolu('/assets/img/og.png'),
+  publisher: { '@id': idEditeur },
+};
+
+const precharge = await prechargePhoto('claires-seudre', tailleHero);
+---
+<Base
+  titre="Logiciel conchylicole, mytilicole et mareyage | C’Claires"
+  description="C’Claires, le logiciel tout compris des conchyliculteurs, mytiliculteurs et mareyeurs : étiquettes en 3 clics, traçabilité intégrale, facture électronique."
+  url={url}
+  ogTitre="C’Claires, de la claire au camion"
+  enTete="accueil"
+  schemas={[logiciel, faqPage(questions, url)]}
+  precharges={[precharge]}
+>
+  <header class="hero" slot="avant">
+    <div class="masthead">
+      <div class="mosaic" aria-hidden="true">
+        <div class="m-a"></div>
+        <figure class="m-b"><Photo nom="claires-seudre" alt="" sizes={tailleHero} priority /></figure>
+        <div class="m-c"></div>
+        <figure class="m-d"><Photo nom="arcachon-1920" alt="" sizes="17vw" /></figure>
+        <div class="m-e"></div>
+        <figure class="m-f"><Photo nom="tables-tremblade" alt="" sizes="(max-width: 720px) 33vw, 17vw" /></figure>
+        <div class="m-g"></div>
+        <figure class="m-h"><Photo nom="sillons-vasiere" alt="" sizes="17vw" /></figure>
+        <div class="m-i"></div>
+        <div class="m-j"></div>
+      </div>
+      <EnTete url={url} variante="accueil" />
+    </div>
+
+    <div class="hero__text">
+      <div class="hero__aside">
+        <p class="standfirst" data-rise style="--i:0">Le logiciel de gestion des conchyliculteurs, mytiliculteurs et mareyeurs&nbsp;: étiquettes en 3 clics, traçabilité intégrale et facturation électronique, tout compris.</p>
+        <a class="hero__more link" href="#parcours" data-rise style="--i:1">Suivre une commande jusqu’à la facture</a>
+        <div class="hero__cta-phone" data-rise style="--i:2">
+          <a class="button" href={mailDemo}>Demander une démo</a>
+        </div>
+      </div>
+      <h1 class="hero__title lines">
+        <span class="line"><span data-line style="--i:0">De la claire</span></span>
+        <span class="line"><span data-line style="--i:1">au camion</span></span>
+      </h1>
+    </div>
+  </header>
+
+  <section class="intro" aria-labelledby="intro-titre">
+    <div class="intro__text">
+      <h2 class="intro__title" id="intro-titre" data-reveal>Une bourriche ne part jamais seule.</h2>
+      <p class="intro__statement" data-reveal style="--i:1">Avec elle partent une commande, un lot, une étiquette sanitaire, une palette, un transporteur et une facture&nbsp;: C’Claires les tient dans un seul logiciel.</p>
+      <p class="intro__lot" data-reveal style="--i:2">Sur cette page, une même commande sert d’exemple&nbsp;: des fines de claire n°&nbsp;3 du lot <span class="insecable" translate="no">2026-351-3-014</span>, qui partent vendredi pour Caen.</p>
+    </div>
+    <div class="intro__chips" aria-hidden="true">
+      <figure class="chip chip--a" data-reveal style="--i:2"><Photo nom="huitres-rocher" alt="" sizes="(max-width: 720px) 52vw, 20vw" /></figure>
+      <figure class="chip chip--b" data-reveal style="--i:3"><Photo nom="huitre-creuse" alt="" sizes="(max-width: 720px) 34vw, 13vw" /></figure>
+    </div>
+  </section>
+
+  <section id="metiers" class="metiers" aria-labelledby="metiers-titre">
+    <h2 class="metiers__title" id="metiers-titre" data-reveal>Trois métiers, un logiciel</h2>
+    <div class="sheets">
+      <article class="sheet sheet--tilleul" id="conchyliculteurs" aria-labelledby="t-conchy">
+        <h3 class="sheet__name" id="t-conchy">Conchyliculteurs</h3>
+        <div class="sheet__body">
+          <div class="sheet__text">
+            <p class="sheet__lead">Parcs, claires, poches et tables&nbsp;: vous savez où se trouve chaque lot, C’Claires aussi. De la mise à l’eau à la bourriche, chaque mouvement est noté, et l’étiquette sanitaire suit le colis.</p>
+            <dl class="sheet__terms">
+              <div><dt>Parcs et claires</dt><dd>Un éditeur de parcs et leur vue graphique&nbsp;: chaque claire, son lot, son stock à la date voulue.</dd></div>
+              <div><dt>Mises à l’eau, transferts, tris</dt><dd>Chaque mouvement de lot noté, bientôt saisi sur le parc avec l’application mobile.</dd></div>
+              <div><dt>Affinage, verdissement</dt><dd>Le séjour en claire compté, les cahiers des charges IGP et Label Rouge contrôlés lot par lot.</dd></div>
+              <div><dt>Calibres, fines, spéciales</dt><dd>Calibre, qualité et format portés par chaque article, du n°&nbsp;0 au n°&nbsp;5.</dd></div>
+              <div><dt>Zones A, B, C</dt><dd>Classement de la zone et purification vérifiés avant que le camion parte.</dd></div>
+            </dl>
+          </div>
+          <figure class="sheet__photo"><Photo nom="parcs-tremblade" sizes="(max-width: 720px) 100vw, 50vw" alt="Vue aérienne de rangées de tables ostréicoles sur l’estran, près de La Tremblade" /></figure>
+        </div>
+      </article>
+
+      <article class="sheet sheet--ciel" id="mytiliculteurs" aria-labelledby="t-myti">
+        <h3 class="sheet__name" id="t-myti">Mytiliculteurs</h3>
+        <div class="sheet__body">
+          <div class="sheet__text">
+            <p class="sheet__lead">Bouchots, cordes et filières&nbsp;: la moule se vend au kilo, en vrac ou en sac, souvent pêchée le matin et livrée le soir. C’Claires suit chaque pêche jusqu’au client, au poids réel.</p>
+            <dl class="sheet__terms">
+              <div><dt>Pêche du jour</dt><dd>Un lot par pêche, numéroté par votre masque, suivi jusqu’à la livraison.</dd></div>
+              <div><dt>Vrac au kilo, poids variable</dt><dd>Poids estimé à la commande, poids réel à la pesée, facturé au juste poids.</dd></div>
+              <div><dt>Sacs, colis, palettes</dt><dd>Une étiquette sanitaire par colis en 3&nbsp;clics, des palettes composées d’elles-mêmes.</dd></div>
+              <div><dt>Zones de production</dt><dd>Le classement de la zone suit le lot jusqu’au document de transfert.</dd></div>
+              <div><dt>Grande distribution</dt><dd>Prix datés par client, promotions, factures envoyées en EDI.</dd></div>
+            </dl>
+          </div>
+          <figure class="sheet__photo"><Photo nom="bouchots-agon" sizes="(max-width: 720px) 100vw, 50vw" alt="Pieux de bouchots couverts de moules, dans l’eau à Agon-Coutainville, dans la Manche" /></figure>
+        </div>
+      </article>
+
+      <article class="sheet sheet--noir" id="mareyeurs" aria-labelledby="t-mareyeurs">
+        <h3 class="sheet__name" id="t-mareyeurs">Mareyeurs</h3>
+        <div class="sheet__body">
+          <div class="sheet__text">
+            <p class="sheet__lead">Achat au cadran le matin, tri et mise en caisse, camion le soir&nbsp;: chez le mareyeur, tout va vite. C’Claires enchaîne achat, vente, étiquette et facture sans ressaisie, et trace chaque lot de bout en bout.</p>
+            <dl class="sheet__terms">
+              <div><dt>Achat sous criée</dt><dd>Achats et réceptions&nbsp;: chaque lot garde son origine. Un module de criée est prévu.</dd></div>
+              <div><dt>Viviers</dt><dd>Stock en vivier, en vrac, en poids fixe ou emballé, et en poids variable.</dd></div>
+              <div><dt>Espèce, zone FAO, engin</dt><dd>Les mentions du règlement UE 1379/2013 portées par l’article et imprimées sur l’étiquette.</dd></div>
+              <div><dt>Poids variable</dt><dd>Colis pesés un à un, poids réel sur le BL et sur la facture.</dd></div>
+              <div><dt>Transformation</dt><dd>Un module de transformation est prévu, du produit entier au produit élaboré.</dd></div>
+              <div><dt>Export et EDI</dt><dd>Documents dans la langue du client, factures et ordres de transport en EDI.</dd></div>
+            </dl>
+          </div>
+          <figure class="sheet__photo"><Photo nom="criee-boulogne" sizes="(max-width: 720px) 100vw, 50vw" alt="Cadran d’enchères de la criée de Boulogne-sur-Mer affichant l’espèce, les caisses restantes et le prix" /></figure>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <Parcours donnees={huitres} />
+
+  <Documents />
+
+  <section id="automatismes" class="auto" aria-labelledby="auto-titre">
+    <h2 class="sr-only" id="auto-titre">Ce que C’Claires fait à votre place</h2>
+    <div class="auto__band" data-tone="tilleul">
+      <div class="auto__text"><h3 class="auto__sentence" id="auto-1">Vos lots se numérotent tout seuls.</h3><p class="auto__detail">Un masque par exploitation, par exemple l’année, le jour, le calibre et une séquence&nbsp;: le lot du jour s’écrit 2026-351-3-014.</p></div>
+      <button class="auto__switch ui-switch" data-ui type="button" role="switch" aria-checked="false" aria-labelledby="auto-1"></button>
+    </div>
+    <div class="auto__band" data-tone="ciel">
+      <div class="auto__text"><h3 class="auto__sentence" id="auto-2">Le port se calcule à chaque livraison.</h3><p class="auto__detail">Franco, forfait ou montant saisi, réglé par client et par lieu de livraison. Sur un BL de 479,60&nbsp;€ HT avec un franco à 400&nbsp;€, le port est offert.</p></div>
+      <button class="auto__switch ui-switch" data-ui type="button" role="switch" aria-checked="false" aria-labelledby="auto-2"></button>
+    </div>
+    <div class="auto__band is-on" data-tone="eau">
+      <div class="auto__text"><h3 class="auto__sentence" id="auto-3">Vos factures partent en électronique.</h3><p class="auto__detail">La facturation électronique est intégrée au logiciel&nbsp;: les factures partent, les encaissements se pointent, et les écritures passent en direct dans Pennylane ou votre logiciel comptable.</p></div>
+      <button class="auto__switch ui-switch" data-ui type="button" role="switch" aria-checked="true" aria-labelledby="auto-3"></button>
+    </div>
+    <div class="auto__band is-on" data-tone="paon">
+      <div class="auto__text"><h3 class="auto__sentence" id="auto-4">Les palettes se composent d’elles-mêmes.</h3><p class="auto__detail">Répartition proposée par dimensions ou par nombre de colis, SSCC attribué à l’enregistrement, fiche palette en A4, A5 ou 10&nbsp;×&nbsp;15.</p></div>
+      <button class="auto__switch ui-switch" data-ui type="button" role="switch" aria-checked="true" aria-labelledby="auto-4"></button>
+    </div>
+    <div class="auto__band" data-tone="tilleul">
+      <div class="auto__text"><h3 class="auto__sentence" id="auto-5">Les commandes du jour passent en BL.</h3><p class="auto__detail">Transformation en masse depuis la liste filtrée, avec les cumuls de poids et de montant HT en pied de liste. Les BL deviennent ensuite des factures, au jour, au BL ou à la fréquence du client.</p></div>
+      <button class="auto__switch ui-switch" data-ui type="button" role="switch" aria-checked="false" aria-labelledby="auto-5"></button>
+    </div>
+  </section>
+
+  <section id="normes" class="norms" aria-labelledby="normes-titre">
+    <div class="norms__board">
+      <div class="norm norm--head" data-reveal>
+        <h2 id="normes-titre">Les normes du métier, tenues</h2>
+        <p>C’Claires imprime et contrôle ce que la réglementation et vos clients demandent, sans tableur à côté.</p>
+      </div>
+      <div class="norm" data-reveal style="--i:1"><p class="norm__name">Codes-barres 1D et 2D</p><p class="norm__what">EAN-13, GS1-128, Code 128, QR code, DataMatrix&nbsp;: tous dans l’éditeur.</p></div>
+      <div class="norm" data-reveal style="--i:2"><p class="norm__name">SSCC</p><p class="norm__what">Un numéro unique par palette, attribué à l’enregistrement.</p></div>
+      <div class="norm" data-reveal style="--i:3"><p class="norm__name">CERFA 15063*04</p><p class="norm__what">Le document des coquillages vivants, prérempli depuis le BL.</p></div>
+      <div class="norm" data-reveal style="--i:4"><p class="norm__name">Règlement UE 1379/2013</p><p class="norm__what">Les mentions au consommateur&nbsp;: espèce, zone, méthode de production, engin.</p></div>
+      <div class="norm" data-reveal style="--i:5"><p class="norm__name">HACCP</p><p class="norm__what">Le module HACCP garde vos enregistrements sanitaires dans le logiciel.</p></div>
+      <div class="norm" data-reveal style="--i:6"><p class="norm__name">Facture électronique</p><p class="norm__what">Intégrée, avec les encaissements et la liaison directe à Pennylane ou à votre comptabilité.</p></div>
+    </div>
+  </section>
+
+  <section id="modules" class="modules" aria-labelledby="modules-titre">
+    <div class="modules__head" data-reveal>
+      <h2 class="modules__name" id="modules-titre">Tout compris</h2>
+      <p class="modules__what">Rien n’est vendu par module&nbsp;: tout ce qui suit est dans le logiciel.</p>
+    </div>
+    <ul class="modules__list">
+      <li data-reveal><span class="modules__name">Commande</span><span class="modules__what">Habitudes, promotions du jour, prix par client, BL, factures</span></li>
+      <li data-reveal style="--i:1"><span class="modules__name">Étiquetage</span><span class="modules__what">Éditeur de modèles intégré, impression en 3 clics</span></li>
+      <li data-reveal style="--i:2"><span class="modules__name">Palettisation</span><span class="modules__what">Palettes proposées, SSCC, fiches palette</span></li>
+      <li data-reveal style="--i:3"><span class="modules__name">Approvisionnement</span><span class="modules__what">Achats, réceptions, mise en stock par lot</span></li>
+      <li data-reveal style="--i:4"><span class="modules__name">Atelier</span><span class="modules__what">Postes d’atelier, étiqueteuses, sortie du jour</span></li>
+      <li data-reveal style="--i:5"><span class="modules__name">Traçabilité</span><span class="modules__what">De l’achat à la vente, et de la vente à l’achat</span></li>
+      <li data-reveal style="--i:6"><span class="modules__name">Facturation</span><span class="modules__what">Facture électronique, encaissements, liaison Pennylane</span></li>
+      <li data-reveal style="--i:7"><span class="modules__name">Statistiques</span><span class="modules__what">Tableaux de bord poussés pour piloter l’entreprise</span></li>
+      <li data-reveal style="--i:8"><span class="modules__name">HACCP</span><span class="modules__what">Les enregistrements sanitaires dans le logiciel</span></li>
+      <li data-reveal style="--i:9"><span class="modules__name">Parcs et claires</span><span class="modules__what">Éditeur et vue graphique des parcs, lots, activités</span></li>
+    </ul>
+  </section>
+
+  <section id="applications" class="apps" aria-labelledby="apps-titre">
+    <div class="apps__cell">
+      <h2 class="apps__title" id="apps-titre"><span data-reveal>Du bureau au quai,</span><span class="apps__right" data-reveal style="--i:1">jusqu’au parc</span></h2>
+      <figure class="apps__photo" data-reveal style="--i:2"><Photo nom="chaland-oleron" sizes="(max-width: 1080px) 100vw, 50vw" alt="Chaland ostréicole chargé de poches d’huîtres, amarré à quai au Château-d’Oléron" /></figure>
+      <div class="apps__foot">
+        <p data-reveal style="--i:2">C’Claires tourne aujourd’hui sur Windows et devient multiplateforme&nbsp;: tablettes et mobiles Android, puis iOS. Autour de lui, une application dédiée à chaque processus métier&nbsp;; certaines sont là, d’autres en préparation.</p>
+        <a class="button" data-reveal style="--i:3" href={mailDemo}>Demander une démo</a>
+      </div>
+    </div>
+    <div class="apps__rows">
+      <div class="apps__row" data-reveal>
+        <h3>Au bureau</h3>
+        <p>Le logiciel complet, sur les postes Windows ou en TSE&nbsp;: commandes, facturation électronique, statistiques poussées pour piloter l’entreprise, écritures envoyées en direct à votre comptabilité.</p>
+        <ul><li>Commandes et BL</li><li>Facture électronique et encaissements</li><li>Statistiques</li><li>Pennylane et autres</li></ul>
+      </div>
+      <div class="apps__row" data-reveal style="--i:1">
+        <h3>Au quai</h3>
+        <p>Une application dédiée à chaque geste de l’expédition&nbsp;: préparer, palettiser, peser, charger. La pesée connectée et le contrôle du chargement par scan sont en préparation.</p>
+        <ul><li>Préparation et approvisionnement</li><li>Palettisation</li><li>Pesée connectée (bientôt)</li><li>Chargement par scan (bientôt)</li></ul>
+      </div>
+      <div class="apps__row" data-reveal style="--i:2">
+        <h3>Sur le parc</h3>
+        <p>Sur tablette et mobile Android, puis iOS&nbsp;: les activités saisies sur place, avec le calendrier des marées et leurs coefficients.</p>
+        <ul><li>Mises à l’eau, transferts, tris (bientôt)</li><li>Calendrier des marées (bientôt)</li></ul>
+      </div>
+      <div class="apps__row" data-reveal style="--i:3">
+        <h3>Qualité</h3>
+        <p>Une application dédiée, en préparation&nbsp;: le rappel de lot en un clic, des clients livrés au dossier pour la DDPP, et le QR code consommateur sur l’étiquette.</p>
+        <ul><li>Rappel de lot (bientôt)</li><li>Dossier DDPP (bientôt)</li><li>QR code consommateur (bientôt)</li></ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="editeur" class="about" aria-labelledby="editeur-titre">
+    <h2 class="about__title" id="editeur-titre" data-reveal>Un éditeur depuis 1997</h2>
+    <div class="grid">
+      <p class="about__lead" data-reveal style="--i:1">C’Claires est conçu et édité par ACIGO Informatique, société de logiciels installée à Saint-Lô, dans la Manche, depuis 1997.</p>
+    </div>
+    <div class="grid about__tiles">
+      <figure class="about__photo" data-reveal>
+        <div class="shutter"><Photo nom="tables-seudre" class="photo drift" sizes="(max-width: 1080px) 100vw, 66vw" alt="Tables à huîtres alignées sur l’estran à marée basse, à l’embouchure de la Seudre" /></div>
+        <figcaption class="about__note">Tables à huîtres à l’embouchure de la Seudre, à marée basse. Le logiciel suit le même calendrier que vous&nbsp;: la marée, la pointe de fin d’année, le camion du matin.</figcaption>
+      </figure>
+      <div class="about__side">
+        <div class="about__map" data-reveal style="--i:1"><img src={lien('/assets/img/carte-saint-lo.svg')} width="507" height="520" alt="Carte de France, Saint-Lô marqué dans la Manche" loading="lazy"></div>
+        <dl class="facts" data-reveal style="--i:2">
+          <div><dt>Siège</dt><dd>Saint-Lô, Manche</dd></div>
+          <div><dt>Depuis</dt><dd>1997</dd></div>
+          <div><dt>Plateformes</dt><dd>Windows aujourd’hui, Android puis iOS</dd></div>
+          <div><dt>Formule</dt><dd>Tout compris, rien n’est vendu à part</dd></div>
+          <div class="facts__wide"><dt>Données</dt><dd>Hébergées en France chez Nat-Tech, sauvegardes gérées par ACIGO</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <Faq questions={questions} />
+
+  <section id="demo" class="close" aria-labelledby="demo-titre">
+    <h2 class="close__title lines" id="demo-titre">
+      <span class="line"><span data-reveal>Et du camion</span></span>
+      <span class="line"><span data-reveal style="--i:1">à la facture</span></span>
+    </h2>
+    <div class="grid close__foot">
+      <p class="close__text" data-reveal style="--i:2">Dites-nous comment partent vos colis aujourd’hui. Nous vous montrons comment C’Claires les suit, de la commande à la facture.</p>
+      <div class="close__action" data-reveal style="--i:3"><a class="button button--on-dark" href={mailDemo}>Demander une démo</a></div>
+    </div>
+  </section>
+</Base>

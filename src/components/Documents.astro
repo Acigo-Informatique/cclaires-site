@@ -1,0 +1,38 @@
+---
+// Les documents que C’Claires tire de la commande d’exemple : un onglet par document, la feuille
+// affichée à droite (src/scripts/site.js). Sans script, tous les documents se suivent.
+import Etiquette from './documents/Etiquette.astro';
+import BonLivraison from './documents/BonLivraison.astro';
+import FichePalette from './documents/FichePalette.astro';
+import Tracabilite from './documents/Tracabilite.astro';
+import Cerfa from './documents/Cerfa.astro';
+
+interface Props { note?: string }
+const { note = 'Chaque document part de la pièce, sans ressaisie&nbsp;: mêmes lots, mêmes poids, mêmes numéros. Choisissez-en un pour le voir tel qu’il sort.' } = Astro.props;
+
+const documents = [
+  { id: 'etiquette', nom: 'Étiquette sanitaire', Composant: Etiquette },
+  { id: 'bl', nom: 'Bon de livraison', Composant: BonLivraison },
+  { id: 'palette', nom: 'Fiche palette', Composant: FichePalette },
+  { id: 'trace', nom: 'Traçabilité du lot', Composant: Tracabilite },
+  { id: 'cerfa', nom: 'CERFA 15063', Composant: Cerfa },
+];
+---
+<section id="documents" class="docs" aria-labelledby="docs-titre">
+  <h2 class="sr-only" id="docs-titre">Les documents que C’Claires imprime</h2>
+  <div class="grid docs__grid">
+    <div class="docs__index" role="tablist" aria-label="Documents de la commande C-26-01482">
+      {documents.map((d, i) => (
+        <button type="button" role="tab" id={`tab-${d.id}`} aria-controls={`doc-${d.id}`} aria-selected={String(i === 0)}
+          tabindex={i === 0 ? undefined : '-1'} data-reveal style={i ? `--i:${i}` : undefined}>{d.nom}</button>
+      ))}
+      <p class="docs__note" data-reveal style={`--i:${documents.length}`} set:html={note} />
+    </div>
+
+    <div class="docs__stage" data-reveal style="--i:2">
+      {documents.map(({ id, Composant }, i) => (
+        <Composant role="tabpanel" id={`doc-${id}`} aria-labelledby={`tab-${id}`} tabindex="0" hidden={i > 0} />
+      ))}
+    </div>
+  </div>
+</section>

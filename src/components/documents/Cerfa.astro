@@ -1,0 +1,10 @@
+---
+// Le formulaire officiel CERFA n° 15063*04, rempli avec la commande d’exemple (tools/remplir-cerfa.mjs).
+import { Picture } from 'astro:assets';
+import cerfa from '../../assets/documents/cerfa-15063-exemple.jpg';
+const { class: classe = '', ...attributs } = Astro.props;
+---
+<figure class:list={['docs__sheet ui-cerfa', classe]} data-ui {...attributs}>
+  <Picture src={cerfa} widths={[600, 900, 1200]} sizes="(max-width: 640px) 92vw, 38rem" formats={['avif', 'webp']} quality={80}
+    alt="Formulaire officiel CERFA n° 15063*04, document d’enregistrement des coquillages vivants, rempli pour la commande d’exemple : huîtres creuses, 12 bourriches, 60 kg, zone classée A, finition en claire" />
+</figure>
