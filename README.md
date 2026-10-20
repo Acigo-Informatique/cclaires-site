@@ -32,6 +32,7 @@ emplacement « À COMPLÉTER » sur les pages. La liste de tout ce qui reste à 
 | `src/assets/photos/` | photos sources, déclinées à la construction en AVIF, WebP et JPEG à plusieurs largeurs ; `credits.json` (source, auteur, licence) |
 | `public/` | copié tel quel : polices (OFL), logos, codes-barres, icônes, image de partage |
 | `tools/` | outils de travail, non publiés (voir plus bas) |
+| `serveur/formulaire/` | réception du formulaire de devis chez OVH, en PHP, appelée à remplacer Formspree ; déposée à part, hors du site (voir son `LISEZMOI.md`) |
 
 Les documents montrés (étiquette, BL, fiche palette, traçabilité, CERFA) utilisent des données fictives :
 exploitation « des Trois Claires », clients « Poissonnerie de la Halle », « Restaurant Le Bouchot »,

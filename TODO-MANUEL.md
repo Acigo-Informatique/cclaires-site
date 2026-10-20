@@ -16,14 +16,14 @@ publication (DIRPUB-01) sont renseignés.
 
 | ID | Page | Ce qu’il faut fournir | Priorité |
 |---|---|---|---|
-| FORM-03 | /demo/, accueil, /confidentialite/ | Remplacer Formspree (décision du 20/10/2026) : Formspree, Inc. n’est plus certifié au Data Privacy Framework UE–États-Unis (« Inactive - Withdrawal » depuis le 26/04/2022) et ne publie pas de contrat de sous-traitance. Choisir un service dont les données restent dans l’UE, avec contrat de sous-traitance (art. 28) ; puis changer `formulaire.endpoint`, la CSP de `vercel.json` (connect-src, form-action), le paragraphe « Qui les reçoit » de /confidentialite/ (et retirer sa marque [À VÉRIFIER]), et faire un envoi d’essai depuis le site en ligne. Purger ensuite les demandes gardées sur le compte Formspree | haute |
+| FORM-03 | /demo/, accueil, /confidentialite/ | Remplacer Formspree, qui n’est plus certifié au Data Privacy Framework UE–États-Unis (« Inactive - Withdrawal » depuis le 26/04/2022) et ne publie pas de contrat de sous-traitance. Choix du 20/10/2026 : un script PHP chez OVH, qui héberge déjà la messagerie (`serveur/formulaire/`, écrit mais pas encore exécuté, faute de PHP sur le poste). Suivre `serveur/formulaire/LISEZMOI.md` : hébergement web OVH en PHP 8.1 ou plus, sous-domaine formulaire.cclaires.fr avec SSL, dépôt, essais par `curl.exe`, puis bascule du site en un commit (adresse, CSP portée dans une balise meta, commentaires). Texte de /confidentialite/ à mettre alors, après avoir vérifié le lieu d’hébergement : « ACIGO Informatique seulement. La demande est reçue par un programme hébergé chez OVH, qui nous la transmet par e-mail sans la conserver ; notre messagerie est aussi hébergée par OVH, société française. Aucune donnée ne quitte l’Union européenne. » Enfin, purger les demandes gardées sur le compte Formspree et le fermer | haute |
 | AUDIENCE-01 | Toutes | Mesure d’audience sans cookie (`audience`) : Plausible ou Matomo, puis ajouter son domaine à la CSP de `vercel.json` si le site part sur Vercel, et réécrire le paragraphe « Cookies et mesure d’audience » de /confidentialite/ (l’outil traite l’adresse IP des visiteurs). En attente : aucune mesure pour l’instant (décision du 20/10/2026) | moyenne |
 
 ## Domaine et indexation
 
 En attente (décision du 20/10/2026) : le domaine reste sur l’ancien site jusqu’à nouvel ordre. Au
-20/10/2026, cclaires.fr et www.cclaires.fr pointent sur 213.186.33.5 (hébergement mutualisé OVH) : la
-bascule DNS remplacera le site en ligne. Ordre à suivre : fusion de la PR dans `dev` et vérification du
+20/10/2026, cclaires.fr pointe sur 213.186.33.5, le service de redirection d’OVH, qui renvoie vers
+www.cclaires.fr et sa page OVH « Site en construction » : aucun ancien site n’est en ligne. Ordre à suivre : fusion de la PR dans `dev` et vérification du
 site sous github.io, puis DNS-01, CNAME-01, INDEX-01, et seulement ensuite GSC-01, BING-01 et GBP-01.
 
 | ID | Page | Ce qu’il faut fournir | Priorité |
