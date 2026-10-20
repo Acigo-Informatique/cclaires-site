@@ -1,0 +1,38 @@
+---
+// Facture F-26-01990 tirée du BL-26-02217 de la commande d’exemple : émise, ses écritures prêtes pour
+// l’export comptable (règle 1 : jamais « envoyée en électronique »). Données fictives.
+const { class: classe = '', ...attributs } = Astro.props;
+---
+<article class:list={['docs__sheet ui-bl ui-facture', classe]} data-ui {...attributs}>
+  <div class="bl-haut">
+    <div>
+      <p class="bl-nom">Exploitation des Trois Claires</p>
+      <p class="bl-adresse">12 chemin des Claires<br>17320 Marennes-Hiers-Brouage</p>
+      <p class="bl-gris">N° SIRET : 123 456 789 00017<br>N° TVA : FR 00 123456789</p>
+    </div>
+    <div class="bl-titre">
+      <p class="bl-type">FACTURE</p>
+      <p class="bl-num">N° F-26-01990</p>
+      <p><span class="bl-gris">Date</span> 18/12/2026<br><span class="bl-gris">Échéance</span> 17/01/2027<br><span class="ui-pill ui-pill--done">Émise</span></p>
+    </div>
+  </div>
+  <div class="bl-cadres">
+    <div class="bl-cadre"><p class="bl-lib">CLIENT</p><p><b>Poissonnerie de la Halle</b><br>14000 Caen</p><p class="bl-gris">SIRET : 987 654 321 00012</p></div>
+    <div class="bl-cadre"><p class="bl-lib">LIVRAISON</p><p>BL-26-02217 du 18/12/2026<br>Commande C-26-01482</p></div>
+  </div>
+  <table class="bl-table">
+    <thead><tr><th>DÉSIGNATION</th><th class="r">QTÉ</th><th class="r">PRIX HT</th><th class="r">TOTAL HT</th></tr></thead>
+    <tbody>
+      <tr><td><b>Fines de claire n° 3</b>, bourriche 5 kg<br>Lot 2026-351-3-014</td><td class="r">12</td><td class="r">26,00 €</td><td class="r">312,00 €</td></tr>
+      <tr><td><b>Spéciales de claire n° 2</b>, bourriche 3 kg<br>Lot 2026-349-2-006</td><td class="r">6</td><td class="r">20,10 €</td><td class="r">120,60 €</td></tr>
+      <tr><td><b>Moules de bouchot</b>, sac 10 kg<br>Lot 2026-350-M-002</td><td class="r">2</td><td class="r">23,50 €</td><td class="r">47,00 €</td></tr>
+      <tr><td>Port, franco à 400 € HT atteint</td><td class="r">1</td><td class="r">0,00 €</td><td class="r">0,00 €</td></tr>
+    </tbody>
+  </table>
+  <div class="bl-totaux">
+    <p><span>Total HT</span><b>479,60 €</b></p>
+    <p><span>TVA 5,5 %</span><b>26,38 €</b></p>
+    <p class="bl-total"><span>Total TTC</span><b>505,98 €</b></p>
+  </div>
+  <p class="bl-pied"><span>Écritures de vente prêtes pour l’export comptable</span><span>Page 1 / 1</span></p>
+</article>

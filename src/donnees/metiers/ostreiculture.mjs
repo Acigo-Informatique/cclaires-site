@@ -36,7 +36,7 @@ export default {
         capture: {
           id: 'CAPT-05', ratio: '16 / 10',
           sujet: 'vue graphique des parcs d’une exploitation, une claire sélectionnée avec son lot et son stock',
-          alt: 'Vue graphique des parcs dans C’Claires : chaque claire colorée selon son lot, la claire C12 sélectionnée avec son stock',
+          alt: 'Vue graphique des parcs dans C’Claires : les claires et leur lot, une claire sélectionnée avec son stock',
           legende: 'La vue des parcs : chaque claire, son lot, son stock à la date voulue.',
         },
       },
