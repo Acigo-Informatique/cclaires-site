@@ -1,13 +1,19 @@
 ---
-// Emplacement d’un témoignage client, à remplir avec un vrai client qui a donné son accord écrit :
-// jamais de citation, de nom ni d’entreprise inventés. Une fois fourni, il prend la forme d’une
-// <figure> : la citation en <blockquote>, puis nom, entreprise et bassin en <figcaption>, avec la photo.
-import ACompleter from './ACompleter.astro';
+// Un témoignage client, tiré de src/donnees/preuves.mjs : un vrai client qui a donné son accord écrit,
+// jamais de citation, de nom ni d’entreprise inventés. La citation en <blockquote>, puis le nom,
+// l’entreprise et le bassin en <figcaption>, avec la photo.
+import Photo from './Photo.astro';
 
-interface Props { id: string; metier: string; class?: string }
-const { id, metier, class: classe = '' } = Astro.props;
+interface Props {
+  t: { citation: string; prenom: string; nom: string; entreprise: string; bassin: string; photo?: string };
+  class?: string;
+}
+const { t, class: classe = '' } = Astro.props;
 ---
-<figure class:list={['temoignage', classe]}>
-  <ACompleter id={id} class="temoignage__todo"
-    texte={`témoignage d’un client ${metier} : citation de 20 à 40 mots sur ce que C’Claires a changé, prénom et nom, entreprise, bassin de production, photo carrée (600 × 600 px minimum), accord écrit pour la publication`} />
+<figure class:list={['temoignage', classe]} data-reveal>
+  <blockquote class="temoignage__citation"><p>« {t.citation} »</p></blockquote>
+  <figcaption class="temoignage__auteur">
+    {t.photo && <span class="temoignage__vignette"><Photo nom={t.photo} alt="" sizes="4.5rem" widths={[144]} class="temoignage__photo" /></span>}
+    <span><b>{t.prenom} {t.nom}</b>, {t.entreprise}<br>{t.bassin}</span>
+  </figcaption>
 </figure>

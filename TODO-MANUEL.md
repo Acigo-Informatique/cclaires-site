@@ -58,6 +58,12 @@ l’image, en reprenant le même texte alternatif.
 
 ## Preuve sociale et équipe
 
+En attente (décision du 20/10/2026) : rien n’est encore fourni, ces blocs sont **masqués** au lieu d’être
+signalés. Chaque élément s’ajoute au fur et à mesure dans `src/donnees/preuves.mjs` (format décrit en
+commentaire) et apparaît alors sur ses pages. La page /clients/ (`src/pages/[clients].astro`) n’est
+construite, et n’entre au menu, au pied de page et au sitemap, qu’à partir du premier témoignage, logo ou
+étude de cas.
+
 | ID | Page | Ce qu’il faut fournir | Priorité |
 |---|---|---|---|
 | TEMO-01 | Accueil, /logiciel-ostreicole/, /clients/ | Témoignage d’un ostréiculteur client : citation de 20 à 40 mots, prénom et nom, entreprise, bassin, photo carrée (600 × 600 px minimum), accord écrit pour la publication | haute |

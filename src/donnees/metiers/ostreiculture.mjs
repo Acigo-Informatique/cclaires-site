@@ -89,7 +89,7 @@ export default {
     ],
   },
 
-  temoignage: { id: 'TEMO-01', metier: 'ostréiculteur' },
+  temoignage: { cle: 'ostreiculture', metier: 'ostréiculteur' },
 
   faq: [
     { q: 'C’Claires gère-t-il plusieurs parcs et plusieurs claires ?', r: '<p>Oui. L’éditeur de parcs dessine toutes vos concessions, vos claires et vos tables, et chaque lot garde la trace de ses emplacements successifs, de la mise à l’eau au conditionnement.</p>' },

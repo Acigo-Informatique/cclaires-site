@@ -1,13 +1,14 @@
 ---
-// À propos (requête : ACIGO Informatique). Seulement des faits connus ; l’équipe est à compléter.
+// À propos (requête : ACIGO Informatique). Seulement des faits connus ; la photo de l’équipe s’affiche une fois
+// fournie (src/donnees/preuves.mjs).
 import Base from '../layouts/Base.astro';
 import EnTetePage from '../components/EnTetePage.astro';
 import Photo from '../components/Photo.astro';
-import ACompleter from '../components/ACompleter.astro';
 import AppelFinal from '../components/AppelFinal.astro';
 import Telephone from '../components/Telephone.astro';
 import { lien } from '../lib/chemins.mjs';
 import { prechargePhoto } from '../lib/precharge.mjs';
+import { equipe, pageClients } from '../donnees/preuves.mjs';
 
 const url = '/a-propos/';
 const tailleHero = '(max-width: 720px) 67vw, 33vw';
@@ -22,7 +23,7 @@ const precharge = await prechargePhoto('port-en-bessin', tailleHero);
 >
   <EnTetePage slot="avant" url={url} h1="Un éditeur normand depuis 1997" couleur="paon" photos={['port-en-bessin', 'bouchots-agon', 'claires-seudre']} tailleHero={tailleHero}
     sousTitre="C’Claires est conçu, édité et maintenu par ACIGO Informatique, une société de logiciels installée à Saint-Lô, dans la Manche, depuis 1997."
-    actions={[{ href: lien('/demo/'), texte: 'Réserver une démo de 30 minutes', primaire: true }, { href: '#equipe', texte: 'Rencontrer l’équipe' }]} />
+    actions={[{ href: lien('/demo/'), texte: 'Réserver une démo de 30 minutes', primaire: true }, equipe ? { href: '#equipe', texte: 'Rencontrer l’équipe' } : { href: '#donnees', texte: 'Où sont vos données' }]} />
 
   <section id="editeur" class="about" aria-labelledby="editeur-titre">
     <h2 class="about__title titre-long" id="editeur-titre" data-reveal>À Saint-Lô, près des parcs et des criées</h2>
@@ -48,12 +49,15 @@ const precharge = await prechargePhoto('port-en-bessin', tailleHero);
     </div>
   </section>
 
-  <section id="equipe" class="benefices" aria-labelledby="equipe-titre">
-    <h2 class="benefices__titre titre-long" id="equipe-titre" data-reveal>L’équipe</h2>
-    <figure class="equipe">
-      <ACompleter id="EQUIPE-01" class="equipe__photo" texte="photo de l’équipe ACIGO à Saint-Lô (paysage 3:2, 1600 px de large au moins) et, pour la légende, les prénoms et le rôle de chacun" />
-    </figure>
-  </section>
+  {equipe && (
+    <section id="equipe" class="benefices" aria-labelledby="equipe-titre">
+      <h2 class="benefices__titre titre-long" id="equipe-titre" data-reveal>L’équipe</h2>
+      <figure class="equipe" data-reveal>
+        <Photo nom={equipe.photo} class="equipe__photo" sizes="(max-width: 1080px) 100vw, 64rem" alt="L’équipe ACIGO Informatique à Saint-Lô" />
+        <figcaption>{equipe.legende}</figcaption>
+      </figure>
+    </section>
+  )}
 
   <section id="donnees" class="aussi" aria-labelledby="donnees-titre">
     <h2 class="aussi__titre titre-long" id="donnees-titre" data-reveal>Vos données, chez nous</h2>
@@ -63,7 +67,7 @@ const precharge = await prechargePhoto('port-en-bessin', tailleHero);
       <div data-reveal style="--i:2"><dt>Une base par entreprise</dt><dd>Chaque client a sa propre base, séparée de celles des autres.</dd></div>
       <div data-reveal style="--i:3"><dt>Postes Windows ou TSE</dt><dd>À vous de choisir ; les étiquettes s’impriment en local, sur les étiqueteuses du poste.</dd></div>
     </dl>
-    <p class="aussi__suite" data-reveal>Ce qui arrive ensuite dans le logiciel est sur la <a class="link" href={lien('/feuille-de-route/')}>feuille de route</a>, et ceux qui l’utilisent sont sur la page <a class="link" href={lien('/clients/')}>clients</a>.</p>
+    <p class="aussi__suite" data-reveal>Ce qui arrive ensuite dans le logiciel est sur la <a class="link" href={lien('/feuille-de-route/')}>feuille de route</a>{pageClients ? <>, et ceux qui l’utilisent sont sur la page <a class="link" href={lien('/clients/')}>clients</a></> : ''}.</p>
   </section>
 
   <AppelFinal titre="Faisons connaissance" texte="En 30 minutes, nous vous montrons C’Claires avec vos articles et vos clients, et vous rencontrez l’équipe ACIGO." />

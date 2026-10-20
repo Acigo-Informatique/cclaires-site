@@ -1,0 +1,15 @@
+---
+// Les logos des clients qui ont donné leur accord (src/donnees/preuves.mjs), sur une tuile du tableau
+// de preuve : des SVG d’une seule couleur, passés en blanc sur le fond sombre.
+import { logos } from '../donnees/preuves.mjs';
+import { lien } from '../lib/chemins.mjs';
+---
+{logos.length > 0 && (
+  <div class="norm preuve__logos" data-reveal>
+    <ul class="logos" aria-label="Quelques clients de C’Claires">
+      {logos.map((l) => (
+        <li><img src={lien(`/assets/img/clients/${l.fichier}`)} alt={l.nom} width={l.largeur} height={l.hauteur} loading="lazy"></li>
+      ))}
+    </ul>
+  </div>
+)}

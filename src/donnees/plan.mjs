@@ -2,6 +2,8 @@
 // Une seule source pour le menu, le pied de page, les fils d’Ariane, le sitemap et le contrôle des liens
 // (tools/verifier.mjs). Une page ajoutée au site s’ajoute d’abord ici.
 
+import { pageClients } from './preuves.mjs';
+
 export const pages = [
   { url: '/', libelle: 'Accueil' },
 
@@ -34,7 +36,8 @@ export const pages = [
 
   { url: '/tarifs/', libelle: 'Tarifs', parent: '/', groupe: 'entreprise' },
   { url: '/demo/', libelle: 'Démo et devis', parent: '/', groupe: 'entreprise' },
-  { url: '/clients/', libelle: 'Clients', parent: '/', groupe: 'entreprise' },
+  // /clients/ n’existe qu’à partir de la première preuve fournie (src/donnees/preuves.mjs).
+  ...(pageClients ? [{ url: '/clients/', libelle: 'Clients', parent: '/', groupe: 'entreprise' }] : []),
   { url: '/a-propos/', libelle: 'À propos', parent: '/', groupe: 'entreprise' },
   { url: '/feuille-de-route/', libelle: 'Feuille de route', parent: '/', groupe: 'entreprise' },
   { url: '/faq/', libelle: 'Questions fréquentes', parent: '/', groupe: 'entreprise' },

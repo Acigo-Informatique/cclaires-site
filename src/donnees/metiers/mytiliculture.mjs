@@ -89,7 +89,7 @@ export default {
     ],
   },
 
-  temoignage: { id: 'TEMO-02', metier: 'mytiliculteur' },
+  temoignage: { cle: 'mytiliculture', metier: 'mytiliculteur' },
 
   faq: [
     { q: 'Comment gérez-vous le poids variable ?', r: '<p>Le poids est estimé à la commande, puis remplacé par le poids réel relevé à la pesée. C’est lui qui figure sur le bon de livraison et sur la facture, colis par colis.</p>' },

@@ -8,7 +8,7 @@ import Parcours from '../components/Parcours.astro';
 import Documents from '../components/Documents.astro';
 import Faq from '../components/Faq.astro';
 import Temoignage from '../components/Temoignage.astro';
-import ACompleter from '../components/ACompleter.astro';
+import LogosClients from '../components/LogosClients.astro';
 import Telephone from '../components/Telephone.astro';
 import FormulaireDevis from '../components/FormulaireDevis.astro';
 import ListeOffre from '../components/ListeOffre.astro';
@@ -16,6 +16,7 @@ import huitres from '../donnees/parcours/huitres.mjs';
 import { lien } from '../lib/chemins.mjs';
 import { prechargePhoto } from '../lib/precharge.mjs';
 import { logiciel, questions as faqPage } from '../donnees/schemas.mjs';
+import { temoignagesFournis, equipe, pageClients } from '../donnees/preuves.mjs';
 
 const url = '/';
 const tailleHero = '(max-width: 720px) 67vw, 33vw';
@@ -185,20 +186,18 @@ const precharge = await prechargePhoto('claires-seudre', tailleHero);
 
   <Documents />
 
-  <section id="clients" class="norms preuve" aria-labelledby="clients-titre">
-    <div class="norms__board">
-      <div class="norm norm--head" data-reveal>
-        <h2 id="clients-titre">Ils expédient avec C’Claires</h2>
-        <p>Une centaine d’entreprises de la mer travaillent avec C’Claires, ostréiculteurs, mytiliculteurs et mareyeurs. <a class="link" href={lien('/clients/')}>Voir les clients</a></p>
+  {pageClients && (
+    <section id="clients" class="norms preuve" aria-labelledby="clients-titre">
+      <div class="norms__board">
+        <div class="norm norm--head" data-reveal>
+          <h2 id="clients-titre">Ils expédient avec C’Claires</h2>
+          <p>Une centaine d’entreprises de la mer travaillent avec C’Claires, ostréiculteurs, mytiliculteurs et mareyeurs. <a class="link" href={lien('/clients/')}>Voir les clients</a></p>
+        </div>
+        {temoignagesFournis.map((t) => <Temoignage t={t} class="norm preuve__temoignage" />)}
+        <LogosClients />
       </div>
-      <Temoignage id="TEMO-01" metier="ostréiculteur" class="norm preuve__temoignage" />
-      <Temoignage id="TEMO-02" metier="mytiliculteur" class="norm preuve__temoignage" />
-      <Temoignage id="TEMO-03" metier="mareyeur" class="norm preuve__temoignage" />
-      <div class="norm preuve__logos">
-        <ACompleter id="LOGOS-01" texte="logos de 6 à 8 clients qui ont donné leur accord, en SVG d’une seule couleur, à poser sur ces tuiles" />
-      </div>
-    </div>
-  </section>
+    </section>
+  )}
 
   <ListeOffre titre="Une offre, tout compris">
     <a class="button button--encre" href="#devis">Demander un devis</a>
@@ -218,9 +217,12 @@ const precharge = await prechargePhoto('claires-seudre', tailleHero);
         <figcaption class="about__note">Tables à huîtres à l’embouchure de la Seudre, à marée basse. Le logiciel suit le même calendrier que vous : la marée, la pointe de fin d’année, le camion du matin.</figcaption>
       </figure>
       <div class="about__side">
-        <figure class="about__equipe" data-reveal style="--i:1">
-          <ACompleter id="EQUIPE-01" class="about__equipe-todo" texte="photo de l’équipe ACIGO à Saint-Lô (paysage 3:2, 1600 px de large au moins), avec les prénoms en légende" />
-        </figure>
+        {equipe
+          ? <figure class="about__equipe" data-reveal style="--i:1">
+              <Photo nom={equipe.photo} class="about__equipe-photo" sizes="(max-width: 1080px) 100vw, 33vw" alt="L’équipe ACIGO Informatique à Saint-Lô" />
+              <figcaption>{equipe.legende}</figcaption>
+            </figure>
+          : <div class="about__map" data-reveal style="--i:1"><img src={lien('/assets/img/carte-saint-lo.svg')} width="507" height="520" alt="Carte de France, Saint-Lô marqué dans la Manche" loading="lazy"></div>}
         <dl class="facts" data-reveal style="--i:2">
           <div><dt>Siège</dt><dd>Saint-Lô, Manche</dd></div>
           <div><dt>Depuis</dt><dd>1997</dd></div>

@@ -14,11 +14,13 @@ import AppelFinal from './AppelFinal.astro';
 import { lien } from '../lib/chemins.mjs';
 import { prechargePhoto } from '../lib/precharge.mjs';
 import { logiciel, questions as faqPage } from '../donnees/schemas.mjs';
+import { temoignages } from '../donnees/preuves.mjs';
 
 interface Props { m: any }
 const { m } = Astro.props;
 const tailleHero = '(max-width: 720px) 67vw, 33vw';
 const precharge = await prechargePhoto(m.photos[0], tailleHero);
+const temoignage = temoignages[m.temoignage.cle];
 ---
 <Base
   titre={m.titre}
@@ -76,9 +78,11 @@ const precharge = await prechargePhoto(m.photos[0], tailleHero);
     </div>
   </section>
 
-  <section class="temoignage-bande" aria-label={`Témoignage d’un client ${m.temoignage.metier}`}>
-    <Temoignage id={m.temoignage.id} metier={m.temoignage.metier} />
-  </section>
+  {temoignage && (
+    <section class="temoignage-bande" aria-label={`Témoignage d’un client ${m.temoignage.metier}`}>
+      <Temoignage t={temoignage} />
+    </section>
+  )}
 
   <Faq questions={m.faq} />
 

@@ -1,0 +1,78 @@
+---
+// Clients et témoignages (requête : avis logiciel ostréicole), à l’adresse /clients/. Aucune preuve
+// inventée : la page se nourrit de src/donnees/preuves.mjs et n’est construite qu’à partir de la première
+// preuve fournie (témoignage, logo ou étude de cas) ; d’ici là, elle est absente du site, du menu et du
+// sitemap (voir pageClients dans src/donnees/plan.mjs).
+import Base from '../layouts/Base.astro';
+import EnTetePage from '../components/EnTetePage.astro';
+import Temoignage from '../components/Temoignage.astro';
+import LogosClients from '../components/LogosClients.astro';
+import Photo from '../components/Photo.astro';
+import AppelFinal from '../components/AppelFinal.astro';
+import reglages from '../../site.config.mjs';
+import { temoignagesFournis, logos, etudeDeCas, pageClients } from '../donnees/preuves.mjs';
+import { lien } from '../lib/chemins.mjs';
+import { prechargePhoto } from '../lib/precharge.mjs';
+
+export function getStaticPaths() {
+  return pageClients ? [{ params: { clients: 'clients' } }] : [];
+}
+
+const url = '/clients/';
+const tailleHero = '(max-width: 720px) 67vw, 33vw';
+const precharge = await prechargePhoto('tables-tremblade', tailleHero);
+const preuves = temoignagesFournis.length > 0 || logos.length > 0;
+const suite = temoignagesFournis.length ? { href: '#temoignages', texte: 'Lire leurs témoignages' }
+  : etudeDeCas ? { href: '#etude-de-cas', texte: 'Lire l’étude de cas' }
+  : { href: '#temoignages', texte: 'Voir nos clients' };
+---
+<Base
+  titre="Clients et témoignages C’Claires"
+  description="Une centaine d’ostréiculteurs, de mytiliculteurs et de mareyeurs travaillent avec C’Claires : leurs témoignages, leurs métiers et leurs façons d’expédier."
+  url={url}
+  enTete="accueil"
+  precharges={[precharge]}
+>
+  <EnTetePage slot="avant" url={url} h1="Ils expédient avec C’Claires" couleur="noir" photos={['tables-tremblade', 'port-en-bessin', 'moules-saint-jacut']} tailleHero={tailleHero}
+    sousTitre="Une centaine d’entreprises de la mer travaillent avec C’Claires : ostréiculteurs, mytiliculteurs et mareyeurs, de la claire au camion."
+    actions={[{ href: lien('/demo/'), texte: 'Réserver une démo de 30 minutes', primaire: true }, suite]} />
+
+  {preuves && (
+    <section id="temoignages" class="norms preuve" aria-labelledby="temoignages-titre">
+      <div class="norms__board">
+        <div class="norm norm--head" data-reveal>
+          <h2 class="titre-long" id="temoignages-titre">{temoignagesFournis.length ? 'Ce qu’en disent nos clients' : 'Quelques-uns de nos clients'}</h2>
+          <p>Ostréiculteurs, mytiliculteurs et mareyeurs : ils expédient chaque jour avec C’Claires.</p>
+        </div>
+        {temoignagesFournis.map((t) => <Temoignage t={t} class="norm preuve__temoignage" />)}
+        <LogosClients />
+      </div>
+    </section>
+  )}
+
+  {etudeDeCas && (
+    <section id="etude-de-cas" class="benefices cas" aria-labelledby="cas-titre">
+      <h2 class="benefices__titre titre-long" id="cas-titre" data-reveal>{etudeDeCas.entreprise}, avant et après C’Claires</h2>
+      <p class="cas__qui" data-reveal>{etudeDeCas.metier}, {etudeDeCas.bassin}.</p>
+      <dl class="route">
+        <div data-reveal><dt>Au départ</dt><dd>{etudeDeCas.avant}</dd></div>
+        <div data-reveal style="--i:1"><dt>La mise en place</dt><dd>{etudeDeCas.miseEnPlace}</dd></div>
+      </dl>
+      <dl class="route cas__resultats">
+        {etudeDeCas.resultats.map(([valeur, mesure]: string[], i: number) => <div data-reveal style={`--i:${i % 4}`}><dt>{valeur}</dt><dd>{mesure}</dd></div>)}
+      </dl>
+      <Temoignage t={etudeDeCas.temoignage} class="cas__citation" />
+    </section>
+  )}
+
+  <section class="aussi" aria-labelledby="temoigner-titre">
+    <figure class="aussi__photo" data-reveal>
+      <Photo nom="parcs-moules-saint-jacut" sizes="(max-width: 1080px) 100vw, 60vw" alt="Parcs à moules sur bouchots à marée basse vers Saint-Jacut-de-la-Mer, un bateau de mytiliculteur entre les rangées" />
+      <figcaption>Parcs à moules sur bouchots, baie de l’Arguenon, à marée basse.</figcaption>
+    </figure>
+    <h2 class="aussi__titre titre-long" id="temoigner-titre" data-reveal>Vous êtes client et vous voulez témoigner&#8239;?</h2>
+    <p class="aussi__suite" data-reveal>Écrivez-nous à <a class="link" href={`mailto:${reglages.email}`}>{reglages.email}</a> : nous préparons le texte avec vous, et rien n’est publié sans votre accord écrit.</p>
+  </section>
+
+  <AppelFinal titre="Montrez-nous comment partent vos colis" texte="En 30 minutes, nous vous montrons le parcours d’une commande avec vos articles et vos clients." />
+</Base>

@@ -89,7 +89,7 @@ export default {
     ],
   },
 
-  temoignage: { id: 'TEMO-03', metier: 'mareyeur' },
+  temoignage: { cle: 'mareyage', metier: 'mareyeur' },
 
   faq: [
     { q: 'Gérez-vous les achats sous criée ?', r: '<p>Les achats et les réceptions se saisissent dans C’Claires : chaque lot acheté garde son origine, de la réception à l’expédition, et sa traçabilité remonte jusqu’à lui.</p>' },
