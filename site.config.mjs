@@ -11,7 +11,7 @@ export default {
 
   // Numéro affiché dans l’en-tête, le pied de page et la page de démo, au format affiché
   // (ex. '02 33 00 00 00'). TODO-MANUEL TEL-01.
-  telephone: null,
+  telephone: '02 33 77 86 46',
 
   // Adresse e-mail de contact, affichée en repli du formulaire.
   email: 'contact@cclaires.fr',
@@ -19,9 +19,9 @@ export default {
   formulaire: {
     // Adresse d’envoi du formulaire de démo et de devis (Formspree : https://formspree.io/f/xxxxxxx).
     // TODO-MANUEL FORM-01.
-    endpoint: null,
+    endpoint: 'https://formspree.io/f/mnpjyyqn',
     // Délai de réponse annoncé sous le bouton (ex. 'Réponse sous 24 heures ouvrées'). TODO-MANUEL DELAI-01.
-    delaiReponse: null,
+    delaiReponse: 'Réponse sous 48 heures ouvrées',
   },
 
   // Mesure d’audience sans cookie, désactivée tant que null. TODO-MANUEL AUDIENCE-01.
@@ -30,5 +30,5 @@ export default {
   audience: null,
 
   // Directeur de la publication, pour les mentions légales. TODO-MANUEL DIRPUB-01.
-  directeurPublication: null,
+  directeurPublication: 'Frédéric Astorino, gérant',
 };

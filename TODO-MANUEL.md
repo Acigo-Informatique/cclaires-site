@@ -11,13 +11,13 @@ Priorité : **haute** = bloque la mise en ligne ; **moyenne** = à faire dans le
 
 Une valeur renseignée dans `site.config.mjs` fait disparaître l’emplacement sur toutes les pages.
 
+Téléphone (TEL-01), adresse Formspree (FORM-01), délai de réponse (DELAI-01) et directeur de la
+publication (DIRPUB-01) sont renseignés.
+
 | ID | Page | Ce qu’il faut fournir | Priorité |
 |---|---|---|---|
-| TEL-01 | Toutes (en-tête, pied de page), /demo/ | Numéro de téléphone affiché (`telephone`) | haute |
-| FORM-01 | /demo/, accueil | Endpoint Formspree (`formulaire.endpoint`) : créer le formulaire sur formspree.io, désactiver le reCAPTCHA (envoi par script), ajouter cclaires.fr aux domaines autorisés | haute |
-| DELAI-01 | /demo/, accueil | Délai de réponse au devis annoncé sous le bouton (`formulaire.delaiReponse`) | haute |
-| DIRPUB-01 | /mentions-legales/ | Nom et fonction du directeur de la publication (`directeurPublication`) | haute |
-| AUDIENCE-01 | Toutes | Mesure d’audience sans cookie (`audience`) : Plausible ou Matomo, puis ajouter son domaine à la CSP de `vercel.json` si le site part sur Vercel | moyenne |
+| FORM-02 | /demo/, accueil | Le formulaire Formspree existe (`formulaire.endpoint`). À vérifier dans ses réglages : reCAPTCHA désactivé (envoi par script), cclaires.fr dans les domaines autorisés une fois le domaine branché ; puis envoyer une demande d’essai depuis le site en ligne et vérifier sa réception | haute |
+| AUDIENCE-01 | Toutes | Mesure d’audience sans cookie (`audience`) : Plausible ou Matomo, puis ajouter son domaine à la CSP de `vercel.json` si le site part sur Vercel. En attente : aucune mesure pour l’instant (décision du 20/10/2026) | moyenne |
 
 ## Domaine et indexation
 
