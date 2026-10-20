@@ -1,0 +1,41 @@
+---
+// Un écran du logiciel, simplifié : la fenêtre redessinée dans le style des fragments du site, posée sur
+// la scène, avec sa légende. Pas de capture réelle, pour ne pas montrer l’interface aux concurrents ;
+// seulement les données fictives des commandes d’exemple (src/donnees/parcours/). Chaque page déclare
+// ses écrans dans son fichier de données : { ecran, variante, legende }.
+import SaisieCommande from './ecrans/SaisieCommande.astro';
+import EditeurEtiquette from './ecrans/EditeurEtiquette.astro';
+import ImpressionEtiquettes from './ecrans/ImpressionEtiquettes.astro';
+import Palettisation from './ecrans/Palettisation.astro';
+import EcranTracabilite from './ecrans/EcranTracabilite.astro';
+import PoidsVariable from './ecrans/PoidsVariable.astro';
+import ReceptionMaree from './ecrans/ReceptionMaree.astro';
+import ExportComptable from './ecrans/ExportComptable.astro';
+import VueParcs from './documents/VueParcs.astro';
+import huitres from '../donnees/parcours/huitres.mjs';
+import moules from '../donnees/parcours/moules.mjs';
+import poisson from '../donnees/parcours/poisson.mjs';
+
+const ECRANS: Record<string, any> = {
+  commande: SaisieCommande, editeur: EditeurEtiquette, impression: ImpressionEtiquettes, palettisation: Palettisation,
+  parcs: VueParcs, tracabilite: EcranTracabilite, 'poids-variable': PoidsVariable, reception: ReceptionMaree,
+  'export-comptable': ExportComptable,
+};
+const PARCOURS: Record<string, any> = { huitres, moules, poisson };
+
+interface Props {
+  ecran: string;          // une clé d’ECRANS
+  variante?: string;      // huitres, moules ou poisson : la commande d’exemple dont l’écran tire ses données
+  legende: string;
+  class?: string;
+}
+const { ecran, variante = 'huitres', legende, class: classe = '' } = Astro.props;
+const Fenetre = ECRANS[ecran];
+if (!Fenetre) throw new Error(`Écran inconnu : ${ecran}`);
+// la vue des parcs est celle de la page parcs et claires, sans données à recevoir
+const proprietes = Fenetre === VueParcs ? {} : { d: PARCOURS[variante], variante };
+---
+<figure class:list={['capture', classe]}>
+  <div class="ecran" data-reveal><Fenetre {...proprietes} /></div>
+  <figcaption class="capture__legende">{legende}</figcaption>
+</figure>

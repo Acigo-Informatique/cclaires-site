@@ -28,9 +28,7 @@ export default {
   },
   captures: [
     {
-      id: 'CAPT-04', ratio: '16 / 10',
-      sujet: 'palettisation d’un bon de livraison : palettes proposées, SSCC attribué',
-      alt: 'Palettisation d’un bon de livraison dans C’Claires : vingt colis répartis sur une palette, SSCC attribué et étiquette prête à imprimer',
+      ecran: 'palettisation', variante: 'huitres',
       legende: 'Les palettes proposées, puis le SSCC attribué à l’enregistrement.',
     },
   ],

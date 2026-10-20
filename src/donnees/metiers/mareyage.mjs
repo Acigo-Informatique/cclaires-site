@@ -34,9 +34,7 @@ export default {
         texte: 'Achats et réceptions créent des lots que C’Claires suit jusqu’à l’expédition. La traçabilité remonte au lot d’achat et descend jusqu’à chaque client livré, dans un sens comme dans l’autre.',
         lien: ['/fonctionnalites/tracabilite/', 'La traçabilité des lots'],
         capture: {
-          id: 'CAPT-08', ratio: '16 / 10',
-          sujet: 'réception d’un achat de marée, avec les lots créés par espèce',
-          alt: 'Réception d’un achat dans C’Claires : lots de bar, de lieu jaune et de sole créés avec leur origine',
+          ecran: 'reception', variante: 'poisson',
           legende: 'À la réception, chaque achat devient un lot qui garde son origine.',
         },
       },
@@ -45,9 +43,7 @@ export default {
         texte: 'Dénomination commerciale, nom scientifique, zone FAO et engin de pêche : portées par l’article, ces mentions du règlement UE 1379/2013 s’impriment sur l’étiquette en 3 clics depuis le BL, avec le modèle que vos règles ont choisi pour chaque client.',
         lien: ['/fonctionnalites/etiquette-sanitaire/', 'Les étiquettes en 3 clics'],
         capture: {
-          id: 'CAPT-02', ratio: '16 / 10',
-          sujet: 'éditeur de modèles d’étiquettes, un modèle de marée ouvert avec ses variables',
-          alt: 'Éditeur d’étiquettes de C’Claires : un modèle de marée avec l’espèce, la zone FAO, l’engin et le code-barres GS1-128',
+          ecran: 'editeur', variante: 'poisson',
           legende: 'L’éditeur de modèles : chaque mention est une variable de l’article ou du lot.',
         },
       },
@@ -56,9 +52,7 @@ export default {
         texte: 'Chaque colis est pesé, son poids réel passe sur le bon de livraison et sur la facture. Viviers, vrac, poids fixe ou emballé : chaque stock garde son unité.',
         lien: ['/fonctionnalites/commandes-bons-de-livraison/', 'Les commandes et les bons de livraison'],
         capture: {
-          id: 'CAPT-07', ratio: '16 / 10',
-          sujet: 'bon de livraison en poids variable, avec le poids estimé et le poids réel de chaque ligne',
-          alt: 'Bon de livraison en poids variable dans C’Claires : poids estimé et poids réel de chaque colis de marée',
+          ecran: 'poids-variable', variante: 'poisson',
           legende: 'Le poids réel de la pesée remplace l’estimation, colis par colis.',
         },
       },

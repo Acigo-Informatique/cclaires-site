@@ -1,10 +1,10 @@
 ---
 // Gabarit d’une page fonctionnalité, d’après un fichier de src/donnees/fonctions/ : premier écran, la
-// pièce que C’Claires tire de la commande d’exemple (fragment d’interface), les étapes, les captures, les
+// pièce que C’Claires tire de la commande d’exemple (fragment d’interface), les étapes, les écrans, les
 // métiers concernés et le guide lié, les questions, l’appel final.
 import Base from '../layouts/Base.astro';
 import EnTetePage from './EnTetePage.astro';
-import Capture from './Capture.astro';
+import Ecran from './Ecran.astro';
 import Faq from './Faq.astro';
 import AppelFinal from './AppelFinal.astro';
 import Etiquette from './documents/Etiquette.astro';
@@ -59,7 +59,7 @@ const precharge = await prechargePhoto(f.photos[0], tailleHero);
     <section id="ecrans" class="ecrans" aria-labelledby="ecrans-titre">
       <h2 class="ecrans__titre" id="ecrans-titre" data-reveal>{f.capturesTitre ?? 'À l’écran'}</h2>
       <div class="grid ecrans__grille">
-        {f.captures.map((c: any) => <Capture class="ecrans__capture" {...c} />)}
+        {f.captures.map((c: any) => <Ecran class="ecrans__capture" {...c} />)}
       </div>
     </section>
   )}

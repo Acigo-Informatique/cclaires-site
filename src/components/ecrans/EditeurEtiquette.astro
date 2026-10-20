@@ -1,0 +1,54 @@
+---
+// L’éditeur de modèles d’étiquettes : la boîte à outils, le modèle ouvert dont chaque mention est une
+// variable de l’article ou du lot, et les propriétés du champ choisi. Modèle sanitaire des huîtres ou
+// modèle de marée (règlement UE 1379/2013), d’après la commande d’exemple.
+import { lien } from '../../lib/chemins.mjs';
+
+interface Props { d: any; variante?: string }
+const { d, variante = 'huitres' } = Astro.props;
+const maree = variante === 'poisson';
+const ligne = d.lignes[0];
+const outils = ['Texte', 'Variable', 'Code-barres', 'Image', 'Cadre'];
+const choisie = maree ? 'Zone FAO' : 'Lot';
+const proprietes = maree
+  ? [['Champ', 'Zone FAO'], ['Source', 'Article'], ['Exemple', 'FAO 27.7.e'], ['Police', '9 pt']]
+  : [['Champ', 'Lot'], ['Source', 'Ligne du BL'], ['Exemple', ligne.lot], ['Police', '10 pt, gras']];
+---
+<article class="ui-window ui-editeur" data-ui>
+  <div class="ui-win-head"><span>Modèle « {ligne.modele} »</span><span class="ui-win-meta">Éditeur de modèles</span></div>
+  <div class="ui-win-body ui-editeur__corps">
+    <ul class="ui-outils c-opt" aria-label="Boîte à outils">
+      {outils.map((o, i) => <li class:list={{ 'is-on': i === 1 }}>{o}</li>)}
+    </ul>
+    <div class="ui-toile">
+      <div class="ui-modele">
+        {maree ? (
+          <>
+            <p><span class="ui-var">Dénomination commerciale</span></p>
+            <p><span class="ui-var">Nom scientifique</span></p>
+            <p><span class="ui-var">Méthode de production</span></p>
+            <p><span class="ui-var is-choisie">Zone FAO</span> <span class="ui-var">Engin de pêche</span></p>
+            <p><span class="ui-var">Poids net</span> <span class="ui-var">Lot</span></p>
+          </>
+        ) : (
+          <>
+            <p class="ui-modele__haut"><span class="ui-var">Expéditeur</span><span class="ui-modele__ovale">FR <span class="ui-var">Agrément</span> CE</span></p>
+            <p><span class="ui-var">Espèce</span> <span class="ui-var">Nom scientifique</span></p>
+            <p><span class="ui-var">Date de conditionnement</span></p>
+            <p><span class="ui-var is-choisie">Lot</span> <span class="ui-var">Zone</span></p>
+            <p class="ui-modele__fixe">Ces coquillages doivent être vivants au moment de l’achat</p>
+          </>
+        )}
+        <img src={lien(`/assets/img/${ligne.etiquette.code}`)} width="378" height="60" alt="" loading="lazy" decoding="async">
+        <p class="ui-modele__code">GS1-128 : (01) GTIN, (13) date, (10) lot</p>
+      </div>
+    </div>
+    <dl class="ui-champs ui-proprietes">
+      {proprietes.map(([dt, dd]) => <div><dt>{dt}</dt><dd>{dd}</dd></div>)}
+    </dl>
+  </div>
+  <div class="ui-win-foot">
+    <span class="ui-win-total c-opt">Aperçu avec le lot {ligne.lot}</span>
+    <span class="ui-btn ui-btn--primary">Enregistrer le modèle</span>
+  </div>
+</article>

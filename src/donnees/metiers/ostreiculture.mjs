@@ -34,9 +34,7 @@ export default {
         texte: 'L’éditeur de parcs dessine vos concessions, vos claires et vos tables. Chaque mouvement de lot y est noté, de la mise à l’eau au tri, et la vue graphique montre ce que contient chaque claire à la date que vous choisissez.',
         lien: ['/fonctionnalites/parcs-claires/', 'La gestion des parcs et des claires'],
         capture: {
-          id: 'CAPT-05', ratio: '16 / 10',
-          sujet: 'vue graphique des parcs d’une exploitation, une claire sélectionnée avec son lot et son stock',
-          alt: 'Vue graphique des parcs dans C’Claires : les claires et leur lot, une claire sélectionnée avec son stock',
+          ecran: 'parcs',
           legende: 'La vue des parcs : chaque claire, son lot, son stock à la date voulue.',
         },
       },
@@ -45,9 +43,7 @@ export default {
         texte: 'Le séjour en claire se compte jour par jour. Les cahiers des charges IGP et Label Rouge sont contrôlés lot par lot, et le calibre, la qualité et le format suivent chaque article, du n° 0 au n° 5. La fiche du lot remonte jusqu’à sa réception et descend jusqu’à chaque client.',
         lien: ['/fonctionnalites/tracabilite/', 'La traçabilité des lots'],
         capture: {
-          id: 'CAPT-06', ratio: '16 / 10',
-          sujet: 'fiche de traçabilité d’un lot, de la réception aux clients livrés',
-          alt: 'Fiche de traçabilité du lot 2026-351-3-014 dans C’Claires : réception, affinage en claire C12, conditionnement et trois clients livrés',
+          ecran: 'tracabilite', variante: 'huitres',
           legende: 'Un lot, de sa réception à chaque client livré, en un écran.',
         },
       },
@@ -56,9 +52,7 @@ export default {
         texte: 'Vos règles choisissent le modèle de chaque client et de chaque article : marque d’identification, espèce, date de conditionnement, lot et zone y sont repris de la commande. Une même impression part sur plusieurs étiqueteuses à la fois.',
         lien: ['/fonctionnalites/etiquette-sanitaire/', 'L’étiquette sanitaire en 3 clics'],
         capture: {
-          id: 'CAPT-03', ratio: '16 / 10',
-          sujet: 'fenêtre d’impression des étiquettes ouverte depuis un bon de livraison',
-          alt: 'Impression des étiquettes d’un bon de livraison dans C’Claires : lots, modèles et étiqueteuses déjà choisis',
+          ecran: 'impression', variante: 'huitres',
           legende: 'Depuis le BL, les modèles et les étiqueteuses sont déjà choisis.',
         },
       },

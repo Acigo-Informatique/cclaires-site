@@ -34,9 +34,7 @@ export default {
         texte: 'Chaque pêche reçoit son lot, numéroté par votre masque, avec sa zone de production. Le lot suit les sacs et les caisses jusqu’à la livraison, et le classement de la zone le suit jusqu’au document de transfert.',
         lien: ['/fonctionnalites/tracabilite/', 'La traçabilité des lots'],
         capture: {
-          id: 'CAPT-06', ratio: '16 / 10',
-          sujet: 'fiche de traçabilité d’un lot, de la réception aux clients livrés',
-          alt: 'Fiche de traçabilité d’un lot de moules dans C’Claires : pêche du jour, zone de production et clients livrés',
+          ecran: 'tracabilite', variante: 'moules',
           legende: 'Un lot par pêche, suivi jusqu’à chaque client livré.',
         },
       },
@@ -45,9 +43,7 @@ export default {
         texte: 'Le poids est estimé à la commande, relevé à la pesée, et c’est le poids réel qui passe sur le bon de livraison puis sur la facture. Vrac au kilo, sacs ou caisses : chaque article garde son unité, et chaque client ses prix datés.',
         lien: ['/fonctionnalites/commandes-bons-de-livraison/', 'Les commandes et les bons de livraison'],
         capture: {
-          id: 'CAPT-07', ratio: '16 / 10',
-          sujet: 'bon de livraison en poids variable, avec le poids estimé et le poids réel de chaque ligne',
-          alt: 'Bon de livraison en poids variable dans C’Claires : poids estimé et poids réel de chaque ligne de moules',
+          ecran: 'poids-variable', variante: 'moules',
           legende: 'Le poids réel de la pesée remplace l’estimation, ligne par ligne.',
         },
       },
@@ -56,9 +52,7 @@ export default {
         texte: 'Les étiquettes sanitaires des sacs et des colis s’impriment depuis le bon de livraison, avec le modèle de chaque client, sur une ou plusieurs étiqueteuses. Les palettes se composent ensuite et reçoivent leur SSCC.',
         lien: ['/fonctionnalites/etiquette-sanitaire/', 'L’étiquette sanitaire en 3 clics'],
         capture: {
-          id: 'CAPT-03', ratio: '16 / 10',
-          sujet: 'fenêtre d’impression des étiquettes ouverte depuis un bon de livraison',
-          alt: 'Impression des étiquettes d’un bon de livraison dans C’Claires : lots, modèles et étiqueteuses déjà choisis',
+          ecran: 'impression', variante: 'moules',
           legende: 'Depuis le BL, les modèles et les étiqueteuses sont déjà choisis.',
         },
       },

@@ -30,15 +30,11 @@ export default {
   capturesTitre: 'L’éditeur de modèles, intégré au logiciel',
   captures: [
     {
-      id: 'CAPT-02', ratio: '16 / 10',
-      sujet: 'éditeur de modèles d’étiquettes, un modèle sanitaire ouvert avec ses variables',
-      alt: 'Éditeur d’étiquettes de C’Claires : un modèle sanitaire avec la marque d’identification, l’espèce, la date, le lot et le code-barres GS1-128',
+      ecran: 'editeur', variante: 'huitres',
       legende: 'Textes, variables du lot et de l’article, codes-barres 1D et 2D : EAN-13, GS1-128, Code 128, QR code, DataMatrix.',
     },
     {
-      id: 'CAPT-03', ratio: '16 / 10',
-      sujet: 'fenêtre d’impression des étiquettes ouverte depuis un bon de livraison',
-      alt: 'Impression des étiquettes d’un bon de livraison dans C’Claires : lots, modèles et étiqueteuses déjà choisis',
+      ecran: 'impression', variante: 'huitres',
       legende: 'Des règles désignent le modèle de chaque client et de chaque article ; un simulateur montre lequel s’applique, et pourquoi.',
     },
   ],

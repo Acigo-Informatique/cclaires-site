@@ -783,8 +783,43 @@ ol.demo__etapes { display: grid; gap: 1rem; margin-top: 2rem; padding-left: 1.4e
 }
 .a-completer--en-ligne { display: inline; padding: 0.05em 0.4em; border-width: 2px; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
 .capture { margin: 0; }
-.capture__cadre { width: 100%; aspect-ratio: var(--ratio, 16 / 10); }
 .capture__legende { margin-top: 0.75rem; font-size: var(--step-s); }
+
+/* ---------- écrans du logiciel, simplifiés (src/components/ecrans/) : la fenêtre posée sur la scène ---------- */
+.ecran { padding: clamp(1rem, 3vw, 2rem); background: var(--stage); }
+.ecran > [data-ui].ui-window { width: auto; max-width: none; box-shadow: 0 1px 2px rgb(0 0 0 / 0.12), 0 14px 32px rgb(0 0 0 / 0.14); }
+.ecran [data-ui] .ui-btn { white-space: nowrap; }
+[data-ui] .ui-champs { display: flex; flex-wrap: wrap; gap: 0.5rem 1.75rem; margin-top: 0.6rem; font-size: 0.8125rem; }
+[data-ui] .ui-champs dt { color: #5b6769; font-size: 0.75rem; }
+[data-ui] .ui-champs dd { font-weight: 700; }
+[data-ui] .ui-champs--form { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 0.6rem 1.25rem; align-items: center; margin-block: 0.8rem 1.1rem; }
+[data-ui] .ui-champs--form > div { display: contents; }
+[data-ui] .ui-saisie { display: inline-block; min-width: 6.5rem; padding: 0.2rem 0.5rem; border: 1px solid #cfd8da; border-radius: 4px; background: #fff; font-weight: 700; }
+[data-ui] .ui-saisie--liste::after { content: "▾"; float: right; margin-left: 0.75rem; color: #5b6769; }
+[data-ui] .ui-promo { display: flex; justify-content: space-between; align-items: center; gap: 1rem; margin-top: 0.9rem; padding: 0.3rem 0.3rem 0.3rem 0.8rem; border: 1px dashed #b6cb6b; border-radius: 6px; background: #f5f9e8; font-size: 0.8125rem; }
+[data-ui] .ui-promo .ui-btn { flex: none; min-height: 2rem; }
+[data-ui] .ui-latin { color: #5b6769; font-size: 0.75rem; }
+/* éditeur de modèles d’étiquettes : outils, modèle ouvert, propriétés du champ choisi */
+[data-ui] .ui-editeur__corps { display: grid; grid-template-columns: 6.5rem minmax(0, 1fr); gap: 1rem; padding-top: 0.9rem; }
+[data-ui] .ui-outils { display: grid; gap: 0.3rem; align-content: start; font-size: 0.8125rem; font-weight: 700; color: #5b6769; }
+[data-ui] .ui-outils li { padding: 0.35rem 0.5rem; border-radius: 4px; }
+[data-ui] .ui-outils .is-on { background: #d9eef2; color: #00596a; }
+[data-ui] .ui-toile { padding: 1rem; background: #eef2f3; border-radius: 6px; }
+[data-ui] .ui-modele { display: grid; gap: 0.4rem; max-width: 20rem; margin-inline: auto; padding: 0.9rem; background: #fff; outline: 1px dashed #9aa7aa; font-size: 0.75rem; }
+[data-ui] .ui-modele img { width: 100%; height: 2rem; margin-top: 0.3rem; }
+[data-ui] .ui-modele__haut { display: flex; justify-content: space-between; align-items: center; gap: 0.5rem; }
+[data-ui] .ui-modele__ovale { padding: 0.2rem 0.5rem; border: 1.5px solid #1b2426; border-radius: 50%; font-size: 0.6875rem; font-weight: 800; white-space: nowrap; }
+[data-ui] .ui-modele__fixe { font-size: 0.625rem; font-weight: 800; text-transform: uppercase; }
+[data-ui] .ui-modele__code { color: #5b6769; font-size: 0.6875rem; }
+[data-ui] .ui-var { display: inline-block; padding: 0.05rem 0.35rem; border-radius: 3px; background: #d9eef2; color: #00596a; font-weight: 700; }
+[data-ui] .ui-var.is-choisie { outline: 2px solid #007b8e; outline-offset: 1px; }
+[data-ui] .ui-proprietes { grid-column: 1 / -1; margin-top: 0; padding-top: 0.75rem; border-top: 1px solid #e3e8e9; }
+/* palettisation : les colis du BL, la palette proposée */
+[data-ui] .ui-palettes__corps { display: grid; grid-template-columns: minmax(0, 1fr) 13rem; gap: 1.25rem; align-items: start; }
+[data-ui] .ui-palette-carte { display: grid; gap: 0.15rem; margin-top: 0.6rem; padding: 0.75rem 0.85rem; border: 2px solid #007b8e; border-radius: 6px; background: #f0f8f9; font-size: 0.8125rem; }
+[data-ui] .ui-palette-carte__titre { font-size: 0.9375rem; font-weight: 800; }
+[data-ui] .ui-palette-carte__sscc { font-weight: 700; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+[data-ui] .ui-palette-carte .ui-pill { justify-self: start; margin-top: 0.35rem; }
 .page__body { grid-column: 5 / 12; margin-top: 3rem; }
 .page__body h2 { font-size: var(--step-m); font-weight: 800; line-height: 1.2; margin-top: 2.5rem; }
 .page__body h2:first-child { margin-top: 0; }
@@ -1142,6 +1177,7 @@ ol.demo__etapes { display: grid; gap: 1rem; margin-top: 2rem; padding-left: 1.4e
   .sheet__text { padding: 1.5rem var(--margin) 3rem; }
   .cycle__stage { min-height: 0; }
   [data-ui] .c-opt { display: none; }
+  [data-ui] .ui-editeur__corps, [data-ui] .ui-palettes__corps { grid-template-columns: minmax(0, 1fr); }
   [data-ui] .ui-list-row { grid-template-columns: 6.6rem minmax(0, 1fr) 2.4rem; gap: 0.5rem; padding-inline: 0.8rem; }
   [data-ui] .ui-win-head, [data-ui] .ui-win-body, [data-ui] .ui-win-foot { padding-inline: 0.8rem; }
   [data-ui] .ui-win-body td, [data-ui] .ui-win-body th { padding-inline: 0.25rem; }

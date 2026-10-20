@@ -1,0 +1,24 @@
+---
+// La fenêtre d’impression des étiquettes, ouverte depuis le bon de livraison de la commande d’exemple :
+// lots, modèles et étiqueteuses déjà choisis par les règles, que le simulateur explique.
+interface Props { d: any; variante?: string }
+const { d } = Astro.props;
+---
+<article class="ui-window" data-ui>
+  <div class="ui-win-head"><span>Imprimer les étiquettes, {d.bl}</span><span class="ui-win-meta c-opt">{d.commande.client}</span></div>
+  <div class="ui-win-body">
+    <p class="ui-tabs"><span class="is-on">À imprimer</span><span>Historique des envois</span></p>
+    <table>
+      <thead><tr><th><span class="sr-only">Sélection</span></th><th>Lot</th><th class="c-opt">Modèle</th><th>Étiqueteuse</th><th class="r">Nombre</th></tr></thead>
+      <tbody>
+        {d.lignes.map((l: any) => <tr><td><span class="ui-check-box" role="img" aria-label="Sélectionné"></span></td><td>{l.lot}</td><td class="c-opt">{l.modele}</td><td>{l.etiqueteuse}</td><td class="r">{l.colis}</td></tr>)}
+      </tbody>
+    </table>
+    <p class="ui-win-note">Modèles et étiqueteuses choisis par vos règles : client, article, poste.</p>
+  </div>
+  <div class="ui-win-foot">
+    <span class="ui-btn ui-btn--text c-opt">Simuler les règles</span>
+    <span class="ui-btn ui-btn--text">Fermer</span>
+    <span class="ui-btn ui-btn--primary">Imprimer {d.etiquettes} étiquettes</span>
+  </div>
+</article>

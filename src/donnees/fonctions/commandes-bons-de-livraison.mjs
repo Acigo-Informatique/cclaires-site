@@ -30,9 +30,7 @@ export default {
   },
   captures: [
     {
-      id: 'CAPT-01', ratio: '16 / 10',
-      sujet: 'saisie d’une commande pré-remplie d’après les habitudes du client',
-      alt: 'Saisie d’une commande dans C’Claires : les lignes habituelles du client déjà remplies, les promotions du jour proposées',
+      ecran: 'commande', variante: 'huitres',
       legende: 'La commande s’ouvre avec les lignes habituelles du client.',
     },
   ],

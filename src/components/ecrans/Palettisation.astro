@@ -1,0 +1,32 @@
+---
+// La palettisation d’un bon de livraison : les colis du BL, la palette proposée par nombre de colis,
+// et le SSCC attribué à l’enregistrement. D’après la commande d’exemple.
+interface Props { d: any; variante?: string }
+const { d } = Astro.props;
+const [[palette, poids], [sscc]] = d.palette.lignes;
+---
+<article class="ui-window ui-palettes" data-ui>
+  <div class="ui-win-head"><span>Palettisation, {d.bl}</span><span class="ui-pill ui-pill--done">Enregistrée</span></div>
+  <div class="ui-win-body">
+    <p class="ui-win-note">Répartition proposée par nombre de colis, validée avant l’enregistrement.</p>
+    <div class="ui-palettes__corps">
+      <table>
+        <thead><tr><th>Colis du BL</th><th class="r">Colis</th><th class="r">Palette</th></tr></thead>
+        <tbody>
+          {d.lignes.map((l: any) => <tr><td>{l.bl}</td><td class="r">{l.colis}</td><td class="r">1</td></tr>)}
+        </tbody>
+      </table>
+      <div class="ui-palette-carte">
+        <p class="ui-palette-carte__titre">Palette 1</p>
+        <p>{palette}</p>
+        <p>{poids}</p>
+        <p class="ui-palette-carte__sscc">{sscc}</p>
+        <span class="ui-pill ui-pill--done">SSCC attribué</span>
+      </div>
+    </div>
+  </div>
+  <div class="ui-win-foot">
+    <span class="ui-btn ui-btn--text c-opt">Fiche palette</span>
+    <span class="ui-btn ui-btn--primary">Imprimer l’étiquette palette</span>
+  </div>
+</article>

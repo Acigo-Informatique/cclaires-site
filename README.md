@@ -19,11 +19,12 @@ emplacement « À COMPLÉTER » sur les pages. La liste de tout ce qui reste à 
 |---|---|
 | `src/pages/` | une page par fichier, son adresse suit son chemin (`logiciel-ostreicole.astro` → `/logiciel-ostreicole/`) ; `robots.txt`, `sitemap.xml` et le manifeste y sont générés |
 | `src/layouts/Base.astro` | gabarit commun : `<head>` (title, description, canonique, robots, Open Graph, JSON-LD), en-tête, pied de page |
-| `src/components/` | en-tête et menus, pied de page, fil d’Ariane, premier écran des pages intérieures, parcours « de la commande à la facture », documents et fragments d’interface (`documents/`), formulaire de démo et de devis, FAQ, offre, photo, emplacements à compléter, captures, témoignages, appel final |
+| `src/components/` | en-tête et menus, pied de page, fil d’Ariane, premier écran des pages intérieures, parcours « de la commande à la facture », documents et fragments d’interface (`documents/`), formulaire de démo et de devis, FAQ, offre, photo, emplacements à compléter, écrans simplifiés du logiciel (`Ecran.astro` et `ecrans/`, sans capture réelle), témoignages et logos, appel final |
 | `src/lib/typographie.mjs` | la dernière main sur chaque page : espaces insécables, nom de marque protégé de la traduction automatique |
 | `src/donnees/plan.mjs` | **le plan du site** : chaque page, son libellé, sa parente. Il nourrit le menu, le pied de page, les fils d’Ariane, le sitemap et le contrôle des liens. Une nouvelle page s’y ajoute d’abord |
 | `src/donnees/parcours/` | les commandes d’exemple de la démonstration à cliquer (huîtres, moules, marée) |
 | `src/donnees/metiers/`, `src/donnees/fonctions/` | le contenu des pages métier et des pages fonctionnalité, rendu par `PageMetier` et `PageFonction` |
+| `src/donnees/preuves.mjs` | témoignages, logos de clients, étude de cas, photo de l’équipe : vides tant que rien n’est fourni avec accord écrit ; leurs blocs, et la page /clients/, n’apparaissent qu’une fois renseignés |
 | `src/content/guides/` | les guides, un fichier Markdown par guide (schéma dans `src/content.config.ts`) |
 | `src/donnees/schemas.mjs` | les données structurées communes (éditeur, site, fil d’Ariane, questions) |
 | `src/styles/site.css` | jetons de la charte, mise en page, fragments d’interface (`[data-ui]`) |

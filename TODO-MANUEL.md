@@ -36,25 +36,18 @@ publication (DIRPUB-01) sont renseignés.
 |---|---|---|---|
 | PHOTOS-01 | Toutes | Remplacer, si possible, les photos libres (Ifremer, Wikimedia Commons) par les vôtres ; retirer alors leur crédit du pied de page et des mentions légales | basse |
 
-## Captures d’écran du logiciel
+## Écrans du logiciel
 
-Chaque emplacement est un cadre au bon ratio (16:10), avec sa légende et le texte alternatif déjà
-rédigés dans le fichier de données de la page. Déposer l’image dans `src/assets/captures/` (PNG ou JPEG,
-1600 px de large au moins, sans données réelles de clients) et remplacer le composant `<Capture>` par
-l’image, en reprenant le même texte alternatif.
+Fait (décision du 20/10/2026) : pas de captures réelles, pour ne pas montrer l’interface aux concurrents.
+Les dix emplacements CAPT-01 à CAPT-10 sont remplacés par des écrans simplifiés, redessinés en HTML dans
+le style des fragments du site, avec les données fictives des commandes d’exemple
+(`src/components/Ecran.astro`, `src/components/ecrans/`). Sur /fonctionnalites/parcs-claires/,
+/fonctionnalites/tracabilite/ et /fonctionnalites/edi-grande-distribution/, la vitrine de la page montrait
+déjà le même écran : l’emplacement y est retiré sans doublon.
 
 | ID | Page | Ce qu’il faut fournir | Priorité |
 |---|---|---|---|
-| CAPT-01 | /fonctionnalites/commandes-bons-de-livraison/ | Saisie d’une commande pré-remplie d’après les habitudes du client | haute |
-| CAPT-02 | /logiciel-mareyage/, /fonctionnalites/etiquette-sanitaire/ | Éditeur de modèles d’étiquettes, un modèle ouvert avec ses variables | haute |
-| CAPT-03 | /logiciel-ostreicole/, /logiciel-mytilicole/, /fonctionnalites/etiquette-sanitaire/ | Fenêtre d’impression des étiquettes ouverte depuis un bon de livraison | haute |
-| CAPT-04 | /fonctionnalites/palettisation-sscc/ | Palettisation d’un BL : palettes proposées, SSCC attribué | haute |
-| CAPT-05 | /logiciel-ostreicole/, /fonctionnalites/parcs-claires/ | Vue graphique des parcs et des claires, une claire sélectionnée | haute |
-| CAPT-06 | /logiciel-ostreicole/, /logiciel-mytilicole/, /fonctionnalites/tracabilite/ | Fiche de traçabilité d’un lot, de la réception aux clients livrés | haute |
-| CAPT-07 | /logiciel-mytilicole/, /logiciel-mareyage/ | Bon de livraison en poids variable : poids estimé et poids réel de chaque ligne | moyenne |
-| CAPT-08 | /logiciel-mareyage/ | Réception d’un achat de marée, avec les lots créés par espèce | moyenne |
-| CAPT-09 | /fonctionnalites/facture-electronique/ | Export des écritures comptables d’une période | moyenne |
-| CAPT-10 | /fonctionnalites/edi-grande-distribution/ | Liste des messages EDI d’une journée : factures et ordres de transport | moyenne |
+| ECRANS-01 | Pages métier et fonctionnalité | Relire les écrans simplifiés : vocabulaire, boutons et champs doivent rester fidèles au logiciel, sans rien montrer de confidentiel | moyenne |
 
 ## Preuve sociale et équipe
 

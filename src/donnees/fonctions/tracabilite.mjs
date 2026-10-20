@@ -27,14 +27,6 @@ export default {
       'La fiche du lot remonte jusqu’à la réception ou descend jusqu’aux clients livrés, dans un sens comme dans l’autre.',
     ],
   },
-  captures: [
-    {
-      id: 'CAPT-06', ratio: '16 / 10',
-      sujet: 'fiche de traçabilité d’un lot, de la réception aux clients livrés',
-      alt: 'Fiche de traçabilité d’un lot dans C’Claires : réception, affinage, conditionnement et clients livrés',
-      legende: 'De l’achat à la vente, et de la vente à l’achat.',
-    },
-  ],
   metiers: ['/logiciel-ostreicole/', '/logiciel-mytilicole/', '/logiciel-mareyage/'],
   guide: ['/guides/mentions-obligatoires-etiquette-sanitaire/', 'Les mentions obligatoires de l’étiquette sanitaire, numéro de lot compris'],
   faq: [

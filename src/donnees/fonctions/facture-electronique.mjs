@@ -31,9 +31,7 @@ export default {
   capturesTitre: 'L’export comptable',
   captures: [
     {
-      id: 'CAPT-09', ratio: '16 / 10',
-      sujet: 'export des écritures comptables d’une période',
-      alt: 'Export des écritures comptables dans C’Claires : choix de la période et du format du logiciel comptable',
+      ecran: 'export-comptable',
       legende: 'Les écritures d’une période, exportées au format de votre logiciel comptable.',
     },
   ],

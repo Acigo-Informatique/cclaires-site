@@ -27,14 +27,6 @@ export default {
       'Les factures partent en EDI vers la centrale, les ordres de transport vers le transporteur.',
     ],
   },
-  captures: [
-    {
-      id: 'CAPT-10', ratio: '16 / 10',
-      sujet: 'liste des messages EDI d’une journée : factures et ordres de transport',
-      alt: 'Messages EDI d’une journée dans C’Claires : factures et ordres de transport, avec leur état',
-      legende: 'Chaque message EDI de la journée, avec son état.',
-    },
-  ],
   metiers: ['/logiciel-mytilicole/', '/logiciel-mareyage/'],
   guide: null,
   faq: [

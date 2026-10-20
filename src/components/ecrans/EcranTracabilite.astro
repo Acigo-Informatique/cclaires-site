@@ -1,0 +1,49 @@
+---
+// La traçabilité d’un lot à l’écran : de sa réception (ou de sa pêche) à chaque client livré, et ce qui
+// reste en stock. Lot de fines de claire de la commande d’exemple, ou lot de moules de la pêche du jour.
+// Données fictives, dont la zone de production 99.01 (comme l’agrément FR 17.999.001 CE).
+interface Props { d: any; variante?: string }
+const { variante = 'huitres' } = Astro.props;
+const LOTS: Record<string, any> = {
+  huitres: {
+    lot: '2026-351-3-014', article: 'Fines de claire n° 3',
+    etapes: [
+      ['Amont', 'Réception R-26-0611 du 14/11/2026', 'Huîtres creuses n° 3, 400 kg, Parcs de la Seudre'],
+      ['Affinage', 'Claire C12, du 18/11 au 16/12', '28 jours'],
+      ['Lot', '2026-351-3-014', 'Conditionné le 17/12/2026, 400 kg', true],
+      ['Aval', 'BL-26-02217, Poissonnerie de la Halle', '12 colis, 60 kg'],
+      ['Aval', 'BL-26-02221, Restaurant Le Bouchot', '7 colis, 35 kg'],
+      ['Aval', 'BL-26-02230, Marée d’Auge', '12 colis, 60 kg'],
+      ['En stock', 'Bassin B2', '245 kg'],
+    ],
+  },
+  moules: {
+    lot: '2026-351-M-004', article: 'Moules de bouchot, sac 10 kg',
+    etapes: [
+      ['Amont', 'Pêche du 17/12/2026, concession B-14', 'Moules de bouchot, 300 kg'],
+      ['Zone', 'Zone de production 99.01', 'Classée A'],
+      ['Lot', '2026-351-M-004', 'Conditionné le 17/12/2026, sacs de 10 kg', true],
+      ['Aval', 'BL-26-02182, Marée d’Auge', '8 sacs, 81,6 kg'],
+      ['Aval', 'BL-26-02181, Poissonnerie de la Halle', '4 sacs, 40,6 kg'],
+      ['Aval', 'BL-26-02183, Restaurant Le Bouchot', '2 sacs, 20,2 kg'],
+      ['En stock', 'Chambre froide', '157,6 kg'],
+    ],
+  },
+};
+const l = LOTS[variante] ?? LOTS.huitres;
+---
+<article class="ui-window" data-ui>
+  <div class="ui-win-head"><span>Traçabilité du lot {l.lot}</span><span class="ui-win-meta c-opt">{l.article}</span></div>
+  <div class="ui-win-body">
+    <p class="ui-tabs"><span class="is-on">De l’amont à l’aval</span><span>De l’aval à l’amont</span></p>
+    <div class="trace">
+      {l.etapes.map(([sorte, titre, detail, focus]: any[]) => (
+        <div class="trace-step"><span class="trace-kind">{sorte}</span><div class:list={['trace-node', { 'trace-node--focus': focus }]}><b>{titre}</b>{detail}</div></div>
+      ))}
+    </div>
+  </div>
+  <div class="ui-win-foot">
+    <span class="ui-btn ui-btn--text c-opt">Clients livrés</span>
+    <span class="ui-btn ui-btn--primary">Éditer la fiche</span>
+  </div>
+</article>

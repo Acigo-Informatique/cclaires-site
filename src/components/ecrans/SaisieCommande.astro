@@ -1,0 +1,31 @@
+---
+// Saisie d’une commande, pré-remplie d’après les habitudes du lieu de livraison, avec la promotion du jour
+// proposée. Les lignes de la commande d’exemple, sans montant (règle 2 : les prix ne se montrent que dans
+// la démonstration de la commande à la facture).
+interface Props { d: any; variante?: string }
+const { d } = Astro.props;
+const colis = d.lignes.reduce((s: number, l: any) => s + l.colis, 0);
+const lieu = d.commande.note.split(',')[0];
+---
+<article class="ui-window ui-commande" data-ui>
+  <div class="ui-win-head"><span>Nouvelle commande, {d.commande.client}</span><span class="ui-pill ui-pill--info">Saisie</span></div>
+  <div class="ui-win-body">
+    <dl class="ui-champs ui-champs--ligne">
+      <div><dt>Lieu de livraison</dt><dd>{lieu}</dd></div>
+      <div><dt>Livraison</dt><dd>{d.livraisons.date}</dd></div>
+      <div class="c-opt"><dt>Tournée</dt><dd>{d.livraisons.liste.find((b: any) => b.cible).tournee}</dd></div>
+    </dl>
+    <p class="ui-win-note">Lignes reprises des habitudes de ce lieu de livraison : modifiez, ajoutez, validez.</p>
+    <table>
+      <thead><tr><th>Article</th><th class="r">Colis</th><th class="r c-opt">{d.poidsVariable ? 'Poids estimé' : 'Poids'}</th><th class="c-opt">Origine</th></tr></thead>
+      <tbody>
+        {d.lignes.map((l: any) => <tr><td>{l.article}</td><td class="r">{l.colis}</td><td class="r c-opt">{l.poids}</td><td class="c-opt"><span class="ui-tag">habitude</span></td></tr>)}
+      </tbody>
+    </table>
+    <p class="ui-promo"><span><b>Promotion du jour</b> sur un article que ce client commande souvent</span><span class="ui-btn ui-btn--text">Ajouter</span></p>
+  </div>
+  <div class="ui-win-foot">
+    <span class="ui-win-total">{d.lignes.length} lignes, {colis} colis</span>
+    <span class="ui-btn ui-btn--primary">Valider la commande</span>
+  </div>
+</article>

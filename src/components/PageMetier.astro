@@ -1,12 +1,12 @@
 ---
 // Gabarit d’une page métier (ostréiculture, mytiliculture, mareyage), d’après un fichier de
-// src/donnees/metiers/ : premier écran, les trois douleurs du métier, les bénéfices et leurs captures,
+// src/donnees/metiers/ : premier écran, les trois douleurs du métier, les bénéfices et leurs écrans,
 // la démonstration avec un exemple du métier, documents et normes, témoignage, questions, appel final.
 // La couleur du métier (celle de sa feuille sur l’accueil) donne son champ aux douleurs.
 import Base from '../layouts/Base.astro';
 import EnTetePage from './EnTetePage.astro';
 import Photo from './Photo.astro';
-import Capture from './Capture.astro';
+import Ecran from './Ecran.astro';
 import Parcours from './Parcours.astro';
 import Temoignage from './Temoignage.astro';
 import Faq from './Faq.astro';
@@ -56,7 +56,7 @@ const temoignage = temoignages[m.temoignage.cle];
           <p>{b.texte}</p>
           <a class="link benefice__lien" href={lien(b.lien[0])}>{b.lien[1]}</a>
         </div>
-        {b.capture && <Capture class="benefice__capture" {...b.capture} />}
+        {b.capture && <Ecran class="benefice__capture" {...b.capture} />}
       </article>
     ))}
   </section>
