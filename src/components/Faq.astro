@@ -1,14 +1,16 @@
 ---
 // Questions : une bande par question, toutes les réponses visibles. Le même tableau nourrit le
 // JSON-LD FAQPage de la page (questions() dans src/donnees/schemas.mjs) : ce qui est lu est ce qui est déclaré.
+// Variante « groupe » (page /faq/) : un thème par section, sous un bandeau de titre plus bas.
 interface Props {
   questions: { q: string; r: string }[];   // r : HTML simple (paragraphes, liens)
   titre?: string;
   id?: string;
+  groupe?: boolean;
 }
-const { questions, titre = 'Vos questions', id = 'questions' } = Astro.props;
+const { questions, titre = 'Vos questions', id = 'questions', groupe = false } = Astro.props;
 ---
-<section id={id} class="faq" aria-labelledby={`${id}-titre`}>
+<section id={id} class:list={['faq', { 'faq--groupe': groupe }]} aria-labelledby={`${id}-titre`}>
   <div class="faq__head"><h2 id={`${id}-titre`} data-reveal>{titre}</h2></div>
   <div class="faq__bands">
     {questions.map(({ q, r }) => (

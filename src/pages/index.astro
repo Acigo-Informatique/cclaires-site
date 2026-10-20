@@ -11,6 +11,7 @@ import Temoignage from '../components/Temoignage.astro';
 import ACompleter from '../components/ACompleter.astro';
 import Telephone from '../components/Telephone.astro';
 import FormulaireDevis from '../components/FormulaireDevis.astro';
+import ListeOffre from '../components/ListeOffre.astro';
 import huitres from '../donnees/parcours/huitres.mjs';
 import { lien } from '../lib/chemins.mjs';
 import { prechargePhoto } from '../lib/precharge.mjs';
@@ -68,14 +69,6 @@ const automatismes = [
   { ton: 'paon', phrase: 'Les palettes se composent, le SSCC s’attribue.', detail: 'Répartition proposée par dimensions ou par nombre de colis, SSCC attribué à l’enregistrement, fiche palette en A4, A5 ou 10 × 15.', allume: true },
   { ton: 'eau', phrase: 'Les commandes du jour passent en BL d’un coup.', detail: 'Transformation en masse depuis la liste filtrée du jour, avec les cumuls de poids et de colis en pied de liste.', allume: true },
   { ton: 'tilleul', phrase: 'Chaque client est facturé à son rythme.', detail: 'Au jour, au BL ou à la fréquence convenue avec lui : ses BL deviennent des factures, sans ressaisie.' },
-];
-
-const offre = [
-  ['Abonnement', 'Le logiciel complet, 2 utilisateurs inclus'],
-  ['Étiqueteuses', 'Celles que vous avez déjà ou à prévoir, chiffrées au devis'],
-  ['Support', '8 h par an d’assistance par l’éditeur'],
-  ['Mises à jour', 'Installées par le logiciel lui-même'],
-  ['Sauvegardes', 'Gérées par ACIGO, données hébergées en France'],
 ];
 
 // prix, étiquettes, facture électronique, données, postes, utilisateurs (règles 1 et 2)
@@ -207,21 +200,10 @@ const precharge = await prechargePhoto('claires-seudre', tailleHero);
     </div>
   </section>
 
-  <section id="offre" class="modules offre" aria-labelledby="offre-titre">
-    <h2 class="offre__titre" id="offre-titre" data-reveal>Une offre, tout compris</h2>
-    <ul class="modules__list">
-      {offre.map(([nom, quoi], i) => (
-        <li data-reveal style={i ? `--i:${i}` : undefined}><span class="modules__name">{nom}</span><span class="modules__what">{quoi}</span></li>
-      ))}
-    </ul>
-    <div class="offre__pied grid">
-      <p class="offre__texte" data-reveal>Aucun module en option : toutes les fonctions sont dans l’abonnement. Le prix dépend du nombre d’utilisateurs et d’étiqueteuses, nous le chiffrons sur devis.</p>
-      <div class="offre__actions" data-reveal style="--i:1">
-        <a class="button button--encre" href="#devis">Demander un devis</a>
-        <a class="link" href={lien('/tarifs/')}>Le détail de l’offre</a>
-      </div>
-    </div>
-  </section>
+  <ListeOffre titre="Une offre, tout compris">
+    <a class="button button--encre" href="#devis">Demander un devis</a>
+    <a class="link" href={lien('/tarifs/')}>Le détail de l’offre</a>
+  </ListeOffre>
 
   <section id="editeur" class="about" aria-labelledby="editeur-titre">
     <h2 class="about__title titre-long" id="editeur-titre" data-reveal>Un éditeur normand depuis 1997, qui décroche</h2>

@@ -1,0 +1,60 @@
+---
+// Feuille de route (non ciblée) : la seule page où figurent les fonctions en cours et prévues (règle 1).
+// Aucune date annoncée.
+import Base from '../layouts/Base.astro';
+import EnTetePage from '../components/EnTetePage.astro';
+import AppelFinal from '../components/AppelFinal.astro';
+import Photo from '../components/Photo.astro';
+import { lien } from '../lib/chemins.mjs';
+import { prechargePhoto } from '../lib/precharge.mjs';
+
+const url = '/feuille-de-route/';
+const enCours = [
+  ['Facture électronique', 'La connexion à une plateforme agréée, livrée avant votre échéance de la réforme. Aujourd’hui déjà, les factures sont émises depuis les BL et leurs écritures exportées au format de votre logiciel comptable.'],
+  ['HACCP', 'Vos enregistrements sanitaires gardés dans le logiciel.'],
+  ['Statistiques et tableaux de bord', 'Des statistiques poussées pour comprendre vos données et piloter l’entreprise.'],
+];
+const prevu = [
+  ['Application mobile pour le parc', 'Sur tablette et mobile Android, puis iOS : les mises à l’eau, transferts et tris saisis sur place, avec le calendrier des marées et leurs coefficients.'],
+  ['Pesée connectée', 'La pesée reliée au logiciel, au quai.'],
+  ['Chargement par scan', 'Le contrôle du chargement par scan, au quai.'],
+  ['Module qualité', 'Le rappel de lot en un clic, le dossier des clients livrés pour la DDPP, et le QR code consommateur sur l’étiquette.'],
+  ['Commande en ligne pour vos clients', 'Un lien envoyé par e-mail ouvre une page de commande à leur nom.'],
+  ['Module de criée', 'Pour les mareyeurs, un module dédié à la criée.'],
+  ['Transformation', 'Pour les mareyeurs, du produit entier au produit élaboré.'],
+];
+const tailleHero = '(max-width: 720px) 67vw, 33vw';
+const precharge = await prechargePhoto('sillons-vasiere', tailleHero);
+---
+<Base
+  titre="Feuille de route C’Claires"
+  description="La feuille de route de C’Claires : facture électronique, HACCP et statistiques en cours ; application de parc, pesée connectée et module qualité à venir."
+  url={url}
+  enTete="accueil"
+  precharges={[precharge]}
+>
+  <EnTetePage slot="avant" url={url} h1="Ce qui arrive dans C’Claires" couleur="eau" photos={['sillons-vasiere', 'chaland-oleron', 'port-en-bessin']} tailleHero={tailleHero}
+    sousTitre="Ce que nous construisons, sans date promise. Tout le reste du site décrit le logiciel tel qu’il est aujourd’hui."
+    actions={[{ href: lien('/fonctionnalites/'), texte: 'Voir ce que fait C’Claires aujourd’hui', primaire: true }, { href: '#en-cours', texte: 'Ce qui est en cours' }]} />
+
+  <section id="en-cours" class="etapes etapes--tilleul" aria-labelledby="en-cours-titre">
+    <h2 class="etapes__titre" id="en-cours-titre" data-reveal>En cours</h2>
+    <dl class="route">
+      {enCours.map(([dt, dd], i) => <div data-reveal style={`--i:${i}`}><dt>{dt}</dt><dd>{dd}</dd></div>)}
+    </dl>
+  </section>
+
+  <section id="a-venir" class="aussi" aria-labelledby="a-venir-titre">
+    <figure class="aussi__photo" data-reveal>
+      <Photo nom="arcachon-1920" sizes="(max-width: 1080px) 100vw, 60vw" alt="Parcs à huîtres d’Arcachon, photographie de presse de 1920" />
+      <figcaption>Parcs à huîtres d’Arcachon, en 1920. Le métier change moins vite que ses outils.</figcaption>
+    </figure>
+    <h2 class="aussi__titre" id="a-venir-titre" data-reveal>À venir</h2>
+    <dl class="route">
+      {prevu.map(([dt, dd], i) => <div data-reveal style={`--i:${i % 4}`}><dt>{dt}</dt><dd>{dd}</dd></div>)}
+    </dl>
+    <p class="aussi__suite" data-reveal>Une de ces fonctions compte pour vous&nbsp;? Dites-le-nous dans la <a class="link" href={lien('/demo/')}>demande de démo</a>.</p>
+  </section>
+
+  <AppelFinal titre="Voyez d’abord ce qui existe" texte="En 30 minutes, nous vous montrons le logiciel d’aujourd’hui avec vos articles et vos clients." />
+</Base>

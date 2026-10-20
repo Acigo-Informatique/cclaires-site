@@ -67,3 +67,10 @@ l’image, en reprenant le même texte alternatif.
 | TEMO-03 | Accueil, /logiciel-mareyage/, /clients/ | Témoignage d’un mareyeur client, mêmes éléments | haute |
 | LOGOS-01 | Accueil, /clients/ | Logos de 6 à 8 clients qui ont donné leur accord, en SVG d’une seule couleur | moyenne |
 | EQUIPE-01 | Accueil, /a-propos/ | Photo de l’équipe ACIGO à Saint-Lô (paysage 3:2, 1600 px de large au moins) et les prénoms pour la légende | moyenne |
+| CAS-01 | /clients/ | Étude de cas chiffrée d’un client qui a donné son accord : entreprise, métier, bassin, situation de départ, mise en place, résultats mesurés et vérifiables, citation du dirigeant | moyenne |
+
+## Juridique
+
+| ID | Page | Ce qu’il faut fournir | Priorité |
+|---|---|---|---|
+| CONFID-01 | /confidentialite/ | Faire valider par un juriste chaque point marqué [À VÉRIFIER] : base légale, transfert hors UE par Formspree, durée de conservation, liste des droits, mesure d’audience sans cookie | haute |

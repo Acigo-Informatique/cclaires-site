@@ -3,6 +3,7 @@ import Base from '../layouts/Base.astro';
 import FilAriane from '../components/FilAriane.astro';
 import ACompleter from '../components/ACompleter.astro';
 import reglages from '../../site.config.mjs';
+import { lien } from '../lib/chemins.mjs';
 
 const url = '/mentions-legales/';
 ---
@@ -25,11 +26,10 @@ const url = '/mentions-legales/';
 
         <h2>Propriété intellectuelle</h2>
         <p>Le nom C’Claires, son logo et ses éléments graphiques appartiennent à ACIGO Informatique. Toute reproduction sans autorisation est interdite.</p>
-        <p>Les documents montrés sur la page d’accueil (étiquette, bon de livraison, fiche palette, traçabilité, CERFA) sont des exemples&nbsp;: les clients, les numéros de lot, de pièce, de SIRET et d’agrément y sont fictifs.</p>
+        <p>Les documents et les écrans montrés sur le site (étiquettes, bons de livraison, fiches palette, traçabilité, factures, CERFA, messages EDI) sont des exemples&nbsp;: les clients, les numéros de lot, de pièce, de SIRET et d’agrément, les GTIN et les SSCC y sont fictifs.</p>
 
         <h2>Données personnelles</h2>
-        <p>Ce site ne dépose aucun cookie et ne mesure pas l’audience. Il ne contient aucun formulaire&nbsp;: les demandes passent par votre messagerie, à l’adresse <a class="link" href={`mailto:${reglages.email}`}>{reglages.email}</a>. Les informations que vous nous écrivez servent seulement à vous répondre.</p>
-        <p>Vous disposez d’un droit d’accès, de rectification et d’effacement de vos données&nbsp;: écrivez-nous à la même adresse.</p>
+        <p>Ce site ne dépose aucun cookie. Les demandes envoyées par le formulaire de démo et de devis servent seulement à vous répondre&nbsp;: ce qu’il recueille, pourquoi, pour combien de temps et vos droits sont détaillés sur la page <a class="link" href={lien('/confidentialite/')}>confidentialité</a>.</p>
 
         <h2>Crédits</h2>
         <p>Photographies, en niveaux de gris et recadrées, via Wikimedia Commons&nbsp;:</p>

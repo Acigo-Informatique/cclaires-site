@@ -1,0 +1,43 @@
+---
+// Démo et devis (requête : démo logiciel ostréicole) : la page porte le formulaire, sans détour.
+import Base from '../layouts/Base.astro';
+import EnTetePage from '../components/EnTetePage.astro';
+import FormulaireDevis from '../components/FormulaireDevis.astro';
+import Telephone from '../components/Telephone.astro';
+import { lien } from '../lib/chemins.mjs';
+import { prechargePhoto } from '../lib/precharge.mjs';
+
+const url = '/demo/';
+const tailleHero = '(max-width: 720px) 67vw, 33vw';
+const precharge = await prechargePhoto('claires-seudre', tailleHero);
+---
+<Base
+  titre="Démo et devis du logiciel C’Claires"
+  description="Réservez une démo de 30 minutes de C’Claires avec vos articles et vos clients, et recevez un devis chiffré : utilisateurs, étiqueteuses, support, mises à jour."
+  url={url}
+  enTete="accueil"
+  precharges={[precharge]}
+>
+  <EnTetePage slot="avant" url={url} h1="Voyez C’Claires avec vos produits" couleur="tilleul" photos={['claires-seudre', 'bouchots-agon', 'criee-boulogne', 'huitres-rocher']} tailleHero={tailleHero}
+    sousTitre="En 30 minutes, nous vous montrons le parcours d’une commande, de la saisie à la facture, avec vos articles et vos clients. Le devis suit, ligne par ligne."
+    actions={[{ href: '#demande-devis', texte: 'Remplir la demande', primaire: true }]} />
+
+  <section id="demande-devis" class="demo" aria-labelledby="demande-titre">
+    <div class="grid demo__grille">
+      <div class="demo__texte">
+        <h2 class="demo__titre titre-long" id="demande-titre" data-reveal>Votre demande de démo et de devis</h2>
+        <ol class="demo__etapes">
+          <li data-reveal style="--i:1">Vous nous dites comment partent vos colis aujourd’hui.</li>
+          <li data-reveal style="--i:2">Nous préparons la démonstration avec vos articles et vos clients.</li>
+          <li data-reveal style="--i:3">En 30 minutes, nous vous montrons le parcours, de la commande à la facture.</li>
+          <li data-reveal style="--i:4">Vous recevez un devis chiffré : utilisateurs, étiqueteuses, support.</li>
+        </ol>
+        <p class="demo__contact" data-reveal style="--i:5">Vous préférez appeler&nbsp;? <Telephone class="link" /></p>
+        <p class="demo__donnees" data-reveal style="--i:6">Ce formulaire ne dépose aucun cookie. Vos réponses servent seulement à préparer la démonstration et le devis : voir la page <a class="link" href={lien('/confidentialite/')}>confidentialité</a>.</p>
+      </div>
+      <div class="demo__form">
+        <FormulaireDevis id="devis-demo" titreId="demande-titre" />
+      </div>
+    </div>
+  </section>
+</Base>

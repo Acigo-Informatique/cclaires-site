@@ -1,0 +1,49 @@
+---
+// Confidentialité : ce que devient une demande envoyée par le formulaire. Les points juridiques sont
+// marqués [À VÉRIFIER] tant qu’un juriste ne les a pas validés (TODO-MANUEL CONFID-01).
+import Base from '../layouts/Base.astro';
+import FilAriane from '../components/FilAriane.astro';
+import reglages from '../../site.config.mjs';
+import { lien } from '../lib/chemins.mjs';
+
+const url = '/confidentialite/';
+const v = '<span class="a-verifier">[À VÉRIFIER]</span>';
+---
+<Base
+  titre="Confidentialité | C’Claires"
+  description="Ce que devient votre demande de démo et de devis sur le site C’Claires : données collectées, finalité, durée de conservation, vos droits et absence de cookie."
+  url={url}
+>
+  <div class="page">
+    <div class="grid">
+      <FilAriane url={url} class="page__fil" />
+      <h1 class="page__title">Confidentialité</h1>
+      <div class="page__body">
+        <h2>Responsable du traitement</h2>
+        <p>ACIGO INFORMATIQUE, société à responsabilité limitée, 706 rue Dunant, 50000 Saint-Lô. Contact&nbsp;: <a class="link" href={`mailto:${reglages.email}`}>{reglages.email}</a>.</p>
+
+        <h2>Ce que le formulaire recueille</h2>
+        <p>Le formulaire de démo et de devis demande votre nom et votre prénom, votre entreprise, votre métier, votre téléphone et votre adresse e-mail, et, si vous les indiquez, le nombre d’utilisateurs et d’étiqueteuses, leur marque et votre message. Le site ne recueille rien d’autre.</p>
+
+        <h2>Pourquoi</h2>
+        <p>Pour répondre à votre demande&nbsp;: préparer la démonstration, vous envoyer un devis et vous recontacter à leur sujet. Vos réponses ne servent à rien d’autre et ne sont ni vendues ni cédées.</p>
+        <p>Base légale&nbsp;: les mesures précontractuelles prises à votre demande (article 6, paragraphe 1, point b du règlement général sur la protection des données). <Fragment set:html={v} /></p>
+
+        <h2>Qui les reçoit</h2>
+        <p>ACIGO Informatique seulement. Le formulaire passe par Formspree, un service d’envoi de formulaires établi aux États-Unis, qui transmet la demande par e-mail. <Fragment set:html={v} /> Encadrement du transfert hors de l’Union européenne&nbsp;: clauses contractuelles types ou adhésion de Formspree au cadre de protection des données UE–États-Unis, à confirmer.</p>
+
+        <h2>Combien de temps</h2>
+        <p>Trois ans à compter de notre dernier échange, puis suppression, sauf si vous devenez client&nbsp;: la relation commerciale prend alors le relais. <Fragment set:html={v} /></p>
+
+        <h2>Vos droits</h2>
+        <p>Vous pouvez accéder à vos données, les faire rectifier ou effacer, en limiter l’usage, vous opposer à leur traitement et en demander la portabilité. <Fragment set:html={v} /> Écrivez-nous à <a class="link" href={`mailto:${reglages.email}`}>{reglages.email}</a>&nbsp;; nous répondons dans le délai d’un mois. Vous pouvez aussi adresser une réclamation à la CNIL, sur <a class="link" href="https://www.cnil.fr/">cnil.fr</a>.</p>
+
+        <h2>Cookies et mesure d’audience</h2>
+        <p>Le site ne dépose aucun cookie. Si une mesure d’audience est activée, elle fonctionne sans cookie et sans donnée permettant de vous identifier. <Fragment set:html={v} /></p>
+
+        <h2>Hébergement</h2>
+        <p>Le site est hébergé par GitHub, Inc. (GitHub Pages)&nbsp;; voir les <a class="link" href={lien('/mentions-legales/')}>mentions légales</a>.</p>
+      </div>
+    </div>
+  </div>
+</Base>

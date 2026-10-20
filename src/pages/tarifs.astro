@@ -1,0 +1,58 @@
+---
+// Tarifs (requête : prix logiciel ostréicole). Règle 2 : aucun montant ; l’offre se détaille et mène au devis.
+import Base from '../layouts/Base.astro';
+import EnTetePage from '../components/EnTetePage.astro';
+import ListeOffre from '../components/ListeOffre.astro';
+import Photo from '../components/Photo.astro';
+import Faq from '../components/Faq.astro';
+import AppelFinal from '../components/AppelFinal.astro';
+import { lien } from '../lib/chemins.mjs';
+import { prechargePhoto } from '../lib/precharge.mjs';
+import { questions as faqPage } from '../donnees/schemas.mjs';
+
+const url = '/tarifs/';
+const questions = [
+  { q: 'Pourquoi le prix n’est-il pas affiché ?', r: '<p>Parce qu’il dépend de votre installation : le nombre d’utilisateurs et le nombre d’étiqueteuses. Plutôt qu’une grille qui ne vous ressemblerait pas, nous chiffrons votre cas dans un devis.</p>' },
+  { q: 'Combien d’utilisateurs sont inclus ?', r: '<p>Deux. Vous en ajoutez autant qu’il vous en faut, chiffrés dans le devis. Les comptes nominatifs et les comptes poste d’atelier se comptent à part, et un compte poste peut tourner sur plusieurs machines de l’atelier.</p>' },
+  { q: 'Les étiqueteuses sont-elles comprises ?', r: '<p>Elles font partie de l’offre : celles que vous avez déjà ou celles à prévoir, Zebra, Toshiba ou d’autres marques. Indiquez leur nombre et leur marque dans la <a class="link" href="/demo/">demande de devis</a>.</p>' },
+  { q: 'Y a-t-il des modules en option ?', r: '<p>Non. Toutes les fonctions sont dans l’abonnement : commandes, étiquettes, palettisation, traçabilité, parcs et claires, EDI, facturation.</p>' },
+  { q: 'Que comprend le support ?', r: '<p>8 heures d’assistance par an, assurées par l’éditeur, ACIGO Informatique, à Saint-Lô.</p>' },
+];
+const tailleHero = '(max-width: 720px) 67vw, 33vw';
+const precharge = await prechargePhoto('chaland-oleron', tailleHero);
+---
+<Base
+  titre="Offre et devis C’Claires, tout compris"
+  description="L’offre C’Claires : abonnement au logiciel complet avec 2 utilisateurs, étiqueteuses, support de 8 heures par an, mises à jour et sauvegardes. Prix sur devis."
+  url={url}
+  enTete="accueil"
+  schemas={[faqPage(questions, url)]}
+  precharges={[precharge]}
+>
+  <EnTetePage slot="avant" url={url} h1="Ce que comprend l’offre C’Claires" couleur="ciel" photos={['chaland-oleron', 'tables-tremblade', 'bouchots-agon']} tailleHero={tailleHero}
+    sousTitre="Un abonnement au logiciel complet, vos étiqueteuses, le support, les mises à jour et les sauvegardes : tout compris, sans module en option, chiffré sur devis."
+    actions={[{ href: lien('/demo/'), texte: 'Recevoir mon devis', primaire: true }, { href: '#offre', texte: 'Voir le détail de l’offre' }]} />
+
+  <ListeOffre titre="Une offre, tout compris">
+    <a class="button button--encre" href={lien('/demo/')}>Recevoir mon devis</a>
+  </ListeOffre>
+
+  <section id="prix" class="aussi" aria-labelledby="prix-titre">
+    <h2 class="aussi__titre titre-long" id="prix-titre" data-reveal>Ce qui fait le prix, et ce qui ne le change pas</h2>
+    <dl class="aussi__liste aussi__liste--deux">
+      <div data-reveal><dt>Le nombre d’utilisateurs</dt><dd>Deux sont inclus dans l’abonnement ; les suivants s’ajoutent au devis.</dd></div>
+      <div data-reveal style="--i:1"><dt>Le nombre d’étiqueteuses</dt><dd>Celles que vous avez déjà ou celles à prévoir, quelle que soit leur marque.</dd></div>
+      <div data-reveal style="--i:2"><dt>Toutes les fonctions</dt><dd>Aucun module vendu à part : vous avez tout le logiciel, quel que soit votre métier.</dd></div>
+      <div data-reveal style="--i:3"><dt>Les mises à jour et les sauvegardes</dt><dd>Comprises, avec l’hébergement de vos données en France.</dd></div>
+    </dl>
+    <p class="aussi__suite" data-reveal>Décrivez votre activité dans la <a class="link" href={lien('/demo/')}>demande de démo et de devis</a> : nous vous répondons avec un devis chiffré, ligne par ligne.</p>
+    <figure class="aussi__photo aussi__photo--fin" data-reveal>
+      <Photo nom="huitres-rocher" sizes="(max-width: 1080px) 100vw, 60vw" alt="Huîtres creuses fixées sur un rocher, en gros plan" />
+      <figcaption>Huîtres creuses fixées sur un rocher.</figcaption>
+    </figure>
+  </section>
+
+  <Faq questions={questions} titre="Vos questions sur l’offre" />
+
+  <AppelFinal titre="Recevez votre devis, ligne par ligne" texte="Dites-nous combien vous êtes et combien d’étiqueteuses tournent au quai : nous chiffrons votre installation." action="Recevoir mon devis" />
+</Base>

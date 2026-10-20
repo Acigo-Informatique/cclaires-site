@@ -1,0 +1,70 @@
+---
+// À propos (requête : ACIGO Informatique). Seulement des faits connus ; l’équipe est à compléter.
+import Base from '../layouts/Base.astro';
+import EnTetePage from '../components/EnTetePage.astro';
+import Photo from '../components/Photo.astro';
+import ACompleter from '../components/ACompleter.astro';
+import AppelFinal from '../components/AppelFinal.astro';
+import Telephone from '../components/Telephone.astro';
+import { lien } from '../lib/chemins.mjs';
+import { prechargePhoto } from '../lib/precharge.mjs';
+
+const url = '/a-propos/';
+const tailleHero = '(max-width: 720px) 67vw, 33vw';
+const precharge = await prechargePhoto('port-en-bessin', tailleHero);
+---
+<Base
+  titre="ACIGO Informatique, éditeur depuis 1997"
+  description="ACIGO Informatique, éditeur de logiciels à Saint-Lô depuis 1997, conçoit et maintient C’Claires : données hébergées en France, sauvegardes gérées par l’éditeur."
+  url={url}
+  enTete="accueil"
+  precharges={[precharge]}
+>
+  <EnTetePage slot="avant" url={url} h1="Un éditeur normand depuis 1997" couleur="paon" photos={['port-en-bessin', 'bouchots-agon', 'claires-seudre']} tailleHero={tailleHero}
+    sousTitre="C’Claires est conçu, édité et maintenu par ACIGO Informatique, une société de logiciels installée à Saint-Lô, dans la Manche, depuis 1997."
+    actions={[{ href: lien('/demo/'), texte: 'Réserver une démo de 30 minutes', primaire: true }, { href: '#equipe', texte: 'Rencontrer l’équipe' }]} />
+
+  <section id="editeur" class="about" aria-labelledby="editeur-titre">
+    <h2 class="about__title titre-long" id="editeur-titre" data-reveal>À Saint-Lô, près des parcs et des criées</h2>
+    <div class="grid">
+      <div class="about__lead" data-reveal style="--i:1">
+        <p>Quand vous appelez, quelqu’un de l’équipe ACIGO décroche&nbsp;: <Telephone class="link" />.</p>
+      </div>
+    </div>
+    <div class="grid about__tiles">
+      <figure class="about__photo" data-reveal>
+        <div class="shutter"><Photo nom="port-en-bessin" class="photo drift" sizes="(max-width: 1080px) 100vw, 66vw" alt="Vue aérienne du port de Port-en-Bessin, en Normandie, au retour des bateaux de pêche" /></div>
+        <figcaption class="about__note">Port-en-Bessin, dans le Calvados, au retour de pêche.</figcaption>
+      </figure>
+      <div class="about__side">
+        <div class="about__map" data-reveal style="--i:1"><img src={lien('/assets/img/carte-saint-lo.svg')} width="507" height="520" alt="Carte de France, Saint-Lô marqué dans la Manche" loading="lazy"></div>
+        <dl class="facts" data-reveal style="--i:2">
+          <div><dt>Siège</dt><dd>706 rue Dunant, Saint-Lô</dd></div>
+          <div><dt>Fondée</dt><dd>14 octobre 1997</dd></div>
+          <div><dt>Forme</dt><dd>SARL</dd></div>
+          <div><dt>SIREN</dt><dd>414 125 674</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section id="equipe" class="benefices" aria-labelledby="equipe-titre">
+    <h2 class="benefices__titre titre-long" id="equipe-titre" data-reveal>L’équipe</h2>
+    <figure class="equipe">
+      <ACompleter id="EQUIPE-01" class="equipe__photo" texte="photo de l’équipe ACIGO à Saint-Lô (paysage 3:2, 1600 px de large au moins) et, pour la légende, les prénoms et le rôle de chacun" />
+    </figure>
+  </section>
+
+  <section id="donnees" class="aussi" aria-labelledby="donnees-titre">
+    <h2 class="aussi__titre titre-long" id="donnees-titre" data-reveal>Vos données, chez nous</h2>
+    <dl class="aussi__liste aussi__liste--deux">
+      <div data-reveal><dt>Hébergées en France</dt><dd>Chez l’hébergeur Nat-Tech, sur un serveur central auquel chaque poste se connecte.</dd></div>
+      <div data-reveal style="--i:1"><dt>Sauvegardées par l’éditeur</dt><dd>ACIGO gère lui-même les sauvegardes.</dd></div>
+      <div data-reveal style="--i:2"><dt>Une base par entreprise</dt><dd>Chaque client a sa propre base, séparée de celles des autres.</dd></div>
+      <div data-reveal style="--i:3"><dt>Postes Windows ou TSE</dt><dd>À vous de choisir ; les étiquettes s’impriment en local, sur les étiqueteuses du poste.</dd></div>
+    </dl>
+    <p class="aussi__suite" data-reveal>Ce qui arrive ensuite dans le logiciel est sur la <a class="link" href={lien('/feuille-de-route/')}>feuille de route</a>, et ceux qui l’utilisent sont sur la page <a class="link" href={lien('/clients/')}>clients</a>.</p>
+  </section>
+
+  <AppelFinal titre="Faisons connaissance" texte="En 30 minutes, nous vous montrons C’Claires avec vos articles et vos clients, et vous rencontrez l’équipe ACIGO." />
+</Base>
