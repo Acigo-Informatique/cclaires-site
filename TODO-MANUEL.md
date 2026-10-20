@@ -69,6 +69,21 @@ l’image, en reprenant le même texte alternatif.
 | EQUIPE-01 | Accueil, /a-propos/ | Photo de l’équipe ACIGO à Saint-Lô (paysage 3:2, 1600 px de large au moins) et les prénoms pour la légende | moyenne |
 | CAS-01 | /clients/ | Étude de cas chiffrée d’un client qui a donné son accord : entreprise, métier, bassin, situation de départ, mise en place, résultats mesurés et vérifiables, citation du dirigeant | moyenne |
 
+## Guides
+
+| ID | Page | Ce qu’il faut fournir | Priorité |
+|---|---|---|---|
+| GUIDE-VERIF | /guides/mentions-obligatoires-etiquette-sanitaire/, /guides/cerfa-15063/ | Relire chaque point marqué [À VÉRIFIER] sur les textes en vigueur (règlements CE 853/2004, UE 1379/2013, UE 1169/2011, notice du CERFA 15063*04), corriger ou sourcer, puis retirer la marque | haute |
+| GUIDE-01 | /guides/ (à créer) | Guide « Le règlement UE 1379/2013 expliqué aux mareyeurs » (information du consommateur : dénomination, nom scientifique, zone FAO, engin) | moyenne |
+| GUIDE-02 | /guides/ (à créer) | Guide « Numéro de lot : comment le construire et le tenir » | moyenne |
+| GUIDE-03 | /guides/ (à créer) | Guide « Zones A, B et C : classement sanitaire et purification » | moyenne |
+| GUIDE-04 | /guides/ (à créer) | Guide « Facture électronique : le calendrier de la réforme pour les entreprises de la mer » | moyenne |
+| GUIDE-05 | /guides/ (à créer) | Guide « Rappel de lot : que faire, dans quel ordre » | basse |
+
+Un guide s’ajoute en déposant un fichier Markdown dans `src/content/guides/` (voir les deux existants et
+`src/content.config.ts`), puis en le déclarant dans `src/donnees/plan.mjs` pour le menu, le pied de page
+et le sitemap.
+
 ## Juridique
 
 | ID | Page | Ce qu’il faut fournir | Priorité |

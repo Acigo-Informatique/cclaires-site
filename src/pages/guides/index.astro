@@ -1,0 +1,38 @@
+---
+// Les guides pratiques, en lignes d’affiche liées.
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import EnTetePage from '../../components/EnTetePage.astro';
+import AppelFinal from '../../components/AppelFinal.astro';
+import { lien } from '../../lib/chemins.mjs';
+import { prechargePhoto } from '../../lib/precharge.mjs';
+
+const url = '/guides/';
+const guides = (await getCollection('guides')).sort((a, b) => a.data.ordre - b.data.ordre);
+const tailleHero = '(max-width: 720px) 67vw, 33vw';
+const precharge = await prechargePhoto('tables-seudre', tailleHero);
+---
+<Base
+  titre="Guides réglementaires conchyliculture et marée"
+  description="Guides pratiques pour les ostréiculteurs, mytiliculteurs et mareyeurs : mentions obligatoires de l’étiquette sanitaire, CERFA 15063 des coquillages vivants."
+  url={url}
+  enTete="accueil"
+  precharges={[precharge]}
+>
+  <EnTetePage slot="avant" url={url} h1="Guides pratiques" couleur="eau" photos={['tables-seudre', 'huitre-creuse', 'criee-boulogne', 'bouchots-agon']} tailleHero={tailleHero}
+    sousTitre="Les documents et les mentions de la conchyliculture et de la marée, expliqués simplement, avec un exemple tiré de C’Claires à chaque fois."
+    actions={[{ href: '#liste-guides', texte: 'Voir les guides', primaire: true }]} />
+
+  <section id="liste-guides" class="modules modules--liens modules--guides" aria-labelledby="guides-titre">
+    <h2 class="offre__titre" id="guides-titre" data-reveal>Les guides</h2>
+    <ul class="modules__list">
+      {guides.map((g, i) => (
+        <li data-reveal style={i ? `--i:${i}` : undefined}>
+          <a href={lien(`/guides/${g.id}/`)}><span class="modules__name">{g.data.h1}</span><span class="modules__what">{g.data.resume}</span></a>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <AppelFinal titre="Vos documents, tirés de vos commandes" texte="En 30 minutes, nous vous montrons vos étiquettes et vos documents sortir de C’Claires, sans ressaisie." />
+</Base>

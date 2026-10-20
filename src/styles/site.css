@@ -479,6 +479,23 @@ ol.etapes__liste { display: grid; gap: 1.25rem; max-width: 52rem; margin-top: cl
 }
 .modules--liens .modules__name { font-size: var(--step-l); line-height: 1.12; }
 @media (hover: hover) and (pointer: fine) { .modules--liens .modules__list a:hover { color: var(--paon); } }
+.modules--guides .modules__name { white-space: normal; text-transform: none; line-height: 1; }
+.modules--guides .modules__list li + li { margin-top: 1.25rem; }
+
+/* ---------- guide : le sommaire à gauche, le texte au fil de la lecture ---------- */
+.guide { padding: var(--band-pad) var(--margin); }
+.guide__sommaire { grid-column: 1 / 4; align-self: start; position: sticky; top: 1.5rem; }
+.guide__sommaire-titre { font-weight: 800; }
+.guide__sommaire ol { display: grid; gap: 0.15rem; margin-top: 0.6rem; padding-left: 1.2em; font-size: var(--step-s); }
+.guide__sommaire a { display: inline-flex; align-items: center; min-height: 2.75rem; }
+.guide__corps { grid-column: 5 / 12; max-width: 68ch; }
+.guide__corps > * + * { margin-top: 1rem; }
+.guide__corps h2 { margin-top: 3rem; font-size: var(--step-m); font-weight: 800; line-height: 1.15; scroll-margin-top: 1.5rem; }
+.guide__corps h3 { margin-top: 1.75rem; font-weight: 800; scroll-margin-top: 1.5rem; }
+.guide__corps ul { padding-left: 1.2em; }
+.guide__corps li + li { margin-top: 0.5rem; }
+.guide__exemple { background: var(--stage); }
+.guide__suite { margin-top: 2rem; }
 .aussi { padding: var(--band-pad) var(--margin); background: var(--eau); }
 .aussi__photo { width: min(100%, 52rem); margin: 0 0 clamp(2.5rem, 5vw, 4rem); }
 .aussi__photo img { aspect-ratio: 16 / 9; height: auto; }
@@ -1041,6 +1058,8 @@ ol.demo__etapes { display: grid; gap: 1rem; margin-top: 2rem; padding-left: 1.4e
   .close__text, .close__form { grid-column: 1 / -1; }
   .vitrine__texte, .vitrine__scene { grid-column: 1 / -1; }
   .demo__texte, .demo__form { grid-column: 1 / -1; }
+  .guide__sommaire { grid-column: 1 / -1; position: static; margin-bottom: 2rem; }
+  .guide__corps { grid-column: 1 / -1; }
   .aussi__liste { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .ecrans__capture, .ecrans__capture:only-child { grid-column: 1 / -1; }
 }

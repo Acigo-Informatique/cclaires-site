@@ -1,15 +1,17 @@
-// sitemap.xml : les pages du plan (src/donnees/plan.mjs) qui existent dans src/pages, à l’adresse
-// du site (site.config.mjs, url).
+// sitemap.xml : les pages du plan (src/donnees/plan.mjs) qui existent, à l’adresse du site
+// (site.config.mjs, url) : les pages de src/pages et les guides de src/content/guides.
+import { getCollection } from 'astro:content';
 import { pages } from '../donnees/plan.mjs';
 import { absolu } from '../lib/chemins.mjs';
 
 const sources = Object.keys(import.meta.glob('./**/*.astro'));
-const routes = new Set(sources
+const statiques = sources
   .filter((s) => !s.includes('['))
-  .map((s) => s.replace(/^\./, '').replace(/\.astro$/, '').replace(/\/index$/, '') + '/')
-  .map((r) => r.replace(/^\/+/, '/')));
+  .map((s) => (s.replace(/^\./, '').replace(/\.astro$/, '').replace(/\/index$/, '') + '/').replace(/^\/+/, '/'));
 
-export const GET = () => {
+export const GET = async () => {
+  const guides = (await getCollection('guides')).map((g) => `/guides/${g.id}/`);
+  const routes = new Set([...statiques, ...guides]);
   const jour = new Date().toISOString().slice(0, 10);
   const urls = pages.filter((p) => routes.has(p.url))
     .map((p) => `  <url>\n    <loc>${absolu(p.url)}</loc>\n    <lastmod>${jour}</lastmod>\n  </url>`);
