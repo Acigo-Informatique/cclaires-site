@@ -77,7 +77,8 @@ GUIDE-01 à GUIDE-05 : en attente (décision du 20/10/2026).
 
 | ID | Page | Ce qu’il faut fournir | Priorité |
 |---|---|---|---|
-| GUIDE-VERIF | /guides/mentions-obligatoires-etiquette-sanitaire/, /guides/cerfa-15063/ | Relire chaque point marqué [À VÉRIFIER] sur les textes en vigueur (règlements CE 853/2004, UE 1379/2013, UE 1169/2011, notice du CERFA 15063*04), corriger ou sourcer, puis retirer la marque | haute |
+| GUIDE-IMG-01 | /guides/cerfa-15063/ | Les deux guides sont vérifiés (20/10/2026, textes de référence en fin de page) et l’étiquette d’exemple porte désormais l’abréviation UE. Reste l’image du CERFA d’exemple, qui écrit encore « FR 17.999.001 CE » dans le champ agrément (admis jusqu’au 31/12/2028) : la régénérer avec `tools/remplir-cerfa.mjs` (déjà corrigé) et le PDF officiel | basse |
+| GUIDE-NORME | /guides/mentions-obligatoires-etiquette-sanitaire/, étiquette d’exemple | Non vérifiable sur un texte en accès libre : la plage de calibres n° 0 à n° 5 et le « nombre minimum » de pièces de l’étiquette d’exemple, qui relèvent d’usages et d’une norme AFNOR non consultée. Le guide ne cite plus de plage ; à confirmer par la profession | basse |
 | GUIDE-01 | /guides/ (à créer) | Guide « Le règlement UE 1379/2013 expliqué aux mareyeurs » (information du consommateur : dénomination, nom scientifique, zone FAO, engin) | moyenne |
 | GUIDE-02 | /guides/ (à créer) | Guide « Numéro de lot : comment le construire et le tenir » | moyenne |
 | GUIDE-03 | /guides/ (à créer) | Guide « Zones A, B et C : classement sanitaire et purification » | moyenne |

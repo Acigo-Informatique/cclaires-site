@@ -1,7 +1,7 @@
 ---
 // La traçabilité d’un lot à l’écran : de sa réception (ou de sa pêche) à chaque client livré, et ce qui
 // reste en stock. Lot de fines de claire de la commande d’exemple, ou lot de moules de la pêche du jour.
-// Données fictives, dont la zone de production 99.01 (comme l’agrément FR 17.999.001 CE).
+// Données fictives, dont la zone de production 99.01 (comme l’agrément FR 17.999.001 UE).
 interface Props { d: any; variante?: string }
 const { variante = 'huitres' } = Astro.props;
 const LOTS: Record<string, any> = {

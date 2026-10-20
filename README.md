@@ -35,7 +35,7 @@ emplacement « À COMPLÉTER » sur les pages. La liste de tout ce qui reste à 
 
 Les documents montrés (étiquette, BL, fiche palette, traçabilité, CERFA) utilisent des données fictives :
 exploitation « des Trois Claires », clients « Poissonnerie de la Halle », « Restaurant Le Bouchot »,
-« Marée d’Auge », agrément `FR 17.999.001 CE`, GTIN `02000012345678`, SSCC `320000120000014827`
+« Marée d’Auge », agrément `FR 17.999.001 UE`, GTIN `02000012345678`, SSCC `320000120000014827`
 (préfixes de circulation restreinte). Une note en pied de page les dit fictifs.
 
 ## Travailler en local

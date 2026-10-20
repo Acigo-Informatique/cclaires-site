@@ -49,7 +49,7 @@ cocher(Case + '9'); // autre entreprise
 form.flatten();
 const page = doc.getPage(0);
 const police = await doc.embedFont(StandardFonts.Helvetica);
-page.drawText('FR 17.999.001 CE', { x: 332, y: 651, size: 7, font: police, color: rgb(0, 0, 0) });
+page.drawText('FR 17.999.001 UE', { x: 332, y: 651, size: 7, font: police, color: rgb(0, 0, 0) });
 page.drawText('18/12/2026', { x: 120, y: 96, size: 10, font: police, color: rgb(0, 0, 0) });
 writeFileSync(sortie, await doc.save());
 console.log('CERFA rempli :', sortie);
