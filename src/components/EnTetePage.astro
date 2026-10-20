@@ -1,0 +1,43 @@
+---
+// Premier écran d’une page intérieure (métier, fonctionnalité) : un bandeau mosaïque plus bas que celui de
+// l’accueil, aux couleurs du chapitre, l’en-tête posé dessus, le fil d’Ariane, le H1 sur l’axe à 42 %,
+// la phrase de bénéfice et l’action. À placer dans le slot « avant » de Base.astro.
+import EnTete from './EnTete.astro';
+import FilAriane from './FilAriane.astro';
+import Photo from './Photo.astro';
+
+interface Action { href: string; texte: string; primaire?: boolean }
+interface Props {
+  url: string;
+  h1: string;
+  sousTitre: string;
+  couleur: 'tilleul' | 'ciel' | 'noir' | 'paon' | 'eau';
+  photos: string[];          // deux photos de src/assets/photos/
+  actions: Action[];
+  tailleHero?: string;
+}
+const { url, h1, sousTitre, couleur, photos, actions, tailleHero = '(max-width: 720px) 67vw, 33vw' } = Astro.props;
+---
+<header class:list={['hero hero--page', `hero--${couleur}`]}>
+  <div class="masthead">
+    <div class="mosaic mosaic--page" aria-hidden="true">
+      <div class="m-a"></div>
+      <figure class="m-b"><Photo nom={photos[0]} alt="" sizes={tailleHero} priority /></figure>
+      <div class="m-c"></div>
+      <figure class="m-d"><Photo nom={photos[1] ?? photos[0]} alt="" sizes="(max-width: 720px) 33vw, 17vw" /></figure>
+      <div class="m-e"></div>
+    </div>
+    <EnTete url={url} variante="accueil" />
+  </div>
+
+  <div class="hero__text hero__text--page">
+    <FilAriane url={url} class="hero__fil" />
+    <h1 class="hero__title hero__title--page" data-rise style="--i:0">{h1}</h1>
+    <div class="hero__aside">
+      <p class="hero__sous-titre" data-rise style="--i:1">{sousTitre}</p>
+      <div class="hero__actions" data-rise style="--i:2">
+        {actions.map((a) => <a class={a.primaire ? 'button' : 'link hero__more'} href={a.href}>{a.texte}</a>)}
+      </div>
+    </div>
+  </div>
+</header>

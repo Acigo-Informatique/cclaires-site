@@ -1,0 +1,19 @@
+---
+// Dernier écran d’une page : l’idée inversée sur le noir, une phrase, l’action et le téléphone.
+// L’accueil et /demo/ portent le formulaire ; les autres pages mènent à /demo/.
+import { lien } from '../lib/chemins.mjs';
+import Telephone from './Telephone.astro';
+
+interface Props { titre: string; texte: string; action?: string }
+const { titre, texte, action = 'Réserver une démo de 30 minutes' } = Astro.props;
+---
+<section id="demande" class="close close--court" aria-labelledby="demande-titre">
+  <h2 class="close__title titre-long" id="demande-titre" data-reveal>{titre}</h2>
+  <div class="grid close__foot">
+    <p class="close__text" data-reveal style="--i:1">{texte}</p>
+    <div class="close__actions" data-reveal style="--i:2">
+      <a class="button button--on-dark" href={lien('/demo/')}>{action}</a>
+      <p class="close__tel">Ou appelez-nous&nbsp;: <Telephone class="link" /></p>
+    </div>
+  </div>
+</section>

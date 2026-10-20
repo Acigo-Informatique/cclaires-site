@@ -1,6 +1,8 @@
 ---
-// Applique la dernière main (typographie française, nom de marque protégé) au HTML de son contenu.
+// Applique la dernière main (typographie française, nom de marque protégé, sous-dossier des liens
+// internes) au HTML de son contenu.
 import { finir } from '../lib/typographie.mjs';
-const html = finir(await Astro.slots.render('default'));
+import { prefixer } from '../lib/chemins.mjs';
+const html = prefixer(finir(await Astro.slots.render('default')));
 ---
 <Fragment set:html={html} />

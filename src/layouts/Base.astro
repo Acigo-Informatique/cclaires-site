@@ -4,10 +4,10 @@
 // L’indexation suit un seul réglage : `indexable` dans site.config.mjs.
 import '../styles/site.css';
 import reglages from '../../site.config.mjs';
-import { lien, absolu, sousDossier } from '../lib/chemins.mjs';
+import { lien, absolu, sousDossier, prefixer } from '../lib/chemins.mjs';
 import { fil } from '../donnees/plan.mjs';
 import { organisation, siteWeb, filAriane } from '../donnees/schemas.mjs';
-import { finir } from '../lib/typographie.mjs';
+import { finir, typographier } from '../lib/typographie.mjs';
 import EnTete from '../components/EnTete.astro';
 import Pied from '../components/Pied.astro';
 import Finir from '../components/Finir.astro';
@@ -26,16 +26,18 @@ interface Props {
   precharges?: Precharge[];   // image du premier écran
 }
 const {
-  titre, description, url, ogTitre = titre.replace(/\s*\|\s*C’Claires$/, ''),
+  titre: titreBrut, description: descriptionBrute, url, ogTitre = titreBrut.replace(/\s*\|\s*C’Claires$/, ''),
   ogImage = '/assets/img/og.png', ogImageAlt = 'C’Claires, de la claire au camion : vues aériennes de tables ostréicoles et logo C’Claires',
   schemas = [], enTete = 'page', indexable = true, precharges = [],
 } = Astro.props;
 
+const titre = typographier(titreBrut);
+const description = typographier(descriptionBrute);
 const robots = indexable && reglages.indexable && !sousDossier ? 'index, follow, max-image-preview:large' : 'noindex';
 // le contenu de la page, rendu ici pour la dernière main : typographie française, nom de marque
 // protégé de la traduction automatique (src/lib/typographie.mjs)
-const avant = Astro.slots.has('avant') ? finir(await Astro.slots.render('avant')) : '';
-const contenu = finir(await Astro.slots.render('default'));
+const avant = Astro.slots.has('avant') ? prefixer(finir(await Astro.slots.render('avant'))) : '';
+const contenu = prefixer(finir(await Astro.slots.render('default')));
 const etapes = fil(url);
 const graphe = [organisation, ...(url === '/' ? [siteWeb] : []), ...(etapes.length > 1 ? [filAriane(etapes)] : []), ...schemas];
 const jsonld = JSON.stringify({ '@context': 'https://schema.org', '@graph': graphe }, null, 1).replace(/</g, '\\u003c');

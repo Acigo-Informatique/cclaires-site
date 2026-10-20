@@ -38,6 +38,26 @@ Une valeur renseignée dans `site.config.mjs` fait disparaître l’emplacement 
 | ETIQ-01 | /tarifs/, accueil | Préciser ce que comprend la ligne « étiqueteuses » de l’offre (fourniture, installation, paramétrage, maintenance ?) | haute |
 | PHOTOS-01 | Toutes | Remplacer, si possible, les photos libres (Ifremer, Wikimedia Commons) par les vôtres ; retirer alors leur crédit du pied de page et des mentions légales | basse |
 
+## Captures d’écran du logiciel
+
+Chaque emplacement est un cadre au bon ratio (16:10), avec sa légende et le texte alternatif déjà
+rédigés dans le fichier de données de la page. Déposer l’image dans `src/assets/captures/` (PNG ou JPEG,
+1600 px de large au moins, sans données réelles de clients) et remplacer le composant `<Capture>` par
+l’image, en reprenant le même texte alternatif.
+
+| ID | Page | Ce qu’il faut fournir | Priorité |
+|---|---|---|---|
+| CAPT-01 | /fonctionnalites/commandes-bons-de-livraison/ | Saisie d’une commande pré-remplie d’après les habitudes du client | haute |
+| CAPT-02 | /logiciel-mareyage/, /fonctionnalites/etiquette-sanitaire/ | Éditeur de modèles d’étiquettes, un modèle ouvert avec ses variables | haute |
+| CAPT-03 | /logiciel-ostreicole/, /logiciel-mytilicole/, /fonctionnalites/etiquette-sanitaire/ | Fenêtre d’impression des étiquettes ouverte depuis un bon de livraison | haute |
+| CAPT-04 | /fonctionnalites/palettisation-sscc/ | Palettisation d’un BL : palettes proposées, SSCC attribué | haute |
+| CAPT-05 | /logiciel-ostreicole/, /fonctionnalites/parcs-claires/ | Vue graphique des parcs et des claires, une claire sélectionnée | haute |
+| CAPT-06 | /logiciel-ostreicole/, /logiciel-mytilicole/, /fonctionnalites/tracabilite/ | Fiche de traçabilité d’un lot, de la réception aux clients livrés | haute |
+| CAPT-07 | /logiciel-mytilicole/, /logiciel-mareyage/ | Bon de livraison en poids variable : poids estimé et poids réel de chaque ligne | moyenne |
+| CAPT-08 | /logiciel-mareyage/ | Réception d’un achat de marée, avec les lots créés par espèce | moyenne |
+| CAPT-09 | /fonctionnalites/facture-electronique/ | Export des écritures comptables d’une période | moyenne |
+| CAPT-10 | /fonctionnalites/edi-grande-distribution/ | Liste des messages EDI d’une journée : factures et ordres de transport | moyenne |
+
 ## Preuve sociale et équipe
 
 | ID | Page | Ce qu’il faut fournir | Priorité |

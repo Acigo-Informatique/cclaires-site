@@ -5,11 +5,11 @@
 export const pages = [
   { url: '/', libelle: 'Accueil' },
 
-  { url: '/logiciel-ostreicole/', libelle: 'Ostréiculteurs', parent: '/', groupe: 'metiers', couleur: 'tilleul',
+  { url: '/logiciel-ostreicole/', libelle: 'Ostréiculteurs', fil: 'Logiciel ostréicole', parent: '/', groupe: 'metiers', couleur: 'tilleul',
     resume: 'Chaque lot suivi de la claire à la bourriche' },
-  { url: '/logiciel-mytilicole/', libelle: 'Mytiliculteurs', parent: '/', groupe: 'metiers', couleur: 'ciel',
+  { url: '/logiciel-mytilicole/', libelle: 'Mytiliculteurs', fil: 'Logiciel mytilicole', parent: '/', groupe: 'metiers', couleur: 'ciel',
     resume: 'Pêché le matin, livré le soir, facturé au poids réel' },
-  { url: '/logiciel-mareyage/', libelle: 'Mareyeurs', parent: '/', groupe: 'metiers', couleur: 'noir',
+  { url: '/logiciel-mareyage/', libelle: 'Mareyeurs', fil: 'Logiciel de mareyage', parent: '/', groupe: 'metiers', couleur: 'noir',
     resume: 'De la criée au camion, chaque lot garde son origine' },
 
   { url: '/fonctionnalites/', libelle: 'Fonctionnalités', parent: '/', groupe: 'fonctionnalites-index' },
@@ -49,6 +49,6 @@ export const groupe = (nom) => pages.filter((p) => p.groupe === nom);
 // Le fil d’Ariane d’une page : de l’accueil jusqu’à elle.
 export function fil(url) {
   const chaine = [];
-  for (let p = page(url); p; p = p.parent ? page(p.parent) : null) chaine.unshift(p);
+  for (let p = page(url); p; p = p.parent ? page(p.parent) : null) chaine.unshift({ ...p, libelle: p.fil ?? p.libelle });
   return chaine;
 }

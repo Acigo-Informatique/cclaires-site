@@ -1,0 +1,86 @@
+---
+// Gabarit d’une page métier (ostréiculture, mytiliculture, mareyage), d’après un fichier de
+// src/donnees/metiers/ : premier écran, les trois douleurs du métier, les bénéfices et leurs captures,
+// la démonstration avec un exemple du métier, documents et normes, témoignage, questions, appel final.
+// La couleur du métier (celle de sa feuille sur l’accueil) donne son champ aux douleurs.
+import Base from '../layouts/Base.astro';
+import EnTetePage from './EnTetePage.astro';
+import Photo from './Photo.astro';
+import Capture from './Capture.astro';
+import Parcours from './Parcours.astro';
+import Temoignage from './Temoignage.astro';
+import Faq from './Faq.astro';
+import AppelFinal from './AppelFinal.astro';
+import { lien } from '../lib/chemins.mjs';
+import { prechargePhoto } from '../lib/precharge.mjs';
+import { logiciel, questions as faqPage } from '../donnees/schemas.mjs';
+
+interface Props { m: any }
+const { m } = Astro.props;
+const tailleHero = '(max-width: 720px) 67vw, 33vw';
+const precharge = await prechargePhoto(m.photos[0], tailleHero);
+---
+<Base
+  titre={m.titre}
+  description={m.description}
+  url={m.url}
+  ogTitre={m.ogTitre}
+  enTete="accueil"
+  schemas={[logiciel({ description: m.schema, audience: m.audience, url: m.url }), faqPage(m.faq, m.url)]}
+  precharges={[precharge]}
+>
+  <EnTetePage slot="avant" url={m.url} h1={m.h1} sousTitre={m.sousTitre} couleur={m.couleur} photos={m.photos} tailleHero={tailleHero}
+    actions={[{ href: lien('/demo/'), texte: 'Réserver une démo de 30 minutes', primaire: true }, { href: '#parcours', texte: m.lienParcours }]} />
+
+  <section id="douleurs" class={`intro intro--${m.couleur}`} aria-labelledby="douleurs-titre">
+    <div class="intro__text">
+      <h2 class="intro__title titre-long" id="douleurs-titre" data-reveal>{m.douleurs.titre}</h2>
+      <ul class="douleurs">
+        {m.douleurs.items.map((d: string, i: number) => <li data-reveal style={`--i:${i + 1}`}>{d}</li>)}
+      </ul>
+      <p class="intro__lot" data-reveal style="--i:4">{m.douleurs.conclusion}</p>
+    </div>
+    <div class="intro__chips" aria-hidden="true">
+      <figure class="chip chip--a" data-reveal style="--i:2"><Photo nom={m.douleurs.photo} alt="" sizes="(max-width: 720px) 52vw, 20vw" /></figure>
+    </div>
+  </section>
+
+  <section id="benefices" class="benefices" aria-labelledby="benefices-titre">
+    <h2 class="benefices__titre titre-long" id="benefices-titre" data-reveal>{m.benefices.titre}</h2>
+    {m.benefices.items.map((b: any) => (
+      <article class="benefice grid">
+        <div class="benefice__texte" data-reveal>
+          <h3 class="benefice__nom">{b.titre}</h3>
+          <p>{b.texte}</p>
+          <a class="link benefice__lien" href={lien(b.lien[0])}>{b.lien[1]}</a>
+        </div>
+        {b.capture && <Capture class="benefice__capture" {...b.capture} />}
+      </article>
+    ))}
+  </section>
+
+  <Parcours donnees={m.parcours.donnees} titre={m.parcours.titre} intro={m.parcours.intro} />
+
+  <section id="normes" class="norms norms--liens" aria-labelledby="normes-titre">
+    <div class="norms__board">
+      <div class="norm norm--head" data-reveal>
+        <h2 class="titre-long" id="normes-titre">{m.normes.titre}</h2>
+        <p>{m.normes.intro}</p>
+      </div>
+      {m.normes.items.map((n: any, i: number) => (
+        <div class="norm" data-reveal style={`--i:${i + 1}`}>
+          <h3 class="norm__name">{n.nom}</h3>
+          <p class="norm__what">{n.texte}{n.lien && <> <a class="link" href={lien(n.lien[0])}>{n.lien[1]}</a></>}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="temoignage-bande" aria-label={`Témoignage d’un client ${m.temoignage.metier}`}>
+    <Temoignage id={m.temoignage.id} metier={m.temoignage.metier} />
+  </section>
+
+  <Faq questions={m.faq} />
+
+  <AppelFinal titre={m.cta.titre} texte={m.cta.texte} />
+</Base>

@@ -12,3 +12,9 @@ export const absolu = (chemin) => new URL(chemin, reglages.url).href;
 
 // Le site n’est qu’un aperçu tant qu’il est servi sous un sous-dossier.
 export const sousDossier = base !== '';
+
+// Dans du HTML écrit à la main (réponses de FAQ, textes des fichiers de données), les liens internes
+// s’écrivent '/guides/…' : on leur ajoute le sous-dossier s’ils ne le portent pas déjà.
+export const prefixer = (html) => (sousDossier
+  ? html.replace(/(\s(?:href|src|action)=")\/(?!\/)/g, (m, debut, i) => (html.startsWith(base + '/', i + debut.length) ? m : `${debut}${base}/`))
+  : html);

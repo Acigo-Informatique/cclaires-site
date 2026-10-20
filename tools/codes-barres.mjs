@@ -51,23 +51,34 @@ function svg(largeurs, hauteur, titre) {
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${total} ${hauteur}" preserveAspectRatio="none" role="img" aria-label="${titre}"><title>${titre}</title><path fill="#000" d="${barres}"/></svg>\n`;
 }
 
-// GTIN-14 (indicateur 0) d'un article en circulation restreinte, à partir de ses 12 premiers chiffres.
-const gtin = (douze) => { const base = '0' + douze; return base + cle(base); };
-const ssccBase = '3' + '2000012' + '000001482';
-const SSCC = ssccBase + cle(ssccBase);
+// GTIN-14 d'un article en circulation restreinte, à partir de ses 12 premiers chiffres : indicateur 0
+// pour un article à poids fixe, 9 pour un article à poids variable (le poids net suit en AI 3103).
+const gtin = (douze, indicateur = '0') => { const base = indicateur + douze; return base + cle(base); };
+const sscc = (serie) => { const base = '3' + '2000012' + serie; return base + cle(base); };
 
-// Une étiquette par lot de la commande d'exemple : article, date de conditionnement, lot.
+// Une étiquette par lot des commandes d'exemple : article, (poids net), date de conditionnement, lot.
 const etiquettes = {
+  // huîtres (accueil, logiciel ostréicole)
   'gs1-etiquette': [['01', gtin('200001234567'), true], ['13', '261217', true], ['10', '2026-351-3-014']],
   'gs1-etiquette-speciales': [['01', gtin('200001234568'), true], ['13', '261215', true], ['10', '2026-349-2-006']],
   'gs1-etiquette-moules': [['01', gtin('200001234569'), true], ['13', '261216', true], ['10', '2026-350-M-002']],
+  // moules (logiciel mytilicole)
+  'gs1-moules-sac': [['01', gtin('200001234570'), true], ['13', '261217', true], ['10', '2026-351-M-004']],
+  'gs1-moules-vrac': [['01', gtin('200001234571', '9'), true], ['3103', '024600', true], ['13', '261217', true], ['10', '2026-351-M-005']],
+  'gs1-moules-corde': [['01', gtin('200001234572'), true], ['13', '261216', true], ['10', '2026-350-C-002']],
+  // poisson (logiciel de mareyage)
+  'gs1-bar': [['01', gtin('200001234573', '9'), true], ['3103', '006200', true], ['13', '261216', true], ['10', '2026-350-011']],
+  'gs1-lieu': [['01', gtin('200001234574', '9'), true], ['3103', '005200', true], ['13', '261216', true], ['10', '2026-350-004']],
+  'gs1-sole': [['01', gtin('200001234575', '9'), true], ['3103', '003900', true], ['13', '261216', true], ['10', '2026-350-007']],
 };
-const palette = [['00', SSCC, true]];
+const palettes = {
+  'gs1-palette': [['00', sscc('000001482'), true]],
+  'gs1-palette-moules': [['00', sscc('000001507'), true]],
+  'gs1-palette-maree': [['00', sscc('000001533'), true]],
+};
 const lisible = (els) => els.map(([ai, v]) => `(${ai})${v}`).join('');
 
-for (const [nom, elements] of Object.entries(etiquettes)) {
+for (const [nom, elements] of Object.entries({ ...etiquettes, ...palettes })) {
   writeFileSync(new URL(`../public/assets/img/${nom}.svg`, import.meta.url), svg(encoder(elements), 60, lisible(elements)));
   console.log(nom, lisible(elements));
 }
-writeFileSync(new URL('../public/assets/img/gs1-palette.svg', import.meta.url), svg(encoder(palette), 60, lisible(palette)));
-console.log('gs1-palette', lisible(palette));
