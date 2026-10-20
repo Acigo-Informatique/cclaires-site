@@ -92,7 +92,7 @@ img { height: auto; }
 button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
 /* au toucher : pas de délai de double tape, et un retour bref à la couleur de la marque */
 html { color-scheme: light; -webkit-tap-highlight-color: rgb(0 123 142 / 0.18); }
-a, button, summary, [role="tab"], [role="switch"] { touch-action: manipulation; }
+a, button, summary, label, input, select, textarea, [role="tab"], [role="switch"] { touch-action: manipulation; }
 a { color: inherit; }
 h1, h2, h3 { font-weight: inherit; text-wrap: balance; hyphens: none; }
 p { text-wrap: pretty; }
@@ -223,15 +223,23 @@ html.menu-ouvert { overflow: hidden; }   /* feuille du menu ouverte : la page ne
   display: grid; grid-template-columns: 42% 1fr;
   padding: 0 var(--margin) clamp(3.5rem, 9vh, 6.5rem);
 }
-.hero__aside { padding-top: 2rem; padding-right: var(--gutter); }
-.standfirst { max-width: 30ch; font-size: var(--step-body); line-height: 1.5; }
-.hero__more { display: inline-block; margin-top: 1.25rem; font-weight: 700; }
+.hero__aside { grid-column: 1; grid-row: 1; padding-top: 2rem; padding-right: var(--gutter); }
+/* le H1 dit ce qu’est le logiciel, au format du chapeau ; la grande ligne d’affiche porte l’idée */
+.hero__h1 { max-width: 36ch; font-size: var(--step-body); font-weight: 800; line-height: 1.35; }
+.hero__sous-titre { max-width: 40ch; margin-top: 0.75rem; }
+.hero__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 0.9rem 1.5rem; margin-top: 1.5rem; }
+.hero__more { font-weight: 700; }
 .hero__title {
+  grid-column: 2; grid-row: 1;
   font-family: var(--font-display); font-weight: 500;
   font-size: var(--step-xl); line-height: 0.9; letter-spacing: -0.02em;
   padding-top: 1.75rem;
 }
-.hero__cta-phone { display: none; }
+
+/* bandeau de preuve : quatre faits sur le noir, en tuiles d’un pas de ton */
+.preuves { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin: 0; padding: 0; list-style: none; background: var(--noir); color: var(--paper); }
+.preuves li { padding: clamp(1.5rem, 2.6vw, 2.25rem) var(--margin); font-size: var(--step-body); font-weight: 800; line-height: 1.3; }
+.preuves li:nth-child(even) { background: var(--noir-2); }
 
 /* ---------- lignes masquées (signature) ---------- */
 .lines .line { display: block; overflow: hidden; padding-bottom: 0.1em; margin-bottom: -0.1em; }
@@ -255,6 +263,8 @@ html.menu-ouvert { overflow: hidden; }   /* feuille du menu ouverte : la page ne
 .chip--a { transform: rotate(-3deg); }
 .chip--b { width: clamp(7rem, 13vw, 14rem); transform: rotate(4deg) translate(-18%, 45%); }
 .intro__lot { margin-top: 2rem; font-size: var(--step-body); max-width: 40ch; }
+.douleurs { display: grid; gap: 1rem; margin-top: 2.25rem; }
+.douleurs li { max-width: 34ch; font-size: var(--step-m); font-weight: 800; line-height: 1.2; }
 .insecable { white-space: nowrap; }
 
 /* ---------- de la commande à la facture : la démonstration que le visiteur fait lui-même ---------- */
@@ -268,7 +278,7 @@ html.menu-ouvert { overflow: hidden; }   /* feuille du menu ouverte : la page ne
 @media (prefers-reduced-motion: no-preference) {
   .cycle { transition: background-color 450ms var(--ease-out), color 300ms ease; }
 }
-.cycle__title { font-family: var(--font-display); font-weight: 500; font-size: var(--step-xl); line-height: 0.9; letter-spacing: -0.02em; }
+.cycle__title { font-family: var(--font-display); font-weight: 600; font-size: var(--step-l); line-height: 0.98; letter-spacing: -0.01em; }
 .cycle__body { margin-top: clamp(2.5rem, 5vw, 4.5rem); align-items: start; }
 .cycle__text { grid-column: 1 / 5; }
 .cycle__text > p:first-child { max-width: 40ch; }
@@ -327,6 +337,9 @@ ol.cycle__steps { list-style: decimal; padding-left: 1.3em; margin-top: 2rem; di
 .sheet__terms { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem var(--gutter); margin-top: 2.25rem; }
 .sheet__terms dt { font-weight: 800; }
 .sheet__terms dd { margin-top: 0.2rem; }
+.sheet__lien { margin-top: 2.25rem; }
+.button--encre { background: var(--ink); color: var(--paper); }
+@media (hover: hover) and (pointer: fine) { .button--encre:hover { background: var(--paper); color: var(--ink); } }
 .sheet__photo { grid-column: 7 / -1; margin: 0; overflow: hidden; min-height: 100%; }
 .sheet__photo img { height: 100%; }
 @media (min-width: 1081px) and (min-height: 700px) {
@@ -335,10 +348,18 @@ ol.cycle__steps { list-style: decimal; padding-left: 1.3em; margin-top: 2rem; di
 /* l’empilement : chaque feuille glisse sur la précédente et laisse voir sa bande de titre.
    Le script ne le pose que si chaque feuille tient entière dans l’écran (site.js). */
 .metiers.is-empile .sheet { position: sticky; top: var(--top); }
+/* en fin de pile, les trois feuilles repartent ensemble : chacune porte une marge basse qui égalise
+   sa sortie (haut d’arrêt + hauteur + marge), aussitôt annulée par la marge haute de la suivante */
+.metiers.is-empile .sheet--tilleul { margin-bottom: 9rem; }
+.metiers.is-empile .sheet--ciel { margin-top: -9rem; margin-bottom: 4.5rem; }
+.metiers.is-empile .sheet--noir { margin-top: -4.5rem; }
 
 /* ---------- documents : index des sorties, feuille vivante ---------- */
 .docs { padding: var(--band-pad) var(--margin) var(--band-pad); }
+.docs__titre { font-family: var(--font-display); font-weight: 600; font-size: var(--step-l); line-height: 0.98; letter-spacing: -0.01em; max-width: 32ch; margin-bottom: clamp(1.5rem, 4vw, 3.5rem); }
 .docs__grid { align-items: start; }
+.docs__mention { max-width: 58ch; margin-bottom: 1.75rem; padding-right: var(--margin); font-size: var(--step-s); line-height: 1.5; }
+.docs__mention a { font-weight: 700; }
 .docs__index { grid-column: 1 / 6; padding-top: 4.5rem; }
 .docs__index [role="tab"] {
   display: block; text-align: left;
@@ -355,9 +376,10 @@ ol.cycle__steps { list-style: decimal; padding-left: 1.3em; margin-top: 2rem; di
 .docs__stage {
   grid-column: 7 / -1; position: relative;
   min-height: 32rem; max-height: 88svh;
-  padding: 4.5rem 0 4rem clamp(1rem, 4.4vw, 4rem);
+  padding: 2.25rem 0 4rem clamp(1rem, 4.4vw, 4rem);
   background: var(--stage); overflow: hidden;
 }
+.docs__panneau:focus-visible { outline-offset: -3px; }
 .docs__sheet { position: relative; }
 /* une fiche palette de 100 × 150 mm se montre agrandie, comme dans l’aperçu d’impression */
 @media (min-width: 1081px) { .docs__sheet.ui-sheet--label { zoom: 1.3; } }
@@ -365,15 +387,19 @@ ol.cycle__steps { list-style: decimal; padding-left: 1.3em; margin-top: 2rem; di
 /* sur un téléphone, les étiquettes se montrent entières, la marque sanitaire comprise ; les A4 restent coupés */
 @media (max-width: 599px) { .docs__sheet.ui-etiq { zoom: 0.6; } }
 @media (max-width: 400px) { .docs__sheet.ui-sheet--label { zoom: 0.94; } }
-.js .docs__sheet[hidden] { display: none; }
-html:not(.js) .docs__stage { max-height: none; display: grid; gap: 2rem; padding: 2rem; }
-html:not(.js) .docs__sheet[hidden] { display: block; }
+.js .docs__panneau[hidden] { display: none; }
+html:not(.js) .docs__stage { max-height: none; display: grid; gap: 3rem; padding: 2rem; }
+html:not(.js) .docs__panneau[hidden] { display: block; }
 @media (prefers-reduced-motion: no-preference) {
-  .js .docs__sheet.is-entering { animation: sheet-in 220ms ease both; }
+  .js .docs__panneau.is-entering { animation: sheet-in 220ms ease both; }
 }
 @keyframes sheet-in { from { opacity: 0; } to { opacity: 1; } }
 
 /* ---------- automatismes : des phrases et leurs interrupteurs ---------- */
+.auto__titre {
+  padding: var(--band-pad) var(--margin) clamp(1.5rem, 3vw, 2.5rem);
+  font-family: var(--font-display); font-weight: 600; font-size: var(--step-l); line-height: 0.98; letter-spacing: -0.01em;
+}
 .auto__band {
   display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter);
   align-items: center; min-height: 20vh;
@@ -404,6 +430,14 @@ html:not(.js) .docs__sheet[hidden] { display: block; }
 .norm--head { grid-column: span 2; aspect-ratio: auto; background: var(--tilleul); color: var(--ink); }
 .norm--head h2 { font-family: var(--font-display); font-weight: 600; font-size: var(--step-l); line-height: 0.98; letter-spacing: -0.01em; max-width: 14ch; }
 .norm--head p { max-width: 44ch; }
+.norm--head a { font-weight: 700; }
+
+/* ---------- preuve sociale : le même tableau de tuiles, témoignages et logos ---------- */
+.preuve .norm--head { aspect-ratio: auto; min-height: 16rem; gap: 1.5rem; }
+.preuve__temoignage { grid-column: span 2; aspect-ratio: auto; min-height: 16rem; margin: 0; padding: 0; }
+.preuve__logos { grid-column: 1 / -1; aspect-ratio: auto; min-height: 9rem; padding: 0; }
+.temoignage { margin: 0; }
+.temoignage__todo, .preuve__logos .a-completer { flex: 1; }
 
 /* ---------- modules : une ligne d’affiche par module ---------- */
 .modules { background: var(--ciel); color: var(--ink); padding: 5rem var(--margin); }
@@ -419,30 +453,14 @@ html:not(.js) .docs__sheet[hidden] { display: block; }
 }
 .modules__what { text-align: right; font-size: var(--step-body); line-height: 1.35; }
 @media (hover: hover) and (pointer: fine) { .modules__list li:hover { color: var(--paon); } }
+/* l’offre : les lignes d’affiche de ce que comprend l’abonnement, sans montant */
+.offre { padding-block: var(--band-pad); }
+.offre__titre { margin-bottom: clamp(1.5rem, 3vw, 2.5rem); font-family: var(--font-display); font-weight: 600; font-size: var(--step-l); line-height: 0.98; letter-spacing: -0.01em; }
+.offre__pied { margin-top: clamp(2rem, 4vw, 3.5rem); align-items: end; row-gap: 1.5rem; }
+.offre__texte { grid-column: 1 / 7; max-width: 52ch; }
+.offre__actions { grid-column: 8 / -1; justify-self: end; display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.5rem; }
+.offre__actions .link { font-weight: 700; }
 
-/* ---------- applications : une cellule claire, des rangées sombres ---------- */
-.apps { display: grid; grid-template-columns: 1fr 1fr; }
-.apps__cell {
-  background: var(--eau); color: var(--ink); min-height: 90svh;
-  display: flex; flex-direction: column; justify-content: space-between;
-  padding: var(--band-pad) var(--margin) 2.5rem;
-}
-.apps__title { font-family: var(--font-display); font-weight: 600; font-size: var(--step-l); line-height: 1; letter-spacing: -0.01em; }
-.apps__title span { display: block; }
-.apps__title .apps__right { text-align: right; }
-.apps__photo { margin: 2.5rem calc(var(--margin) * -1) 0; aspect-ratio: 16 / 10; overflow: hidden; }
-.apps__foot { display: flex; justify-content: space-between; align-items: flex-end; gap: var(--gutter); margin-top: 2.5rem; }
-.apps__foot p { max-width: 32ch; }
-.apps__rows { display: grid; grid-auto-rows: 1fr; background: var(--noir); color: var(--paper); }
-.apps__row {
-  display: grid; grid-template-columns: 3fr 5fr 4fr; gap: 1.25rem; align-items: start;
-  padding: 1.75rem var(--margin);
-}
-.apps__row:nth-child(odd) { background: var(--noir); }
-.apps__row:nth-child(even) { background: var(--noir-2); }
-.apps__row h3 { font-size: var(--step-m); font-weight: 800; line-height: 1.1; }
-.apps__row p { font-size: var(--step-body); }
-.apps__row ul { list-style: none; padding: 0; margin: 0; font-size: var(--step-s); line-height: 1.6; }
 
 /* ---------- éditeur : photo large, tuile de couleur, faits ---------- */
 .about { padding: var(--band-pad) var(--margin); }
@@ -462,6 +480,9 @@ html:not(.js) .docs__sheet[hidden] { display: block; }
 .facts dt { color: var(--soft); }
 .facts__wide { grid-column: 1 / -1; }
 .facts dd { font-weight: 700; }
+.about__equipe { display: flex; margin: 0; aspect-ratio: 3 / 2; }
+.about__equipe-todo { flex: 1; }
+.about__lien { margin-top: 1.25rem; font-weight: 700; }
 
 /* ---------- questions : une bande par question ---------- */
 .faq__head { background: var(--tilleul); min-height: 40svh; display: flex; align-items: flex-end; padding: 2.5rem var(--margin); }
@@ -479,11 +500,57 @@ html:not(.js) .docs__sheet[hidden] { display: block; }
   min-height: 90svh; padding: var(--band-pad) var(--margin) 2.5rem;
   display: grid; grid-template-rows: 1fr auto;
 }
-.close__title { font-family: var(--font-display); font-weight: 500; font-size: var(--step-xl); line-height: 0.9; letter-spacing: -0.02em; }
-.close__foot { align-items: end; }
-.close__text { grid-column: 1 / 6; font-size: var(--step-body); }
-.close__action { grid-column: 9 / -1; justify-self: end; }
-.close__action .button { min-height: 3.5rem; padding: 0 2rem; }
+.close__title { max-width: 30ch; font-family: var(--font-display); font-weight: 600; font-size: var(--step-l); line-height: 0.98; letter-spacing: -0.01em; }
+.close__foot { align-items: start; margin-top: clamp(2rem, 5vw, 4rem); row-gap: 2.5rem; }
+.close__text { grid-column: 1 / 5; font-size: var(--step-body); }
+.close__text p + p { margin-top: 1rem; }
+.close__tel { font-weight: 700; }
+.close__form { grid-column: 6 / -1; }
+
+/* ---------- formulaire de démo et de devis ---------- */
+.devis { --champ-fond: var(--paper); --champ-encre: var(--ink); --champ-bord: #7d8789; --erreur: #b3261e; --aide: var(--soft); display: grid; gap: 1.5rem; }
+.devis--sombre { --champ-bord: var(--paper); --erreur: #ffb4a8; --aide: #c9d0d1; }
+.devis__grille { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem var(--gutter); }
+.champ { display: grid; align-content: start; gap: 0.4rem; min-width: 0; margin: 0; padding: 0; border: 0; }
+.champ--large { grid-column: 1 / -1; }
+.champ > label, .champ > legend { padding: 0; font-size: var(--step-s); font-weight: 800; }
+.champ > legend { margin-bottom: 0.4rem; }
+.champ__facultatif { font-weight: 400; }
+.champ input:not([type="radio"]), .champ select, .champ textarea {
+  width: 100%; min-height: 3rem; padding: 0.6rem 0.85rem;
+  font: inherit; font-size: max(1rem, var(--step-body)); line-height: 1.4;
+  color: var(--champ-encre); background-color: var(--champ-fond);
+  border: 2px solid var(--champ-bord); border-radius: 6px;
+}
+.champ textarea { min-height: 7.5rem; resize: vertical; }
+.champ ::placeholder { color: #5b6567; opacity: 1; }
+.champ input:focus-visible, .champ select:focus-visible, .champ textarea:focus-visible { outline: 3px solid var(--paon); outline-offset: 2px; }
+.devis--sombre .champ input:focus-visible, .devis--sombre .champ select:focus-visible, .devis--sombre .champ textarea:focus-visible { outline-color: var(--tilleul); }
+.champ [aria-invalid="true"] { border-color: var(--erreur); }
+.champ__aide { color: var(--aide); font-size: var(--step-s); line-height: 1.4; }
+.champ__erreur { color: var(--erreur); font-size: var(--step-s); font-weight: 700; line-height: 1.4; }
+.champ__erreur:empty { display: none; }
+.choix { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.choix__option {
+  display: inline-flex; align-items: center; gap: 0.55rem; min-height: 2.75rem; padding: 0 1rem;
+  border: 2px solid var(--champ-bord); border-radius: 999px; background: var(--champ-fond); color: var(--champ-encre);
+  font-weight: 700; cursor: pointer; transition: background-color var(--t-hover) ease;
+}
+.choix__option input { width: 1.1rem; height: 1.1rem; margin: 0; accent-color: var(--paon); }
+.choix__option:has(input:checked) { background: var(--tilleul); border-color: var(--tilleul); color: var(--ink); }
+.choix__option:has(input:focus-visible) { outline: 3px solid var(--paon); outline-offset: 2px; }
+.devis--sombre .choix__option:has(input:focus-visible) { outline-color: var(--tilleul); }
+@media (hover: hover) and (pointer: fine) { .choix__option:hover { background: var(--eau); color: var(--ink); } }
+.devis__piege { display: none; }
+.devis__envoi { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.5rem; }
+.devis__bouton { min-height: 3.5rem; padding: 0 2rem; }
+.devis__bouton[disabled] { cursor: progress; }
+.devis__delai { font-size: var(--step-s); }
+.devis__statut { font-weight: 700; }
+.devis__statut:empty { display: none; }
+.devis__repli { font-size: var(--step-s); }
+.devis.is-envoye .devis__grille, .devis.is-envoye .devis__envoi, .devis.is-envoye .devis__todo { display: none; }
+.devis.is-envoye .devis__statut { font-size: var(--step-m); line-height: 1.25; }
 
 /* ---------- pied de page en tuiles ---------- */
 .foot { background: var(--noir); color: var(--paper); padding: 10rem 10px 10px; }
@@ -791,10 +858,6 @@ html:not(.js) .docs__sheet[hidden] { display: block; }
 @media (max-width: 1080px) {
   .cycle__text { grid-column: 1 / 6; }
   .cycle__stage { grid-column: 6 / -1; min-height: 28rem; }
-  .apps { grid-template-columns: 1fr; }
-  .apps__cell { min-height: 0; }
-  .apps__row { grid-template-columns: 1fr 1fr; }
-  .apps__row ul { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 0 1.25rem; }
   .sheet { min-height: 0; }
   .sheet__text { grid-column: 1 / 8; }
   .sheet__photo { grid-column: 8 / -1; }
@@ -820,6 +883,11 @@ html:not(.js) .docs__sheet[hidden] { display: block; }
   .plan__famille--5 { grid-column: 10 / -1; }
   .tile--mark { grid-column: 1 / -1; }
   .tile--go { grid-column: 1 / -1; min-height: 12rem; }
+  .preuves { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .preuves li:nth-child(even) { background: none; }
+  .preuves li:nth-child(2), .preuves li:nth-child(3) { background: var(--noir-2); }
+  .offre__texte, .offre__actions { grid-column: 1 / -1; justify-self: start; }
+  .close__text, .close__form { grid-column: 1 / -1; }
 }
 
 /* ---------- téléphone : une seconde composition ---------- */
@@ -855,9 +923,12 @@ html:not(.js) .docs__sheet[hidden] { display: block; }
   .hero__text { display: flex; flex-direction: column; padding-bottom: 2.5rem; }
   .hero__title { order: -1; padding-top: 2rem; }
   .hero__aside { padding-top: 1.25rem; }
-  .standfirst { max-width: 34ch; }
-  .hero__cta-phone { display: flex; margin-top: 1.75rem; }
-  .hero__cta-phone .button { width: 100%; min-height: 3.25rem; }
+  .hero__actions .button { width: 100%; min-height: 3.25rem; }
+  .preuves li { font-size: var(--step-body); padding-block: 1.25rem; }
+  /* les titres longs passent au pas inférieur : deux lignes au plus sur un téléphone */
+  .titre-long { font-size: var(--step-m); line-height: 1.12; }
+  .devis__grille { grid-template-columns: 1fr; }
+  .devis__bouton, .offre__actions .button { width: 100%; }
   .intro { padding-block: 4.5rem 6rem; }
   .intro__text { grid-column: 1 / -1; }
   .intro__statement { line-height: 1.22; }
@@ -866,13 +937,6 @@ html:not(.js) .docs__sheet[hidden] { display: block; }
   .chip--b { width: 34vw; }
   .cycle { padding-block: 4.5rem; }
   .metiers__title { padding-bottom: 2rem; }
-  .apps__cell { padding-block: 4rem 2rem; }
-  .apps__foot { flex-direction: column; align-items: flex-start; }
-  .apps__foot .button { width: 100%; min-height: 3.25rem; }
-  .apps__row { grid-template-columns: 1fr; gap: 0.6rem; padding: 1.75rem var(--margin); }
-  .apps__row ul { display: block; }
-  .apps__row li { display: inline; }
-  .apps__row li + li::before { content: ", "; }
   .sheet { grid-template-rows: 3.5rem auto; border-radius: 20px 20px 0 0; }
   .sheet + .sheet { margin-top: -20px; }
   .sheet__body { display: flex; flex-direction: column; }
@@ -913,9 +977,6 @@ html:not(.js) .docs__sheet[hidden] { display: block; }
   .faq__head { min-height: 30svh; }
   .faq__band { padding: 2rem 1.25rem; }
   .close { min-height: 80svh; }
-  .close__text, .close__action { grid-column: 1 / -1; }
-  .close__action { justify-self: stretch; margin-top: 1.5rem; }
-  .close__action .button { width: 100%; }
   .foot { padding-top: 6rem; }
   .foot__board { gap: 6px; }
   .tile { padding: 1.25rem; min-height: 0; }

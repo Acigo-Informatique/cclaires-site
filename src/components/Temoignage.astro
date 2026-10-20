@@ -1,0 +1,13 @@
+---
+// Emplacement d’un témoignage client, à remplir avec un vrai client qui a donné son accord écrit :
+// jamais de citation, de nom ni d’entreprise inventés. Une fois fourni, il prend la forme d’une
+// <figure> : la citation en <blockquote>, puis nom, entreprise et bassin en <figcaption>, avec la photo.
+import ACompleter from './ACompleter.astro';
+
+interface Props { id: string; metier: string; class?: string }
+const { id, metier, class: classe = '' } = Astro.props;
+---
+<figure class:list={['temoignage', classe]}>
+  <ACompleter id={id} class="temoignage__todo"
+    texte={`témoignage d’un client ${metier} : citation de 20 à 40 mots sur ce que C’Claires a changé, prénom et nom, entreprise, bassin de production, photo carrée (600 × 600 px minimum), accord écrit pour la publication`} />
+</figure>

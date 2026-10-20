@@ -169,3 +169,78 @@
   // revenu à la largeur d’un bureau, la feuille n’a plus lieu d’être
   matchMedia('(min-width: 1181px)').addEventListener('change', (m) => { if (m.matches) basculer(false, false); });
 })();
+
+// Demande de démo et de devis : chaque erreur s’écrit à côté de son champ, le premier champ en erreur
+// reçoit le focus, la demande part sur place (Formspree, sans cookie) et la confirmation la remplace.
+// Sans script, le formulaire s’envoie comme un formulaire ordinaire, contrôlé par le navigateur.
+(() => {
+  document.querySelectorAll('form[data-devis]').forEach((form) => {
+    form.noValidate = true;
+    const statut = form.querySelector('.devis__statut');
+    const bouton = form.querySelector('.devis__bouton');
+    const libelle = bouton.textContent;
+    const email = form.dataset.email;
+    const champs = [...form.querySelectorAll('input:not([type="hidden"]):not([name="_gotcha"]), select, textarea')];
+    let saisi = false, envoye = false, tente = false;
+
+    // le champ et son message : pour un groupe de boutons radio, c’est le fieldset qui porte l’un et l’autre
+    const porteur = (el) => (el.type === 'radio' ? el.closest('fieldset') : el);
+    const message = (el) => {
+      const ids = (porteur(el).getAttribute('aria-describedby') || '').split(' ');
+      return document.getElementById(ids.find((i) => i.endsWith('-erreur')));
+    };
+    const verifier = (el) => {
+      const ok = el.checkValidity();
+      const p = message(el);
+      const groupe = el.type === 'radio' ? form.querySelectorAll(`[name="${el.name}"]`) : [el];
+      groupe.forEach((x) => (ok ? x.removeAttribute('aria-invalid') : x.setAttribute('aria-invalid', 'true')));
+      if (p) p.textContent = ok ? '' : porteur(el).dataset.erreur || el.validationMessage;
+      return ok;
+    };
+
+    form.addEventListener('input', (e) => {
+      saisi = true;
+      if (tente && champs.includes(e.target)) verifier(e.target);
+    });
+    form.addEventListener('focusout', (e) => { if (tente && champs.includes(e.target)) verifier(e.target); });
+    addEventListener('beforeunload', (e) => { if (saisi && !envoye) e.preventDefault(); });
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      tente = true;
+      const vus = new Set();
+      const erreurs = champs.filter((el) => {
+        if (el.type === 'radio') { if (vus.has(el.name)) return false; vus.add(el.name); }
+        return !verifier(el);
+      });
+      if (erreurs.length) {
+        statut.textContent = erreurs.length > 1 ? `${erreurs.length} champs à compléter.` : '';
+        erreurs[0].focus();
+        return;
+      }
+      if (!form.getAttribute('action')) {
+        statut.textContent = `Ce formulaire n’est pas encore relié. Écrivez-nous à ${email}\u00a0: nous vous répondons avec un devis.`;
+        return;
+      }
+      bouton.disabled = true;
+      bouton.textContent = 'Envoi en cours…';
+      form.setAttribute('aria-busy', 'true');
+      statut.textContent = '';
+      try {
+        const reponse = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } });
+        if (!reponse.ok) throw new Error(String(reponse.status));
+        envoye = true;
+        form.classList.add('is-envoye');
+        statut.textContent = 'Merci, votre demande est partie. Nous revenons vers vous pour fixer la démonstration et vous envoyer le devis.';
+        statut.setAttribute('tabindex', '-1');
+        statut.focus();
+      } catch {
+        statut.textContent = `L’envoi n’a pas abouti. Réessayez dans un instant, ou écrivez-nous à ${email}.`;
+        bouton.disabled = false;
+        bouton.textContent = libelle;
+      } finally {
+        form.removeAttribute('aria-busy');
+      }
+    });
+  });
+})();

@@ -12,8 +12,8 @@ interface Props {
 }
 const {
   donnees: d,
-  titre = ['De la commande', 'à la facture'],
-  intro = 'Une commande traverse C’Claires sans jamais être ressaisie&nbsp;: ses lots, ses étiquettes, sa palette et sa facture en découlent. Faites-la avancer vous-même sur l’exemple, en sept clics.',
+  titre = ['Une commande, saisie une fois,', 'jusqu’à la facture'],
+  intro = 'Faites avancer vous-même la commande d’exemple. Sept clics pour tout le parcours, dont trois pour imprimer les étiquettes, à l’étape 3.',
 } = Astro.props;
 
 // pour chaque état (0 à 7) : l’étape de la liste et le fond de la section
@@ -22,7 +22,7 @@ const attrs = (i: number) => ({ 'data-panneau': i, 'data-etape': etats[i][0], 'd
 const nbsp = (t: string) => t.replace(/ ([:;?!])/g, ' $1');
 ---
 <section id="parcours" class="cycle" aria-labelledby="cycle-titre">
-  <h2 class="cycle__title lines" id="cycle-titre">
+  <h2 class="cycle__title lines titre-long" id="cycle-titre">
     {titre.map((ligne, i) => <span class="line"><span data-reveal style={i ? `--i:${i}` : undefined}>{ligne}</span></span>)}
   </h2>
   <div class="grid cycle__body">

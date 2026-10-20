@@ -37,3 +37,13 @@ Une valeur renseignée dans `site.config.mjs` fait disparaître l’emplacement 
 | STATUT-01 | Toutes | Confirmer que ces fonctions, présentées au présent, sont livrées : encaissements, viviers, applications de préparation et de palettisation, CERFA 15063 prérempli depuis le BL, promotions du jour, documents dans la langue du client, contrôle des cahiers des charges IGP et Label Rouge, vérification du classement des zones A/B/C, simulateur des règles d’étiquette, journal des impressions | haute |
 | ETIQ-01 | /tarifs/, accueil | Préciser ce que comprend la ligne « étiqueteuses » de l’offre (fourniture, installation, paramétrage, maintenance ?) | haute |
 | PHOTOS-01 | Toutes | Remplacer, si possible, les photos libres (Ifremer, Wikimedia Commons) par les vôtres ; retirer alors leur crédit du pied de page et des mentions légales | basse |
+
+## Preuve sociale et équipe
+
+| ID | Page | Ce qu’il faut fournir | Priorité |
+|---|---|---|---|
+| TEMO-01 | Accueil, /logiciel-ostreicole/, /clients/ | Témoignage d’un ostréiculteur client : citation de 20 à 40 mots, prénom et nom, entreprise, bassin, photo carrée (600 × 600 px minimum), accord écrit pour la publication | haute |
+| TEMO-02 | Accueil, /logiciel-mytilicole/, /clients/ | Témoignage d’un mytiliculteur client, mêmes éléments | haute |
+| TEMO-03 | Accueil, /logiciel-mareyage/, /clients/ | Témoignage d’un mareyeur client, mêmes éléments | haute |
+| LOGOS-01 | Accueil, /clients/ | Logos de 6 à 8 clients qui ont donné leur accord, en SVG d’une seule couleur | moyenne |
+| EQUIPE-01 | Accueil, /a-propos/ | Photo de l’équipe ACIGO à Saint-Lô (paysage 3:2, 1600 px de large au moins) et les prénoms pour la légende | moyenne |

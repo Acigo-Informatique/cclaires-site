@@ -1,0 +1,96 @@
+---
+// Formulaire de démo et de devis (accueil et /demo/). Envoi par Formspree, compatible GitHub Pages :
+// un vrai POST qui marche sans script ; avec le script (src/scripts/site.js), erreurs à côté de chaque
+// champ, état d’envoi et confirmation sur place. Aucun cookie. L’adresse d’envoi et le délai de réponse
+// viennent de site.config.mjs ; tant qu’ils manquent, des emplacements à compléter les signalent.
+import reglages from '../../site.config.mjs';
+import ACompleter from './ACompleter.astro';
+import Telephone from './Telephone.astro';
+
+interface Props { id: string; sombre?: boolean; titreId?: string }
+const { id, sombre = false, titreId } = Astro.props;
+const { endpoint, delaiReponse } = reglages.formulaire;
+const c = (nom: string) => `${id}-${nom}`;
+const metiers = [['ostreiculture', 'Ostréiculture'], ['mytiliculture', 'Mytiliculture'], ['mareyage', 'Mareyage'], ['plusieurs', 'Plusieurs métiers']];
+---
+<form class:list={['devis', { 'devis--sombre': sombre }]} id={id} method="post" action={endpoint ?? undefined}
+  data-devis data-email={reglages.email} aria-labelledby={titreId}>
+  {!endpoint && <ACompleter id="FORM-01" class="devis__todo" texte="adresse d’envoi Formspree du formulaire (site.config.mjs, formulaire.endpoint) : sans elle, la demande ne part pas" />}
+  <input type="hidden" name="_subject" value="Demande de démo et de devis C’Claires">
+  <p class="devis__piege" aria-hidden="true"><label>Ne pas remplir <input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label></p>
+
+  <div class="devis__grille">
+    <div class="champ">
+      <label for={c('nom')}>Nom et prénom</label>
+      <input id={c('nom')} name="nom" type="text" autocomplete="name" required aria-describedby={c('nom-erreur')}
+        data-erreur="Indiquez votre nom et votre prénom.">
+      <p class="champ__erreur" id={c('nom-erreur')}></p>
+    </div>
+    <div class="champ">
+      <label for={c('entreprise')}>Entreprise</label>
+      <input id={c('entreprise')} name="entreprise" type="text" autocomplete="organization" required aria-describedby={c('entreprise-erreur')}
+        data-erreur="Indiquez le nom de votre entreprise.">
+      <p class="champ__erreur" id={c('entreprise-erreur')}></p>
+    </div>
+
+    <fieldset class="champ champ--large" role="radiogroup" aria-required="true" aria-describedby={c('metier-erreur')} data-erreur="Choisissez votre métier.">
+      <legend>Métier</legend>
+      <div class="choix">
+        {metiers.map(([valeur, libelle], i) => (
+          <label class="choix__option"><input type="radio" name="metier" value={valeur} required={i === 0}> <span>{libelle}</span></label>
+        ))}
+      </div>
+      <p class="champ__erreur" id={c('metier-erreur')}></p>
+    </fieldset>
+
+    <div class="champ">
+      <label for={c('telephone')}>Téléphone</label>
+      <input id={c('telephone')} name="telephone" type="tel" inputmode="tel" autocomplete="tel" required aria-describedby={c('telephone-erreur')}
+        data-erreur="Indiquez un numéro de téléphone, par exemple 06 12 34 56 78.">
+      <p class="champ__erreur" id={c('telephone-erreur')}></p>
+    </div>
+    <div class="champ">
+      <label for={c('email')}>E-mail</label>
+      <input id={c('email')} name="email" type="email" inputmode="email" autocomplete="email" spellcheck="false" required aria-describedby={c('email-erreur')}
+        data-erreur="Indiquez une adresse e-mail complète, par exemple nom@entreprise.fr.">
+      <p class="champ__erreur" id={c('email-erreur')}></p>
+    </div>
+
+    <div class="champ">
+      <label for={c('utilisateurs')}>Nombre d’utilisateurs</label>
+      <input id={c('utilisateurs')} name="utilisateurs" type="number" inputmode="numeric" min="1" step="1" value="2" autocomplete="off"
+        aria-describedby={`${c('utilisateurs-aide')} ${c('utilisateurs-erreur')}`} data-erreur="Indiquez au moins 1 utilisateur.">
+      <p class="champ__aide" id={c('utilisateurs-aide')}>2 utilisateurs inclus dans l’abonnement</p>
+      <p class="champ__erreur" id={c('utilisateurs-erreur')}></p>
+    </div>
+    <div class="champ">
+      <label for={c('etiqueteuses')}>Nombre d’étiqueteuses</label>
+      <input id={c('etiqueteuses')} name="etiqueteuses" type="number" inputmode="numeric" min="0" step="1" value="0" autocomplete="off"
+        aria-describedby={`${c('etiqueteuses-aide')} ${c('etiqueteuses-erreur')}`} data-erreur="Indiquez un nombre, 0 si vous n’en avez pas.">
+      <p class="champ__aide" id={c('etiqueteuses-aide')}>Celles que vous avez déjà ou à prévoir</p>
+      <p class="champ__erreur" id={c('etiqueteuses-erreur')}></p>
+    </div>
+    <div class="champ champ--large">
+      <label for={c('marque')}>Marque des étiqueteuses <span class="champ__facultatif">(facultatif)</span></label>
+      <select id={c('marque')} name="marque" autocomplete="off">
+        <option value="">Non précisée</option>
+        <option>Zebra</option>
+        <option>Toshiba</option>
+        <option value="autre">Autre marque</option>
+        <option value="ne-sait-pas">Je ne sais pas</option>
+      </select>
+    </div>
+    <div class="champ champ--large">
+      <label for={c('message')}>Message <span class="champ__facultatif">(facultatif)</span></label>
+      <textarea id={c('message')} name="message" rows="4" autocomplete="off"
+        placeholder="Comment partent vos colis aujourd’hui ? Par exemple : commandes au téléphone, étiquettes refaites à la main…"></textarea>
+    </div>
+  </div>
+
+  <div class="devis__envoi">
+    <button class="button devis__bouton" type="submit">Recevoir mon devis</button>
+    <p class="devis__delai">{delaiReponse ?? <ACompleter id="DELAI-01" enLigne texte="délai de réponse au devis (site.config.mjs, formulaire.delaiReponse)" />}</p>
+  </div>
+  <p class="devis__statut" role="status" aria-live="polite"></p>
+  <p class="devis__repli">Vous préférez écrire ou appeler&nbsp;? <a class="link" href={`mailto:${reglages.email}`}>{reglages.email}</a>, <Telephone class="link" />.</p>
+</form>

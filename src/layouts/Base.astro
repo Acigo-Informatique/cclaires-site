@@ -7,9 +7,10 @@ import reglages from '../../site.config.mjs';
 import { lien, absolu, sousDossier } from '../lib/chemins.mjs';
 import { fil } from '../donnees/plan.mjs';
 import { organisation, siteWeb, filAriane } from '../donnees/schemas.mjs';
-import { proteger } from '../lib/marque.mjs';
+import { finir } from '../lib/typographie.mjs';
 import EnTete from '../components/EnTete.astro';
 import Pied from '../components/Pied.astro';
+import Finir from '../components/Finir.astro';
 
 interface Precharge { href?: string; imagesrcset?: string; imagesizes?: string; type?: string }
 interface Props {
@@ -31,9 +32,10 @@ const {
 } = Astro.props;
 
 const robots = indexable && reglages.indexable && !sousDossier ? 'index, follow, max-image-preview:large' : 'noindex';
-// le contenu de la page, rendu ici pour protéger le nom de marque de la traduction automatique
-const avant = Astro.slots.has('avant') ? proteger(await Astro.slots.render('avant')) : '';
-const contenu = proteger(await Astro.slots.render('default'));
+// le contenu de la page, rendu ici pour la dernière main : typographie française, nom de marque
+// protégé de la traduction automatique (src/lib/typographie.mjs)
+const avant = Astro.slots.has('avant') ? finir(await Astro.slots.render('avant')) : '';
+const contenu = finir(await Astro.slots.render('default'));
 const etapes = fil(url);
 const graphe = [organisation, ...(url === '/' ? [siteWeb] : []), ...(etapes.length > 1 ? [filAriane(etapes)] : []), ...schemas];
 const jsonld = JSON.stringify({ '@context': 'https://schema.org', '@graph': graphe }, null, 1).replace(/</g, '\\u003c');
@@ -75,10 +77,10 @@ const audience = reglages.audience;
 </head>
 <body>
   <a class="skip" href="#contenu">Aller au contenu</a>
-  {enTete === 'page' && <header class="page-head"><EnTete url={url} /></header>}
+  {enTete === 'page' && <header class="page-head"><Finir><EnTete url={url} /></Finir></header>}
   <Fragment set:html={avant} />
   <main id="contenu" set:html={contenu} />
-  <Pied url={url} />
+  <Finir><Pied url={url} /></Finir>
   <script>import '../scripts/site.js';</script>
 </body>
 </html>

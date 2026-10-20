@@ -36,6 +36,41 @@ export const siteWeb = {
   publisher: { '@id': idEditeur },
 };
 
+// Le logiciel, pour l’accueil et les pages métier. Seulement des fonctions livrées (règle 1), ni prix
+// ni note (rien d’inventé). `audience` précise le métier visé par la page.
+export const FONCTIONS = [
+  'Commandes pré-remplies d’après les habitudes de chaque lieu de livraison',
+  'Bons de livraison et factures tirés de la commande, sans ressaisie',
+  'Allotissement et numérotation automatique des lots',
+  'Étiquettes sanitaires imprimées en 3 clics depuis la commande ou le bon de livraison',
+  'Éditeur d’étiquettes intégré, codes-barres 1D et 2D (EAN-13, GS1-128, Code 128, QR code, DataMatrix)',
+  'Palettisation, SSCC et étiquette palette GS1',
+  'Traçabilité des lots, de l’achat au client',
+  'Gestion des parcs et des claires',
+  'Poids variable : poids réel sur le bon de livraison et la facture',
+  'Approvisionnement : achats, réceptions, mise en stock par lot',
+  'Factures et ordres de transport en EDI',
+  'Écritures exportées au format de votre logiciel comptable',
+  'Données hébergées en France, sauvegardes gérées par l’éditeur',
+];
+
+export const logiciel = ({ description, audience = 'Ostréiculteurs, mytiliculteurs et mareyeurs', url = '/' }) => ({
+  '@type': 'SoftwareApplication',
+  '@id': idLogiciel,
+  name: 'C’Claires',
+  alternateName: 'CClaires',
+  url: absolu(url),
+  description,
+  audience: { '@type': 'BusinessAudience', audienceType: audience },
+  applicationCategory: 'BusinessApplication',
+  applicationSubCategory: 'Logiciel de gestion conchylicole et de mareyage',
+  operatingSystem: 'Windows',
+  inLanguage: 'fr',
+  image: absolu('/assets/img/og.png'),
+  featureList: FONCTIONS,
+  publisher: { '@id': idEditeur },
+});
+
 export const filAriane = (etapes) => ({
   '@type': 'BreadcrumbList',
   itemListElement: etapes.map((p, i) => ({ '@type': 'ListItem', position: i + 1, name: p.libelle, item: absolu(p.url) })),

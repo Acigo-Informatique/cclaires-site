@@ -56,13 +56,14 @@ export default {
     [`TVA 5,5${n}%`, `26,38${n}€`],
     ['Total TTC', `505,98${n}€`],
   ],
+  // règle 1 : la facture est émise, ses écritures attendent l’export comptable ; rien n’est « envoyé en électronique »
   facture: {
     numero: 'F-26-01990',
-    etat: 'Envoyée',
+    etat: 'Émise',
     lignes: [
-      ['Facture électronique', 'envoyée'],
-      ['Écriture comptable', 'transmise à Pennylane'],
-      ['Transporteur, Tournée Nord', 'EDI transmis'],
+      ['Facture', 'émise'],
+      ['Écritures', 'prêtes pour l’export comptable'],
+      ['Ordre de transport, Tournée Nord', 'EDI transmis'],
     ],
     total: `505,98${n}€ TTC`,
   },
@@ -75,6 +76,6 @@ export default {
     'Quatre clics : modèle et étiqueteuse sont déjà choisis par vos règles. Lancez l’impression.',
     'Cinq clics, dont trois pour les étiquettes : 20 sont parties en même temps vers les étiqueteuses des quais 2 et 3. Reste l’étiquette de la palette.',
     'Six clics : la palette a son étiquette GS1 et son SSCC, le camion charge. Facturez le BL.',
-    'Sept clics : la facture électronique est partie et l’écriture attend dans votre comptabilité. Rien n’a été ressaisi.',
+    'Sept clics : la facture est émise et ses écritures sont prêtes pour l’export comptable. Rien n’a été ressaisi.',
   ],
 };
