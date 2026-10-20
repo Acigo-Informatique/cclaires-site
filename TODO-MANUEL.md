@@ -34,7 +34,6 @@ publication (DIRPUB-01) sont renseignés.
 
 | ID | Page | Ce qu’il faut fournir | Priorité |
 |---|---|---|---|
-| STATUT-01 | Toutes | Confirmer que ces fonctions, présentées au présent, sont livrées : encaissements, viviers, applications de préparation et de palettisation, CERFA 15063 prérempli depuis le BL, promotions du jour, documents dans la langue du client, contrôle des cahiers des charges IGP et Label Rouge, vérification du classement des zones A/B/C, simulateur des règles d’étiquette, journal des impressions | haute |
 | PHOTOS-01 | Toutes | Remplacer, si possible, les photos libres (Ifremer, Wikimedia Commons) par les vôtres ; retirer alors leur crédit du pied de page et des mentions légales | basse |
 
 ## Captures d’écran du logiciel
