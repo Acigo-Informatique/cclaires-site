@@ -74,6 +74,7 @@ const audience = reglages.audience;
   {precharges.map((p) => <link rel="preload" as="image" fetchpriority="high" {...p}>)}
   <script is:inline>document.documentElement.classList.add('js');requestAnimationFrame(function(){document.documentElement.classList.add('entree')})</script>
   <script is:inline type="application/ld+json" set:html={jsonld}></script>
+  {!audience && <Fragment set:html="<!-- TODO-MANUEL AUDIENCE-01 : mesure d’audience sans cookie désactivée ; la déclarer dans site.config.mjs (audience), puis l’ajouter à la CSP de vercel.json -->" />}
   {audience?.fournisseur === 'plausible' && <script is:inline defer data-domain={audience.domaine} src={audience.script}></script>}
   {audience?.fournisseur === 'matomo' && <script is:inline defer src={lien('/assets/js/matomo.js')} data-url={audience.url} data-site={audience.site}></script>}
 </head>

@@ -15,6 +15,6 @@ interface Props {
 const { id, sujet, alt, legende, ratio = '16 / 10', class: classe = '' } = Astro.props;
 ---
 <figure class:list={['capture', classe]} style={`--ratio: ${ratio}`}>
-  <ACompleter id={id} class="capture__cadre" texte={`capture d’écran, ${sujet}. Texte alternatif prévu : « ${alt} »`} />
+  <ACompleter id={id} class="capture__cadre" texte={`capture d’écran, ${sujet}. Texte alternatif à reprendre : « ${alt} »`} />
   <figcaption class="capture__legende">{legende}</figcaption>
 </figure>

@@ -56,7 +56,7 @@ export const FONCTIONS = [
 
 export const logiciel = ({ description, audience = 'Ostréiculteurs, mytiliculteurs et mareyeurs', url = '/' }) => ({
   '@type': 'SoftwareApplication',
-  '@id': idLogiciel,
+  '@id': url === '/' ? idLogiciel : absolu(url) + '#logiciel',
   name: 'C’Claires',
   alternateName: 'CClaires',
   url: absolu(url),
