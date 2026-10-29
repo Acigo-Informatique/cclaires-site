@@ -1,5 +1,6 @@
 ---
-// Accueil : de la claire au camion. Une même commande d’exemple traverse la page (parcours, documents),
+// Accueil : « Produire, tracer, vendre ? », la page y répond et finit sur « Bref : C’Claires. ». Une même
+// commande d’exemple traverse la page (parcours, documents),
 // chaque métier mène à sa page, l’offre se détaille sans prix et la demande de devis ferme la page.
 import Base from '../layouts/Base.astro';
 import EnTete from '../components/EnTete.astro';
@@ -25,20 +26,20 @@ const metiers = [
   {
     id: 'ostreiculteurs', couleur: 'tilleul', nom: 'Ostréiculteurs', photo: 'parcs-tremblade', bouton: 'button--encre',
     alt: 'Vue aérienne de rangées de tables ostréicoles sur l’estran, près de La Tremblade',
-    lead: 'Chaque lot suivi de la claire à la bourriche. Vous savez ce que contient chaque claire, l’affinage se compte tout seul, et l’étiquette sanitaire part avec le colis, sans un numéro recopié.',
+    lead: 'Chaque lot suivi de la claire à la bourriche. Au parc, la tablette montre chaque claire et garde vos actions, même sans réseau. Au bureau, l’affinage s’est compté tout seul et l’étiquette sanitaire reprend le lot.',
     termes: [
       ['Parcs et claires', 'Un éditeur de parcs et leur vue graphique : chaque claire, son lot, son stock à la date voulue.'],
-      ['Mises à l’eau, transferts, tris', 'Chaque mouvement de lot noté, de la mise à l’eau à la bourriche.'],
+      ['Au parc, sur tablette', 'Mises à l’eau, transferts, tris : les actions planifiées par lot et même par poche, saisies sur place et synchronisées au retour du réseau.'],
       ['Affinage, verdissement', 'Le séjour en claire compté, les cahiers des charges IGP et Label Rouge contrôlés lot par lot.'],
       ['Calibres, fines, spéciales', 'Calibre, qualité et format portés par chaque article, du n° 0 au n° 5.'],
-      ['Zones A, B, C', 'Classement de la zone et purification vérifiés avant que le camion parte.'],
+      ['Zones A, B, C', 'Classement de la zone et purification vérifiés avant l’expédition.'],
     ],
     lien: ['/logiciel-ostreicole/', 'Voir le logiciel ostréicole'],
   },
   {
     id: 'mytiliculteurs', couleur: 'ciel', nom: 'Mytiliculteurs', photo: 'bouchots-agon', bouton: 'button--encre',
     alt: 'Pieux de bouchots couverts de moules, dans l’eau à Agon-Coutainville, dans la Manche',
-    lead: 'Pêché le matin, livré le soir, facturé au poids réel. Bouchots, cordes ou filières, vrac ou sac : chaque pêche devient un lot, et la grande distribution reçoit ses palettes et ses factures comme elle les exige.',
+    lead: 'Pêché le matin, livré le soir, facturé au poids réel. Bouchots, cordes ou filières, vrac ou sac : chaque pêche devient un lot, qui garde sa zone de production jusqu’au client.',
     termes: [
       ['Pêche du jour', 'Un lot par pêche, numéroté par votre masque, suivi jusqu’à la livraison.'],
       ['Vrac au kilo, poids variable', 'Poids estimé à la commande, poids réel à la pesée, facturé au juste poids.'],
@@ -51,7 +52,7 @@ const metiers = [
   {
     id: 'mareyeurs', couleur: 'noir', nom: 'Mareyeurs', photo: 'criee-boulogne', bouton: '',
     alt: 'Cadran d’enchères de la criée de Boulogne-sur-Mer affichant l’espèce, les caisses restantes et le prix',
-    lead: 'De la criée au camion, chaque lot garde son origine et ses mentions. Achat le matin, étiquettes et palettes l’après-midi, camion le soir : tout s’enchaîne à la vitesse du mareyage.',
+    lead: 'De la criée au client, chaque lot garde son origine et ses mentions. Achat, mise en caisse, étiquette et facture s’enchaînent sans ressaisie, à la vitesse du mareyage.',
     termes: [
       ['Achats et réceptions', 'Chaque lot acheté garde son origine, de la réception à l’expédition.'],
       ['Viviers', 'Stock en vivier, en vrac, en poids fixe ou emballé, et en poids variable.'],
@@ -66,19 +67,20 @@ const metiers = [
 // une phrase par automatisme, dite comme un résultat ; deux allumés au chargement
 const automatismes = [
   { ton: 'tilleul', phrase: 'Vos lots se numérotent seuls.', detail: 'Un masque par exploitation, par exemple l’année, le jour, le calibre et une séquence : le lot du jour s’écrit 2026-351-3-014, sans que personne ne le tape.' },
-  { ton: 'ciel', phrase: 'Le port se calcule à chaque BL.', detail: 'Franco, forfait ou montant saisi, réglé une fois par client et par lieu de livraison. Sur le BL de la Poissonnerie de la Halle, le franco est atteint : le port est offert, sans calculette.' },
-  { ton: 'paon', phrase: 'Les palettes se composent, le SSCC s’attribue.', detail: 'Répartition proposée par dimensions ou par nombre de colis, SSCC attribué à l’enregistrement, fiche palette en A4, A5 ou 10 × 15.', allume: true },
+  { ton: 'ciel', phrase: 'L’affinage se compte tout seul.', detail: 'Le séjour en claire se compte jour par jour depuis l’entrée du lot, et les cahiers des charges IGP et Label Rouge sont contrôlés lot par lot. Le jour du contrôle, la durée est déjà là.' },
+  { ton: 'paon', phrase: 'La fiche du lot se remplit toute seule.', detail: 'Chaque action au parc, chaque réception, chaque vente s’y inscrit. Elle remonte jusqu’à l’origine du lot et descend jusqu’à chaque client livré, sans classeur à tenir.', allume: true },
   { ton: 'eau', phrase: 'Les commandes du jour passent en BL d’un coup.', detail: 'Transformation en masse depuis la liste filtrée du jour, avec les cumuls de poids et de colis en pied de liste.', allume: true },
   { ton: 'tilleul', phrase: 'Chaque client est facturé à son rythme.', detail: 'Au jour, au BL ou à la fréquence convenue avec lui : ses BL deviennent des factures, et la fin de mois ne prend plus une soirée.' },
 ];
 
-// prix, étiquettes, facture électronique, données, postes, utilisateurs (règles 1 et 2)
+// prix, étiquettes, facture électronique, données, postes, travail au parc, utilisateurs (règles 1 et 2)
 const questions = [
   { q: 'Combien coûte C’Claires ?', r: `<p>Le prix dépend de votre installation : le nombre d’utilisateurs (2 sont inclus dans l’abonnement) et le nombre d’étiqueteuses. L’abonnement comprend le logiciel complet, sans module en option, le support (8 h par an), les mises à jour et les sauvegardes.</p><p>Décrivez votre activité dans la <a class="link" href="#devis">demande de devis</a> : nous vous répondons avec un devis chiffré. Le détail de l’offre est sur la page <a class="link" href="${lien('/tarifs/')}">tarifs</a>.</p>` },
   { q: 'Faut-il un logiciel d’étiquetage à part ?', r: '<p>Non, et c’est un abonnement de moins. L’éditeur de modèles d’étiquettes est intégré à C’Claires : textes, variables du lot et de l’article, et tous les codes-barres 1D et 2D (EAN-13, GS1-128, Code 128, QR code, DataMatrix). Les étiquettes s’impriment ensuite depuis la commande ou le bon de livraison, en 3 clics, avec le modèle et l’étiqueteuse que vos règles ont choisis pour chaque client.</p>' },
   { q: 'Êtes-vous prêts pour la facture électronique ?', r: `<p>Prêt pour la réforme : la connexion à une plateforme agréée est en cours, et elle sera livrée avant votre échéance.</p><p>Aujourd’hui, C’Claires émet vos factures depuis les bons de livraison, et vos écritures sont exportées au format de votre logiciel comptable (Pennylane et autres). <a class="link" href="${lien('/fonctionnalites/facture-electronique/')}">Où en est la facture électronique</a></p>` },
   { q: 'Où sont hébergées mes données ?', r: '<p>En France, chez l’hébergeur Nat-Tech, et nous gérons nous-mêmes les sauvegardes. Chaque entreprise cliente a sa propre base, séparée de celles des autres.</p>' },
-  { q: 'Sur quels postes s’installe C’Claires ?', r: '<p>Sur les postes Windows du bureau et de l’atelier, ou sur un serveur TSE : à vous de choisir. Dans les deux cas, chaque poste se connecte au serveur central hébergé en France, et le bureau, l’atelier et le quai voient les mêmes chiffres.</p><p>Les étiquettes s’impriment en local, sur les étiqueteuses du poste : l’impression reste fiable même quand la connexion flanche. Un seul installateur pose le logiciel et son service d’impression, puis C’Claires installe lui-même ses mises à jour.</p>' },
+  { q: 'Sur quels postes s’installe C’Claires ?', r: '<p>Sur les postes Windows du bureau et de l’atelier, ou sur un serveur TSE : à vous de choisir. Au parc, l’application tablette prend le relais, sur Android. Tous se rattachent au serveur central hébergé en France : le parc, le bureau et l’atelier voient les mêmes chiffres.</p><p>Les étiquettes s’impriment en local, sur les étiqueteuses du poste : l’impression reste fiable même quand la connexion flanche. Un seul installateur pose le logiciel et son service d’impression, puis C’Claires installe lui-même ses mises à jour.</p>' },
+  { q: 'Peut-on travailler au parc, sans réseau ?', r: `<p>Oui. L’application tablette de production, sur Android, est comprise dans l’abonnement. Elle montre vos parcs, et vous y notez vos actions (mises à l’eau, transferts, tris, et celles que vous définissez vous-même), planifiées par lot et même par poche.</p><p>Elle fonctionne hors ligne et se synchronise toute seule dès que le réseau revient. <a class="link" href="${lien('/fonctionnalites/parcs-claires/')}">La gestion des parcs et des claires</a></p>` },
   { q: 'Combien de personnes peuvent l’utiliser ?', r: '<p>L’abonnement comprend 2 utilisateurs. Vous en ajoutez autant qu’il vous en faut, chiffrés dans le devis. Les comptes nominatifs et les comptes poste d’atelier se comptent à part, et un compte poste peut tourner sur plusieurs machines de l’atelier.</p>' },
 ];
 
@@ -86,12 +88,12 @@ const precharge = await prechargePhoto('claires-seudre', tailleHero);
 ---
 <Base
   titre="Logiciel conchylicole et mareyage | C’Claires"
-  description="C’Claires, le logiciel conchylicole et de mareyage : commandes, lots, étiquettes sanitaires en 3 clics, palettes SSCC, traçabilité et factures, sans ressaisie."
+  description="C’Claires, le logiciel conchylicole et de mareyage : parcs sur tablette, lots tracés de bout en bout, étiquettes sanitaires en 3 clics, commandes et factures."
   url={url}
-  ogTitre="C’Claires : le camion n’attend pas"
+  ogTitre="Produire, tracer, vendre ? C’Claires."
   enTete="accueil"
   schemas={[
-    logiciel({ description: 'Logiciel de gestion des ostréiculteurs, mytiliculteurs et mareyeurs : commandes, bons de livraison, lots, étiquettes sanitaires, palettes et SSCC, traçabilité, parcs et claires, EDI et factures, tout compris. Données hébergées en France.' }),
+    logiciel({ description: 'Logiciel de gestion des ostréiculteurs, mytiliculteurs et mareyeurs : parcs et claires, application tablette de production, lots et traçabilité, étiquettes sanitaires, commandes, bons de livraison, palettes et SSCC, EDI et factures, tout compris. Données hébergées en France.' }),
     faqPage(questions, url),
   ]}
   precharges={[precharge]}
@@ -115,21 +117,21 @@ const precharge = await prechargePhoto('claires-seudre', tailleHero);
 
     <div class="hero__text">
       <p class="hero__title lines">
-        <span class="line"><span data-line style="--i:0">Le camion</span></span>
-        <span class="line"><span data-line style="--i:1">n’attend pas</span></span>
+        <span class="line"><span data-line style="--i:0">Produire, tracer,</span></span>
+        <span class="line"><span data-line style="--i:1">vendre ?</span></span>
       </p>
       <div class="hero__aside">
         <h1 class="hero__h1" data-rise style="--i:0">Le logiciel de gestion des ostréiculteurs, mytiliculteurs et mareyeurs</h1>
-        <p class="hero__sous-titre" data-rise style="--i:1">Vous saisissez la commande. C’Claires en tire les lots, les étiquettes sanitaires en 3 clics, les palettes et leur SSCC, puis la facture. Quand le camion arrive, tout est prêt.</p>
+        <p class="hero__sous-titre" data-rise style="--i:1">Tout votre métier dans un seul logiciel : la production au parc, sur tablette, puis les commandes, les étiquettes sanitaires et les factures. Chaque lot est suivi de bout en bout, et le jour du contrôle, la réponse tient sur une fiche.</p>
         <div class="hero__actions" data-rise style="--i:2">
           <a class="button" href={lien('/demo/')}>Réserver ma démo de 30 minutes</a>
-          <a class="link hero__more" href="#parcours">Faire partir une commande d’exemple</a>
+          <a class="link hero__more" href="#parcours">Faire avancer une commande d’exemple</a>
         </div>
       </div>
     </div>
     <ul class="preuves" aria-label="C’Claires en bref">
-      <li>Une centaine d’entreprises de la mer équipées</li>
-      <li>Éditeur depuis 1997, à Saint-Lô</li>
+      <li>Une centaine d’entreprises de la mer, de la Normandie à Marennes-Oléron</li>
+      <li>Depuis 1997, à Saint-Lô</li>
       <li>Données hébergées en France</li>
       <li>Tout compris, aucune fonction en option</li>
     </ul>
@@ -137,13 +139,13 @@ const precharge = await prechargePhoto('claires-seudre', tailleHero);
 
   <section id="probleme" class="intro" aria-labelledby="probleme-titre">
     <div class="intro__text">
-      <h2 class="intro__title titre-long" id="probleme-titre" data-reveal>Fin décembre, personne n’a le temps de recopier un numéro de lot trois fois</h2>
+      <h2 class="intro__title titre-long" id="probleme-titre" data-reveal>Le classeur d’un côté, le logiciel de vente de l’autre</h2>
       <ul class="douleurs">
-        <li data-reveal style="--i:1">La commande, retapée dans le bon de livraison, puis dans la facture.</li>
-        <li data-reveal style="--i:2">Les étiquettes, refaites à la main quand un client change d’avis à 6 heures du matin.</li>
-        <li data-reveal style="--i:3">La traçabilité, reconstituée au classeur le jour où la DDPP la demande.</li>
+        <li data-reveal style="--i:1">Le stock des claires tenu au carnet, recompté à chaque marée.</li>
+        <li data-reveal style="--i:2">Le numéro de lot recopié du classeur au bon de livraison, puis à la facture, même le 22 décembre.</li>
+        <li data-reveal style="--i:3">La traçabilité reconstituée à la main le jour où la DDPP la demande.</li>
       </ul>
-      <p class="intro__lot" data-reveal style="--i:4">Avec C’Claires, la commande se saisit une fois. Ses lots, ses étiquettes, sa palette et sa facture en découlent, et votre soirée vous appartient.</p>
+      <p class="intro__lot" data-reveal style="--i:4">Avec C’Claires, les deux ne font plus qu’un. Ce qui se fait au parc et ce qui se vend au bureau tiennent sur le même fil : le lot.</p>
     </div>
     <div class="intro__chips" aria-hidden="true">
       <figure class="chip chip--a" data-reveal style="--i:2"><Photo nom="huitres-rocher" alt="" sizes="(max-width: 720px) 52vw, 20vw" /></figure>
@@ -173,7 +175,7 @@ const precharge = await prechargePhoto('claires-seudre', tailleHero);
   </section>
 
   <section id="automatismes" class="auto" aria-labelledby="auto-titre">
-    <h2 class="auto__titre titre-long" id="auto-titre" data-reveal>Ce que vous ne ferez plus à la main</h2>
+    <h2 class="auto__titre titre-long" id="auto-titre" data-reveal>Vous travaillez, C’Claires trace</h2>
     {automatismes.map((a, i) => (
       <div class:list={['auto__band', { 'is-on': a.allume }]} data-tone={a.ton}>
         <div class="auto__text"><h3 class="auto__sentence" id={`auto-${i + 1}`}>{a.phrase}</h3><p class="auto__detail">{a.detail}</p></div>
@@ -208,7 +210,7 @@ const precharge = await prechargePhoto('claires-seudre', tailleHero);
     <h2 class="about__title titre-long" id="editeur-titre" data-reveal>Un éditeur normand depuis 1997, toujours au bout du fil</h2>
     <div class="grid">
       <div class="about__lead" data-reveal style="--i:1">
-        <p>Un logiciel de gestion, on le choisit pour des années. ACIGO Informatique édite des logiciels à Saint-Lô depuis 1997, conçoit et maintient C’Claires, et quand vous appelez, quelqu’un de l’équipe décroche&nbsp;: <Telephone class="link" />.</p>
+        <p>Un logiciel de gestion, on le choisit pour des années. C’Claires est conçu et maintenu à Saint-Lô depuis 1997 par ACIGO Informatique, et quand vous appelez, quelqu’un de l’équipe décroche&nbsp;: <Telephone class="link" />.</p>
       </div>
     </div>
     <div class="grid about__tiles">
@@ -227,7 +229,7 @@ const precharge = await prechargePhoto('claires-seudre', tailleHero);
           <div><dt>Siège</dt><dd>Saint-Lô, Manche</dd></div>
           <div><dt>Depuis</dt><dd>1997</dd></div>
           <div class="facts__wide"><dt>Données</dt><dd>Hébergées en France chez Nat-Tech, sauvegardes gérées par ACIGO</dd></div>
-          <div class="facts__wide"><dt>Installation</dt><dd>Postes Windows ou serveur TSE, au choix</dd></div>
+          <div class="facts__wide"><dt>Installation</dt><dd>Postes Windows ou serveur TSE au bureau, tablette Android au parc</dd></div>
         </dl>
         <p class="about__lien" data-reveal style="--i:3"><a class="link" href={lien('/a-propos/')}>Découvrir ACIGO Informatique</a></p>
       </div>
@@ -237,10 +239,10 @@ const precharge = await prechargePhoto('claires-seudre', tailleHero);
   <Faq questions={questions} />
 
   <section id="devis" class="close" aria-labelledby="devis-titre">
-    <h2 class="close__title titre-long" id="devis-titre" data-reveal>Montrez-nous comment partent vos colis aujourd’hui</h2>
+    <h2 class="close__title titre-long" id="devis-titre" data-reveal>Bref&nbsp;: C’Claires.</h2>
     <div class="grid close__foot">
       <div class="close__text" data-reveal style="--i:1">
-        <p>En 30 minutes, nous faisons partir une de vos commandes dans C’Claires, avec vos articles et vos clients. Vous jugerez sur pièces.</p>
+        <p>En 30 minutes, nous suivons un de vos lots dans C’Claires, du parc à la facture, avec vos articles et vos clients. Ensuite, si vous le souhaitez, une version de test pour voir ce que cela donne chez vous.</p>
         <p class="close__tel">Ou appelez-nous&nbsp;: <Telephone class="link" /></p>
       </div>
       <div class="close__form" data-reveal style="--i:2">
