@@ -4,10 +4,10 @@
 interface Props { titre: string; id?: string }
 const { titre, id = 'offre' } = Astro.props;
 const offre = [
-  ['Abonnement', 'Le logiciel complet, 2 utilisateurs inclus'],
+  ['Abonnement', 'Tout le logiciel, sans option, 2 utilisateurs inclus'],
   ['Étiqueteuses', 'Les vôtres ou fournies par ACIGO, paramétrées et maintenues, chiffrées au devis'],
-  ['Support', '8 h par an d’assistance par l’éditeur'],
-  ['Mises à jour', 'Installées par le logiciel lui-même'],
+  ['Support', '8 h par an, avec l’éditeur lui-même, à Saint-Lô'],
+  ['Mises à jour', 'Comprises, et installées par le logiciel lui-même'],
   ['Sauvegardes', 'Gérées par ACIGO, données hébergées en France'],
 ];
 ---
@@ -19,7 +19,7 @@ const offre = [
     ))}
   </ul>
   <div class="offre__pied grid">
-    <p class="offre__texte" data-reveal>Aucun module en option : toutes les fonctions sont dans l’abonnement. Le prix dépend du nombre d’utilisateurs et d’étiqueteuses, nous le chiffrons sur devis.</p>
+    <p class="offre__texte" data-reveal>Aucun module en option, aucune fonction réservée à une formule plus chère. Le prix dépend de deux choses : combien vous êtes et combien d’étiqueteuses tournent. Nous le chiffrons sur devis.</p>
     <div class="offre__actions" data-reveal style="--i:1">
       <slot />
     </div>

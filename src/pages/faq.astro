@@ -52,7 +52,7 @@ const precharge = await prechargePhoto('huitre-creuse', tailleHero);
   precharges={[precharge]}
 >
   <EnTetePage slot="avant" url={url} h1="Vos questions sur C’Claires" couleur="tilleul" photos={['huitre-creuse', 'tables-seudre', 'bouchots-agon', 'criee-boulogne']} tailleHero={tailleHero}
-    sousTitre="L’offre, les étiquettes, les factures, vos données et vos métiers : les questions que nous posent les ostréiculteurs, les mytiliculteurs et les mareyeurs."
+    sousTitre="L’offre, les étiquettes, les factures, vos données et vos métiers : les questions que nous posent les ostréiculteurs, les mytiliculteurs et les mareyeurs, avec des réponses courtes."
     actions={[{ href: lien('/demo/'), texte: 'Poser la vôtre pendant une démo', primaire: true }, { href: '#offre', texte: 'Commencer par l’offre' }]} />
 
   {themes.map((t) => <Faq questions={t.questions} titre={t.titre} id={t.id} groupe />)}

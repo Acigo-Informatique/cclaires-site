@@ -18,18 +18,18 @@ const precharge = await prechargePhoto('claires-seudre', tailleHero);
   precharges={[precharge]}
 >
   <EnTetePage slot="avant" url={url} h1="Voyez C’Claires avec vos produits" couleur="tilleul" photos={['claires-seudre', 'bouchots-agon', 'criee-boulogne', 'huitres-rocher']} tailleHero={tailleHero}
-    sousTitre="En 30 minutes, nous vous montrons le parcours d’une commande, de la saisie à la facture, avec vos articles et vos clients. Le devis suit, ligne par ligne."
-    actions={[{ href: '#demande-devis', texte: 'Remplir la demande', primaire: true }]} />
+    sousTitre="Pas une démo générique : en 30 minutes, nous faisons traverser le logiciel à une commande comme les vôtres, avec vos articles et vos clients, de la saisie à la facture. Le devis suit, ligne par ligne."
+    actions={[{ href: '#demande-devis', texte: 'Demander ma démo', primaire: true }]} />
 
   <section id="demande-devis" class="demo" aria-labelledby="demande-titre">
     <div class="grid demo__grille">
       <div class="demo__texte">
-        <h2 class="demo__titre titre-long" id="demande-titre" data-reveal>Votre demande de démo et de devis</h2>
+        <h2 class="demo__titre titre-long" id="demande-titre" data-reveal>Quatre étapes, et vous savez</h2>
         <ol class="demo__etapes">
           <li data-reveal style="--i:1">Vous nous dites comment partent vos colis aujourd’hui.</li>
           <li data-reveal style="--i:2">Nous préparons la démonstration avec vos articles et vos clients.</li>
-          <li data-reveal style="--i:3">En 30 minutes, nous vous montrons le parcours, de la commande à la facture.</li>
-          <li data-reveal style="--i:4">Vous recevez un devis chiffré : utilisateurs, étiqueteuses, support.</li>
+          <li data-reveal style="--i:3">En 30 minutes, vous voyez votre commande aller jusqu’à la facture, sans ressaisie.</li>
+          <li data-reveal style="--i:4">Vous recevez un devis chiffré, ligne par ligne : utilisateurs, étiqueteuses, support. Libre à vous d’y donner suite.</li>
         </ol>
         <p class="demo__contact" data-reveal style="--i:5">Vous préférez appeler&nbsp;? <Telephone class="link" /></p>
       </div>
