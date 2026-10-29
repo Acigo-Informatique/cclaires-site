@@ -21,8 +21,8 @@ const precharge = await prechargePhoto('port-en-bessin', tailleHero);
   enTete="accueil"
   precharges={[precharge]}
 >
-  <EnTetePage slot="avant" url={url} h1="Un éditeur normand depuis 1997" couleur="paon" photos={['port-en-bessin', 'bouchots-agon', 'claires-seudre']} tailleHero={tailleHero}
-    sousTitre="Derrière C’Claires, il y a ACIGO Informatique : une société de logiciels installée à Saint-Lô, dans la Manche, depuis 1997. Elle le conçoit, l’édite, le maintient, et décroche quand vous appelez."
+  <EnTetePage slot="avant" url={url} h1="Un éditeur normand depuis 1997" accroche={['Au téléphone,', 'qui décroche ?']} couleur="paon" photos={['port-en-bessin', 'bouchots-agon', 'claires-seudre']} tailleHero={tailleHero}
+    sousTitre="L’équipe d’ACIGO Informatique, à Saint-Lô, dans la Manche. Depuis 1997, elle conçoit, édite et maintient C’Claires, et c’est elle qui vous répond."
     actions={[{ href: lien('/demo/'), texte: 'Réserver ma démo de 30 minutes', primaire: true }, equipe ? { href: '#equipe', texte: 'Rencontrer l’équipe' } : { href: '#donnees', texte: 'Où sont vos données' }]} />
 
   <section id="editeur" class="about" aria-labelledby="editeur-titre">
@@ -65,10 +65,10 @@ const precharge = await prechargePhoto('port-en-bessin', tailleHero);
       <div data-reveal><dt>Hébergées en France</dt><dd>Chez l’hébergeur Nat-Tech, sur un serveur central auquel chaque poste se connecte.</dd></div>
       <div data-reveal style="--i:1"><dt>Sauvegardées par l’éditeur</dt><dd>ACIGO gère lui-même les sauvegardes.</dd></div>
       <div data-reveal style="--i:2"><dt>Une base par entreprise</dt><dd>Chaque client a sa propre base, séparée de celles des autres.</dd></div>
-      <div data-reveal style="--i:3"><dt>Postes Windows ou TSE</dt><dd>À vous de choisir ; les étiquettes s’impriment en local, sur les étiqueteuses du poste.</dd></div>
+      <div data-reveal style="--i:3"><dt>Du bureau au parc</dt><dd>Postes Windows ou serveur TSE, à vous de choisir, et la tablette Android au parc ; les étiquettes s’impriment en local, sur les étiqueteuses du poste.</dd></div>
     </dl>
     <p class="aussi__suite" data-reveal>Ce qui arrive ensuite dans le logiciel est sur la <a class="link" href={lien('/feuille-de-route/')}>feuille de route</a>{pageClients ? <>, et ceux qui l’utilisent sont sur la page <a class="link" href={lien('/clients/')}>clients</a></> : ''}.</p>
   </section>
 
-  <AppelFinal titre="Faisons connaissance" texte="En 30 minutes, nous vous montrons C’Claires avec vos articles et vos clients, et vous rencontrez l’équipe ACIGO." />
+  <AppelFinal texte="Faisons connaissance : en 30 minutes, nous vous montrons C’Claires avec vos articles et vos clients, et vous rencontrez l’équipe qui vous répondra ensuite." />
 </Base>

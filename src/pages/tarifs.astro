@@ -16,6 +16,8 @@ const questions = [
   { q: 'Combien d’utilisateurs sont inclus ?', r: '<p>Deux. Vous en ajoutez autant qu’il vous en faut, chiffrés dans le devis. Les comptes nominatifs et les comptes poste d’atelier se comptent à part, et un compte poste peut tourner sur plusieurs machines de l’atelier.</p>' },
   { q: 'Les étiqueteuses sont-elles comprises ?', r: '<p>Elles font partie de l’offre : celles que vous avez déjà ou celles que nous vous fournissons, Zebra, Toshiba ou d’autres marques. Nous les paramétrons dans C’Claires et en assurons la maintenance, le tout chiffré au devis. Indiquez leur nombre et leur marque dans la <a class="link" href="/demo/">demande de devis</a>.</p>' },
   { q: 'Y a-t-il des modules en option ?', r: '<p>Non, et il n’y en aura pas de mauvaise surprise après la signature : toutes les fonctions sont dans l’abonnement. Commandes, étiquettes, palettisation, traçabilité, parcs et claires, EDI, facturation.</p>' },
+  { q: 'La formation est-elle comprise ?', r: '<p>Elle se fait sur place, avec votre équipe, et se chiffre au devis selon le nombre de personnes à former.</p>' },
+  { q: 'Peut-on essayer avant de s’engager ?', r: '<p>Oui. Après la démo de 30 minutes, nous vous ouvrons sur demande une version de test, pour voir ce que cela donne chez vous.</p>' },
   { q: 'Que comprend le support ?', r: '<p>8 heures d’assistance par an, assurées par l’éditeur lui-même, ACIGO Informatique, à Saint-Lô. Quand vous appelez, quelqu’un de l’équipe décroche.</p>' },
 ];
 const tailleHero = '(max-width: 720px) 67vw, 33vw';
@@ -29,8 +31,8 @@ const precharge = await prechargePhoto('chaland-oleron', tailleHero);
   schemas={[faqPage(questions, url)]}
   precharges={[precharge]}
 >
-  <EnTetePage slot="avant" url={url} h1="Un abonnement. Tout le logiciel." couleur="ciel" photos={['chaland-oleron', 'tables-tremblade', 'bouchots-agon']} tailleHero={tailleHero}
-    sousTitre="Toutes les fonctions, vos étiqueteuses, le support, les mises à jour et les sauvegardes. Aucun module à découvrir après la signature : votre prix est chiffré sur devis, ligne par ligne."
+  <EnTetePage slot="avant" url={url} h1="L’offre C’Claires : un abonnement, tout le logiciel" accroche={['Combien ça coûte,', 'vraiment ?']} couleur="ciel" photos={['chaland-oleron', 'tables-tremblade', 'bouchots-agon']} tailleHero={tailleHero}
+    sousTitre="Le prix de votre installation, sans module caché. L’abonnement comprend tout le logiciel et l’application tablette ; votre devis chiffre ligne par ligne les utilisateurs, les étiqueteuses et la formation."
     actions={[{ href: lien('/demo/'), texte: 'Recevoir mon devis', primaire: true }, { href: '#offre', texte: 'Voir le détail de l’offre' }]} />
 
   <ListeOffre titre="Ce qui est dans l’abonnement">
@@ -54,5 +56,5 @@ const precharge = await prechargePhoto('chaland-oleron', tailleHero);
 
   <Faq questions={questions} titre="Vos questions sur l’offre" />
 
-  <AppelFinal titre="Recevez votre devis, ligne par ligne" texte="Dites-nous combien vous êtes et combien d’étiqueteuses tournent au quai : nous chiffrons votre installation." action="Recevoir mon devis" />
+  <AppelFinal texte="Dites-nous combien vous êtes et combien d’étiqueteuses tournent : nous chiffrons votre installation, ligne par ligne." action="Recevoir mon devis" />
 </Base>

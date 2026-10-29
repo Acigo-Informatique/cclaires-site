@@ -35,8 +35,8 @@ const precharge = await prechargePhoto('sillons-vasiere', tailleHero);
   enTete="accueil"
   precharges={[precharge]}
 >
-  <EnTetePage slot="avant" url={url} h1="Ce qui arrive dans C’Claires" couleur="eau" photos={['sillons-vasiere', 'chaland-oleron', 'port-en-bessin']} tailleHero={tailleHero}
-    sousTitre="Ce que nous construisons, sans date promise. Tout le reste du site décrit le logiciel tel qu’il est aujourd’hui."
+  <EnTetePage slot="avant" url={url} h1="Ce qui arrive dans C’Claires" accroche={['Et après ?']} couleur="eau" photos={['sillons-vasiere', 'chaland-oleron', 'port-en-bessin']} tailleHero={tailleHero}
+    sousTitre="Voici ce que nous construisons, sans date promise. Tout le reste du site décrit le logiciel tel qu’il est aujourd’hui."
     actions={[{ href: lien('/fonctionnalites/'), texte: 'Voir ce que fait C’Claires aujourd’hui', primaire: true }, { href: '#en-cours', texte: 'Ce qui est en cours' }]} />
 
   <section id="en-cours" class="etapes etapes--tilleul" aria-labelledby="en-cours-titre">
@@ -58,5 +58,5 @@ const precharge = await prechargePhoto('sillons-vasiere', tailleHero);
     <p class="aussi__suite" data-reveal>Une de ces fonctions compte pour vous&nbsp;? Dites-le-nous dans la <a class="link" href={lien('/demo/')}>demande de démo</a>.</p>
   </section>
 
-  <AppelFinal titre="Voyez d’abord ce qui existe" texte="En 30 minutes, nous vous montrons le logiciel d’aujourd’hui avec vos articles et vos clients." />
+  <AppelFinal texte="Voyez d’abord ce qui existe : en 30 minutes, nous vous montrons le logiciel d’aujourd’hui avec vos articles et vos clients." />
 </Base>
