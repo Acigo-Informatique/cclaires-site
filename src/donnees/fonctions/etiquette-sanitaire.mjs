@@ -3,8 +3,9 @@ export default {
   url: '/fonctionnalites/etiquette-sanitaire/',
   titre: 'Logiciel d’étiquette sanitaire coquillages | C’Claires',
   description: 'Étiquettes sanitaires de coquillages en 3 clics depuis le BL : mentions reprises de la commande, bon modèle pour chaque client, codes GS1-128 et 2D compris.',
+  accroche: ['Une étiquette,', 'combien de clics ?'],
   h1: 'Vos étiquettes sanitaires en 3 clics, justes du premier coup',
-  sousTitre: 'Lot, zone, date de conditionnement, marque d’identification : tout vient de la commande. Vos règles choisissent le modèle et l’étiqueteuse de chaque client. Il ne vous reste que trois clics.',
+  sousTitre: 'Trois. Lot, zone, date de conditionnement, marque d’identification : tout vient de la commande, et vos règles choisissent le modèle et l’étiqueteuse de chaque client.',
   couleur: 'tilleul',
   photos: ['huitres-rocher', 'sillons-vasiere', 'huitre-creuse'],
   lienVitrine: 'Voir l’étiquette qui sort',
@@ -46,7 +47,6 @@ export default {
     { q: 'Les étiquettes portent-elles les mentions obligatoires ?', r: '<p>Les modèles disposent des variables de la réglementation : marque d’identification, espèce, zone de production, méthode de production, date de conditionnement, numéro de lot. Le détail est dans notre guide des <a class="link" href="/guides/mentions-obligatoires-etiquette-sanitaire/">mentions obligatoires</a>.</p>' },
   ],
   cta: {
-    titre: 'Apportez une étiquette d’aujourd’hui',
-    texte: 'En 30 minutes, nous tirons devant vous les étiquettes d’une de vos commandes, avec vos modèles et vos articles. Vous comptez les clics.',
+    texte: 'Apportez une étiquette d’aujourd’hui : en 30 minutes, nous tirons devant vous celles d’une de vos commandes, avec vos modèles et vos articles. Vous comptez les clics.',
   },
 };

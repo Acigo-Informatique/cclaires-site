@@ -5,6 +5,7 @@ export default {
   url: '/fonctionnalites/facture-electronique/',
   titre: 'Facture électronique ostréiculteurs et mareyeurs',
   description: 'Facture électronique : connexion à une plateforme agréée en cours, livrée avant votre échéance. Aujourd’hui, factures tirées des BL et écritures exportées.',
+  accroche: ['Prêt pour', 'la réforme ?'],
   h1: 'Prêt pour la facture électronique',
   sousTitre: 'Prêt pour la réforme : connexion à une plateforme agréée en cours, livrée avant votre échéance. Et dès aujourd’hui, vos factures sortent des bons de livraison, sans une ligne retapée.',
   couleur: 'noir',
@@ -43,7 +44,6 @@ export default {
     { q: 'Puis-je continuer à facturer au rythme de mes clients ?', r: '<p>Oui : au jour, au BL ou à la fréquence convenue avec chacun.</p>' },
   ],
   cta: {
-    titre: 'Parlons de votre échéance',
-    texte: 'En 30 minutes, nous vous montrons vos factures tirées des BL et l’export de vos écritures, et nous faisons le point sur la réforme avec vous.',
+    texte: 'Parlons de votre échéance : en 30 minutes, nous vous montrons vos factures tirées des BL et l’export de vos écritures, et nous faisons le point sur la réforme avec vous.',
   },
 };

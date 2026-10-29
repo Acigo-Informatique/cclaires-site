@@ -2,9 +2,10 @@
 export default {
   url: '/fonctionnalites/parcs-claires/',
   titre: 'Gestion des parcs et claires ostréicoles',
-  description: 'Gestion des parcs et des claires ostréicoles avec C’Claires : concessions dessinées, chaque mouvement de lot noté, le stock de chaque claire à la date voulue.',
+  description: 'Gestion des parcs et des claires ostréicoles : concessions dessinées, actions au parc sur tablette même sans réseau, stock de chaque claire à la date voulue.',
+  accroche: ['Dans la C12,', 'il reste quoi ?'],
   h1: 'Vos parcs et vos claires, à jour sans carnet',
-  sousTitre: 'Dessinez vos concessions, vos claires et vos tables une fois. Ensuite, chaque mise à l’eau, transfert ou tri s’y inscrit, et vous voyez ce que contient chaque claire, aujourd’hui ou à la date de votre choix.',
+  sousTitre: 'Un coup d’œil suffit, au bureau comme au parc. Dessinez vos concessions, vos claires et vos tables une fois ; ensuite, chaque mise à l’eau, transfert ou tri s’y inscrit depuis la tablette, même sans réseau.',
   couleur: 'tilleul',
   photos: ['parcs-tremblade', 'arcachon-1920', 'claires-seudre'],
   lienVitrine: 'Voir la vue des parcs',
@@ -22,7 +23,7 @@ export default {
     titre: 'Du parc à la bourriche, le lot garde sa mémoire',
     items: [
       'Dessinez vos parcs, vos claires et vos tables dans l’éditeur de parcs.',
-      'Notez chaque mouvement de lot : mise à l’eau, transfert, tri, affinage.',
+      'Au parc, sur la tablette Android, notez les actions planifiées : mise à l’eau, transfert, tri, et celles que vous définissez, par lot et même par poche. Sans réseau, tout se synchronise au retour.',
       'Consultez le contenu de chaque claire, à la date que vous choisissez.',
       'Le lot sort de la claire avec son historique, jusqu’à l’étiquette et au bon de livraison.',
     ],
@@ -31,11 +32,11 @@ export default {
   guide: null,
   faq: [
     { q: 'Peut-on voir le stock d’une claire à une date passée ?', r: '<p>Oui : la vue des parcs montre le contenu de chaque claire à la date que vous choisissez, passée ou présente.</p>' },
+    { q: 'L’application tablette fonctionne-t-elle sans réseau ?', r: '<p>Oui. Elle tourne sur Android, hors ligne, et se synchronise toute seule dès que le réseau revient. Elle est comprise dans l’abonnement.</p>' },
     { q: 'L’affinage est-il compté ?', r: '<p>Oui : le séjour en claire se compte jour par jour, depuis la date d’entrée du lot.</p>' },
     { q: 'Les cahiers des charges IGP et Label Rouge sont-ils contrôlés ?', r: '<p>Oui, lot par lot, durée d’affinage comprise.</p>' },
   ],
   cta: {
-    titre: 'Dessinons vos parcs ensemble',
-    texte: 'En 30 minutes, nous vous montrons la vue des parcs et le suivi d’un lot, de la claire à la bourriche.',
+    texte: 'Dessinons vos parcs ensemble : en 30 minutes, nous vous montrons la vue des parcs, la tablette et le suivi d’un lot, de la claire à la bourriche.',
   },
 };

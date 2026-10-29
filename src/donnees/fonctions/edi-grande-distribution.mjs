@@ -4,8 +4,9 @@ export default {
   url: '/fonctionnalites/edi-grande-distribution/',
   titre: 'EDI grande distribution pour la marée',
   description: 'EDI pour la marée et les coquillages : factures et ordres de transport envoyés à la grande distribution depuis vos BL, prix datés et promotions par client.',
+  accroche: ['Votre centrale', 'passe à l’EDI ?'],
   h1: 'L’EDI de la grande distribution, sans retaper une facture',
-  sousTitre: 'Vos factures partent en EDI vers la centrale et vos ordres de transport vers le transporteur, directement depuis les bons de livraison. Plus une facture à retaper dans un portail.',
+  sousTitre: 'Vos factures suivent. Elles partent en EDI vers la centrale, et vos ordres de transport vers le transporteur, directement depuis les bons de livraison. Plus une facture à retaper dans un portail.',
   couleur: 'ciel',
   photos: ['port-en-bessin', 'bouchots-agon', 'criee-boulogne'],
   lienVitrine: 'Voir les messages EDI d’une journée',
@@ -35,7 +36,6 @@ export default {
     { q: 'Et la facture électronique de la réforme ?', r: '<p>Prêt pour la réforme : la connexion à une plateforme agréée est en cours, et elle sera livrée avant votre échéance. <a class="link" href="/fonctionnalites/facture-electronique/">Où en est la facture électronique</a></p>' },
   ],
   cta: {
-    titre: 'Une centrale vous demande de passer à l’EDI ?',
-    texte: 'En 30 minutes, nous suivons devant vous une commande de centrale, jusqu’à sa facture EDI.',
+    texte: 'En 30 minutes, nous suivons devant vous une commande de centrale, de la saisie jusqu’à sa facture EDI, avec vos articles et vos prix.',
   },
 };

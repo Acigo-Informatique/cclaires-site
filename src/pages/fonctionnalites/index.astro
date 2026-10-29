@@ -21,6 +21,7 @@ const noms: Record<string, string> = {
 };
 const fonctions = groupe('fonctionnalites');
 const aussi = [
+  ['Application tablette', 'Au parc, sur Android et hors ligne : les actions planifiées par lot et même par poche, synchronisées au retour.'],
   ['Approvisionnement', 'Achats, réceptions et mise en stock par lot, origine comprise.'],
   ['Poids variable', 'Le poids estimé à la commande, puis le poids réel de la pesée.'],
   ['Viviers', 'Stock en vrac, en poids fixe ou emballé, et en poids variable.'],
@@ -41,8 +42,8 @@ const precharge = await prechargePhoto('tables-seudre', tailleHero);
   precharges={[precharge]}
 >
   <EnTetePage slot="avant" url={url} h1="Tout ce que fait C’Claires, sans module en option" couleur="paon" photos={['tables-seudre', 'sillons-vasiere', 'moules-saint-jacut']} tailleHero={tailleHero}
-    accroche={['Tout', 'compris']}
-    sousTitre="Commandes, lots, étiquettes, palettes, traçabilité, parcs et factures : tout est dans l’abonnement. Et chaque fonction reprend ce que la précédente a saisi, alors rien ne se tape deux fois."
+    accroche={['Tout', 'compris ?']}
+    sousTitre="Oui, tout : parcs et claires, application tablette, traçabilité, étiquettes, commandes, palettes et factures sont dans l’abonnement. Et chaque fonction reprend ce que la précédente a saisi, alors rien ne se tape deux fois."
     actions={[{ href: lien('/demo/'), texte: 'Réserver ma démo de 30 minutes', primaire: true }, { href: '#fonctions', texte: 'Voir les sept fonctions' }]} />
 
   <section id="fonctions" class="modules modules--liens" aria-labelledby="fonctions-titre">
@@ -68,5 +69,5 @@ const precharge = await prechargePhoto('tables-seudre', tailleHero);
     <p class="aussi__suite" data-reveal>Ce qui arrive ensuite dans C’Claires est sur la <a class="link" href={lien('/feuille-de-route/')}>feuille de route</a>. Le détail de l’offre est sur la page <a class="link" href={lien('/tarifs/')}>tarifs</a>.</p>
   </section>
 
-  <AppelFinal titre="Qu’est-ce que vous faites encore à la main ?" texte="Dites-le-nous : en 30 minutes, nous vous montrons la fonction qui s’en charge, avec vos articles et vos clients." />
+  <AppelFinal texte="Qu’est-ce que vous faites encore à la main ? Dites-le-nous : en 30 minutes, nous vous montrons la fonction qui s’en charge, avec vos articles et vos clients." />
 </Base>
