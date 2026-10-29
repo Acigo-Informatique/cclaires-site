@@ -2,14 +2,14 @@
 export default {
   url: '/fonctionnalites/palettisation-sscc/',
   titre: 'Étiquette palette GS1 et SSCC | C’Claires',
-  description: 'Palettisation dans C’Claires : colis du BL répartis en palettes, SSCC attribué à l’enregistrement, étiquette palette GS1-128 et fiche palette imprimées au quai.',
+  description: 'Palettisation et SSCC avec C’Claires : colis du BL répartis en palettes, SSCC attribué tout seul, étiquette palette GS1-128 et fiche palette imprimées au quai.',
   h1: 'Palettes composées, SSCC attribué, étiquette GS1 imprimée',
-  sousTitre: 'Les colis du bon de livraison se répartissent en palettes, chaque palette reçoit son SSCC et son étiquette GS1 s’imprime au quai, sans tableur ni ressaisie.',
+  sousTitre: 'Votre centrale exige un SSCC et une étiquette GS1 sur chaque palette ? C’Claires répartit les colis du bon de livraison, attribue le numéro et imprime l’étiquette au quai. Sans tableur, sans ressaisie.',
   couleur: 'ciel',
   photos: ['chaland-oleron', 'port-en-bessin', 'bouchots-agon'],
   lienVitrine: 'Voir une fiche palette',
   vitrine: {
-    titre: 'Une fiche palette prête pour le quai',
+    titre: 'La fiche palette, prête avant le camion',
     fragment: 'palette',
     points: [
       'Le SSCC de la palette en code-barres GS1-128, avec l’identifiant (00).',
@@ -19,10 +19,10 @@ export default {
     note: 'La palette du BL-26-02217 de la commande d’exemple, au format 10 × 15.',
   },
   etapes: {
-    titre: 'Du bon de livraison au camion',
+    titre: 'Du bon de livraison au camion, en trois temps',
     items: [
       'C’Claires propose la répartition des colis du BL en palettes, par dimensions ou par nombre de colis.',
-      'À l’enregistrement, chaque palette reçoit son SSCC, un numéro unique de 18 chiffres.',
+      'À l’enregistrement, chaque palette reçoit son SSCC, un numéro unique de 18 chiffres que personne n’a à calculer.',
       'L’étiquette palette GS1 et la fiche palette s’impriment au quai, en A4, A5 ou 10 × 15.',
     ],
   },
@@ -39,7 +39,7 @@ export default {
     { q: 'Sur quoi s’imprime l’étiquette palette ?', r: '<p>Sur l’étiqueteuse du quai au format 10 × 15, ou sur une imprimante de bureau en A4 ou A5.</p>' },
   ],
   cta: {
-    titre: 'Montrez-nous comment partent vos palettes',
-    texte: 'En 30 minutes, nous vous montrons la palettisation d’un de vos BL, du SSCC à l’étiquette GS1.',
+    titre: 'Un BL, des palettes, un SSCC pour chacune',
+    texte: 'En 30 minutes, nous palettisons devant vous un de vos bons de livraison, jusqu’à l’étiquette GS1.',
   },
 };

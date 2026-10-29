@@ -21,11 +21,11 @@ const noms: Record<string, string> = {
 };
 const fonctions = groupe('fonctionnalites');
 const aussi = [
-  ['Approvisionnement', 'Achats, réceptions et mise en stock par lot.'],
+  ['Approvisionnement', 'Achats, réceptions et mise en stock par lot, origine comprise.'],
   ['Poids variable', 'Le poids estimé à la commande, puis le poids réel de la pesée.'],
   ['Viviers', 'Stock en vrac, en poids fixe ou emballé, et en poids variable.'],
   ['Éditeur d’étiquettes', 'Intégré, avec les codes-barres 1D et 2D : EAN-13, GS1-128, Code 128, QR code, DataMatrix.'],
-  ['Plusieurs étiqueteuses', 'Une impression sur plusieurs étiqueteuses à la fois, et le journal des impressions.'],
+  ['Plusieurs étiqueteuses', 'Une impression répartie sur plusieurs étiqueteuses à la fois, et chaque réimpression au journal.'],
   ['Port et facturation', 'Le port calculé à chaque BL, les factures au rythme de chaque client.'],
   ['Export comptable', 'Les écritures exportées au format de votre logiciel comptable.'],
   ['Installation', 'Postes Windows ou serveur TSE, au choix, et des données hébergées en France.'],
@@ -42,11 +42,11 @@ const precharge = await prechargePhoto('tables-seudre', tailleHero);
 >
   <EnTetePage slot="avant" url={url} h1="Tout ce que fait C’Claires, sans module en option" couleur="paon" photos={['tables-seudre', 'sillons-vasiere', 'moules-saint-jacut']} tailleHero={tailleHero}
     accroche={['Tout', 'compris']}
-    sousTitre="Commandes, lots, étiquettes, palettes, traçabilité, parcs et factures : tout est dans l’abonnement, et chaque fonction reprend ce que la précédente a saisi."
-    actions={[{ href: lien('/demo/'), texte: 'Réserver une démo de 30 minutes', primaire: true }, { href: '#fonctions', texte: 'Voir les fonctions une à une' }]} />
+    sousTitre="Commandes, lots, étiquettes, palettes, traçabilité, parcs et factures : tout est dans l’abonnement. Et chaque fonction reprend ce que la précédente a saisi, alors rien ne se tape deux fois."
+    actions={[{ href: lien('/demo/'), texte: 'Réserver une démo de 30 minutes', primaire: true }, { href: '#fonctions', texte: 'Voir les sept fonctions' }]} />
 
   <section id="fonctions" class="modules modules--liens" aria-labelledby="fonctions-titre">
-    <h2 class="offre__titre" id="fonctions-titre" data-reveal>Une page par fonction</h2>
+    <h2 class="offre__titre" id="fonctions-titre" data-reveal>Sept fonctions, une seule saisie</h2>
     <ul class="modules__list">
       {fonctions.map((p, i) => (
         <li data-reveal style={i ? `--i:${i}` : undefined}>
@@ -68,5 +68,5 @@ const precharge = await prechargePhoto('tables-seudre', tailleHero);
     <p class="aussi__suite" data-reveal>Ce qui arrive ensuite dans C’Claires est sur la <a class="link" href={lien('/feuille-de-route/')}>feuille de route</a>. Le détail de l’offre est sur la page <a class="link" href={lien('/tarifs/')}>tarifs</a>.</p>
   </section>
 
-  <AppelFinal titre="Montrez-nous ce que vous faites encore à la main" texte="En 30 minutes, nous vous montrons les fonctions qui le prennent en charge, avec vos articles et vos clients." />
+  <AppelFinal titre="Qu’est-ce que vous faites encore à la main ?" texte="Dites-le-nous : en 30 minutes, nous vous montrons la fonction qui s’en charge, avec vos articles et vos clients." />
 </Base>

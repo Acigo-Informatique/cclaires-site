@@ -3,9 +3,9 @@
 export default {
   url: '/fonctionnalites/edi-grande-distribution/',
   titre: 'EDI grande distribution pour la marée',
-  description: 'EDI pour la marée et les coquillages avec C’Claires : factures et ordres de transport échangés avec la grande distribution, prix datés et promotions par client.',
-  h1: 'Factures et ordres de transport en EDI',
-  sousTitre: 'Pour la grande distribution et les gros clients, les factures et les ordres de transport partent en EDI depuis les bons de livraison, sans ressaisie dans un portail.',
+  description: 'EDI pour la marée et les coquillages : factures et ordres de transport envoyés à la grande distribution depuis vos BL, prix datés et promotions par client.',
+  h1: 'L’EDI de la grande distribution, sans retaper une facture',
+  sousTitre: 'Vos factures partent en EDI vers la centrale et vos ordres de transport vers le transporteur, directement depuis les bons de livraison. Plus une facture à retaper dans un portail.',
   couleur: 'ciel',
   photos: ['port-en-bessin', 'bouchots-agon', 'criee-boulogne'],
   lienVitrine: 'Voir les messages EDI d’une journée',
@@ -15,12 +15,12 @@ export default {
     points: [
       'Les factures, envoyées en EDI à la centrale du client.',
       'Les ordres de transport, envoyés au transporteur de la tournée.',
-      'L’état de chaque message, transmis ou en attente.',
+      'L’état de chaque message, transmis ou en attente : vous savez où en est chacun.',
     ],
     note: 'Centrales, transporteurs et numéros fictifs.',
   },
   etapes: {
-    titre: 'Des accords du client à la facture EDI',
+    titre: 'Des accords de l’enseigne à la facture EDI',
     items: [
       'Les prix datés et les promotions de chaque client sont réglés une fois, avec leurs dates de validité.',
       'Les commandes deviennent des bons de livraison, puis des factures, sans ressaisie.',
@@ -35,7 +35,7 @@ export default {
     { q: 'Et la facture électronique de la réforme ?', r: '<p>Prêt pour la réforme : la connexion à une plateforme agréée est en cours, et elle sera livrée avant votre échéance. <a class="link" href="/fonctionnalites/facture-electronique/">Où en est la facture électronique</a></p>' },
   ],
   cta: {
-    titre: 'Montrez-nous vos clients de la grande distribution',
-    texte: 'En 30 minutes, nous vous montrons le parcours d’une commande de centrale, jusqu’à la facture EDI.',
+    titre: 'Une centrale vous demande de passer à l’EDI ?',
+    texte: 'En 30 minutes, nous suivons devant vous une commande de centrale, jusqu’à sa facture EDI.',
   },
 };

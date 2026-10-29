@@ -4,14 +4,14 @@
 export default {
   url: '/fonctionnalites/facture-electronique/',
   titre: 'Facture électronique ostréiculteurs et mareyeurs',
-  description: 'Facture électronique et C’Claires : connexion à une plateforme agréée en cours, livrée avant votre échéance ; factures émises depuis le BL, écritures exportées.',
+  description: 'Facture électronique : connexion à une plateforme agréée en cours, livrée avant votre échéance. Aujourd’hui, factures tirées des BL et écritures exportées.',
   h1: 'Prêt pour la facture électronique',
-  sousTitre: 'Prêt pour la réforme : connexion à une plateforme agréée en cours, livrée avant votre échéance. D’ici là, vos factures se font déjà depuis les bons de livraison.',
+  sousTitre: 'Prêt pour la réforme : connexion à une plateforme agréée en cours, livrée avant votre échéance. Et dès aujourd’hui, vos factures sortent des bons de livraison, sans une ligne retapée.',
   couleur: 'noir',
   photos: ['tables-seudre', 'criee-boulogne', 'chaland-oleron'],
   lienVitrine: 'Voir une facture émise depuis un BL',
   vitrine: {
-    titre: 'Une facture émise depuis le bon de livraison',
+    titre: 'Une facture tirée du bon de livraison',
     fragment: 'facture',
     points: [
       'Émise depuis le BL, sans ressaisie, au rythme convenu avec chaque client.',
@@ -21,7 +21,7 @@ export default {
     note: 'La facture F-26-01990 de la commande d’exemple.',
   },
   etapes: {
-    titre: 'Où en est C’Claires',
+    titre: 'Ce qui marche déjà, ce qui arrive',
     items: [
       'Aujourd’hui, les factures sont émises depuis les bons de livraison, au jour, au BL ou à la fréquence du client.',
       'Aujourd’hui, les écritures sont exportées au format de votre logiciel comptable, Pennylane et les autres.',

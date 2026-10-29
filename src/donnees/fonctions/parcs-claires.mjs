@@ -2,14 +2,14 @@
 export default {
   url: '/fonctionnalites/parcs-claires/',
   titre: 'Gestion des parcs et claires ostréicoles',
-  description: 'Gestion des parcs et des claires ostréicoles avec C’Claires : éditeur de parcs, vue graphique, mouvements de lots et stock de chaque claire à la date voulue.',
-  h1: 'Chaque claire, son lot, son stock à la date voulue',
-  sousTitre: 'L’éditeur de parcs dessine vos concessions, vos claires et vos tables ; chaque mouvement de lot y est noté, et la vue graphique montre ce que contient chaque claire.',
+  description: 'Gestion des parcs et des claires ostréicoles avec C’Claires : concessions dessinées, chaque mouvement de lot noté, le stock de chaque claire à la date voulue.',
+  h1: 'Vos parcs et vos claires, à jour sans carnet',
+  sousTitre: 'Dessinez vos concessions, vos claires et vos tables une fois. Ensuite, chaque mise à l’eau, transfert ou tri s’y inscrit, et vous voyez ce que contient chaque claire, aujourd’hui ou à la date de votre choix.',
   couleur: 'tilleul',
   photos: ['parcs-tremblade', 'arcachon-1920', 'claires-seudre'],
   lienVitrine: 'Voir la vue des parcs',
   vitrine: {
-    titre: 'La vue graphique de vos parcs',
+    titre: 'Toutes vos claires, d’un coup d’œil',
     fragment: 'parcs',
     points: [
       'Vos concessions, vos claires et vos tables, dessinées dans l’éditeur de parcs.',
@@ -19,7 +19,7 @@ export default {
     note: 'La claire C12, où le lot 2026-351-3-014 de la commande d’exemple s’affine depuis le 18 novembre.',
   },
   etapes: {
-    titre: 'Du parc à la bourriche',
+    titre: 'Du parc à la bourriche, le lot garde sa mémoire',
     items: [
       'Dessinez vos parcs, vos claires et vos tables dans l’éditeur de parcs.',
       'Notez chaque mouvement de lot : mise à l’eau, transfert, tri, affinage.',
@@ -35,7 +35,7 @@ export default {
     { q: 'Les cahiers des charges IGP et Label Rouge sont-ils contrôlés ?', r: '<p>Oui, lot par lot, durée d’affinage comprise.</p>' },
   ],
   cta: {
-    titre: 'Montrez-nous vos parcs',
+    titre: 'Dessinons vos parcs ensemble',
     texte: 'En 30 minutes, nous vous montrons la vue des parcs et le suivi d’un lot, de la claire à la bourriche.',
   },
 };
