@@ -19,8 +19,8 @@ const precharge = await prechargePhoto('tables-seudre', tailleHero);
   enTete="accueil"
   precharges={[precharge]}
 >
-  <EnTetePage slot="avant" url={url} h1="Guides pratiques" couleur="eau" photos={['tables-seudre', 'huitre-creuse', 'criee-boulogne', 'bouchots-agon']} tailleHero={tailleHero}
-    sousTitre="Les documents et les mentions de la conchyliculture et de la marée, expliqués simplement, avec un exemple tiré de C’Claires à chaque fois."
+  <EnTetePage slot="avant" url={url} h1="Guides pratiques de la conchyliculture et de la marée" accroche={['Obligatoire,', 'cette mention ?']} couleur="eau" photos={['tables-seudre', 'huitre-creuse', 'criee-boulogne', 'bouchots-agon']} tailleHero={tailleHero}
+    sousTitre="Les guides vous le disent, textes à l’appui : les documents et les mentions de la conchyliculture et de la marée, expliqués simplement, avec un exemple tiré de C’Claires à chaque fois."
     actions={[{ href: '#liste-guides', texte: 'Voir les guides', primaire: true }]} />
 
   <section id="liste-guides" class="modules modules--liens modules--guides" aria-labelledby="guides-titre">
@@ -34,5 +34,5 @@ const precharge = await prechargePhoto('tables-seudre', tailleHero);
     </ul>
   </section>
 
-  <AppelFinal titre="Moins de règlement à apprendre, plus de documents justes" texte="Les guides expliquent les règles ; C’Claires les applique à chaque commande. En 30 minutes, nous vous le montrons avec vos articles." />
+  <AppelFinal texte="Les guides expliquent les règles ; C’Claires les applique à chaque commande. En 30 minutes, nous vous le montrons avec vos articles." />
 </Base>

@@ -2,12 +2,13 @@
 titre: "Étiquette sanitaire des huîtres : mentions obligatoires"
 description: "Les mentions obligatoires de l’étiquette sanitaire des huîtres et coquillages vivants : marque d’identification, espèce, date de conditionnement, lot et zone."
 h1: "Les mentions obligatoires de l’étiquette sanitaire"
+accroche: ["Et sur l’étiquette,", "on met quoi ?"]
 sousTitre: "Marque d’identification, espèce, date de conditionnement, lot, zone : ce que porte l’étiquette d’un colis de coquillages vivants, et d’où vient chaque mention."
 resume: "Ce que porte l’étiquette d’un colis de coquillages vivants, mention par mention."
 couleur: "tilleul"
 photos: ["huitre-creuse", "claires-seudre", "tables-tremblade"]
 exemple: "etiquette"
-fonction: ["/fonctionnalites/etiquette-sanitaire/", "Imprimer vos étiquettes sanitaires en 3 clics"]
+fonction: ["/fonctionnalites/etiquette-sanitaire/", "Imprimer vos étiquettes en 3 clics"]
 ordre: 1
 ---
 

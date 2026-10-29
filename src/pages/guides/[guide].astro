@@ -25,7 +25,7 @@ const tailleHero = '(max-width: 720px) 67vw, 33vw';
 const precharge = await prechargePhoto(d.photos[0], tailleHero);
 ---
 <Base titre={d.titre} description={d.description} url={url} ogTitre={d.h1} enTete="accueil" precharges={[precharge]}>
-  <EnTetePage slot="avant" url={url} h1={d.h1} sousTitre={d.sousTitre} couleur={d.couleur} photos={d.photos} tailleHero={tailleHero}
+  <EnTetePage slot="avant" url={url} h1={d.h1} accroche={d.accroche} sousTitre={d.sousTitre} couleur={d.couleur} photos={d.photos} tailleHero={tailleHero}
     actions={[{ href: '#guide', texte: 'Lire le guide', primaire: true }, { href: lien(d.fonction[0]), texte: d.fonction[1] }]} />
 
   <article id="guide" class="guide" aria-label={d.h1}>
@@ -53,5 +53,5 @@ const precharge = await prechargePhoto(d.photos[0], tailleHero);
     </section>
   )}
 
-  <AppelFinal titre="Ce document, C’Claires le tire de vos commandes" texte="En 30 minutes, nous vous montrons les vôtres sortir du logiciel, avec vos articles et vos clients. Sans rien remplir à la main." />
+  <AppelFinal texte="Ce document, C’Claires le tire de vos commandes : en 30 minutes, nous vous montrons les vôtres sortir du logiciel, avec vos articles et vos clients. Sans rien remplir à la main." />
 </Base>

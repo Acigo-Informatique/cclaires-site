@@ -11,6 +11,7 @@ const guides = defineCollection({
     titre: z.string(),            // balise <title>
     description: z.string(),      // 150 à 160 caractères
     h1: z.string(),
+    accroche: z.array(z.string()).optional(),   // la question en tête de page, une entrée par ligne
     sousTitre: z.string(),
     resume: z.string(),           // une ligne pour la page /guides/
     couleur: z.enum(['tilleul', 'ciel', 'noir', 'paon', 'eau']),
