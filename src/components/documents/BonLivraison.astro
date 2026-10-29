@@ -1,0 +1,37 @@
+---
+// Bon de livraison BL-26-02217 de la commande d’exemple, au gabarit des pièces de C’Claires (Lato).
+const { class: classe = '', ...attributs } = Astro.props;
+---
+<article class:list={['docs__sheet ui-bl', classe]} data-ui {...attributs}>
+  <div class="bl-haut">
+    <div>
+      <p class="bl-nom">Exploitation des Trois Claires</p>
+      <p><i>Huîtres de Marennes-Oléron</i></p>
+      <p class="bl-adresse">12 chemin des Claires<br>17320 Marennes-Hiers-Brouage<br>France</p>
+      <p class="bl-gris">Tél. : 05 46 00 00 00<br>N° SIRET : 123 456 789 00017<br>Agrément sanitaire : FR 17.999.001 UE</p>
+    </div>
+    <div class="bl-titre">
+      <p class="bl-type">BON DE LIVRAISON</p>
+      <p class="bl-num">N° BL-26-02217</p>
+      <p><span class="bl-gris">Date</span> 18/12/2026<br><span class="bl-gris">Date d’expédition</span> 18/12/2026<br><span class="bl-gris">Réf. client</span> PO-5561</p>
+    </div>
+  </div>
+  <div class="bl-cadres">
+    <div class="bl-cadre"><p class="bl-lib">FACTURER À</p><p><b>Poissonnerie de la Halle</b><br>14000 Caen<br>France</p><p class="bl-gris">SIRET : 987 654 321 00012</p></div>
+    <div class="bl-cadre"><p class="bl-lib">LIVRER À</p><p><b>Poissonnerie de la Halle</b><br>14000 Caen<br>France</p><p class="bl-gris"><i>Transporteur : Tournée Nord</i></p></div>
+  </div>
+  <table class="bl-table">
+    <thead><tr><th>DÉSIGNATION</th><th class="r">COLIS</th><th class="r">QUANTITÉ</th><th class="c">UNITÉ</th><th class="r">POIDS UNIT.</th><th class="r">POIDS TOTAL</th></tr></thead>
+    <tbody>
+      <tr class="bl-groupe"><td colspan="6">Commande n° C-26-01482 du 16/12/2026 — Réf. client : PO-5561</td></tr>
+      <tr><td><b>FC3 - Fines de claire n° 3</b><br><i>Magallana gigas - OYG</i><br>Origine : Charente-Maritime<br><i>Méthode : Élevé - Format : Bourriche</i><br>2000012345678 - Lot : 2026-351-3-014</td><td class="r">12 BOU</td><td class="r">12,00</td><td class="c">BOURRICHE</td><td class="r">5,00 KG</td><td class="r">60,00 kg</td></tr>
+      <tr><td><b>SC2 - Spéciales de claire n° 2</b><br><i>Magallana gigas - OYG</i><br>Origine : Charente-Maritime<br><i>Méthode : Élevé - Format : Bourriche</i><br>2000012345685 - Lot : 2026-349-2-006</td><td class="r">6 BOU</td><td class="r">6,00</td><td class="c">BOURRICHE</td><td class="r">3,00 KG</td><td class="r">18,00 kg</td></tr>
+      <tr><td><b>MB10 - Moules de bouchot</b><br><i>Mytilus edulis - MUS</i><br>Origine : Manche<br><i>Méthode : Élevé - Format : Sac</i><br>2000012345692 - Lot : 2026-350-M-002</td><td class="r">2 SAC</td><td class="r">2,00</td><td class="c">SAC</td><td class="r">10,00 KG</td><td class="r">20,00 kg</td></tr>
+    </tbody>
+  </table>
+  <div class="bl-totaux">
+    <p><span>Total colis</span><b>20 colis</b></p>
+    <p class="bl-total"><span>Poids total</span><b>98,00 kg</b></p>
+  </div>
+  <p class="bl-pied"><span>Exploitation des Trois Claires - N° SIRET 123 456 789 00017 - Agrément sanitaire : FR 17.999.001 UE</span><span>Page 1 / 1</span></p>
+</article>

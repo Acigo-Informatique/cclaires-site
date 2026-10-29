@@ -1,0 +1,27 @@
+---
+// L’export des écritures comptables d’une période, au format du logiciel comptable (règle 1 : les
+// écritures sont exportées, jamais « transmises en direct »). Sans montant (règle 2).
+interface Props { d: any; variante?: string }
+const exports = [
+  ['Novembre 2026', 'exporté le 02/12/2026'],
+  ['Octobre 2026', 'exporté le 03/11/2026'],
+];
+---
+<article class="ui-window" data-ui>
+  <div class="ui-win-head"><span>Export comptable</span><span class="ui-win-meta">Écritures de ventes</span></div>
+  <div class="ui-win-body">
+    <dl class="ui-champs ui-champs--form">
+      <div><dt>Période</dt><dd><span class="ui-saisie">01/12/2026</span> au <span class="ui-saisie">31/12/2026</span></dd></div>
+      <div><dt>Format</dt><dd><span class="ui-saisie ui-saisie--liste">Pennylane</span> <span class="ui-win-meta">et les autres logiciels</span></dd></div>
+      <div><dt>Écritures</dt><dd>96 factures, 2 avoirs</dd></div>
+    </dl>
+    <p class="ui-tabs"><span class="is-on">Exports précédents</span></p>
+    <ul class="ui-sent">
+      {exports.map(([periode, etat]) => <li><span>{periode}</span><span>{etat}</span></li>)}
+    </ul>
+  </div>
+  <div class="ui-win-foot">
+    <span class="ui-btn ui-btn--text">Aperçu</span>
+    <span class="ui-btn ui-btn--primary">Exporter les écritures</span>
+  </div>
+</article>

@@ -7,7 +7,7 @@ import { join } from 'node:path';
 
 const source = process.argv[2];
 if (!source) { console.error('Usage : node tools/marque.mjs <dossier des logos>'); process.exit(1); }
-const sortie = new URL('../assets/img/', import.meta.url);
+const sortie = new URL('../public/assets/img/', import.meta.url);
 mkdirSync(sortie, { recursive: true });
 
 const PAON = '#007B8E';

@@ -1,0 +1,57 @@
+---
+// Un guide pratique, depuis src/content/guides/ : sommaire, texte, l’exemple tiré de la commande d’exemple,
+// puis la fonctionnalité liée et l’appel à la démo.
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import EnTetePage from '../../components/EnTetePage.astro';
+import AppelFinal from '../../components/AppelFinal.astro';
+import Etiquette from '../../components/documents/Etiquette.astro';
+import Cerfa from '../../components/documents/Cerfa.astro';
+import { lien } from '../../lib/chemins.mjs';
+import { prechargePhoto } from '../../lib/precharge.mjs';
+
+export async function getStaticPaths() {
+  const guides = await getCollection('guides');
+  return guides.map((g) => ({ params: { guide: g.id }, props: { g } }));
+}
+
+const { g } = Astro.props;
+const d = g.data;
+const { Content, headings } = await render(g);
+const sommaire = headings.filter((h) => h.depth === 2);
+const url = `/guides/${g.id}/`;
+const Exemple = d.exemple === 'etiquette' ? Etiquette : d.exemple === 'cerfa' ? Cerfa : null;
+const tailleHero = '(max-width: 720px) 67vw, 33vw';
+const precharge = await prechargePhoto(d.photos[0], tailleHero);
+---
+<Base titre={d.titre} description={d.description} url={url} ogTitre={d.h1} enTete="accueil" precharges={[precharge]}>
+  <EnTetePage slot="avant" url={url} h1={d.h1} accroche={d.accroche} sousTitre={d.sousTitre} couleur={d.couleur} photos={d.photos} tailleHero={tailleHero}
+    actions={[{ href: '#guide', texte: 'Lire le guide', primaire: true }, { href: lien(d.fonction[0]), texte: d.fonction[1] }]} />
+
+  <article id="guide" class="guide" aria-label={d.h1}>
+    <div class="grid">
+      <nav class="guide__sommaire" aria-labelledby="guide-sommaire">
+        <p class="guide__sommaire-titre" id="guide-sommaire">Dans ce guide</p>
+        <ol>{sommaire.map((h) => <li><a class="link" href={`#${h.slug}`}>{h.text}</a></li>)}</ol>
+      </nav>
+      <div class="guide__corps">
+        <Content />
+      </div>
+    </div>
+  </article>
+
+  {Exemple && (
+    <section id="exemple" class="vitrine guide__exemple" aria-labelledby="exemple-titre">
+      <div class="grid vitrine__grille">
+        <div class="vitrine__texte">
+          <h2 class="vitrine__titre titre-long" id="exemple-titre" data-reveal>L’exemple, tel qu’il sort de C’Claires</h2>
+          <p class="vitrine__note" data-reveal style="--i:1">Tiré de la commande d’exemple du site : fines de claire n° 3 du lot 2026-351-3-014, pour la Poissonnerie de la Halle, à Caen. Toutes les données sont fictives.</p>
+          <p class="guide__suite" data-reveal style="--i:2"><a class="button button--encre" href={lien(d.fonction[0])}>{d.fonction[1]}</a></p>
+        </div>
+        <div class="docs__stage vitrine__scene" data-reveal style="--i:2"><Exemple /></div>
+      </div>
+    </section>
+  )}
+
+  <AppelFinal texte="Ce document, C’Claires le tire de vos commandes : en 30 minutes, nous vous montrons les vôtres sortir du logiciel, avec vos articles et vos clients. Sans rien remplir à la main." />
+</Base>

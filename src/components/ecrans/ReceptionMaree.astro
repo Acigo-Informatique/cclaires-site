@@ -1,0 +1,26 @@
+---
+// La réception d’un achat de marée : chaque ligne crée son lot, qui garde l’espèce, la zone FAO et l’engin
+// de pêche jusqu’à l’étiquette. Les lots de la commande d’exemple de la page mareyage, achetés à la criée.
+interface Props { d: any; variante?: string }
+const lignes = [
+  { espece: 'Bar', latin: 'Dicentrarchus labrax', zone: '27.7.e', engin: 'Lignes et hameçons', poids: '42,5 kg', lot: '2026-350-011' },
+  { espece: 'Lieu jaune', latin: 'Pollachius pollachius', zone: '27.7.e', engin: 'Filets maillants', poids: '31,0 kg', lot: '2026-350-004' },
+  { espece: 'Sole', latin: 'Solea solea', zone: '27.7.d', engin: 'Chalut de fond', poids: '18,4 kg', lot: '2026-350-007' },
+];
+---
+<article class="ui-window" data-ui>
+  <div class="ui-win-head"><span>Réception R-26-0655, achat à la criée</span><span class="ui-pill ui-pill--done">Réceptionnée</span></div>
+  <div class="ui-win-body">
+    <p class="ui-win-note">Vente du mercredi 16 décembre. Chaque ligne crée son lot, qui garde son origine jusqu’à l’étiquette.</p>
+    <table>
+      <thead><tr><th>Espèce</th><th>Zone FAO</th><th class="c-opt">Engin</th><th class="r">Poids</th><th>Lot créé</th></tr></thead>
+      <tbody>
+        {lignes.map((l) => <tr><td>{l.espece}<br><i class="ui-latin">{l.latin}</i></td><td>{l.zone}</td><td class="c-opt">{l.engin}</td><td class="r">{l.poids}</td><td><span class="ui-tag">{l.lot}</span></td></tr>)}
+      </tbody>
+    </table>
+  </div>
+  <div class="ui-win-foot">
+    <span class="ui-win-total">3 lots créés, 91,9 kg</span>
+    <span class="ui-btn ui-btn--primary">Mettre en stock</span>
+  </div>
+</article>

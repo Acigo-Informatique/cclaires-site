@@ -1,0 +1,26 @@
+---
+// Un bon de livraison en poids variable : le poids estimé à la commande, le poids réel de la pesée et
+// l’écart, ligne par ligne. Commande d’exemple des moules ou de la marée.
+interface Props { d: any; variante?: string }
+const { d } = Astro.props;
+const kg = (t: string) => Number(t.replace(/[^\d,]/g, '').replace(',', '.'));
+const ecrit = (x: number, signe = false) => (signe && x > 0 ? '+' : '') + x.toFixed(1).replace('.', ',').replace('-', '−') + ' kg';
+const estime = d.lignes.reduce((s: number, l: any) => s + kg(l.poids), 0);
+const reel = d.lignes.reduce((s: number, l: any) => s + kg(l.poidsReel), 0);
+---
+<article class="ui-window" data-ui>
+  <div class="ui-win-head"><span>{d.bl}, {d.commande.client}</span><span class="ui-pill ui-pill--done">Pesé</span></div>
+  <div class="ui-win-body">
+    <table>
+      <thead><tr><th>Article</th><th class="r c-opt">Colis</th><th class="r">Poids estimé</th><th class="r">Poids réel</th><th class="r c-opt">Écart</th></tr></thead>
+      <tbody>
+        {d.lignes.map((l: any) => <tr><td>{l.bl}</td><td class="r c-opt">{l.colis}</td><td class="r">{l.poids}</td><td class="r"><b>{l.poidsReel}</b></td><td class="r c-opt">{ecrit(kg(l.poidsReel) - kg(l.poids), true)}</td></tr>)}
+      </tbody>
+    </table>
+    <p class="ui-win-note">Le poids réel passe sur le bon de livraison, puis sur la facture.</p>
+  </div>
+  <div class="ui-win-foot">
+    <span class="ui-win-total">{ecrit(reel)} réels pour {ecrit(estime)} estimés</span>
+    <span class="ui-btn ui-btn--primary">Valider le BL</span>
+  </div>
+</article>

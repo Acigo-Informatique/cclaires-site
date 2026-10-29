@@ -1,0 +1,28 @@
+---
+// Fiche palette du BL-26-02217 : composition, poids, SSCC en code GS1-128.
+import { lien } from '../../lib/chemins.mjs';
+const { class: classe = '', ...attributs } = Astro.props;
+---
+<article class:list={['docs__sheet ui-sheet ui-sheet--label', classe]} data-ui {...attributs}>
+  <div class="doc-top">
+    <div><p class="doc-org">Fiche palette</p><p class="doc-muted">Exploitation des Trois Claires</p></div>
+    <p class="pal-big">1/1</p>
+  </div>
+  <dl class="label-grid">
+    <dt>Client</dt><dd>Poissonnerie de la Halle, Caen</dd>
+    <dt>BL</dt><dd>BL-26-02217 du 18/12/2026</dd>
+    <dt>Type</dt><dd>80 × 120, hauteur 0,92 m</dd>
+    <dt>Colis</dt><dd>20</dd>
+    <dt>Poids net</dt><dd>98,0 kg</dd>
+    <dt>Poids brut</dt><dd>129,4 kg</dd>
+  </dl>
+  <table>
+    <thead><tr><th>Contenu</th><th class="r">Colis</th></tr></thead>
+    <tbody>
+      <tr><td>Fines de claire n° 3, 5 kg</td><td class="r">12</td></tr>
+      <tr><td>Spéciales de claire n° 2, 3 kg</td><td class="r">6</td></tr>
+      <tr><td>Moules de bouchot, 10 kg</td><td class="r">2</td></tr>
+    </tbody>
+  </table>
+  <div class="barcode"><img src={lien('/assets/img/gs1-palette.svg')} width="378" height="60" alt="Code-barres GS1-128 du SSCC de la palette" loading="lazy" decoding="async"><p>(00)320000120000014827</p></div>
+</article>

@@ -1,0 +1,15 @@
+---
+// Un emplacement à compléter à la main avant la mise en ligne : bien visible sur la page (style
+// .a-completer), repérable dans le source par son commentaire TODO-MANUEL et par son identifiant,
+// listé dans TODO-MANUEL.md. Ne jamais le remplacer par un contenu inventé.
+interface Props {
+  id: string;            // identifiant de TODO-MANUEL.md, ex. TEL-01
+  texte: string;         // ce qu’il faut mettre, précisément
+  enLigne?: boolean;     // dans une phrase ou une barre : <span> au lieu de <div>
+  class?: string;
+}
+const { id, texte, enLigne = false, class: classe = '' } = Astro.props;
+const Balise = enLigne ? 'span' : 'div';
+---
+<Fragment set:html={`<!-- TODO-MANUEL ${id} : ${texte.replace(/--/g, '—')} -->`} />
+<Balise class:list={['a-completer', { 'a-completer--en-ligne': enLigne }, classe]} data-todo={id}>[À COMPLÉTER : {texte}]<slot /></Balise>

@@ -1,9 +1,7 @@
-# Ce qui reste hors du site publié : outils de travail, notes, réglages locaux.
-tools
-node_modules
-package.json
-package-lock.json
+# Fichiers inutiles à la construction sur Vercel (seul dist/ est servi) : réglages et sorties locales.
 .taste-skill
 .claude
-README.md
-assets/img/photos/credits.json
+.agents
+skills-lock.json
+node_modules
+dist

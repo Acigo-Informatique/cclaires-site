@@ -1,0 +1,28 @@
+---
+// Ce que comprend l’offre, en lignes d’affiche (accueil, /tarifs/) : aucun montant (règle 2).
+// Les actions du pied se passent en contenu.
+interface Props { titre: string; id?: string }
+const { titre, id = 'offre' } = Astro.props;
+const offre = [
+  ['Abonnement', 'Tout le logiciel et l’application tablette, sans option, 2 utilisateurs inclus'],
+  ['Étiqueteuses', 'Les vôtres ou fournies par ACIGO, paramétrées et maintenues, chiffrées au devis'],
+  ['Support', '8 h par an, avec l’éditeur lui-même, à Saint-Lô'],
+  ['Formation', 'Sur place, chiffrée au devis selon votre équipe'],
+  ['Mises à jour', 'Comprises, et installées par le logiciel lui-même'],
+  ['Sauvegardes', 'Gérées par ACIGO, données hébergées en France'],
+];
+---
+<section id={id} class="modules offre" aria-labelledby={`${id}-titre`}>
+  <h2 class="offre__titre" id={`${id}-titre`} data-reveal>{titre}</h2>
+  <ul class="modules__list">
+    {offre.map(([nom, quoi], i) => (
+      <li data-reveal style={i ? `--i:${i}` : undefined}><span class="modules__name">{nom}</span><span class="modules__what">{quoi}</span></li>
+    ))}
+  </ul>
+  <div class="offre__pied grid">
+    <p class="offre__texte" data-reveal>Aucun module en option, aucune fonction réservée à une formule plus chère. Le prix dépend de deux choses : combien vous êtes et combien d’étiqueteuses tournent. Nous le chiffrons sur devis.</p>
+    <div class="offre__actions" data-reveal style="--i:1">
+      <slot />
+    </div>
+  </div>
+</section>

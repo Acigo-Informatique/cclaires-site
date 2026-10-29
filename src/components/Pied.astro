@@ -1,0 +1,53 @@
+---
+// Pied de page en tuiles : une phrase et l’éditeur, le plan du site par famille (métiers,
+// fonctionnalités, guides, entreprise, légal), la marque en grand, l’invitation à la démo, les crédits.
+import { groupe, page } from '../donnees/plan.mjs';
+import { lien } from '../lib/chemins.mjs';
+import reglages from '../../site.config.mjs';
+import Telephone from './Telephone.astro';
+
+interface Props { url: string }
+const { url } = Astro.props;
+const courant = (u: string) => (u === url ? 'page' : undefined);
+const familles = [
+  { titre: 'Métiers', pages: groupe('metiers').map((p) => ({ ...p, libelle: `Logiciel pour ${p.libelle.toLowerCase()}` })) },
+  { titre: 'Fonctionnalités', pages: [page('/fonctionnalites/'), ...groupe('fonctionnalites')].map((p) => p.url === '/fonctionnalites/' ? { ...p, libelle: 'Toutes les fonctionnalités' } : p) },
+  { titre: 'Guides', pages: [page('/guides/'), ...groupe('guides')].map((p) => p.url === '/guides/' ? { ...p, libelle: 'Tous les guides' } : p) },
+  { titre: 'Entreprise', pages: groupe('entreprise') },
+  { titre: 'Légal', pages: groupe('legal') },
+];
+const annee = new Date().getFullYear();
+---
+<footer class="foot">
+  <div class="foot__board">
+    <div class="tile tile--statement">
+      <p>Produire, tracer, vendre&nbsp;? <span translate="no">C’Claires</span>. Le logiciel de gestion des métiers de la mer.</p>
+      <p class="small">© {annee} ACIGO Informatique. Les documents montrés sur ce site sont des exemples&nbsp;: clients, numéros et agréments sont fictifs.</p>
+    </div>
+    <div class="tile tile--place">
+      <p><b>ACIGO Informatique</b><br>706 rue Dunant<br>50000 Saint-Lô</p>
+    </div>
+    <div class="tile tile--mail">
+      <p>Appeler ou écrire</p>
+      <p class="tile__contacts"><Telephone /><br><a class="link" href={`mailto:${reglages.email}`}>{reglages.email}</a></p>
+    </div>
+
+    <nav class="tile tile--plan" aria-label="Plan du site">
+      {familles.map((f, i) => (
+        <div class={`plan__famille plan__famille--${i + 1}`}>
+          <p class="tile__titre" id={`plan-${i + 1}`}>{f.titre}</p>
+          <ul class="nav-list" aria-labelledby={`plan-${i + 1}`}>
+            {f.pages.map((p) => <li><a class="link" href={lien(p.url)} aria-current={courant(p.url)}>{p.libelle}</a></li>)}
+          </ul>
+        </div>
+      ))}
+    </nav>
+
+    <div class="tile tile--mark" translate="no"><img src={lien('/assets/img/logo-blanc.svg')} width="652" height="200" alt="C’Claires" loading="lazy"></div>
+    <a class="tile tile--go" href={lien('/demo/')}>
+      <span>Réserver une démo</span>
+      <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M12 36 36 12M16 12h20v20" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="square"/></svg>
+    </a>
+    <p class="tile tile--credits">Photographies, en niveaux de gris et recadrées&nbsp;: <a href="https://commons.wikimedia.org/w/index.php?curid=157522886">« Claires ostréicoles et pont de la Seudre »</a>, <a href="https://commons.wikimedia.org/w/index.php?curid=157522575">« Tables ostréicoles près de La Tremblade »</a>, <a href="https://commons.wikimedia.org/w/index.php?curid=157522955">« Sillons de vasière et tables ostréicoles »</a>, <a href="https://commons.wikimedia.org/wiki/File:Paysage_fa%C3%A7onn%C3%A9_par_l%27ostr%C3%A9iculture_-_Parc_ostr%C3%A9icole_(Ifremer_00794-90550_-_51400).jpg">« Paysage façonné par l’ostréiculture »</a>, <a href="https://commons.wikimedia.org/wiki/File:Cri%C3%A9e_de_Boulogne-sur-Mer_(Ifremer_00555-66716_-_18992).jpg">« Criée de Boulogne-sur-Mer »</a>, <a href="https://commons.wikimedia.org/wiki/File:Moules_sur_bouchots_vers_Saint-Jacut-de-la-Mer_(Baie_de_l%27Arguenon)_(Ifremer_00770-88173_-_47295).jpg">« Moules sur bouchots vers Saint-Jacut-de-la-Mer »</a> et <a href="https://commons.wikimedia.org/wiki/File:Parcs_%C3%A0_moules_sur_bouchots_vers_Saint-Jacut-de-la-Mer_(Baie_de_l%27Arguenon)_(Ifremer_00770-88203_-_47348).jpg">« Parcs à moules sur bouchots vers Saint-Jacut-de-la-Mer »</a> par Olivier Dugornay, Ifremer&nbsp;; <a href="https://commons.wikimedia.org/wiki/File:Retour_de_p%C3%AAche_%C3%A0_Port-en-Bessin_(Normandie)_(Ifremer_00961-107298_-_56349).jpg">« Retour de pêche à Port-en-Bessin »</a> par Benjamin Simon, Ifremer&nbsp;;<a href="https://commons.wikimedia.org/w/index.php?curid=155278133">« Huîtres creuses fixées sur un rocher »</a> par Marie-Noëlle de Casamajor, Ifremer&nbsp;; <a href="https://commons.wikimedia.org/wiki/File:Tables_%C3%A0_hu%C3%AEtres_%C3%A0_l%27embouchure_de_la_Seudre_(Ifremer_00689-80156_-_32651).jpg">« Tables à huîtres à l’embouchure de la Seudre »</a> et <a href="https://commons.wikimedia.org/wiki/File:Bouchots_de_moules_%C3%A0_Agon-Coutainville_(Manche)_(Ifremer_00555-66662_-_17611).jpg">« Bouchots de moules à Agon-Coutainville »</a> par Stéphane Lesbats, Ifremer, toutes sous <a href="https://creativecommons.org/licenses/by/4.0/deed.fr">licence CC BY 4.0</a>&nbsp;; <a href="https://commons.wikimedia.org/w/index.php?curid=122475064">« Chalands ostréicoles au Château-d’Oléron »</a> par Jean-Pierre Bazard, <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.fr">licence CC BY-SA 4.0</a>&nbsp;; <a href="https://commons.wikimedia.org/wiki/File:Crassostrea_gigas_p1040848.jpg">« Crassostrea gigas »</a> par David Monniaux, <a href="https://creativecommons.org/licenses/by-sa/3.0/deed.fr">licence CC BY-SA 3.0</a>&nbsp;; <a href="https://commons.wikimedia.org/wiki/File:Arcachon,_parcs_%C3%A0_hu%C3%AEtres_-_btv1b53052528r.jpg">« Arcachon, parcs à huîtres »</a>, Agence Rol, domaine public. Carte de France&nbsp;: <a href="https://commons.wikimedia.org/wiki/File:Blank_France_map,_no_Departments.svg">Lokal_Profil</a>, domaine public. Images via Wikimedia Commons. Formulaire officiel CERFA n°&nbsp;15063*04, rempli avec des données d’exemple.</p>
+  </div>
+</footer>

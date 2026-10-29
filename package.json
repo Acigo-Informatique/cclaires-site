@@ -1,0 +1,15 @@
+{
+  "name": "cclaires-site",
+  "private": true,
+  "type": "module",
+  "description": "Site vitrine de C’Claires, construit par Astro en HTML statique",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "verifier": "node tools/verifier.mjs",
+    "construire": "astro build && node tools/verifier.mjs"
+  },
+  "dependencies": {
+    "astro": "7.4.1"
+  }
+}

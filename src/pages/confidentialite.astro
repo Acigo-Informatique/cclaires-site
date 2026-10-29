@@ -1,0 +1,52 @@
+---
+// Confidentialité : ce que devient une demande envoyée par le formulaire. Textes vérifiés le 20/10/2026 sur le RGPD,
+// le référentiel CNIL de gestion commerciale et la liste du Data Privacy Framework (TODO-MANUEL CONFID-01).
+// Reste marqué [À VÉRIFIER] : le transfert par Formspree, qui doit être remplacé (TODO-MANUEL FORM-03).
+import Base from '../layouts/Base.astro';
+import FilAriane from '../components/FilAriane.astro';
+import reglages from '../../site.config.mjs';
+import { lien } from '../lib/chemins.mjs';
+
+const url = '/confidentialite/';
+const v = '<span class="a-verifier">[À VÉRIFIER]</span>';
+---
+<Base
+  titre="Confidentialité | C’Claires"
+  description="Ce que devient votre demande de démo et de devis sur le site C’Claires : données collectées, finalité, durée de conservation, vos droits et absence de cookie."
+  url={url}
+>
+  <div class="page">
+    <div class="grid">
+      <FilAriane url={url} class="page__fil" />
+      <h1 class="page__title">Confidentialité</h1>
+      <div class="page__body">
+        <h2>Responsable du traitement</h2>
+        <p>ACIGO INFORMATIQUE, société à responsabilité limitée, 706 rue Dunant, 50000 Saint-Lô. Contact&nbsp;: <a class="link" href={`mailto:${reglages.email}`}>{reglages.email}</a>.</p>
+
+        <h2>Ce que le formulaire recueille</h2>
+        <p>Le formulaire de démo et de devis demande votre nom et votre prénom, votre entreprise, votre métier, votre téléphone et votre adresse e-mail, et, si vous les indiquez, le nombre d’utilisateurs et d’étiqueteuses, leur marque et votre message. Le site ne vous demande rien d’autre.</p>
+        <p>Le nom et le prénom, l’entreprise, le métier, le téléphone et l’e-mail sont nécessaires pour vous répondre&nbsp;: sans eux, nous ne pouvons pas traiter votre demande. Les autres champs sont facultatifs.</p>
+
+        <h2>Pourquoi</h2>
+        <p>Pour répondre à votre demande&nbsp;: préparer la démonstration, vous envoyer un devis et vous recontacter à leur sujet. Si vous ne devenez pas client, nous pouvons aussi vous recontacter ensuite au sujet de C’Claires. Vos réponses ne sont ni vendues ni cédées.</p>
+        <p>Base légale&nbsp;: les mesures précontractuelles prises à votre demande (article 6, paragraphe 1, point b du règlement général sur la protection des données), pour la démonstration et le devis&nbsp;; puis notre intérêt légitime à présenter nos logiciels aux professionnels de la conchyliculture et du mareyage (article 6, paragraphe 1, point f), pour ces nouvelles prises de contact. Vous pouvez vous y opposer à tout moment, simplement et sans frais, en écrivant à <a class="link" href={`mailto:${reglages.email}`}>{reglages.email}</a>&nbsp;; chacun de nos messages vous le rappelle.</p>
+
+        <h2>Qui les reçoit</h2>
+        <p>ACIGO Informatique seulement. Le formulaire passe par Formspree, Inc., un service d’envoi de formulaires établi aux États-Unis, qui reçoit la demande sur ses serveurs et nous la transmet par e-mail. Notre messagerie est hébergée par OVH, société française. <Fragment set:html={v} /></p>
+
+        <h2>Combien de temps</h2>
+        <p>Trois ans à compter de votre demande ou du dernier contact venant de vous, puis suppression. Si vous devenez client, vos données sont conservées pendant toute la relation commerciale, puis le temps imposé par nos obligations légales, notamment comptables.</p>
+
+        <h2>Vos droits</h2>
+        <p>Vous pouvez accéder à vos données, les faire rectifier ou effacer, en limiter l’usage et en demander la portabilité. Vous pouvez à tout moment vous opposer à ce que nous vous recontactions à des fins commerciales. Vous pouvez aussi nous dire ce que vous souhaitez que deviennent vos données après votre décès.</p>
+        <p>Écrivez-nous à <a class="link" href={`mailto:${reglages.email}`}>{reglages.email}</a>&nbsp;; nous répondons dans un délai d’un mois, prolongeable de deux mois si la demande est complexe, auquel cas nous vous en prévenons. Si vous estimez, après nous avoir contactés, que vos droits ne sont pas respectés, vous pouvez adresser une réclamation à la CNIL, sur <a class="link" href="https://www.cnil.fr/fr/plaintes">cnil.fr/fr/plaintes</a>.</p>
+
+        <h2>Cookies et mesure d’audience</h2>
+        <p>Le site ne dépose aucun cookie et n’utilise aucun outil de mesure d’audience. Comme pour tout site, notre hébergeur enregistre l’adresse IP des visiteurs dans ses journaux, pour la sécurité du service.</p>
+
+        <h2>Hébergement</h2>
+        <p>Le site est hébergé par GitHub, Inc. (GitHub Pages)&nbsp;; voir les <a class="link" href={lien('/mentions-legales/')}>mentions légales</a>.</p>
+      </div>
+    </div>
+  </div>
+</Base>

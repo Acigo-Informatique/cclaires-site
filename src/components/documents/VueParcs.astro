@@ -1,0 +1,35 @@
+---
+// Vue graphique des parcs de l’exploitation d’exemple, au 16/12/2026 : les claires et leur lot, la claire
+// C12 sélectionnée (le lot 2026-351-3-014 de la commande d’exemple, 28 jours d’affinage). Données fictives.
+const { class: classe = '', ...attributs } = Astro.props;
+const claires = [
+  { id: 'C10', lot: null, kg: null },
+  { id: 'C11', lot: '2026-340-2-003', kg: '1 200 kg' },
+  { id: 'C12', lot: '2026-351-3-014', kg: '400 kg', choisie: true },
+  { id: 'C13', lot: '2026-345-3-009', kg: '850 kg' },
+  { id: 'C14', lot: '2026-338-4-002', kg: '600 kg' },
+  { id: 'C15', lot: null, kg: null },
+];
+---
+<article class:list={['docs__sheet ui-window ui-parcs', classe]} data-ui {...attributs}>
+  <div class="ui-win-head"><span>Parcs de la Seudre, claires</span><span class="ui-win-meta">au 16/12/2026</span></div>
+  <div class="ui-win-body ui-parcs__corps">
+    <div class="ui-parcs__plan" role="img" aria-label="Plan de six claires : quatre occupées par un lot, la claire C12 sélectionnée">
+      {claires.map((c) => (
+        <div class:list={['ui-claire', { 'ui-claire--vide': !c.lot, 'is-choisie': c.choisie }]}>
+          <b>{c.id}</b>
+          <span>{c.lot ?? 'vide'}</span>
+          {c.kg && <span>{c.kg}</span>}
+        </div>
+      ))}
+    </div>
+    <dl class="ui-parcs__fiche">
+      <dt>Claire</dt><dd>C12</dd>
+      <dt>Lot</dt><dd>2026-351-3-014</dd>
+      <dt>Article</dt><dd>Huîtres creuses n° 3</dd>
+      <dt>Stock</dt><dd>400 kg</dd>
+      <dt>Entrée</dt><dd>18/11/2026</dd>
+      <dt>Affinage</dt><dd>28 jours</dd>
+    </dl>
+  </div>
+</article>

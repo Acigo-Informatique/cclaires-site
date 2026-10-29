@@ -1,0 +1,19 @@
+---
+// Traçabilité du lot 2026-351-3-014 : de la réception à chaque client livré, et le stock restant.
+const { class: classe = '', ...attributs } = Astro.props;
+---
+<article class:list={['docs__sheet ui-sheet ui-sheet--a4', classe]} data-ui {...attributs}>
+  <div class="doc-top">
+    <div><p class="doc-title">Traçabilité du lot 2026-351-3-014</p><p class="doc-muted">Fines de claire n° 3, 400 kg à l’entrée. De l’achat à la vente, ou de la vente à l’achat.</p></div>
+    <p class="doc-muted doc-date">Édité le 21/12/2026</p>
+  </div>
+  <div class="trace">
+    <div class="trace-step"><span class="trace-kind">Amont</span><div class="trace-node"><b>Réception R-26-0611 du 14/11/2026</b>Huîtres creuses n° 3, 400 kg, Parcs de la Seudre</div></div>
+    <div class="trace-step"><span class="trace-kind">Affinage</span><div class="trace-node"><b>Claire C12, du 18/11 au 16/12</b>28 jours</div></div>
+    <div class="trace-step"><span class="trace-kind">Lot</span><div class="trace-node trace-node--focus"><b>2026-351-3-014</b>Conditionné le 17/12/2026, 400 kg</div></div>
+    <div class="trace-step"><span class="trace-kind">Aval</span><div class="trace-node"><b>BL-26-02217, Poissonnerie de la Halle</b>12 colis, 60 kg</div></div>
+    <div class="trace-step"><span class="trace-kind">Aval</span><div class="trace-node"><b>BL-26-02221, Restaurant Le Bouchot</b>7 colis, 35 kg</div></div>
+    <div class="trace-step"><span class="trace-kind">Aval</span><div class="trace-node"><b>BL-26-02230, Marée d’Auge</b>12 colis, 60 kg</div></div>
+    <div class="trace-step"><span class="trace-kind">En stock</span><div class="trace-node"><b>Bassin B2</b>245 kg</div></div>
+  </div>
+</article>

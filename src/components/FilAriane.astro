@@ -1,0 +1,19 @@
+---
+// Fil d’Ariane, sur toutes les pages sauf l’accueil. Son JSON-LD BreadcrumbList est produit par
+// Base.astro à partir du même plan (src/donnees/plan.mjs).
+import { fil } from '../donnees/plan.mjs';
+import { lien } from '../lib/chemins.mjs';
+
+interface Props { url: string; class?: string }
+const { url, class: classe = '' } = Astro.props;
+const etapes = fil(url);
+---
+{etapes.length > 1 && (
+  <nav class:list={['fil', classe]} aria-label="Fil d’Ariane">
+    <ol>
+      {etapes.map((p, i) => i < etapes.length - 1
+        ? <li><a class="link" href={lien(p.url)}>{p.libelle}</a></li>
+        : <li aria-current="page">{p.libelle}</li>)}
+    </ol>
+  </nav>
+)}

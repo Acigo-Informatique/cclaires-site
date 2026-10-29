@@ -1,0 +1,64 @@
+---
+// Questions fréquentes, par thème. Un seul FAQPage reprend toutes les questions affichées.
+// Règles 1 et 2 : aucun prix, aucune fonction à venir annoncée (renvoi à la feuille de route).
+import Base from '../layouts/Base.astro';
+import EnTetePage from '../components/EnTetePage.astro';
+import Faq from '../components/Faq.astro';
+import AppelFinal from '../components/AppelFinal.astro';
+import { lien } from '../lib/chemins.mjs';
+import { prechargePhoto } from '../lib/precharge.mjs';
+import { questions as faqPage } from '../donnees/schemas.mjs';
+
+const url = '/faq/';
+const themes = [
+  { id: 'offre', titre: 'L’offre et le devis', questions: [
+    { q: 'Combien coûte C’Claires ?', r: '<p>Le prix dépend de votre installation : le nombre d’utilisateurs (2 sont inclus dans l’abonnement) et le nombre d’étiqueteuses. Décrivez votre activité dans la <a class="link" href="/demo/">demande de devis</a> : nous vous répondons avec un devis chiffré. Le détail de l’offre est sur la page <a class="link" href="/tarifs/">tarifs</a>.</p>' },
+    { q: 'Que comprend l’abonnement ?', r: '<p>Le logiciel complet avec 2 utilisateurs, le support (8 h par an), les mises à jour et les sauvegardes. Les étiqueteuses font partie de l’offre : celles que vous avez déjà ou celles que nous vous fournissons, paramétrées et maintenues, chiffrées au devis.</p>' },
+    { q: 'Y a-t-il des modules en option ?', r: '<p>Non : toutes les fonctions sont dans l’abonnement, quel que soit votre métier.</p>' },
+    { q: 'Peut-on essayer avant de s’engager ?', r: '<p>Oui. Après la démo de 30 minutes, nous vous ouvrons sur demande une version de test, pour voir ce que cela donne chez vous.</p>' },
+    { q: 'La formation est-elle comprise ?', r: '<p>Elle se fait sur place, avec votre équipe, et se chiffre au devis selon le nombre de personnes à former.</p>' },
+    { q: 'Combien de personnes peuvent l’utiliser ?', r: '<p>L’abonnement comprend 2 utilisateurs ; vous en ajoutez autant qu’il vous en faut, chiffrés dans le devis. Les comptes nominatifs et les comptes poste d’atelier se comptent à part, et un compte poste peut tourner sur plusieurs machines de l’atelier.</p>' },
+  ] },
+  { id: 'etiquettes', titre: 'Les étiquettes', questions: [
+    { q: 'Faut-il un logiciel d’étiquetage à part ?', r: '<p>Non. L’éditeur de modèles est intégré : textes, variables du lot et de l’article, et tous les codes-barres 1D et 2D (EAN-13, GS1-128, Code 128, QR code, DataMatrix). Les étiquettes s’impriment depuis la commande ou le bon de livraison, en 3 clics.</p>' },
+    { q: 'Quelles étiqueteuses sont prises en charge ?', r: '<p>Zebra, Toshiba et les autres marques. Une même impression peut partir sur plusieurs étiqueteuses à la fois, avec une numérotation continue ; toute réimpression demande un motif, consigné au journal des impressions.</p>' },
+    { q: 'Les étiquettes portent-elles les mentions obligatoires ?', r: '<p>Les modèles disposent des variables de la réglementation : marque d’identification, espèce, zone de production, méthode de production, date de conditionnement, numéro de lot. Voir notre guide des <a class="link" href="/guides/mentions-obligatoires-etiquette-sanitaire/">mentions obligatoires de l’étiquette sanitaire</a>.</p>' },
+  ] },
+  { id: 'factures', titre: 'Les factures et la comptabilité', questions: [
+    { q: 'Êtes-vous prêts pour la facture électronique ?', r: '<p>Prêt pour la réforme : la connexion à une plateforme agréée est en cours, et elle sera livrée avant votre échéance. <a class="link" href="/fonctionnalites/facture-electronique/">Où en est la facture électronique</a></p>' },
+    { q: 'Les écritures passent-elles dans notre logiciel comptable ?', r: '<p>Elles sont exportées au format de votre logiciel comptable, Pennylane et les autres : vous les importez ensuite dans votre comptabilité.</p>' },
+    { q: 'Peut-on facturer chaque client à son rythme ?', r: '<p>Oui : au jour, au BL ou à la fréquence convenue avec lui. Pour la grande distribution, les factures et les ordres de transport s’échangent en EDI.</p>' },
+  ] },
+  { id: 'installation', titre: 'Les données et l’installation', questions: [
+    { q: 'Où sont hébergées mes données ?', r: '<p>En France, chez l’hébergeur Nat-Tech, et nous gérons nous-mêmes les sauvegardes. Chaque entreprise cliente a sa propre base, séparée de celles des autres.</p>' },
+    { q: 'Sur quels postes s’installe C’Claires ?', r: '<p>Sur les postes Windows du bureau et de l’atelier, ou sur un serveur TSE : à vous de choisir. Au parc, l’application tablette prend le relais, sur Android. Chaque poste se connecte au serveur central hébergé en France, et les étiquettes s’impriment en local, sur les étiqueteuses du poste, même quand la connexion flanche.</p>' },
+    { q: 'Peut-on travailler au parc, sans réseau ?', r: '<p>Oui. L’application tablette de production, sur Android, est comprise dans l’abonnement : vue des parcs, actions au parc (mises à l’eau, transferts, tris, et celles que vous définissez vous-même), planifiées par lot et même par poche. Elle fonctionne hors ligne et se synchronise toute seule dès que le réseau revient.</p>' },
+    { q: 'Comment se font les mises à jour ?', r: '<p>Un seul installateur pose le logiciel et son service d’impression, puis C’Claires installe lui-même ses mises à jour. Elles sont comprises dans l’abonnement.</p>' },
+  ] },
+  { id: 'metiers', titre: 'Vos métiers', questions: [
+    { q: 'C’Claires suit-il les parcs et les claires ?', r: '<p>Oui : l’éditeur de parcs dessine vos concessions, vos claires et vos tables, et la vue graphique montre le lot et le stock de chaque claire à la date voulue. Voir la <a class="link" href="/fonctionnalites/parcs-claires/">gestion des parcs et des claires</a>.</p>' },
+    { q: 'Le poids variable est-il géré ?', r: '<p>Oui : poids estimé à la commande, poids réel à la pesée, et c’est le poids réel qui passe sur le BL et la facture. Voir le <a class="link" href="/logiciel-mytilicole/">logiciel mytilicole</a>.</p>' },
+    { q: 'Les étiquettes de marée portent-elles la zone FAO et l’engin ?', r: '<p>Oui : ces mentions sont portées par l’article et s’impriment sur l’étiquette, avec la dénomination commerciale et le nom scientifique. Voir le <a class="link" href="/logiciel-mareyage/">logiciel de mareyage</a>.</p>' },
+    { q: 'Nos clients peuvent-ils commander en ligne ?', r: '<p>Pas encore : la commande en ligne par vos clients figure sur notre <a class="link" href="/feuille-de-route/">feuille de route</a>. Aujourd’hui, la commande se pré-remplit dans C’Claires d’après les habitudes de chaque lieu de livraison, et les promotions du jour sont proposées dès la saisie.</p>' },
+  ] },
+];
+const toutes = themes.flatMap((t) => t.questions);
+const tailleHero = '(max-width: 720px) 67vw, 33vw';
+const precharge = await prechargePhoto('huitre-creuse', tailleHero);
+---
+<Base
+  titre="Questions fréquentes sur C’Claires"
+  description="Les réponses aux questions sur C’Claires : prix et devis, étiquettes sanitaires, facture électronique, hébergement des données, postes et utilisateurs."
+  url={url}
+  enTete="accueil"
+  schemas={[faqPage(toutes, url)]}
+  precharges={[precharge]}
+>
+  <EnTetePage slot="avant" url={url} h1="Vos questions sur C’Claires" accroche={['Une question ?']} couleur="tilleul" photos={['huitre-creuse', 'tables-seudre', 'bouchots-agon', 'criee-boulogne']} tailleHero={tailleHero}
+    sousTitre="La réponse est sûrement ici. L’offre, les étiquettes, les factures, vos données, le travail au parc et vos métiers : ce que nous demandent les ostréiculteurs, les mytiliculteurs et les mareyeurs."
+    actions={[{ href: lien('/demo/'), texte: 'Poser la vôtre pendant une démo', primaire: true }, { href: '#offre', texte: 'Commencer par l’offre' }]} />
+
+  {themes.map((t) => <Faq questions={t.questions} titre={t.titre} id={t.id} groupe />)}
+
+  <AppelFinal texte="Une question qui n’est pas ici ? Posez-la pendant une démo de 30 minutes : nous vous répondons avec vos articles et vos clients sous les yeux." />
+</Base>

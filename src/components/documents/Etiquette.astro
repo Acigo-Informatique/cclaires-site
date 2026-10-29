@@ -1,0 +1,36 @@
+---
+// Étiquette sanitaire de la commande d’exemple (lot 2026-351-3-014), telle que l’imprime une
+// étiqueteuse thermique : marque d’identification, espèce, date de conditionnement, lot, zone.
+import { lien } from '../../lib/chemins.mjs';
+const { class: classe = '', ...attributs } = Astro.props;
+---
+<article class:list={['docs__sheet ui-etiq', classe]} data-ui {...attributs}>
+  <div class="etiq-haut">
+    <div>
+      <p class="etiq-nom">EXPLOITATION DES TROIS CLAIRES</p>
+      <p><i>Ostréiculteur</i></p>
+      <p>12 chemin des Claires, 17320 Marennes-Hiers-Brouage</p>
+      <p>Tél. 05 46 00 00 00</p>
+    </div>
+    <p class="etiq-ovale"><span>FR</span><span>17.999.001</span><span>UE</span></p>
+  </div>
+  <div class="etiq-milieu">
+    <div class="etiq-gauche">
+      <p class="etiq-appellation">Huîtres fines de claire<br>élevées en France</p>
+      <div class="etiq-client">
+        <p class="etiq-calibre"><small>N°</small>3</p>
+        <p><b>POISSONNERIE DE LA HALLE</b><br>14000 CAEN</p>
+      </div>
+      <p>Poids net à l’emballage : <b>5 kg</b><br>Nombre minimum : <b>58 huîtres</b></p>
+    </div>
+    <div class="etiq-droite">
+      <p class="etiq-espece">HUÎTRES CREUSES</p>
+      <p class="etiq-latin">Magallana gigas</p>
+      <p class="etiq-petit">DATE DE CONDITIONNEMENT</p>
+      <p class="etiq-date">17/12/26</p>
+      <p class="etiq-petit">Lot 2026-351-3-014<br>Zone : Marennes-Oléron</p>
+    </div>
+  </div>
+  <p class="etiq-vivants">CES ANIMAUX DOIVENT ÊTRE VIVANTS AU MOMENT DE L’ACHAT</p>
+  <div class="etiq-code"><img src={lien('/assets/img/gs1-etiquette.svg')} width="378" height="60" alt="Code-barres GS1-128 : GTIN, date de conditionnement et lot" loading="lazy" decoding="async"><p>(01)02000012345678(13)261217(10)2026-351-3-014</p></div>
+</article>

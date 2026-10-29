@@ -1,0 +1,89 @@
+---
+// Gabarit de toutes les pages : <head> (titre, description, canonique, robots, Open Graph, polices,
+// JSON-LD), lien d’évitement, en-tête, <main id="contenu">, pied de page, script.
+// L’indexation suit un seul réglage : `indexable` dans site.config.mjs.
+import '../styles/site.css';
+import reglages from '../../site.config.mjs';
+import { lien, absolu, sousDossier, prefixer } from '../lib/chemins.mjs';
+import { fil } from '../donnees/plan.mjs';
+import { organisation, siteWeb, filAriane } from '../donnees/schemas.mjs';
+import { finir, typographier } from '../lib/typographie.mjs';
+import EnTete from '../components/EnTete.astro';
+import Pied from '../components/Pied.astro';
+import Finir from '../components/Finir.astro';
+
+interface Precharge { href?: string; imagesrcset?: string; imagesizes?: string; type?: string }
+interface Props {
+  titre: string;              // balise <title>, unique
+  description: string;        // 150 à 160 caractères, unique
+  url: string;                // chemin de la page, ex. '/logiciel-ostreicole/'
+  ogTitre?: string;
+  ogImage?: string;           // chemin d’une image 1200 × 630 dans public/
+  ogImageAlt?: string;
+  schemas?: object[];         // JSON-LD propre à la page
+  enTete?: 'page' | 'accueil';// 'accueil' : l’en-tête est posé par la page, sur sa mosaïque
+  indexable?: boolean;        // false pour la page 404
+  precharges?: Precharge[];   // image du premier écran
+}
+const {
+  titre: titreBrut, description: descriptionBrute, url, ogTitre = titreBrut.replace(/\s*\|\s*C’Claires$/, ''),
+  ogImage = '/assets/img/og.png', ogImageAlt = 'Produire, tracer, vendre ? C’Claires : vues aériennes de tables ostréicoles et logo C’Claires',
+  schemas = [], enTete = 'page', indexable = true, precharges = [],
+} = Astro.props;
+
+const titre = typographier(titreBrut);
+const description = typographier(descriptionBrute);
+const robots = indexable && reglages.indexable && !sousDossier ? 'index, follow, max-image-preview:large' : 'noindex';
+// le contenu de la page, rendu ici pour la dernière main : typographie française, nom de marque
+// protégé de la traduction automatique (src/lib/typographie.mjs)
+const avant = Astro.slots.has('avant') ? prefixer(finir(await Astro.slots.render('avant'))) : '';
+const contenu = prefixer(finir(await Astro.slots.render('default')));
+const etapes = fil(url);
+const graphe = [organisation, ...(url === '/' ? [siteWeb] : []), ...(etapes.length > 1 ? [filAriane(etapes)] : []), ...schemas];
+const jsonld = JSON.stringify({ '@context': 'https://schema.org', '@graph': graphe }, null, 1).replace(/</g, '\\u003c');
+const audience = reglages.audience;
+---
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{titre}</title>
+  <meta name="description" content={description}>
+  <link rel="canonical" href={absolu(url)}>
+  <meta name="robots" content={robots}>
+  <meta name="theme-color" content="#ffffff">
+  <meta name="color-scheme" content="light">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:site_name" content="C’Claires">
+  <meta property="og:title" content={ogTitre}>
+  <meta property="og:description" content={description}>
+  <meta property="og:url" content={absolu(url)}>
+  <meta property="og:image" content={absolu(ogImage)}>
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content={ogImageAlt}>
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href={lien('/favicon.svg')} type="image/svg+xml">
+  <link rel="icon" href={lien('/favicon-32.png')} sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href={lien('/apple-touch-icon.png')}>
+  <link rel="manifest" href={lien('/site.webmanifest')}>
+  <link rel="preload" href={lien('/assets/fonts/barlow-condensed-500.woff2')} as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href={lien('/assets/fonts/cairo-variable.woff2')} as="font" type="font/woff2" crossorigin>
+  {precharges.map((p) => <link rel="preload" as="image" fetchpriority="high" {...p}>)}
+  <script is:inline>document.documentElement.classList.add('js');requestAnimationFrame(function(){document.documentElement.classList.add('entree')})</script>
+  <script is:inline type="application/ld+json" set:html={jsonld}></script>
+  {!audience && <Fragment set:html="<!-- TODO-MANUEL AUDIENCE-01 : mesure d’audience sans cookie désactivée ; la déclarer dans site.config.mjs (audience), puis l’ajouter à la CSP de vercel.json -->" />}
+  {audience?.fournisseur === 'plausible' && <script is:inline defer data-domain={audience.domaine} src={audience.script}></script>}
+  {audience?.fournisseur === 'matomo' && <script is:inline defer src={lien('/assets/js/matomo.js')} data-url={audience.url} data-site={audience.site}></script>}
+</head>
+<body>
+  <a class="skip" href="#contenu">Aller au contenu</a>
+  {enTete === 'page' && <header class="page-head"><Finir><EnTete url={url} /></Finir></header>}
+  <Fragment set:html={avant} />
+  <main id="contenu" set:html={contenu} />
+  <Finir><Pied url={url} /></Finir>
+  <script>import '../scripts/site.js';</script>
+</body>
+</html>

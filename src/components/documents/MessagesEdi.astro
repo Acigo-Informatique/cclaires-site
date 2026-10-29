@@ -1,0 +1,24 @@
+---
+// Les messages EDI d’une journée : factures (INVOIC) et ordres de transport (IFTMIN), seuls échanges
+// EDI annoncés par le site. Centrales, numéros et tournées fictifs.
+const { class: classe = '', ...attributs } = Astro.props;
+const messages = [
+  { type: 'INVOIC', objet: 'Facture F-26-01968', dest: 'Centrale Marée Ouest', etat: 'transmis' },
+  { type: 'IFTMIN', objet: 'Ordre de transport, tournée Calvados', dest: 'Transports du Bessin', etat: 'transmis' },
+  { type: 'INVOIC', objet: 'Facture F-26-01969', dest: 'Centrale Littoral Nord', etat: 'transmis' },
+  { type: 'IFTMIN', objet: 'Ordre de transport, tournée Nord', dest: 'Transports du Bessin', etat: 'transmis' },
+  { type: 'INVOIC', objet: 'Facture F-26-01970', dest: 'Centrale Marée Ouest', etat: 'en attente', attente: true },
+];
+---
+<article class:list={['docs__sheet ui-window ui-edi', classe]} data-ui {...attributs}>
+  <div class="ui-win-head"><span>Messages EDI</span><span class="ui-win-meta">jeudi 17 décembre</span></div>
+  <div class="ui-list" role="table" aria-label="Messages EDI du jeudi 17 décembre">
+    <div class="ui-list-row ui-list-row--head" role="row"><span role="columnheader">Message</span><span role="columnheader">Objet</span><span class="c-opt" role="columnheader">Destinataire</span><span class="r" role="columnheader">État</span></div>
+    {messages.map((m) => (
+      <div class="ui-list-row" role="row">
+        <span role="cell"><span class="ui-tag">{m.type}</span></span><span role="cell">{m.objet}</span><span class="c-opt" role="cell">{m.dest}</span>
+        <span class:list={['r ui-edi__etat', { 'is-attente': m.attente }]} role="cell">{m.etat}</span>
+      </div>
+    ))}
+  </div>
+</article>

@@ -1,0 +1,83 @@
+---
+// Gabarit d’une page fonctionnalité, d’après un fichier de src/donnees/fonctions/ : premier écran, la
+// pièce que C’Claires tire de la commande d’exemple (fragment d’interface), les étapes, les écrans, les
+// métiers concernés et le guide lié, les questions, l’appel final. La question (accroche) ouvre la page,
+// l’appel final la referme sur « Bref : C’Claires. ».
+import Base from '../layouts/Base.astro';
+import EnTetePage from './EnTetePage.astro';
+import Ecran from './Ecran.astro';
+import Faq from './Faq.astro';
+import AppelFinal from './AppelFinal.astro';
+import Etiquette from './documents/Etiquette.astro';
+import BonLivraison from './documents/BonLivraison.astro';
+import FichePalette from './documents/FichePalette.astro';
+import Tracabilite from './documents/Tracabilite.astro';
+import VueParcs from './documents/VueParcs.astro';
+import Facture from './documents/Facture.astro';
+import MessagesEdi from './documents/MessagesEdi.astro';
+import { lien } from '../lib/chemins.mjs';
+import { page } from '../donnees/plan.mjs';
+import { prechargePhoto } from '../lib/precharge.mjs';
+import { questions as faqPage } from '../donnees/schemas.mjs';
+
+interface Props { f: any }
+const { f } = Astro.props;
+const FRAGMENTS: Record<string, any> = { etiquette: Etiquette, bl: BonLivraison, palette: FichePalette, trace: Tracabilite, parcs: VueParcs, facture: Facture, edi: MessagesEdi };
+const Piece = FRAGMENTS[f.vitrine.fragment];
+const metiers = f.metiers.map((url: string) => page(url));
+const tailleHero = '(max-width: 720px) 67vw, 33vw';
+const precharge = await prechargePhoto(f.photos[0], tailleHero);
+---
+<Base titre={f.titre} description={f.description} url={f.url} ogTitre={f.h1} enTete="accueil"
+  schemas={f.faq?.length ? [faqPage(f.faq, f.url)] : []} precharges={[precharge]}>
+  <EnTetePage slot="avant" url={f.url} h1={f.h1} accroche={f.accroche} sousTitre={f.sousTitre} couleur={f.couleur} photos={f.photos} tailleHero={tailleHero}
+    actions={[{ href: lien('/demo/'), texte: 'Réserver ma démo de 30 minutes', primaire: true }, { href: '#vitrine', texte: f.lienVitrine }]} />
+
+  <section id="vitrine" class="vitrine" aria-labelledby="vitrine-titre">
+    <div class="grid vitrine__grille">
+      <div class="vitrine__texte">
+        <h2 class="vitrine__titre titre-long" id="vitrine-titre" data-reveal>{f.vitrine.titre}</h2>
+        <ul class="vitrine__points">
+          {f.vitrine.points.map((p: string, i: number) => <li data-reveal style={`--i:${i + 1}`}>{p}</li>)}
+        </ul>
+        {f.vitrine.note && <p class="vitrine__note" data-reveal style="--i:4" set:html={f.vitrine.note} />}
+      </div>
+      <div class="docs__stage vitrine__scene" data-reveal style="--i:2">
+        <Piece />
+      </div>
+    </div>
+  </section>
+
+  <section id="etapes" class={`etapes etapes--${f.couleur}`} aria-labelledby="etapes-titre">
+    <h2 class="etapes__titre titre-long" id="etapes-titre" data-reveal>{f.etapes.titre}</h2>
+    <ol class="etapes__liste">
+      {f.etapes.items.map((e: string, i: number) => <li data-reveal style={`--i:${i}`}>{e}</li>)}
+    </ol>
+    {f.etapes.note && <p class="etapes__note" data-reveal>{f.etapes.note}</p>}
+  </section>
+
+  {f.captures?.length > 0 && (
+    <section id="ecrans" class="ecrans" aria-labelledby="ecrans-titre">
+      <h2 class="ecrans__titre" id="ecrans-titre" data-reveal>{f.capturesTitre ?? 'À l’écran'}</h2>
+      <div class="grid ecrans__grille">
+        {f.captures.map((c: any) => <Ecran class="ecrans__capture" {...c} />)}
+      </div>
+    </section>
+  )}
+
+  <section id="metiers-concernes" class="liens-metiers" aria-labelledby="metiers-titre">
+    <h2 class="liens-metiers__titre" id="metiers-titre" data-reveal>{metiers.length > 1 ? 'Pour les métiers de la mer' : `Pour les ${metiers[0].libelle.toLowerCase()}`}</h2>
+    <ul class="liens-metiers__liste">
+      {metiers.map((m: any) => (
+        <li class={`liens-metiers__metier liens-metiers__metier--${m.couleur}`}>
+          <a href={lien(m.url)}><span class="liens-metiers__nom">{m.fil}</span><span class="liens-metiers__resume">{m.resume}</span></a>
+        </li>
+      ))}
+    </ul>
+    {f.guide && <p class="liens-metiers__guide" data-reveal>À lire aussi&nbsp;: <a class="link" href={lien(f.guide[0])}>{f.guide[1]}</a></p>}
+  </section>
+
+  {f.faq?.length > 0 && <Faq questions={f.faq} />}
+
+  <AppelFinal titre={f.cta.titre} texte={f.cta.texte} />
+</Base>
