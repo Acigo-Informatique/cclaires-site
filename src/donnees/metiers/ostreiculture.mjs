@@ -6,14 +6,14 @@ export default {
   url: '/logiciel-ostreicole/',
   titre: 'Logiciel ostréicole : gestion et étiquettes | C’Claires',
   description: 'Logiciel ostréicole C’Claires : parcs et claires, lots suivis de la claire à la bourriche, étiquettes sanitaires en 3 clics, palettes SSCC et factures.',
-  ogTitre: 'Le logiciel ostréicole, de la claire à la facture',
+  ogTitre: 'Le logiciel ostréicole, de la claire au camion',
   audience: 'Ostréiculteurs',
   schema: 'Logiciel de gestion pour ostréiculteurs : parcs et claires, lots suivis de la mise à l’eau à la bourriche, étiquettes sanitaires imprimées en 3 clics depuis la commande, palettes et SSCC, traçabilité, bons de livraison et factures.',
   couleur: 'tilleul',
   photos: ['parcs-tremblade', 'claires-seudre'],
-  h1: 'Le logiciel ostréicole, de la claire à la facture',
-  sousTitre: 'Parcs, claires, lots, étiquettes sanitaires et factures dans un seul logiciel : vous saisissez la commande, C’Claires suit le lot jusqu’au client.',
-  lienParcours: 'Voir une commande d’huîtres traverser le logiciel',
+  h1: 'Le logiciel ostréicole, de la claire au camion',
+  sousTitre: 'Parcs et claires, affinage, étiquettes sanitaires, palettes et factures dans un seul logiciel. Vous saisissez la commande, le lot suit tout seul jusqu’au client, et la pointe de décembre se passe au quai, pas au bureau.',
+  lienParcours: 'Faire partir une commande d’huîtres',
 
   douleurs: {
     titre: 'En pleine saison, le lot se perd entre la claire et le camion',
@@ -27,7 +27,7 @@ export default {
   },
 
   benefices: {
-    titre: 'Ce que C’Claires change dans l’exploitation',
+    titre: 'Ce qui change, de la claire à l’expédition',
     items: [
       {
         titre: 'Vos parcs et vos claires, à jour sans carnet',
@@ -57,8 +57,8 @@ export default {
         },
       },
       {
-        titre: 'Des palettes composées, le SSCC attribué',
-        texte: 'Pour la grande distribution ou le transporteur, les colis du BL se répartissent en palettes. Chaque palette reçoit son SSCC à l’enregistrement et son étiquette GS1 s’imprime au quai.',
+        titre: 'Les palettes de la grande distribution, sans tableur',
+        texte: 'Pour la centrale ou le transporteur, les colis du BL se répartissent en palettes. Chaque palette reçoit son SSCC à l’enregistrement et son étiquette GS1 s’imprime au quai : elle part avec ce que la centrale demande.',
         lien: ['/fonctionnalites/palettisation-sscc/', 'La palettisation et le SSCC'],
       },
     ],
@@ -66,7 +66,7 @@ export default {
 
   parcours: {
     donnees: huitres,
-    titre: ['Une commande d’huîtres,', 'de la claire à la facture'],
+    titre: ['Une commande d’huîtres,', 'en sept clics'],
     intro: 'Faites avancer la commande d’exemple : des fines de claire n° 3 du lot 2026-351-3-014, qui partent vendredi pour Caen. Sept clics pour tout le parcours, dont trois pour les étiquettes, à l’étape 3.',
   },
 
@@ -95,6 +95,6 @@ export default {
 
   cta: {
     titre: 'Montrez-nous comment partent vos bourriches',
-    texte: 'En 30 minutes, nous vous montrons le même parcours avec vos articles, vos claires et vos clients.',
+    texte: 'En 30 minutes, nous faisons partir une de vos commandes dans C’Claires, avec vos articles, vos claires et vos clients.',
   },
 };

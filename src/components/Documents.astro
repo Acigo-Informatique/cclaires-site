@@ -11,8 +11,8 @@ import Cerfa from './documents/Cerfa.astro';
 
 interface Props { titre?: string; note?: string }
 const {
-  titre = 'Des étiquettes et des documents prêts pour le contrôle',
-  note = 'Chaque document part de la même commande, sans ressaisie : mêmes lots, mêmes poids, mêmes numéros. Choisissez-en un pour le voir tel qu’il sort.',
+  titre = 'Cinq documents, une seule saisie',
+  note = 'Chaque document part de la même commande : mêmes lots, mêmes poids, mêmes numéros. Pas un chiffre qui diffère entre l’étiquette et la facture le jour du contrôle. Choisissez-en un pour le voir tel qu’il sort.',
 } = Astro.props;
 
 const documents = [

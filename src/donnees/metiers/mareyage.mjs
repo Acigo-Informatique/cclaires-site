@@ -12,8 +12,8 @@ export default {
   couleur: 'noir',
   photos: ['port-en-bessin', 'criee-boulogne'],
   h1: 'Le logiciel de mareyage, de la criée au camion',
-  sousTitre: 'Achat le matin, tri et mise en caisse, camion le soir : C’Claires enchaîne achat, vente, étiquette et facture sans ressaisie, et chaque lot garde son origine.',
-  lienParcours: 'Voir une commande de marée traverser le logiciel',
+  sousTitre: 'Achat le matin, mise en caisse, camion le soir : achat, vente, étiquette et facture s’enchaînent sans ressaisie, et chaque lot garde son origine, sa zone FAO et son engin jusqu’au client.',
+  lienParcours: 'Faire partir une commande de marée',
 
   douleurs: {
     titre: 'Entre la criée et le camion, pas de temps pour la ressaisie',
@@ -27,7 +27,7 @@ export default {
   },
 
   benefices: {
-    titre: 'Ce que C’Claires change à l’atelier de marée',
+    titre: 'Ce qui change à l’atelier de marée',
     items: [
       {
         titre: 'Chaque lot garde son origine',
@@ -94,7 +94,7 @@ export default {
   ],
 
   cta: {
-    titre: 'Montrez-nous comment partent vos caisses',
-    texte: 'En 30 minutes, nous vous montrons le même parcours avec vos espèces, vos achats et vos clients.',
+    titre: 'Du bon d’achat au camion, en 30 minutes',
+    texte: 'Nous suivons devant vous un achat du matin jusqu’à l’étiquette, la palette et la facture, avec vos espèces et vos clients.',
   },
 };

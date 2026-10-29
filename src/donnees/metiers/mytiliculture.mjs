@@ -12,8 +12,8 @@ export default {
   couleur: 'ciel',
   photos: ['parcs-moules-saint-jacut', 'bouchots-agon'],
   h1: 'Pêchées le matin, livrées le soir, facturées au juste poids',
-  sousTitre: 'C’Claires suit chaque pêche de moules jusqu’au client : un lot par pêche, le poids réel relevé à la pesée, l’étiquette et la facture sans ressaisie.',
-  lienParcours: 'Voir une commande de moules traverser le logiciel',
+  sousTitre: 'Un lot par pêche, le poids réel relevé à la pesée, l’étiquette de chaque sac en 3 clics et la facture au juste poids. La grande distribution, elle, reçoit ses palettes SSCC et ses factures en EDI.',
+  lienParcours: 'Faire partir une commande de moules',
 
   douleurs: {
     titre: 'La moule n’attend pas, la facture non plus',
@@ -27,7 +27,7 @@ export default {
   },
 
   benefices: {
-    titre: 'Ce que C’Claires change dans votre journée',
+    titre: 'Ce qui change entre la pêche et le camion',
     items: [
       {
         titre: 'Un lot par pêche, numéroté seul',
@@ -94,7 +94,7 @@ export default {
   ],
 
   cta: {
-    titre: 'Montrez-nous comment partent vos moules',
-    texte: 'En 30 minutes, nous vous montrons le même parcours avec vos articles, vos pesées et vos clients.',
+    titre: 'Une pêche, une pesée, une facture juste',
+    texte: 'En 30 minutes, nous suivons une commande de moules comme les vôtres, de la pesée à la facture, avec vos articles et vos clients.',
   },
 };

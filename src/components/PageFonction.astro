@@ -30,7 +30,7 @@ const precharge = await prechargePhoto(f.photos[0], tailleHero);
 <Base titre={f.titre} description={f.description} url={f.url} ogTitre={f.h1} enTete="accueil"
   schemas={f.faq?.length ? [faqPage(f.faq, f.url)] : []} precharges={[precharge]}>
   <EnTetePage slot="avant" url={f.url} h1={f.h1} sousTitre={f.sousTitre} couleur={f.couleur} photos={f.photos} tailleHero={tailleHero}
-    actions={[{ href: lien('/demo/'), texte: 'Réserver une démo de 30 minutes', primaire: true }, { href: '#vitrine', texte: f.lienVitrine }]} />
+    actions={[{ href: lien('/demo/'), texte: 'Réserver ma démo de 30 minutes', primaire: true }, { href: '#vitrine', texte: f.lienVitrine }]} />
 
   <section id="vitrine" class="vitrine" aria-labelledby="vitrine-titre">
     <div class="grid vitrine__grille">
