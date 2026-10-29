@@ -1,19 +1,20 @@
 // Page « Logiciel mytilicole » (requête principale : logiciel mytiliculture). Règle 1 : seulement des
-// fonctions livrées, au présent. Les captures sont des emplacements à compléter (TODO-MANUEL.md).
+// fonctions livrées, au présent. La question du métier ouvre la page, l’appel final la referme.
 import moules from '../parcours/moules.mjs';
 
 export default {
   url: '/logiciel-mytilicole/',
   titre: 'Logiciel mytiliculture : moules au poids réel | C’Claires',
   description: 'Logiciel de mytiliculture C’Claires : un lot par pêche, poids estimé puis réel, étiquettes sanitaires en 3 clics, palettes SSCC et factures au juste poids.',
-  ogTitre: 'Pêchées le matin, livrées le soir, facturées au juste poids',
+  ogTitre: 'Elle pèse combien, cette pêche ? C’Claires.',
   audience: 'Mytiliculteurs',
   schema: 'Logiciel de gestion pour mytiliculteurs : un lot par pêche, poids estimé à la commande et poids réel à la pesée, étiquettes sanitaires en 3 clics, palettes et SSCC, factures et ordres de transport en EDI.',
   couleur: 'ciel',
   photos: ['parcs-moules-saint-jacut', 'bouchots-agon'],
-  h1: 'Pêchées le matin, livrées le soir, facturées au juste poids',
-  sousTitre: 'Un lot par pêche, le poids réel relevé à la pesée, l’étiquette de chaque sac en 3 clics et la facture au juste poids. La grande distribution, elle, reçoit ses palettes SSCC et ses factures en EDI.',
-  lienParcours: 'Faire partir une commande de moules',
+  accroche: ['Elle pèse combien,', 'cette pêche ?'],
+  h1: 'Le logiciel mytilicole : pêché le matin, livré le soir, facturé au juste poids',
+  sousTitre: 'Son poids réel, celui de la pesée, et c’est lui qui passe sur la facture. Chaque pêche devient un lot avec sa zone de production, l’étiquette de chaque sac sort en 3 clics, et tout reste tracé jusqu’au client.',
+  lienParcours: 'Faire avancer une commande de moules',
 
   douleurs: {
     titre: 'La moule n’attend pas, la facture non plus',
@@ -27,7 +28,7 @@ export default {
   },
 
   benefices: {
-    titre: 'Ce qui change entre la pêche et le camion',
+    titre: 'Ce qui change, de la pêche à la facture',
     items: [
       {
         titre: 'Un lot par pêche, numéroté seul',
@@ -72,7 +73,7 @@ export default {
 
   normes: {
     titre: 'Les documents et les normes de la mytiliculture',
-    intro: 'Du sac au camion, C’Claires imprime ce que la réglementation et vos clients demandent.',
+    intro: 'Du sac à l’expédition, C’Claires imprime ce que la réglementation et vos clients demandent.',
     items: [
       { nom: 'Étiquette sanitaire', texte: 'Une étiquette par sac ou par colis, avec ses mentions, en 3 clics.', lien: ['/guides/mentions-obligatoires-etiquette-sanitaire/', 'Les mentions obligatoires'] },
       { nom: 'CERFA 15063*04', texte: 'Le document d’enregistrement des coquillages vivants, prérempli depuis le BL.', lien: ['/guides/cerfa-15063/', 'Remplir le CERFA 15063'] },
@@ -94,7 +95,6 @@ export default {
   ],
 
   cta: {
-    titre: 'Une pêche, une pesée, une facture juste',
-    texte: 'En 30 minutes, nous suivons une commande de moules comme les vôtres, de la pesée à la facture, avec vos articles et vos clients.',
+    texte: 'Apportez le poids d’une pêche : en 30 minutes, nous suivons une commande de moules comme les vôtres, de la pesée à la facture, avec vos articles et vos clients. Ensuite, une version de test si vous le souhaitez.',
   },
 };

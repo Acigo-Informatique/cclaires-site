@@ -2,7 +2,8 @@
 // Gabarit d’une page métier (ostréiculture, mytiliculture, mareyage), d’après un fichier de
 // src/donnees/metiers/ : premier écran, les trois douleurs du métier, les bénéfices et leurs écrans,
 // la démonstration avec un exemple du métier, documents et normes, témoignage, questions, appel final.
-// La couleur du métier (celle de sa feuille sur l’accueil) donne son champ aux douleurs.
+// La couleur du métier (celle de sa feuille sur l’accueil) donne son champ aux douleurs. La question du métier
+// (accroche) ouvre la page, la page y répond, et l’appel final la referme sur « Bref : C’Claires. ».
 import Base from '../layouts/Base.astro';
 import EnTetePage from './EnTetePage.astro';
 import Photo from './Photo.astro';
@@ -31,7 +32,7 @@ const temoignage = temoignages[m.temoignage.cle];
   schemas={[logiciel({ description: m.schema, audience: m.audience, url: m.url }), faqPage(m.faq, m.url)]}
   precharges={[precharge]}
 >
-  <EnTetePage slot="avant" url={m.url} h1={m.h1} sousTitre={m.sousTitre} couleur={m.couleur} photos={m.photos} tailleHero={tailleHero}
+  <EnTetePage slot="avant" url={m.url} h1={m.h1} accroche={m.accroche} sousTitre={m.sousTitre} couleur={m.couleur} photos={m.photos} tailleHero={tailleHero}
     actions={[{ href: lien('/demo/'), texte: 'Réserver ma démo de 30 minutes', primaire: true }, { href: '#parcours', texte: m.lienParcours }]} />
 
   <section id="douleurs" class={`intro intro--${m.couleur}`} aria-labelledby="douleurs-titre">

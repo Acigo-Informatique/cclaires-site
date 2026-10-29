@@ -1,22 +1,24 @@
 // Page « Logiciel de mareyage » (requête principale : logiciel mareyage). Règle 1 : seulement des
 // fonctions livrées, au présent ; ni module de criée ni transformation (feuille de route).
+// La question du métier ouvre la page, l’appel final la referme.
 import poisson from '../parcours/poisson.mjs';
 
 export default {
   url: '/logiciel-mareyage/',
   titre: 'Logiciel mareyage : achat, traçabilité, EDI | C’Claires',
   description: 'Logiciel de mareyage C’Claires : lots d’achat qui gardent leur origine, zone FAO et engin sur l’étiquette, poids variable, traçabilité, EDI et factures.',
-  ogTitre: 'Le logiciel de mareyage, de la criée au camion',
+  ogTitre: 'Il vient d’où, ce bar ? C’Claires.',
   audience: 'Mareyeurs',
   schema: 'Logiciel de gestion pour mareyeurs : achats et réceptions par lot, mentions de l’information du consommateur sur l’étiquette, poids variable, viviers, traçabilité, factures et ordres de transport en EDI.',
   couleur: 'noir',
   photos: ['port-en-bessin', 'criee-boulogne'],
-  h1: 'Le logiciel de mareyage, de la criée au camion',
-  sousTitre: 'Achat le matin, mise en caisse, camion le soir : achat, vente, étiquette et facture s’enchaînent sans ressaisie, et chaque lot garde son origine, sa zone FAO et son engin jusqu’au client.',
-  lienParcours: 'Faire partir une commande de marée',
+  accroche: ['Il vient d’où,', 'ce bar ?'],
+  h1: 'Le logiciel de mareyage, de la criée au client',
+  sousTitre: 'C’Claires le sait, et votre client aussi : chaque lot acheté garde son origine, sa zone FAO et son engin jusqu’à l’étiquette. Achat, vente, étiquette et facture s’enchaînent sans ressaisie.',
+  lienParcours: 'Faire avancer une commande de marée',
 
   douleurs: {
-    titre: 'Entre la criée et le camion, pas de temps pour la ressaisie',
+    titre: 'Entre la criée et le client, pas de temps pour la ressaisie',
     items: [
       'L’origine du lot, recopiée du bon d’achat sur chaque étiquette.',
       'Les poids pesés un à un, reportés à la main sur le BL et la facture.',
@@ -72,7 +74,7 @@ export default {
 
   normes: {
     titre: 'Les documents et les normes de la marée',
-    intro: 'De l’achat au camion, C’Claires imprime et contrôle ce que la réglementation et vos clients demandent.',
+    intro: 'De l’achat à l’expédition, C’Claires imprime et contrôle ce que la réglementation et vos clients demandent.',
     items: [
       { nom: 'Règlement UE 1379/2013', texte: 'Dénomination, nom scientifique, méthode de production, zone FAO et engin, portés par l’article.' },
       { nom: 'Codes-barres 1D et 2D', texte: 'EAN-13, GS1-128, Code 128, QR code, DataMatrix : tous dans l’éditeur.', lien: ['/fonctionnalites/etiquette-sanitaire/', 'Les étiquettes'] },
@@ -94,7 +96,6 @@ export default {
   ],
 
   cta: {
-    titre: 'Du bon d’achat au camion, en 30 minutes',
-    texte: 'Nous suivons devant vous un achat du matin jusqu’à l’étiquette, la palette et la facture, avec vos espèces et vos clients.',
+    texte: 'Du bon d’achat à la facture : en 30 minutes, nous suivons devant vous un achat du matin jusqu’à l’étiquette et la facture, avec vos espèces et vos clients. Ensuite, une version de test si vous le souhaitez.',
   },
 };

@@ -1,7 +1,8 @@
 ---
 // Gabarit d’une page fonctionnalité, d’après un fichier de src/donnees/fonctions/ : premier écran, la
 // pièce que C’Claires tire de la commande d’exemple (fragment d’interface), les étapes, les écrans, les
-// métiers concernés et le guide lié, les questions, l’appel final.
+// métiers concernés et le guide lié, les questions, l’appel final. La question (accroche) ouvre la page,
+// l’appel final la referme sur « Bref : C’Claires. ».
 import Base from '../layouts/Base.astro';
 import EnTetePage from './EnTetePage.astro';
 import Ecran from './Ecran.astro';
@@ -29,7 +30,7 @@ const precharge = await prechargePhoto(f.photos[0], tailleHero);
 ---
 <Base titre={f.titre} description={f.description} url={f.url} ogTitre={f.h1} enTete="accueil"
   schemas={f.faq?.length ? [faqPage(f.faq, f.url)] : []} precharges={[precharge]}>
-  <EnTetePage slot="avant" url={f.url} h1={f.h1} sousTitre={f.sousTitre} couleur={f.couleur} photos={f.photos} tailleHero={tailleHero}
+  <EnTetePage slot="avant" url={f.url} h1={f.h1} accroche={f.accroche} sousTitre={f.sousTitre} couleur={f.couleur} photos={f.photos} tailleHero={tailleHero}
     actions={[{ href: lien('/demo/'), texte: 'Réserver ma démo de 30 minutes', primaire: true }, { href: '#vitrine', texte: f.lienVitrine }]} />
 
   <section id="vitrine" class="vitrine" aria-labelledby="vitrine-titre">

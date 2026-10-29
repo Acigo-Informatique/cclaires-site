@@ -1,22 +1,23 @@
 // Page « Logiciel ostréicole » (requête principale : logiciel ostréicole). Règle 1 : seulement des
-// fonctions livrées, au présent. Les captures sont des emplacements à compléter (TODO-MANUEL.md).
+// fonctions livrées, au présent. La question du métier ouvre la page, l’appel final la referme.
 import huitres from '../parcours/huitres.mjs';
 
 export default {
   url: '/logiciel-ostreicole/',
   titre: 'Logiciel ostréicole : gestion et étiquettes | C’Claires',
-  description: 'Logiciel ostréicole C’Claires : parcs et claires, lots suivis de la claire à la bourriche, étiquettes sanitaires en 3 clics, palettes SSCC et factures.',
-  ogTitre: 'Le logiciel ostréicole, de la claire au camion',
+  description: 'Logiciel ostréicole C’Claires : parcs et claires sur tablette, lots suivis de la mise à l’eau à la bourriche, étiquettes sanitaires en 3 clics et factures.',
+  ogTitre: 'Ce lot, il est dans quelle claire ? C’Claires.',
   audience: 'Ostréiculteurs',
-  schema: 'Logiciel de gestion pour ostréiculteurs : parcs et claires, lots suivis de la mise à l’eau à la bourriche, étiquettes sanitaires imprimées en 3 clics depuis la commande, palettes et SSCC, traçabilité, bons de livraison et factures.',
+  schema: 'Logiciel de gestion pour ostréiculteurs : parcs et claires, application tablette de production, lots suivis de la mise à l’eau à la bourriche, étiquettes sanitaires imprimées en 3 clics depuis la commande, palettes et SSCC, traçabilité, bons de livraison et factures.',
   couleur: 'tilleul',
   photos: ['parcs-tremblade', 'claires-seudre'],
-  h1: 'Le logiciel ostréicole, de la claire au camion',
-  sousTitre: 'Parcs et claires, affinage, étiquettes sanitaires, palettes et factures dans un seul logiciel. Vous saisissez la commande, le lot suit tout seul jusqu’au client, et la pointe de décembre se passe au quai, pas au bureau.',
-  lienParcours: 'Faire partir une commande d’huîtres',
+  accroche: ['Ce lot, il est', 'dans quelle claire ?'],
+  h1: 'Le logiciel ostréicole, de la mise à l’eau à la vente',
+  sousTitre: 'Vous le savez d’un coup d’œil, sur la tablette au parc comme au bureau. Parcs et claires, affinage, étiquettes sanitaires et factures tiennent sur le même fil, et le lot suit tout seul jusqu’au client.',
+  lienParcours: 'Faire avancer une commande d’huîtres',
 
   douleurs: {
-    titre: 'En pleine saison, le lot se perd entre la claire et le camion',
+    titre: 'En pleine saison, le lot se perd entre la claire et le bureau',
     items: [
       'Le stock des claires tenu au carnet, recompté à chaque marée.',
       'Les étiquettes sanitaires refaites quand un client change de calibre.',
@@ -27,11 +28,11 @@ export default {
   },
 
   benefices: {
-    titre: 'Ce qui change, de la claire à l’expédition',
+    titre: 'Ce qui change, de la mise à l’eau à la vente',
     items: [
       {
         titre: 'Vos parcs et vos claires, à jour sans carnet',
-        texte: 'L’éditeur de parcs dessine vos concessions, vos claires et vos tables. Chaque mouvement de lot y est noté, de la mise à l’eau au tri, et la vue graphique montre ce que contient chaque claire à la date que vous choisissez.',
+        texte: 'Dessinez vos concessions, vos claires et vos tables une fois. Au parc, la tablette Android suit les actions planifiées par lot et même par poche, et les garde même sans réseau ; au bureau, la vue graphique montre ce que contient chaque claire à la date que vous choisissez.',
         lien: ['/fonctionnalites/parcs-claires/', 'La gestion des parcs et des claires'],
         capture: {
           ecran: 'parcs',
@@ -57,8 +58,8 @@ export default {
         },
       },
       {
-        titre: 'Les palettes de la grande distribution, sans tableur',
-        texte: 'Pour la centrale ou le transporteur, les colis du BL se répartissent en palettes. Chaque palette reçoit son SSCC à l’enregistrement et son étiquette GS1 s’imprime au quai : elle part avec ce que la centrale demande.',
+        titre: 'Des palettes composées, le SSCC attribué',
+        texte: 'Pour la grande distribution ou le transporteur, les colis du BL se répartissent en palettes. Chaque palette reçoit son SSCC à l’enregistrement et son étiquette GS1 s’imprime au quai.',
         lien: ['/fonctionnalites/palettisation-sscc/', 'La palettisation et le SSCC'],
       },
     ],
@@ -76,7 +77,7 @@ export default {
     items: [
       { nom: 'Étiquette sanitaire', texte: 'Marque d’identification, espèce, date de conditionnement et lot, imprimés en 3 clics.', lien: ['/guides/mentions-obligatoires-etiquette-sanitaire/', 'Les mentions obligatoires'] },
       { nom: 'CERFA 15063*04', texte: 'Le document d’enregistrement des coquillages vivants, prérempli depuis le BL.', lien: ['/guides/cerfa-15063/', 'Remplir le CERFA 15063'] },
-      { nom: 'Zones A, B, C', texte: 'Le classement de la zone suit le lot, la purification est vérifiée avant le départ.' },
+      { nom: 'Zones A, B, C', texte: 'Le classement de la zone suit le lot, la purification est vérifiée avant l’expédition.' },
       { nom: 'IGP et Label Rouge', texte: 'Les cahiers des charges contrôlés lot par lot, durée d’affinage comprise.' },
       { nom: 'SSCC et GS1-128', texte: 'Un numéro unique par palette, son étiquette GS1 imprimée au quai.', lien: ['/fonctionnalites/palettisation-sscc/', 'La palettisation'] },
       { nom: 'Information du consommateur', texte: 'Dénomination, nom scientifique, méthode de production et zone, du BL à l’étiquette.' },
@@ -87,6 +88,7 @@ export default {
 
   faq: [
     { q: 'C’Claires gère-t-il plusieurs parcs et plusieurs claires ?', r: '<p>Oui. L’éditeur de parcs dessine toutes vos concessions, vos claires et vos tables, et chaque lot garde la trace de ses emplacements successifs, de la mise à l’eau au conditionnement.</p>' },
+    { q: 'Peut-on noter les actions au parc ?', r: '<p>Oui, sur l’application tablette de production, sous Android, comprise dans l’abonnement : mises à l’eau, transferts, tris et les actions que vous définissez vous-même, planifiées par lot et même par poche. Elle fonctionne hors ligne et se synchronise toute seule dès que le réseau revient.</p>' },
     { q: 'Comment les lots sont-ils numérotés ?', r: '<p>Par un masque que vous définissez, par exemple l’année, le jour, le calibre et une séquence : le lot 2026-351-3-014 s’est numéroté seul. Le numéro suit ensuite le lot sur l’étiquette, le bon de livraison, la facture et la fiche de traçabilité.</p>' },
     { q: 'Quelles mentions portent les étiquettes sanitaires ?', r: '<p>Les modèles disposent des variables de la réglementation : marque d’identification, espèce, zone de production, méthode de production, date de conditionnement, numéro de lot. Le détail est dans notre guide des <a class="link" href="/guides/mentions-obligatoires-etiquette-sanitaire/">mentions obligatoires de l’étiquette sanitaire</a>.</p>' },
     { q: 'Le CERFA 15063 se remplit-il tout seul ?', r: '<p>Il se préremplit depuis le bon de livraison : espèce, quantité, poids, zone et lot. Notre guide explique comment <a class="link" href="/guides/cerfa-15063/">remplir le CERFA 15063 sans erreur</a>.</p>' },
@@ -94,7 +96,6 @@ export default {
   ],
 
   cta: {
-    titre: 'Montrez-nous comment partent vos bourriches',
-    texte: 'En 30 minutes, nous faisons partir une de vos commandes dans C’Claires, avec vos articles, vos claires et vos clients.',
+    texte: 'Suivons un de vos lots, de la claire à la facture : en 30 minutes, avec vos articles, vos claires et vos clients, actions au parc comprises. Ensuite, une version de test si vous le souhaitez.',
   },
 };

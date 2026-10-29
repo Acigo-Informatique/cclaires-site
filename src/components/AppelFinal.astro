@@ -1,11 +1,12 @@
 ---
-// Dernier écran d’une page : l’idée inversée sur le noir, une phrase, l’action et le téléphone.
+// Dernier écran d’une page : le refrain « Bref : C’Claires. » (ou un titre propre à la page) sur le noir,
+// une phrase, l’action et le téléphone.
 // L’accueil et /demo/ portent le formulaire ; les autres pages mènent à /demo/.
 import { lien } from '../lib/chemins.mjs';
 import Telephone from './Telephone.astro';
 
-interface Props { titre: string; texte: string; action?: string }
-const { titre, texte, action = 'Réserver ma démo de 30 minutes' } = Astro.props;
+interface Props { titre?: string; texte: string; action?: string }
+const { titre = 'Bref : C’Claires.', texte, action = 'Réserver ma démo de 30 minutes' } = Astro.props;
 ---
 <section id="demande" class="close close--court" aria-labelledby="demande-titre">
   <h2 class="close__title titre-long" id="demande-titre" data-reveal>{titre}</h2>
