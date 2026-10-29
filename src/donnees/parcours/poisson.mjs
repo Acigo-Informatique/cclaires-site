@@ -76,7 +76,7 @@ export default {
     'Trois clics : le bon de livraison porte les poids réels, colis par colis. Imprimez ses étiquettes.',
     'Quatre clics : le modèle porte l’espèce, la zone FAO et l’engin de chaque lot. Lancez l’impression.',
     'Cinq clics, dont trois pour les étiquettes : 7 sont parties vers l’étiqueteuse du quai A. Reste l’étiquette de la palette.',
-    'Six clics : la palette a son étiquette GS1 et son SSCC, le camion charge. Facturez le BL.',
+    'Six clics : la palette a son étiquette GS1 et son SSCC, elle est prête à partir. Facturez le BL.',
     'Sept clics : la facture est émise au poids réel, ses écritures sont prêtes pour l’export comptable. Rien n’a été ressaisi.',
   ],
 };

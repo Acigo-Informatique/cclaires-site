@@ -9,7 +9,7 @@
 </style>
 </head>
 <body>
-<p class="fonts-warm" style="font-family:'Barlow Condensed';font-weight:500">De la claire au camion</p>
+<p class="fonts-warm" style="font-family:'Barlow Condensed';font-weight:500">Produire, tracer, vendre ?</p>
 <canvas id="og" width="1200" height="630"></canvas>
 <script>
 const charger = (src) => new Promise((ok, ko) => { const i = new Image(); i.onload = () => ok(i); i.onerror = ko; i.src = src; });
@@ -24,6 +24,7 @@ async function envoyer(canvas, nom) {
 }
 window.generer = async () => {
   await document.fonts.load('500 120px "Barlow Condensed"');
+  await document.fonts.load('700 22px "Cairo"');
   await document.fonts.ready;
   const PAON = '#007b8e', TILLEUL = '#b6cb6b', EAU = '#e4eac8', CIEL = '#bfe5fb';
   const [claires, tables, arcachon, sillons, logo, icone] = await Promise.all([
@@ -43,9 +44,9 @@ window.generer = async () => {
   const lw = 330, lh = lw * logo.naturalHeight / logo.naturalWidth;
   ctx.drawImage(logo, 44, 392, lw, lh);
   ctx.fillStyle = '#0a0a0a'; ctx.font = '500 112px "Barlow Condensed"'; ctx.textBaseline = 'alphabetic';
-  ctx.fillText('De la claire', 504, 440); ctx.fillText('au camion', 504, 540);
+  ctx.fillText('Produire, tracer,', 504, 440); ctx.fillText('vendre ?', 504, 540);
   ctx.font = '700 22px "Cairo"'; ctx.fillStyle = '#0a0a0a';
-  ctx.fillText('Logiciel de gestion ostréicole et conchylicole', 44, 590);
+  ctx.fillText('Le logiciel de gestion des métiers de la mer', 44, 590);
   const resultats = [await envoyer(c, 'assets/img/og.png')];
   // icônes carrées (charte p. 14) : favicon, écran d’accueil, manifeste
   for (const [taille, nom] of [[32, 'favicon-32.png'], [180, 'apple-touch-icon.png'], [192, 'assets/img/icone-192.png'], [512, 'assets/img/icone-512.png']]) {

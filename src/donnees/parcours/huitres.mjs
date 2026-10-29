@@ -75,7 +75,7 @@ export default {
     'Trois clics : le bon de livraison est ouvert. Imprimez ses étiquettes.',
     'Quatre clics : modèle et étiqueteuse sont déjà choisis par vos règles. Lancez l’impression.',
     'Cinq clics, dont trois pour les étiquettes : 20 sont parties en même temps vers les étiqueteuses des quais 2 et 3. Reste l’étiquette de la palette.',
-    'Six clics : la palette a son étiquette GS1 et son SSCC, le camion charge. Facturez le BL.',
+    'Six clics : la palette a son étiquette GS1 et son SSCC, elle est prête à partir. Facturez le BL.',
     'Sept clics : la facture est émise et ses écritures sont prêtes pour l’export comptable. Rien n’a été ressaisi.',
   ],
 };
